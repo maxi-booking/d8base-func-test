@@ -16,7 +16,8 @@ public class UserProfileTests extends config.TestBase {
     Reviews rev = new Reviews();
     Search sch = new Search();
     LogIn log = new LogIn();
-    UserProfile usr = new UserProfile();
+    UserProfile uprof = new UserProfile();
+    MasterProfile mprof = new MasterProfile();
 
     @Test
     @Feature("User Registration")
@@ -26,6 +27,7 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00000() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user10FirstName);
@@ -48,18 +50,18 @@ public class UserProfileTests extends config.TestBase {
     void t00001() {
         log.popupSkip();
         log.account10();
-        log.langEN();
+        log.forceEN();
 
         log.clickSideMenu();
-        usr.openUserProfile();
-        usr.verifyProfile(user10FirstName, user10LastName,testUser10,user10Country, user10City);
-        usr.openUserProfileMain();
+        uprof.openUserProfile();
+        uprof.verifyProfile(user10FirstName, user10LastName,testUser10,user10Country, user10City);
+        uprof.openUserProfileMain();
 //        usr.verifyProfileMain(user10FirstName, user10LastName,testUser10);
-        usr.clickBackMain();
-        usr.openUserProfileAddress();
-        usr.verifyProfileAddress(user10Country, user10City);
-        usr.clickBackAddress();
-        usr.verifyProfile(user10FirstName, user10LastName,testUser10,user10Country, user10City);
+        uprof.clickBackMain();
+        uprof.openUserProfileAddress();
+        uprof.verifyProfileAddress(user10Country, user10City);
+        uprof.clickBackAddress();
+        uprof.verifyProfile(user10FirstName, user10LastName,testUser10,user10Country, user10City);
     }
 
 

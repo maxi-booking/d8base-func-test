@@ -15,8 +15,12 @@ public class Orders extends config.TestBase {
 
     @Step("Open the page (top bar)")
     public void openOrderPageTopEN() {
-        $("app-profile").$("ion-toolbar").$(byText("My orders")).click();
+        $("app-main").$("ion-toolbar").$(byText("My orders")).click();
+    }
 
+    @Step("Open the page (top bar)")
+    public void openOrderPageTopProfileEN() {
+        $("app-profile").$("ion-toolbar").$(byText("My orders")).click();
     }
 
     @Step("Open the page (top bar)")
@@ -75,6 +79,11 @@ public class Orders extends config.TestBase {
                 text(servicePrice),
                 text(serviceTotalDuration)
         );
+    }
+
+    @Step("Click Professional's name")
+    public void clickProfessionalsName() {
+        $("app-sent-order-list-item").$("ion-card").$("app-professional-card").$("a").click();
     }
 
     @Step("Click view details")

@@ -1,5 +1,6 @@
 package pages;
 
+import config.Lang;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -88,5 +89,9 @@ public class UserProfile {
         $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
     }
 
+    @Step("Verify language")
+    public void verifyRussianLang() {
+        $("app-profile").$("ion-toolbar").shouldHave(text(Lang.RUSSIAN.getLangText()));
+    }
 
 }

@@ -12,7 +12,7 @@ public class Favorites {
     @Step("Open side menu button")
     public void clickMenuMain() {
         sleep(300);
-        $("app-reviews-list").$("ion-menu-toggle").$("ion-button").click();
+        $("app-main").$("ion-menu-toggle").$("ion-button").click();
         sleep(300);
     }
 

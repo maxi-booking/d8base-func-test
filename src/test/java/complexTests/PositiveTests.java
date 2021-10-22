@@ -1,9 +1,11 @@
-package testComplex;
+package complexTests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.*;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class PositiveTests extends config.TestBase {
 
@@ -16,6 +18,8 @@ public class PositiveTests extends config.TestBase {
     Reviews rev = new Reviews();
     Search sch = new Search();
     LogIn log = new LogIn();
+    UserProfile uprof = new UserProfile();
+    MasterProfile mprof = new MasterProfile();
 
     @Test
     @Feature("User Registration")
@@ -25,6 +29,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00000() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user1FirstName);
@@ -46,6 +51,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00001() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user2FirstName);
@@ -67,6 +73,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00002() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user3FirstName);
@@ -88,6 +95,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic Positive User Registration")
     void t00003() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user5FirstName);
@@ -107,6 +115,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00004() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user6FirstName);
@@ -128,6 +137,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration")
     void t00005() {
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
         reg.fillUserFirstName(user7FirstName);
@@ -150,7 +160,7 @@ public class PositiveTests extends config.TestBase {
     void t00006() {
         log.popupSkip();
         log.account1();
-        log.langEN();
+        log.forceEN();
 
         log.clickSideMenu();
         pbl.openPageEN();
@@ -195,7 +205,7 @@ public class PositiveTests extends config.TestBase {
 
         log.popupSkip();
         log.account2();
-        log.langEN();
+        log.forceEN();
 
         log.clickSideMenu();
         pbl.openPageEN();
@@ -242,7 +252,7 @@ public class PositiveTests extends config.TestBase {
 
         log.popupSkip();
         log.account3();
-        log.langEN();
+        log.forceEN();
 
         log.clickSideMenu();
         pbl.openPageEN();
@@ -287,6 +297,7 @@ public class PositiveTests extends config.TestBase {
     void t00102() {
 
         log.popupSkip();
+        log.forceEN();
         log.clickSideMenu();
         pbl.openPageEN();
 
@@ -335,8 +346,8 @@ public class PositiveTests extends config.TestBase {
 
         log.popupSkip();
         log.account7();
+        log.forceEN();
 
-        log.clickLogoFromProfile();
         log.clickSideMenu();
         pbl.openPageEN();
 
@@ -379,7 +390,7 @@ public class PositiveTests extends config.TestBase {
     void t00200() {
         log.popupSkip();
         log.account5();
-        log.langEN();
+        log.forceEN();
 
         log.clickSideMenu();
         bkn.clickSearchEN();
@@ -399,7 +410,8 @@ public class PositiveTests extends config.TestBase {
         bkn.clickForward();
         bkn.clickAccept();
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service1Name, service1Price, service1TotalDuration, user1FirstName, user1LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service1Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user1FirstName, service1Name, service1Price, service1TotalDuration);
     }
@@ -413,8 +425,9 @@ public class PositiveTests extends config.TestBase {
     void t00201() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
 
         bkn.clickSearchEN();
 
@@ -435,7 +448,8 @@ public class PositiveTests extends config.TestBase {
         bkn.clickAccept();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service2Name, service2Price, service2TotalDuration, user2FirstName, user2LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service2Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user2FirstName, service2Name, service2Price, service2TotalDuration);
     }
@@ -449,8 +463,9 @@ public class PositiveTests extends config.TestBase {
     void t00202() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         bkn.clickSearchEN();
 
         bkn.closeFilters();
@@ -470,7 +485,8 @@ public class PositiveTests extends config.TestBase {
         bkn.clickAccept();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service3Name, service3Price, service3TotalDuration, user3FirstName, user3LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service3Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user3FirstName, service3Name, service3Price, service3TotalDuration);
     }
@@ -484,8 +500,9 @@ public class PositiveTests extends config.TestBase {
     void t00203() {
         log.popupSkip();
         log.account6();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         bkn.clickSearchEN();
 
         bkn.closeFilters();
@@ -504,7 +521,8 @@ public class PositiveTests extends config.TestBase {
         bkn.clickForward();
         bkn.clickAccept();
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service7Name, service7Price, service7TotalDuration, user7FirstName, user7LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service7Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user7FirstName, service7Name, service7Price, service7TotalDuration);
     }
@@ -518,8 +536,9 @@ public class PositiveTests extends config.TestBase {
     void t00204() {
         log.popupSkip();
         log.account6();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         bkn.clickSearchEN();
 
         bkn.closeFilters();
@@ -537,7 +556,8 @@ public class PositiveTests extends config.TestBase {
         bkn.clickForward();
         bkn.clickAccept();
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service4Name, service4Price, service4TotalDuration, user4FirstName, user4LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service4Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user4FirstName, service4Name, service4Price, service4TotalDuration);
     }
@@ -552,6 +572,7 @@ public class PositiveTests extends config.TestBase {
     void t00300() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.checkOrderOutbox(user1FirstName, service1Name, service1Price, service1TotalDuration);
@@ -569,6 +590,7 @@ public class PositiveTests extends config.TestBase {
     void t00301() {
         log.popupSkip();
         log.account1();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.tabCurrentOrdersInbox();
@@ -585,6 +607,7 @@ public class PositiveTests extends config.TestBase {
     void t00302() {
         log.popupSkip();
         log.account2();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.tabCurrentOrdersInbox();
@@ -601,6 +624,7 @@ public class PositiveTests extends config.TestBase {
     void t00303() {
         log.popupSkip();
         log.account3();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.tabCurrentOrdersInbox();
@@ -617,6 +641,7 @@ public class PositiveTests extends config.TestBase {
     void t00304() {
         log.popupSkip();
         log.account6();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.checkOrderOutbox(user4FirstName, service4Name, service4Price, service4TotalDuration);
@@ -633,6 +658,7 @@ public class PositiveTests extends config.TestBase {
     void t00305() {
         log.popupSkip();
         log.account7();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.tabCurrentOrdersInbox();
@@ -650,8 +676,9 @@ public class PositiveTests extends config.TestBase {
     void t00400() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
         rev.clickMaster1();
@@ -673,8 +700,9 @@ public class PositiveTests extends config.TestBase {
     void t00401() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
         rev.clickMaster2();
@@ -697,8 +725,9 @@ public class PositiveTests extends config.TestBase {
     void t00402() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        log.clickSideMenuFromProfile();
+        log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
         rev.clickMaster3();
@@ -725,7 +754,8 @@ public class PositiveTests extends config.TestBase {
     void t00403() {
         log.popupSkip();
         log.account2();
-        rev.clickMenuProfile();
+        log.forceEN();
+        rev.clickMenu();
         rev.openMasterProfile();
         rev.clickMasterReviews();
         rev.postMasterComment(masterComment);
@@ -741,11 +771,12 @@ public class PositiveTests extends config.TestBase {
     void t00500() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
         ord.openOrderPageTopEN();
         ord.tabArchivedOrdersOutbox();
-        ord.viewDetailsOutbox();
-        msg.openChatFromOrderDetails();
+        ord.clickProfessionalsName();
+        mprof.clickChat();
         msg.sendMessage(testMessage1);
         msg.checkMessage(testMessage1);
     }
@@ -759,6 +790,7 @@ public class PositiveTests extends config.TestBase {
     void t00501() {
         log.popupSkip();
         log.account3();
+        log.forceEN();
 
         msg.openChatFromTopBar();
         msg.findUserChat(user5FirstName);
@@ -777,6 +809,7 @@ public class PositiveTests extends config.TestBase {
     void t00502() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
         msg.openChatFromTopBar();
         msg.findUserChat(user3FirstName);
@@ -794,8 +827,9 @@ public class PositiveTests extends config.TestBase {
     void t00600() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        fav.clickMenuProfile();
+        fav.clickMenuMain();
         fav.openBookmarksMenuEN();
         fav.verifyBookmarkOnline(user1FirstName + " " + user1LastName);
 
@@ -812,8 +846,9 @@ public class PositiveTests extends config.TestBase {
     void t00601() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        fav.clickMenuProfile();
+        fav.clickMenuMain();
         fav.clickSearchEN();
         fav.closeFilters();
         fav.findService(service1Name);
@@ -833,8 +868,9 @@ public class PositiveTests extends config.TestBase {
     void t00602() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        fav.clickMenuProfile();
+        fav.clickMenuMain();
         fav.clickSearchEN();
         fav.closeFilters();
         fav.findService(service2Name);
@@ -856,8 +892,9 @@ public class PositiveTests extends config.TestBase {
     void t00603() {
         log.popupSkip();
         log.account5();
+        log.forceEN();
 
-        fav.clickMenuProfile();
+        fav.clickMenuMain();
         fav.clickSearchEN();
         fav.closeFilters();
         fav.findService(service3Name);
@@ -879,6 +916,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking from the main page: guest")
     void t00700() {
         log.popupSkip();
+        log.forceEN();
 
         bkn.findServiceMainPage(service1Name);
         bkn.verifyServiceSearch(user1FirstName, user1LastName, service1Name, service1Price);
@@ -910,7 +948,8 @@ public class PositiveTests extends config.TestBase {
         reg.confirm();
 
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service1Name, service1Price, service1TotalDuration, user1FirstName, user1LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service1Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user1FirstName, service1Name, service1Price, service1TotalDuration);
     }
@@ -923,6 +962,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking: guest")
     void t00701() {
         log.popupSkip();
+        log.forceEN();
 
         log.clickSideMenu();
         bkn.clickSearchEN();
@@ -958,7 +998,8 @@ public class PositiveTests extends config.TestBase {
         reg.confirm();
 
         bkn.placeOrder();
-        bkn.verifyOrderDetails(service1Name, service1Price, service1TotalDuration, user1FirstName, user1LastName);
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(service1Name);
         bkn.clickOrders();
         ord.checkOrderOutbox(user1FirstName, service1Name, service1Price, service1TotalDuration);
     }
@@ -971,8 +1012,9 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Main page search: professional name")
     void t00800() {
         log.popupSkip();
+        log.forceEN();
 
-        sch.searchMain(user1FirstName+" "+user1LastName);
+        sch.searchMain(user1FirstName + " " + user1LastName);
         bkn.verifyServiceSearch(user1FirstName, user1LastName, service1Name, service1Price);
         bkn.chooseService();
         bkn.verifyServiceBase(service1Name, service1Price, service1TotalDuration, user1FirstName, user1LastName, service1Description);
@@ -986,6 +1028,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Main page search: service name")
     void t00801() {
         log.popupSkip();
+        log.forceEN();
 
         bkn.findServiceMainPage(service2Name);
         bkn.verifyServiceSearch(user2FirstName, user2LastName, service2Name, service2Price);
@@ -1001,6 +1044,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Main page search: speciality")
     void t00802() {
         log.popupSkip();
+        log.forceEN();
 
         bkn.findServiceMainPage(service3Specialization);
         bkn.verifyServiceSearch(user3FirstName, user3LastName, service3Name, service3Price);
@@ -1016,11 +1060,12 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Search page search: professional name")
     void t00803() {
         log.popupSkip();
+        log.forceEN();
 
         log.clickSideMenu();
         bkn.clickSearchEN();
 
-        sch.search(user1FirstName+" "+user1LastName);
+        sch.search(user1FirstName + " " + user1LastName);
         bkn.verifyServiceSearch(user1FirstName, user1LastName, service1Name, service1Price);
         bkn.chooseService();
         bkn.verifyServiceBase(service1Name, service1Price, service1TotalDuration, user1FirstName, user1LastName, service1Description);
@@ -1034,6 +1079,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Search page search: service name")
     void t00804() {
         log.popupSkip();
+        log.forceEN();
 
         log.clickSideMenu();
         bkn.clickSearchEN();
@@ -1052,6 +1098,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Search page search: speciality")
     void t00805() {
         log.popupSkip();
+        log.forceEN();
 
         log.clickSideMenu();
         bkn.clickSearchEN();

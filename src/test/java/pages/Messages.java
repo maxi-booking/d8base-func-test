@@ -14,6 +14,11 @@ public class Messages {
 
     @Step("Open the chat from top bar")
     public void openChatFromTopBar() {
+        $("app-main").$("ion-toolbar").$("ion-buttons", 1).$("ion-button").click();
+    }
+
+    @Step("Open the chat from top bar")
+    public void openChatFromTopBarProfile() {
         $("app-profile").$("ion-toolbar").$("ion-buttons", 1).$("ion-button").click();
     }
 

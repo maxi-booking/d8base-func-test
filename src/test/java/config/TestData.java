@@ -28,6 +28,8 @@ public class TestData {
             testPassword8,
             testPassword9,
             testPassword10,
+            user11Email,
+            user11Password,
             user1FirstName,
             user1LastName,
             user1PhoneNumber,
@@ -79,6 +81,11 @@ public class TestData {
             user10Country,
             user10City,
             service1Name,
+            user11FirstName,
+            user11LastName,
+            user11PhoneNumber,
+            user11Country,
+            user11City,
             service1Description,
             service1DurationDays,
             service1DurationHours,
@@ -169,62 +176,62 @@ public class TestData {
         testPassword9 = generate.internet().password();
         testPassword10 = generate.internet().password();
 
-        user1FirstName = generate.name().firstName() + generate.name().suffix();
-        user1LastName = generate.name().lastName() + generate.name().suffix();
+        user1FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user1LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user1PhoneNumber = "911" + generate.number().digits(7);
         user1Country = "Russia";
         user1City = "Moscow";
 
-        user2FirstName = generate.name().firstName() + generate.name().suffix();
-        user2LastName = generate.name().lastName() + generate.name().suffix();
+        user2FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user2LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user2PhoneNumber = "911" + generate.number().digits(7);
         user2Country = "Russia";
         user2City = "Moscow";
 
-        user3FirstName = generate.name().firstName() + generate.name().suffix();
-        user3LastName = generate.name().lastName() + generate.name().suffix();
+        user3FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user3LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user3PhoneNumber = "911" + generate.number().digits(7);
         user3Country = "Russia";
         user3City = "Moscow";
 
-        user4FirstName = generate.name().firstName() + generate.name().suffix();
-        user4LastName = generate.name().lastName() + generate.name().suffix();
+        user4FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user4LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user4PhoneNumber = "911" + generate.number().digits(7);
         user4Country = "Russia";
         user4City = "Moscow";
 
-        user5FirstName = generate.name().firstName() + generate.name().suffix();
-        user5LastName = generate.name().lastName() + generate.name().suffix();
+        user5FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user5LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user5PhoneNumber = "911" + generate.number().digits(7);
         user5Country = "Russia";
         user5City = "Moscow";
 
-        user6FirstName = generate.name().firstName() + generate.name().suffix();
-        user6LastName = generate.name().lastName() + generate.name().suffix();
+        user6FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user6LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user6PhoneNumber = "6135" + generate.number().digits(6);
         user6Country = "Canada";
         user6City = "Toronto";
 
-        user7FirstName = generate.name().firstName() + generate.name().suffix();
-        user7LastName = generate.name().lastName() + generate.name().suffix();
+        user7FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user7LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user7PhoneNumber = "4575" + generate.number().digits(6);
         user7Country = "Finland";
         user7City = "Helsinki";
 
-        user8FirstName = generate.name().firstName() + generate.name().suffix();
-        user8LastName = generate.name().lastName() + generate.name().suffix();
+        user8FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user8LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user8PhoneNumber = "5905" + generate.number().digits(6);
         user8Country = "France";
         user8City = "Paris";
 
-        user9FirstName = generate.name().firstName() + generate.name().suffix();
-        user9LastName = generate.name().lastName() + generate.name().suffix();
+        user9FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user9LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user9PhoneNumber = "1595" + generate.number().digits(6);
         user9Country = "Germany";
         user9City = "Berlin";
 
-        user10FirstName = generate.name().firstName() + generate.name().suffix();
-        user10LastName = generate.name().lastName() + generate.name().suffix();
+        user10FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user10LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user10PhoneNumber = "911" + generate.number().digits(7);
         user10Country = "Russia";
         user10City = "Moscow";
@@ -297,6 +304,14 @@ public class TestData {
 
         testMessage1 = generate.dragonBall().character() + " > " + generate.dragonBall().character();
         testMessage2 = generate.friends().quote() + " (c) " + generate.dragonBall().character();
+
+        user11Email = generate.name().username() + "@pp.nn";
+        user11Password = generate.internet().password();
+        user11FirstName = generate.name().firstName() + generate.name().suffix();
+        user11LastName = generate.name().lastName() + generate.name().suffix();
+        user11PhoneNumber = "923" + generate.number().digits(7);
+        user11Country = "Россия";
+        user11City = "Москва";
 
         long service1DurationDaysLong = parseLong(service1DurationDays),
                 service1DurationHoursLong = parseLong(service1DurationHours),

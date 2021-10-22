@@ -193,13 +193,15 @@ public class Booking {
         sleep(2000);
     }
 
+    @Step("Click to see order details")
+    public void showOrderDetails() {
+        $("app-sent-order-page").$("div div a").click();
+    }
+
     @Step("Verify the order details")
-    public void verifyOrderDetails(String ServiceName, String Price, String Duration, String FirstName, String LastName) {
+    public void verifyOrderDetails(String ServiceName) {
         sleep(1000);
-        $("app-sent-order-page").$("main").$("app-service-title").shouldHave(text(ServiceName));
-        $("app-sent-order-page").$("main").$("app-price").shouldHave(text(Price));
-        $("app-sent-order-page").$("main").$("app-duration-viewer").shouldHave(text(Duration));
-        $("app-sent-order-page").$("main").shouldHave(text(FirstName+" "+LastName));
+        $("app-sent-order-page").$("section").shouldHave(text(ServiceName));
     }
 
     @Step("Click Orders button")

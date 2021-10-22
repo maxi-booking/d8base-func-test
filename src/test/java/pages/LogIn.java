@@ -1,9 +1,14 @@
 package pages;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import config.Lang;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
 
@@ -12,9 +17,10 @@ public class LogIn extends config.TestBase {
     }
 
     public void presetAcc1User() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
+        $("app-main-menu").$("[id='main-menu.log-in']").click();
         $("app-login").$("input", 0).setValue("SeleTest5@gg.gg");
         $("app-login").$("input", 1).setValue("qazxcdew");
         $("app-login-form").$("ion-button[type='submit']").click();
@@ -22,6 +28,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void presetAcc2Master() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -36,6 +43,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account1() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -46,6 +54,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account2() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -56,6 +65,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account3() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -66,6 +76,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account4() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -76,6 +87,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account5() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -86,6 +98,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account6() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -96,6 +109,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account7() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -106,6 +120,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void account10() {
+        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -115,7 +130,99 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
+    public void forceRU() {
+        sleep(500);
+        String currentUrl = WebDriverRunner.url();
+        String desiredLanguage = Lang.RUSSIAN.getLangText();
+        if (currentUrl.equals(urlProfile)) {
+            sleep(500);
+            String currentLanguage = $("app-profile").$("[menu='flag-menu']").$("ion-label").getText();
+            $("app-profile").$("ion-item").click();
+            sleep(500);
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $("[menu='flag-menu']").click();
+                $("app-flag-menu").$("ion-select").click();
+                $("ion-alert").$("button", 1).click();
+                $(byText("OK")).click();
+                sleep(1000);
+                if ($("ion-alert").exists()) {
+                    $("ion-alert").pressEscape();
+                }
+            }
+        } else if (currentUrl.equals(urlBase)) {
+            sleep(500);
+            String currentLanguage = $("app-main").$("[menu='flag-menu']").$("ion-label").getText();
+            $("app-main").$("ion-item").click();
+            sleep(500);
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $("[menu='flag-menu']").click();
+                $("app-flag-menu").$("ion-select").click();
+                $("ion-alert").$("button", 1).click();
+                $(byText("OK")).click();
+                sleep(1000);
+                if ($("ion-alert").exists()) {
+                    $("ion-alert").pressEscape();
+                }
+            }
+        } else
+            fail();
+    }
+
+    public void forceEN() {
+        sleep(500);
+        String currentUrl = WebDriverRunner.url();
+        String desiredLanguage = Lang.ENGLISH.getLangText();
+        if (currentUrl.equals(urlProfile)) {
+            sleep(500);
+            String currentLanguage = $("app-profile").$("[menu='flag-menu']").$("ion-label").getText();
+            $("app-profile").$("ion-item").click();
+            sleep(500);
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $("[menu='flag-menu']").click();
+                $("app-flag-menu").$("ion-select").click();
+                $("ion-alert").$("button", 0).click();
+                $(byText("OK")).click();
+                sleep(1000);
+                if ($("ion-alert").exists()) {
+                    $("ion-alert").pressEscape();
+                }
+            }
+        } else if (currentUrl.equals(urlBase)) {
+            sleep(500);
+            String currentLanguage = $("app-main").$("[menu='flag-menu']").$("ion-label").getText();
+            $("app-main").$("ion-item").click();
+            sleep(500);
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $("[menu='flag-menu']").click();
+                $("app-flag-menu").$("ion-select").click();
+                $("ion-alert").$("button", 0).click();
+                $(byText("OK")).click();
+                sleep(1000);
+                if ($("ion-alert").exists()) {
+                    $("ion-alert").pressEscape();
+                }
+            }
+        } else
+            fail();
+    }
+
     public void langRU() {
+        $("app-main").$("ion-item").click();
+        $("[menu='flag-menu']").click();
+        $("app-flag-menu").$("ion-select").click();
+        $("ion-alert").$("button", 0).click();
+        $(byText("OK")).click();
+    }
+
+    public void langEN() {
+        $("app-main").$("ion-item").click();
+        $("[menu='flag-menu']").click();
+        $("app-flag-menu").$("ion-select").click();
+        $("ion-alert").$("button", 0).click();
+        $(byText("OK")).click();
+    }
+
+    public void langRUProfile() {
         $("app-profile").$("ion-item").click();
         $("[menu='flag-menu']").click();
         $("app-flag-menu").$("ion-select").click();
@@ -123,7 +230,7 @@ public class LogIn extends config.TestBase {
         $(byText("OK")).click();
     }
 
-    public void langEN() {
+    public void langENProfile() {
         $("app-profile").$("ion-item").click();
         $("[menu='flag-menu']").click();
         $("app-flag-menu").$("ion-select").click();
@@ -147,7 +254,9 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkip() {
+        sleep(200);
         $("ion-alert").pressEscape();
+        sleep(200);
     }
 
     public void clickSideMenu() {

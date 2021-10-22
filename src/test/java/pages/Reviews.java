@@ -140,6 +140,13 @@ public class Reviews {
         sleep(300);
     }
 
+    @Step("Click menu button")
+    public void clickMenu() {
+        sleep(300);
+        $("app-main").$("ion-menu-toggle").$("ion-button").click();
+        sleep(300);
+    }
+
     @Step("Open master's profile")
     public void openMasterProfile() {
         $("app-main-menu").$(byText("Professional profile")).click();
