@@ -18,6 +18,7 @@ public class TestData {
             testUser8,
             testUser9,
             testUser10,
+            testUser10New,
             testPassword1,
             testPassword2,
             testPassword3,
@@ -28,6 +29,7 @@ public class TestData {
             testPassword8,
             testPassword9,
             testPassword10,
+            testPassword10New,
             user11Email,
             user11Password,
             user1FirstName,
@@ -80,12 +82,24 @@ public class TestData {
             user10PhoneNumber,
             user10Country,
             user10City,
-            service1Name,
+            user10FirstNameNew,
+            user10LastNameNew,
+            user10PatronymicNew,
+            user10PhoneNumberNew,
+            user10CountryNew,
+            user10CityNew,
+            user10dateDD,
+            user10dateMM,
+            user10dateYYYY,
+            user10Nationality,
+            user10Langage1,
+            user10Langage2,
             user11FirstName,
             user11LastName,
             user11PhoneNumber,
             user11Country,
             user11City,
+            service1Name,
             service1Description,
             service1DurationDays,
             service1DurationHours,
@@ -151,10 +165,12 @@ public class TestData {
             reviewText4,
             masterComment,
             testMessage1,
-            testMessage2;
+            testMessage2,
+            empty;
 
     public static void setTestData() {
         Faker generate = new Faker(new Locale("en-US"));
+        empty = " ";
         testUser1 = generate.name().username() + "@uu.dd";
         testUser2 = generate.name().username() + "@uu.dd";
         testUser3 = generate.name().username() + "@uu.dd";
@@ -312,6 +328,21 @@ public class TestData {
         user11PhoneNumber = "923" + generate.number().digits(7);
         user11Country = "Россия";
         user11City = "Москва";
+
+        testUser10New = generate.name().username() + "@new.kk";
+        testPassword10New = generate.internet().password() + "New";
+        user10FirstNameNew = generate.name().firstName() + "New";
+        user10LastNameNew = generate.name().lastName() + "New";
+        user10PatronymicNew = generate.name().nameWithMiddle() + "New";
+        user10PhoneNumberNew = "964" + generate.number().digits(7);
+        user10CountryNew = "Russia";
+        user10CityNew = "Saint Petersburg";
+        user10dateDD = Long.toString(generate.number().numberBetween(10, 28));
+        user10dateMM = Long.toString(generate.number().numberBetween(10, 12));
+        user10dateYYYY = Long.toString(generate.number().numberBetween(1950, 2005));
+        user10Nationality = "Iceland";
+        user10Langage1 = "Arabic";
+        user10Langage2 = "Irish";
 
         long service1DurationDaysLong = parseLong(service1DurationDays),
                 service1DurationHoursLong = parseLong(service1DurationHours),
