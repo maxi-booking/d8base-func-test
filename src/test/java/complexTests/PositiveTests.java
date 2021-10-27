@@ -5,8 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class PositiveTests extends config.TestBase {
 
     Registration reg = new Registration();
@@ -688,7 +686,7 @@ public class PositiveTests extends config.TestBase {
         rev.choseRating4();
         rev.sendReviewText(reviewText1);
         rev.pressSend();
-        rev.verifyReview(user5FirstName, reviewText1);
+        rev.verifyReview(user3FirstName + " " + user3LastName, user5FirstName, reviewText1);
     }
 
     @Test
@@ -713,7 +711,7 @@ public class PositiveTests extends config.TestBase {
         rev.sendReviewText(reviewText2);
         rev.scrollDown();
         rev.pressSend();
-        rev.verifyReview(user5FirstName, reviewText2);
+        rev.verifyReview(user2FirstName + " " + user2LastName, user5FirstName, reviewText2);
     }
 
     @Test
@@ -738,7 +736,7 @@ public class PositiveTests extends config.TestBase {
         rev.choseRating5();
         rev.sendReviewText(reviewText3 + " " + reviewText4);
         rev.pressSend();
-        rev.verifyReview(user5FirstName, reviewText3 + " " + reviewText4);
+        rev.verifyReview(user1FirstName + " " + user1LastName, user5FirstName, reviewText3 + " " + reviewText4);
 
         rev.clickMenuMain();
         rev.openBookmarksMenu();

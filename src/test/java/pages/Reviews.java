@@ -4,8 +4,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Reviews {
 
@@ -110,8 +109,9 @@ public class Reviews {
     }
 
     @Step("Verify review")
-    public void verifyReview(String userName, String reviewText) {
-        $("app-reviews-list").$("ion-card").$("ion-label").shouldHave(text(userName));
+    public void verifyReview(String masterName, String userName, String reviewText) {
+        $("app-reviews-list").$("app-professional-card").shouldHave(text(masterName));
+        $("app-reviews-list").$("ion-card").shouldHave(text(userName));
         $("app-reviews-list").$("ion-card").shouldHave(text(reviewText));
     }
 
@@ -154,18 +154,19 @@ public class Reviews {
 
     @Step("Click master's reviews")
     public void clickMasterReviews() {
-        $("app-professional-page").$("section").$("a").click();
+        $("app-professional-page").$(".review-count").click();
     }
 
     @Step("Post master's comment")
     public void postMasterComment(String masterComment) {
         $("app-reviews-list").$("app-review-card").$("ion-button").scrollIntoView(true);
         $("app-reviews-list").$("app-review-card").$("ion-button").click();
-        sleep(200);
-        $("app-edit-review-comment").$("ion-row").$("ion-button").scrollIntoView(true);
+        sleep(500);
+        $("app-edit-review-comment").$("textarea").scrollIntoView(true);
         $("app-edit-review-comment").$("textarea").sendKeys(masterComment);
-        sleep(200);
-        $("app-edit-review-comment").$("ion-row").$("ion-button").click();
+        sleep(500);
+        $x("//ion-button[@class='md button button-block button-solid ion-activatable ion-focusable hydrated']").scrollIntoView(true);
+        $x("//ion-button[@class='md button button-block button-solid ion-activatable ion-focusable hydrated']").click();
         sleep(2000);
     }
 

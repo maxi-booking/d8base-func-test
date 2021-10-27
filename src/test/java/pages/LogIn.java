@@ -4,16 +4,25 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import config.Lang;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
 
     public void refreshPage() {
         Selenide.refresh();
+    }
+
+    public void logTemp() {
+        forceEN();
+        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
+        sleep(500);
+        $("app-main-menu").$(byText("Log in")).click();
+        $("app-login").$("input", 0).setValue("charlotte.hills@uu.dd");
+        $("app-login").$("input", 1).setValue("pebuv1pqcbr");
+        $("app-login-form").$("ion-button[type='submit']").click();
+        sleep(1000);
     }
 
     public void presetAcc1User() {

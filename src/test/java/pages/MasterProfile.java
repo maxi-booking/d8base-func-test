@@ -2,12 +2,12 @@ package pages;
 
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class MasterProfile {
 
     @Step("Open the chat")
     public void clickChat() {
-        $("app-professional-page").$("section").$("ion-button",0).click();
+        $x("//ion-button[@class='book-btn ion-color ion-color-primary md button button-outline ion-activatable ion-focusable hydrated']").click();
     }
 }

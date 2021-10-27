@@ -333,7 +333,7 @@ public class TestData {
         testPassword10New = generate.internet().password() + "New";
         user10FirstNameNew = generate.name().firstName() + "New";
         user10LastNameNew = generate.name().lastName() + "New";
-        user10PatronymicNew = generate.name().nameWithMiddle() + "New";
+        user10PatronymicNew = generate.name().title() + "New";
         user10PhoneNumberNew = "964" + generate.number().digits(7);
         user10CountryNew = "Russia";
         user10CityNew = "Saint Petersburg";

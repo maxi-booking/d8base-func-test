@@ -8,7 +8,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class UserProfile {
 
@@ -193,7 +192,7 @@ public class UserProfile {
 
     @Step("Profile: Contacts - click edit")
     public void clickEditContacts(Integer value) {
-        $("app-profile").$("app-contacts-edit").$("ion-button", value).click();
+        $("app-profile").$("app-contacts-edit").$("ion-icon", value).click();
         sleep(500);
     }
 
