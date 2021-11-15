@@ -8,6 +8,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static config.TestData.nextDay;
+import static config.TestData.nextDayPlus;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
 
@@ -46,14 +49,16 @@ public class Booking {
 
     @Step("Verify that the search result is correct")
     public void verifyServiceSearch(
-            String FirstName,
-            String LastName,
-            String ServiceName,
-            String ServicePrice) {
+            String firstName,
+            String lastName,
+            String serviceName,
+            String servicePrice) {
         $("app-search-result").$("ion-card-content").$("app-professional-card")
-                .shouldHave(text(FirstName), text(LastName));
-        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(ServiceName));
-        $("app-search-result").$("ion-card-content").$("app-price").shouldHave(text(ServicePrice));
+                .shouldHave(text(firstName), text(lastName));
+        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
+        String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
+        servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+        if (!servicePriceActual.contains(servicePrice)) {fail();}
     }
 
     @Step("Select a service")
@@ -63,18 +68,20 @@ public class Booking {
 
     @Step("Verify that the service data is correct")
     public void verifyServiceBase(
-            String ServiceName,
-            String ServicePrice,
-            String ServiceDuration,
-            String FirstName,
-            String LastName,
-            String ServiceDescription) {
-        $("app-service-widget").$("app-service-title").shouldHave(text(ServiceName));
-        $("app-service-widget").$("app-price").shouldHave(text(ServicePrice));
-        $("app-service-widget").$("app-duration-viewer").shouldHave(text(ServiceDuration));
+            String serviceName,
+            String servicePrice,
+            String serviceDuration,
+            String firstName,
+            String lastName,
+            String serviceDescription) {
+        $("app-service-widget").$("app-service-title").shouldHave(text(serviceName));
+        String servicePriceActual = $("app-service-widget").$("app-price").getText();
+        servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+        if (!servicePriceActual.contains(servicePrice)) {fail();}
+        $("app-service-widget").$("app-duration-viewer").shouldHave(text(serviceDuration));
         $("app-service-widget").$("app-professional-card")
-                .shouldHave(text(FirstName), text(LastName));
-        $("app-service-widget").shouldHave(text(ServiceDescription));
+                .shouldHave(text(firstName), text(lastName));
+        $("app-service-widget").shouldHave(text(serviceDescription));
     }
 
     @Step("Verify service location")
@@ -104,31 +111,51 @@ public class Booking {
         $("app-service-widget").shouldHave(text("Ordering of this service will be approved automatically"));
     }
 
-    @Step("Click the 'Date' button to book")
+    @Step("Click the 'Order' button to book")
     public void clickDate() {
         sleep(500);
         $(byText("Order")).click();
         sleep(500);
     }
 
+    @Step("Pick the date from calendar - today")
+    public void pickDateToday() {
+        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        sleep(500);
+    }
+
+    @Step("Pick the date from calendar - next day")
+    public void pickDateNextDay() {
+        $("app-book").$("app-date-step").$("main").$(byText(nextDay)).click();
+        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        sleep(500);
+    }
+
+    @Step("Pick the date from calendar - next 2 days")
+    public void pickDateNext2Days() {
+        $("app-book").$("app-date-step").$("main").$(byText(nextDayPlus)).click();
+        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        sleep(500);
+    }
+
     @Step("Select the next day")
     public void clickNextDay() {
         sleep(200);
-        $("app-calendar-component").$("ion-item").$("[slot=end]").click();
+        $("app-time-step").$("ion-content").$("ion-item").$("[slot=end]").click();
         sleep(200);
     }
 
     @Step("Pick booking time")
     public void bookTime() {
         sleep(500);
-        $("app-calendar-component").$(withText("11:00")).scrollIntoView(true).click();
+        $("app-time-step").$(withText("11:00")).scrollIntoView(true).click();
         sleep(500);
     }
 
     @Step("Click the 'Accept and continue' button")
     public void clickForward() {
         sleep(500);
-        $("app-date-time-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        $("app-time-step").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
     }
 
@@ -153,7 +180,7 @@ public class Booking {
 
     @Step("app-order")
     public void selectNewUser() {
-        $("app-order").$("section").$("ion-item",1).click();
+        $("app-confirmation-step").$("section").$("ion-item",1).click();
     }
 
     @Step("Fill E-Mail")
@@ -189,7 +216,7 @@ public class Booking {
     @Step("Place the order")
     public void placeOrder() {
         sleep(1000);
-        $("app-order").$(byText("Place order")).click();
+        $("app-client-details-step").$(byText("Accept and continue")).click();
         sleep(2000);
     }
 

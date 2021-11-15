@@ -7,18 +7,6 @@ import pages.*;
 
 public class LoginTests extends config.TestBase {
 
-    Registration reg = new Registration();
-    ServicePublish pbl = new ServicePublish();
-    Booking bkn = new Booking();
-    Orders ord = new Orders();
-    Messages msg = new Messages();
-    Favorites fav = new Favorites();
-    Reviews rev = new Reviews();
-    Search sch = new Search();
-    LogIn log = new LogIn();
-    UserProfile usr = new UserProfile();
-    MasterProfile mst = new MasterProfile();
-
     @Test
     @Feature("Language")
     @Owner("Egor Khlebnikov")
@@ -39,6 +27,6 @@ public class LoginTests extends config.TestBase {
         reg.selectCity(user11City);
         reg.confirm();
         reg.verifyRegistrationDataFull(user11FirstName, user11LastName, user11Email, user11PhoneNumber, user11Country, user11City);
-        usr.verifyRussianLang();
+        up.verifyRussianLang();
     }
 }

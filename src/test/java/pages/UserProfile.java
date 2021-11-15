@@ -34,21 +34,30 @@ public class UserProfile {
                 text(city));
     }
 
+    @Step("Verify profile country/city data")
+    public void verifyProfileAddressExists(
+            String country,
+            String city) {
+        sleep(300);
+        $("app-profile").shouldHave(text(country + ", " + city));
+    }
+
+    @Step("Check that verification E-mail sent")
+    public void checkVerificationEmailSent(String email) {
+        $("app-profile").$("app-info-row").shouldHave(text(email));
+    }
+
+
+    @Step("Verify language")
+    public void verifyRussianLang() {
+        sleep(500);
+        $("app-profile").$("ion-toolbar").shouldHave(text(Lang.RUSSIAN.getLangText()));
+    }
+
+
     @Step("Open Profile: Main")
     public void openUserProfileMain() {
         $("app-profile").$("ion-button[routerlink='edit/']").click();
-        sleep(500);
-    }
-
-    @Step("Open Profile: Address")
-    public void openUserProfileAddress() {
-        $("app-profile").$("ion-item-group").$("ion-button").click();
-        sleep(500);
-    }
-
-    @Step("Open Profile: About")
-    public void openUserProfileAbout() {
-        $("app-profile").$("ion-button[routerlink='about/']").click();
         sleep(500);
     }
 
@@ -109,21 +118,11 @@ public class UserProfile {
         $("app-user-edit").$("input[name='email']").setValue(email);
     }
 
-    @Step("Click Back: Address")
-    public void clickBackAddress() {
-        $("app-user-location-edit").$("app-column-header").$("ion-button").click();
-    }
-
-    @Step("Click Save: Address")
-    public void clickSaveAddress() {
-        $("app-user-location-edit").$("app-location-editor").$("ion-button").click();
-    }
-
     @Step("Verify Profile: Main - minimal")
     public void verifyProfileMainMin(
-        String firstName,
-        String lastName,
-        String email) {
+            String firstName,
+            String lastName,
+            String email) {
         sleep(300);
         $("app-user-edit").$("input[name='first_name']").shouldHave(value(firstName));
         $("app-user-edit").$("input[name='last_name']").shouldHave(value(lastName));
@@ -169,27 +168,6 @@ public class UserProfile {
         $("app-user-edit").$("app-gender-selector").$("ion-segment-button",2).should(cssClass("segment-button-checked"));
     }
 
-
-    @Step("Verify Profile: Address")
-    public void verifyProfileAddress(
-            String country,
-            String city) {
-        sleep(300);
-        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").shouldHave(text(country));
-        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
-    }
-
-    @Step("Verify language")
-    public void verifyRussianLang() {
-        sleep(500);
-        $("app-profile").$("ion-toolbar").shouldHave(text(Lang.RUSSIAN.getLangText()));
-    }
-
-    @Step("Check that verification E-mail sent")
-    public void checkVerificationEmailSent(String email) {
-        $("app-profile").$("app-info-row").shouldHave(text(email));
-    }
-
     @Step("Profile: Contacts - click edit")
     public void clickEditContacts(Integer value) {
         $("app-profile").$("app-contacts-edit").$("ion-icon", value).click();
@@ -232,6 +210,11 @@ public class UserProfile {
         sleep(500);
     }
 
+    @Step("Verify contact default")
+    public void verifyContactDefault() {
+        $("app-user-contact-edit").$("app-contact-edit").$("ion-input[class='ion-pristine']").exists();
+    }
+
     @Step("Verify contact exists")
     public void verifyContactExists(String value) {
         sleep(500);
@@ -258,6 +241,148 @@ public class UserProfile {
     public void verifyEnterYourContact(String value) {
         sleep(500);
         $("app-user-contact-edit").$("app-contact-edit").$("input").shouldHave(value(value));
+    }
+
+    @Step("Open Profile: Address")
+    public void openUserProfileLocationEdit(Integer value) {
+        $("app-profile").$("ion-item-group").$("ion-button", value).click();
+        sleep(500);
+    }
+
+    @Step("Click Back: Address")
+    public void clickBackAddress() {
+        $("app-user-location-edit").$("app-column-header").$("ion-button").click();
+    }
+
+    @Step("Click Save: Address")
+    public void clickSaveAddress() {
+        $("app-user-location-edit").$("app-location-editor").$("ion-button").click();
+    }
+
+    @Step("Profile: address - remove address")
+    public void removeAddress() {
+        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button",0).click();
+        sleep(500);
+    }
+
+    @Step("Verify Profile: Address")
+    public void verifyProfileAddress(
+            String country,
+            String city) {
+        sleep(300);
+        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").shouldHave(text(country));
+        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
+    }
+
+    @Step("Profile: address - click 'Add new address'")
+    public void clickAddNewAddress() {
+        $("app-profile").$("ion-button[routerlink='location-add/']").click();
+        sleep(500);
+    }
+
+    @Step("Profile address: select country")
+    public void addressSelectCountry(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-label", 0).click();
+    }
+
+    @Step("Profile address: select region")
+    public void addressSelectRegion(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-region-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-label", 0).click();
+    }
+
+    @Step("Profile address: select subregion")
+    public void addressSelectSubregion(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-subregion-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-label", 0).click();
+    }
+
+    @Step("Profile address: select city")
+    public void addressSelectCity(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$(byText(value)).click();
+    }
+
+    @Step("Profile address: select district")
+    public void addressSelectDistrict(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-district-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-label", 0).click();
+    }
+
+    @Step("Profile address: select zip code")
+    public void addressSelectZipCode(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("app-postal-code-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(value);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-label", 0).click();
+    }
+
+    @Step("Profile address: select address")
+    public void addressSelectAddress(String value) {
+        $("app-user-location-edit").$("app-location-editor").$("input").sendKeys(value);
+    }
+
+    @Step("Profile address: make default click")
+    public void addressClickMakeDefault() {
+        $("app-user-location-edit").$("app-location-editor").$("ion-checkbox").click();
+    }
+
+    @Step("Verify profile address: Address full")
+    public void verifyAddressDefault(
+            String country,
+            String region,
+            String city) {
+        sleep(300);
+        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").shouldHave(text(country));
+        $("app-user-location-edit").$("app-location-editor").$("app-region-selector").shouldHave(text(region));
+        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
+    }
+
+    @Step("Verify profile address: Address full")
+    public void verifyAddressFull(
+            String country,
+            String region,
+            String subregion,
+            String city,
+            String district,
+            String zipCode,
+            String address) {
+        sleep(300);
+        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").shouldHave(text(country));
+        $("app-user-location-edit").$("app-location-editor").$("app-region-selector").shouldHave(text(region));
+        $("app-user-location-edit").$("app-location-editor").$("app-subregion-selector").shouldHave(text(subregion));
+        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
+        $("app-user-location-edit").$("app-location-editor").$("app-district-selector").shouldHave(text(district));
+        $("app-user-location-edit").$("app-location-editor").$("app-postal-code-selector").shouldHave(text(zipCode));
+        $("app-user-location-edit").$("app-location-editor").$("ion-input").shouldHave(text(address));
+    }
+
+    @Step("Verify address removed")
+    public void verifyAddressRemoved(String country, String city) {
+        $("app-profile").$("app-contacts-edit").shouldNotHave(text(country + ", " + city));
+    }
+
+    @Step("Open Profile: About")
+    public void openUserProfileAbout() {
+        $("app-profile").$("ion-button[routerlink='about/']").click();
+        sleep(500);
     }
 
     @Step("Profile: About - click 'back'")
@@ -317,4 +442,5 @@ public class UserProfile {
         $("app-about-edit").$("form").$("ion-button").click();
         sleep(500);
     }
+
 }

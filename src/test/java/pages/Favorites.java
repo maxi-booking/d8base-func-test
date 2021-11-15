@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Favorites {
 
@@ -110,14 +111,16 @@ public class Favorites {
 
     @Step("Verify that the search result is correct")
     public void verifyServiceSearch(
-            String FirstName,
-            String LastName,
-            String ServiceName,
-            String ServicePrice) {
+            String firstName,
+            String lastName,
+            String serviceName,
+            String servicePrice) {
         $("app-search-result").$("ion-card-content").$("app-professional-card")
-                .shouldHave(text(FirstName), text(LastName));
-        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(ServiceName));
-        $("app-search-result").$("ion-card-content").$("app-price").shouldHave(text(ServicePrice));
+                .shouldHave(text(firstName), text(lastName));
+        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
+        String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
+        servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+        if (!servicePriceActual.contains(servicePrice)) {fail();}
     }
 
     @Step("Click booking button from the search results")

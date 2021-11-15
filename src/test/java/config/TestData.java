@@ -1,8 +1,11 @@
 package config;
 
 import com.github.javafaker.Faker;
+import pages.*;
 
+import java.time.LocalDate;
 import java.util.Locale;
+import java.util.Random;
 
 import static java.lang.Long.parseLong;
 
@@ -87,13 +90,26 @@ public class TestData {
             user10PatronymicNew,
             user10PhoneNumberNew,
             user10CountryNew,
+            user10Region,
+            user10RegionNew,
+            user10SubregionNew,
             user10CityNew,
+            user10DistrictNew,
+            user10ZipCodeNew,
+            user10AddressNew,
+            user10Country2,
+            user10Region2,
+            user10Subregion2,
+            user10City2,
+            user10District2,
+            user10ZipCode2,
+            user10Address2,
             user10dateDD,
             user10dateMM,
             user10dateYYYY,
             user10Nationality,
-            user10Langage1,
-            user10Langage2,
+            user10Language1,
+            user10Language2,
             user11FirstName,
             user11LastName,
             user11PhoneNumber,
@@ -166,11 +182,111 @@ public class TestData {
             masterComment,
             testMessage1,
             testMessage2,
-            empty;
+            empty,
+            nextDay,
+            nextDayPlus,
+            user12Email,
+            user12Password,
+            user12FirstName,
+            user12Patronymic,
+            user12LastName,
+            user12PhoneNumber,
+            user12Country,
+            user12City,
+            user12Region,
+            user12Subregion,
+            user12District,
+            user12ZipCode,
+            user12Address,
+            user12dateDD,
+            user12dateMM,
+            user12dateYYYY,
+            user12Nationality,
+            user12Language,
+            service12Name,
+            service12Description,
+            service12DurationDays,
+            service12DurationHours,
+            service12DurationMinutes,
+            service12TotalDuration,
+            service12Price,
+            service12About,
+            service12Specialization,
+            service12Country,
+            service12City,
+            service12Address,
+            service12Distance,
+            user12FirstName1,
+            user12LastName1,
+            random,
+            man,
+            male,
+            woman,
+            female,
+            person,
+            company,
+            junior,
+            middle,
+            senior;
+
+    public static Integer
+            cad,
+            eur,
+            rub,
+            usd,
+            online,
+            client,
+            master,
+            nextDayInt,
+            nextDayPlusInt,
+            randomServiceCategory,
+            randomServiceSubcategory,
+            service12Category,
+            service12Subcategory;
 
     public static void setTestData() {
+        //currency
+        cad = 0;
+        eur = 1;
+        rub = 2;
+        usd = 3;
+
+        //service location
+        online = 0;
+        client = 1;
+        master = 2;
+
+        //gender helpers
+        man = "man"; male = "man";
+        woman = "woman"; female = "woman";
+
+        //select person or company
+        person = "person";
+        company = "company";
+
+        //select level of the professional
+        junior = "junior";
+        middle = "middle";
+        senior = "senior";
+
+        //random confirmation
+        random = "random";
+
+        LocalDate currentDate = LocalDate.now();
+        int day = currentDate.getDayOfMonth();
+        nextDayInt = day + 1;
+        if (nextDayInt >= 28) {
+            nextDayInt = 1;
+        } else {
+            nextDay = Integer.toString(nextDayInt);
+        }
+        nextDayPlusInt = nextDayInt + 1;
+        nextDayPlus = Integer.toString(nextDayPlusInt);
+
         Faker generate = new Faker(new Locale("en-US"));
         empty = " ";
+        randomServiceCategory = generate.number().numberBetween(0, 8);
+        randomServiceSubcategory = generate.number().numberBetween(0, 9);
         testUser1 = generate.name().username() + "@uu.dd";
         testUser2 = generate.name().username() + "@uu.dd";
         testUser3 = generate.name().username() + "@uu.dd";
@@ -256,8 +372,8 @@ public class TestData {
         service1Description = generate.lorem().characters(20, 2000);
         service1DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
         service1DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service1DurationMinutes = String.valueOf(generate.number().numberBetween(0, 59));
-        service1Price = String.valueOf(generate.number().numberBetween(1, 999));
+        service1DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
+        service1Price = String.valueOf(generate.number().numberBetween(1, 9999999));
         service1Specialization = generate.job().title() + " " + generate.ancient().god();
         service1Country = "Russia";
         service1City = "Moscow";
@@ -268,8 +384,8 @@ public class TestData {
         service2Description = generate.lorem().characters(20, 2000);
         service2DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
         service2DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service2DurationMinutes = String.valueOf(generate.number().numberBetween(0, 59));
-        service2Price = String.valueOf(generate.number().numberBetween(1, 999));
+        service2DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
+        service2Price = String.valueOf(generate.number().numberBetween(1, 2000));
         service2Specialization = generate.job().title() + " " + generate.ancient().hero();
         service2Country = "Russia";
         service2City = "Moscow";
@@ -280,8 +396,8 @@ public class TestData {
         service3Description = generate.lorem().characters(20, 2000);
         service3DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
         service3DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service3DurationMinutes = String.valueOf(generate.number().numberBetween(0, 59));
-        service3Price = String.valueOf(generate.number().numberBetween(1, 999));
+        service3DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
+        service3Price = String.valueOf(generate.number().numberBetween(1, 70000));
         service3Specialization = generate.job().title() + " " + generate.ancient().titan();
         service3Country = "Russia";
         service3City = "Moscow";
@@ -292,7 +408,7 @@ public class TestData {
         service4Description = generate.lorem().characters(20, 2000);
         service4DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
         service4DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service4DurationMinutes = String.valueOf(generate.number().numberBetween(0, 59));
+        service4DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
         service4Price = String.valueOf(generate.number().numberBetween(1, 999));
         service4Specialization = generate.job().title() + " " + generate.ancient().primordial();
         service4Country = "Russia";
@@ -304,8 +420,8 @@ public class TestData {
         service7Description = generate.rickAndMorty().quote() + " " + generate.dune().quote();
         service7DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
         service7DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service7DurationMinutes = String.valueOf(generate.number().numberBetween(0, 59));
-        service7Price = String.valueOf(generate.number().numberBetween(1, 999));
+        service7DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
+        service7Price = String.valueOf(generate.number().numberBetween(1, 99));
         service7Specialization = generate.job().title() + " " + generate.name().suffix();
         service7Country = "Finland";
         service7City = "Helsinki";
@@ -333,16 +449,32 @@ public class TestData {
         testPassword10New = generate.internet().password() + "New";
         user10FirstNameNew = generate.name().firstName() + "New";
         user10LastNameNew = generate.name().lastName() + "New";
-        user10PatronymicNew = generate.name().title() + "New";
+        user10PatronymicNew = generate.name().username() + "New";
         user10PhoneNumberNew = "964" + generate.number().digits(7);
+
         user10CountryNew = "Russia";
+        user10Region = "Moscow";
+        user10RegionNew = "St.-Petersburg";
+        user10SubregionNew = "Petrogradskiy Rayon";
         user10CityNew = "Saint Petersburg";
+        user10DistrictNew = "Petrogradka";
+        user10ZipCodeNew = "197101";
+        user10AddressNew = "Каменноостровский пр., 38/96";
+
+        user10Country2 = "Canada";
+        user10Region2 = "Ontario";
+        user10Subregion2 = "Toronto country";
+        user10City2 = "Toronto";
+        user10District2 = "Etobicoke";
+        user10ZipCode2 = "M9A";
+        user10Address2 = "8 Orkney Crescent";
+
         user10dateDD = Long.toString(generate.number().numberBetween(10, 28));
         user10dateMM = Long.toString(generate.number().numberBetween(10, 12));
         user10dateYYYY = Long.toString(generate.number().numberBetween(1950, 2005));
         user10Nationality = "Iceland";
-        user10Langage1 = "Arabic";
-        user10Langage2 = "Irish";
+        user10Language1 = "Arabic";
+        user10Language2 = "Irish";
 
         long service1DurationDaysLong = parseLong(service1DurationDays),
                 service1DurationHoursLong = parseLong(service1DurationHours),
@@ -378,5 +510,49 @@ public class TestData {
                 service7TotalDurationLong = service7DurationDaysLong * 24 * 60 + service7DurationHoursLong * 60 + service7DurationMinutesLong;
 
         service7TotalDuration = Long.toString(service7TotalDurationLong);
+        Random r = new Random();
+        char c = (char)(r.nextInt(26) + 'a');
+        user12Email = generate.name().username() + "@" + generate.lorem().characters(2,5) + "." + c + c;
+        user12Password = generate.lorem().characters(8, 50);
+        user12FirstName = generate.funnyName().name();
+        user12Patronymic = generate.aviation().aircraft();
+        user12LastName = generate.animal().name();
+        user12PhoneNumber = "903" + generate.number().digits(7);
+        user12Country = "Russia";
+        user12City = "Moscow";
+        user12Region = "Moscow";
+        user12Subregion = "Yugo-Vostochnyy Administrativnyy Okrug";
+        user12District = "Lefortovo";
+        user12ZipCode = "111033";
+        user12Address = "Shosse Entuziastov, 3к1";
+        user12dateDD = Long.toString(generate.number().numberBetween(01, 28));
+        user12dateMM = Long.toString(generate.number().numberBetween(01, 12));
+        user12dateYYYY = Long.toString(generate.number().numberBetween(1950, 2005));
+        user12Nationality = "Russia";
+        user12Language = "Russian";
+        service12Category = generate.number().numberBetween(0, 8);
+        service12Subcategory = generate.number().numberBetween(0, 9);
+        service12Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
+        service12Description = generate.backToTheFuture().quote() + " " + generate.hitchhikersGuideToTheGalaxy().quote();
+        service12DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
+        service12DurationHours = String.valueOf(generate.number().numberBetween(0, 2));
+        service12DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
+        service12Price = String.valueOf(generate.number().numberBetween(1500, 90000));
+        service12About = generate.rickAndMorty().quote() + " " + generate.twinPeaks().quote();
+        service12Specialization = generate.job().title() + " " + generate.business().creditCardType();
+        service12Country = "Russia";
+        service12City = "Moscow";
+        service12Address = "Shosse Entuziastov, 3к1";
+        service12Distance = "3000";
+
+        user12FirstName1 = generate.funnyName().name() + " 1";
+        user12LastName1 = generate.animal().name() + " 1";
+
+        long service12DurationDaysLong = parseLong(service12DurationDays),
+                service12DurationHoursLong = parseLong(service12DurationHours),
+                service12DurationMinutesLong = parseLong(service12DurationMinutes),
+                service12TotalDurationLong = service12DurationDaysLong * 24 * 60 + service12DurationHoursLong * 60 + service12DurationMinutesLong;
+
+        service12TotalDuration = Long.toString(service12TotalDurationLong);
     }
 }

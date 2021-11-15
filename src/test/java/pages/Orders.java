@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Orders extends config.TestBase {
 
@@ -61,9 +62,17 @@ public class Orders extends config.TestBase {
     ) {
         $("app-inbox-page").shouldHave(
                 text(userFirstName),
-                text(servicePrice),
                 text(serviceTotalDuration)
         );
+        int cardNumber = 0;
+        String servicePriceActualString = "";
+        while ($("app-inbox-page").$("app-price", cardNumber).exists()) {
+            String servicePriceActual = $("app-inbox-page").$("app-price", cardNumber).getText();
+            servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+            servicePriceActualString = servicePriceActualString + " " + servicePriceActual;
+            ++cardNumber;
+        }
+        if (!servicePriceActualString.contains(servicePrice)) {fail();}
     }
 
     @Step("Simple order check outbox")
@@ -76,9 +85,17 @@ public class Orders extends config.TestBase {
         $("app-outbox-page").shouldHave(
                 text(userFirstName),
                 text(serviceName),
-                text(servicePrice),
                 text(serviceTotalDuration)
         );
+        int cardNumber = 0;
+        String servicePriceActualString = "";
+        while ($("app-outbox-page").$("app-price", cardNumber).exists()) {
+            String servicePriceActual = $("app-outbox-page").$("app-price", cardNumber).getText();
+            servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+            servicePriceActualString = servicePriceActualString + " " + servicePriceActual;
+            ++cardNumber;
+        }
+        if (!servicePriceActualString.contains(servicePrice)) {fail();}
     }
 
     @Step("Click Professional's name")

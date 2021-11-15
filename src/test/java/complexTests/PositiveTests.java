@@ -3,21 +3,8 @@ package complexTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.*;
 
 public class PositiveTests extends config.TestBase {
-
-    Registration reg = new Registration();
-    ServicePublish pbl = new ServicePublish();
-    Booking bkn = new Booking();
-    Orders ord = new Orders();
-    Messages msg = new Messages();
-    Favorites fav = new Favorites();
-    Reviews rev = new Reviews();
-    Search sch = new Search();
-    LogIn log = new LogIn();
-    UserProfile uprof = new UserProfile();
-    MasterProfile mprof = new MasterProfile();
 
     @Test
     @Feature("User Registration")
@@ -161,18 +148,17 @@ public class PositiveTests extends config.TestBase {
         log.forceEN();
 
         log.clickSideMenu();
-        pbl.openPageEN();
+        pbl.clickPublishNewService();
 
-        pbl.chooseCategory();
-        pbl.chooseSubcategory();
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(service1Name);
         pbl.enterServiceDescription(service1Description);
         pbl.setDuration(service1DurationDays, service1DurationHours, service1DurationMinutes);
-        pbl.setPrice(service1Price);
-        pbl.scrollDown();
-        pbl.selectServiceLocationOnline();
+        pbl.setPriceFixed(service1Price, rub);
+        pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -184,12 +170,12 @@ public class PositiveTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.confirmInstantBooking();
-        pbl.scrollDown2();
         pbl.selectPaymentByCash();
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(service1Name, service1Price, service1TotalDuration, service1Description);
+        pbl.checkPublishFormOnline(service1Name, service1TotalDuration, service1Description);
+        pbl.checkPrice(service1Price);
         pbl.publishService();
     }
 
@@ -200,24 +186,22 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Client's place")
     void t00100() {
-
         log.popupSkip();
         log.account2();
         log.forceEN();
 
         log.clickSideMenu();
-        pbl.openPageEN();
+        pbl.clickPublishNewService();
 
-        pbl.chooseCategory();
-        pbl.chooseSubcategory();
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(service2Name);
         pbl.enterServiceDescription(service2Description);
         pbl.setDuration(service2DurationDays, service2DurationHours, service2DurationMinutes);
-        pbl.setPrice(service2Price);
-        pbl.scrollDown();
-        pbl.selectServiceLocationClient();
+        pbl.setPriceFixed(service2Price, rub);
+        pbl.selectServiceLocation(client);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -229,14 +213,14 @@ public class PositiveTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.confirmInstantBooking();
-        pbl.scrollDown2();
         pbl.fillServiceGeo(service2Country, service2City, service2Address);
         pbl.fillServiceDistance(service2Distance);
         pbl.selectPaymentByCash();
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormClient(service2Name, service2Price, service2TotalDuration, service2Description, service2Country, service2City, service2Address);
+        pbl.checkPublishFormWithAddress(service2Name, service2TotalDuration, service2Description, service2Country, service2City, service2Address);
+        pbl.checkPrice(service2Price);
         pbl.publishService();
     }
 
@@ -247,24 +231,22 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Professional's place")
     void t00101() {
-
         log.popupSkip();
         log.account3();
         log.forceEN();
 
         log.clickSideMenu();
-        pbl.openPageEN();
+        pbl.clickPublishNewService();
 
-        pbl.chooseCategory();
-        pbl.chooseSubcategory();
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(service3Name);
         pbl.enterServiceDescription(service3Description);
         pbl.setDuration(service3DurationDays, service3DurationHours, service3DurationMinutes);
-        pbl.setPrice(service3Price);
-        pbl.scrollDown();
-        pbl.selectServiceLocationMaster();
+        pbl.setPriceFixed(service3Price, rub);
+        pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -276,13 +258,13 @@ public class PositiveTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.confirmInstantBooking();
-        pbl.scrollDown2();
         pbl.fillServiceGeo(service3Country, service3City, service3Address);
         pbl.selectPaymentByCash();
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormClient(service3Name, service3Price, service3TotalDuration, service3Description, service3Country, service3City, service3Address);
+        pbl.checkPublishFormWithAddress(service3Name, service3TotalDuration, service3Description, service3Country, service3City, service3Address);
+        pbl.checkPrice(service3Price);
         pbl.publishService();
     }
 
@@ -293,23 +275,21 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing with no account, service location: Online")
     void t00102() {
-
         log.popupSkip();
         log.forceEN();
         log.clickSideMenu();
-        pbl.openPageEN();
+        pbl.clickPublishNewService();
 
 
-        pbl.chooseCategory();
-        pbl.chooseSubcategory();
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(service4Name);
         pbl.enterServiceDescription(service4Description);
         pbl.setDuration(service4DurationDays, service4DurationHours, service4DurationMinutes);
-        pbl.setPrice(service4Price);
-        pbl.scrollDown();
-        pbl.selectServiceLocationOnline();
+        pbl.setPriceFixed(service4Price, rub);
+        pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -325,12 +305,12 @@ public class PositiveTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.confirmInstantBooking();
-        pbl.scrollDown2();
         pbl.selectPaymentByCash();
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(service4Name, service4Price, service4TotalDuration, service4Description);
+        pbl.checkPublishFormOnline(service4Name, service4TotalDuration, service4Description);
+        pbl.checkPrice(service4Price);
         pbl.publishService();
     }
 
@@ -339,26 +319,24 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Basic positive service publishing, service location: Online(2)")
+    @DisplayName("Basic positive service publishing, service location: Online (2)")
     void t00103() {
-
         log.popupSkip();
         log.account7();
         log.forceEN();
 
         log.clickSideMenu();
-        pbl.openPageEN();
+        pbl.clickPublishNewService();
 
-        pbl.chooseCategory();
-        pbl.chooseSubcategory();
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(service7Name);
         pbl.enterServiceDescription(service7Description);
         pbl.setDuration(service7DurationDays, service7DurationHours, service7DurationMinutes);
-        pbl.setPrice(service7Price);
-        pbl.scrollDown();
-        pbl.selectServiceLocationOnline();
+        pbl.setPriceFixed(service7Price, eur);
+        pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -370,12 +348,12 @@ public class PositiveTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.confirmInstantBooking();
-        pbl.scrollDown2();
         pbl.selectPaymentByCash();
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(service7Name, service7Price, service7TotalDuration, service7Description);
+        pbl.checkPublishFormOnline(service7Name, service7TotalDuration, service7Description);
+        pbl.checkPrice(service7Price);
         pbl.publishService();
     }
 
@@ -403,6 +381,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
+        bkn.pickDateToday();
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -440,6 +419,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
+        bkn.pickDateToday();
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -477,6 +457,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
+        bkn.pickDateToday();
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -513,6 +494,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
+        bkn.pickDateToday();
         bkn.clickNextDay();
         bkn.clickNextDay();
         bkn.bookTime();
@@ -549,6 +531,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
+        bkn.pickDateToday();
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -774,7 +757,7 @@ public class PositiveTests extends config.TestBase {
         ord.openOrderPageTopEN();
         ord.tabArchivedOrdersOutbox();
         ord.clickProfessionalsName();
-        mprof.clickChat();
+        pp.clickChat();
         msg.sendMessage(testMessage1);
         msg.checkMessage(testMessage1);
     }
@@ -925,13 +908,15 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
-        bkn.clickNextDay();
-        bkn.clickNextDay();
-        bkn.bookTime();
-        bkn.clickForward();
 
         log.refreshPage();
         log.popupSkip();
+
+        bkn.pickDateNext2Days();
+        bkn.bookTime();
+        bkn.clickForward();
+
+
 
         bkn.selectNewUser();
         bkn.clickAccept();
@@ -974,14 +959,13 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
         bkn.clickDate();
-        bkn.clickNextDay();
-        bkn.clickNextDay();
-        bkn.clickNextDay();
-        bkn.bookTime();
-        bkn.clickForward();
 
         log.refreshPage();
         log.popupSkip();
+
+        bkn.pickDateNext2Days();
+        bkn.bookTime();
+        bkn.clickForward();
 
         bkn.selectNewUser();
         bkn.clickAccept();

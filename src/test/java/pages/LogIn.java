@@ -14,13 +14,13 @@ public class LogIn extends config.TestBase {
         Selenide.refresh();
     }
 
-    public void logTemp() {
+    public void logTempAcc() {
         forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue("charlotte.hills@uu.dd");
-        $("app-login").$("input", 1).setValue("pebuv1pqcbr");
+        $("app-login").$("input", 0).setValue("2ServBknTestMaster@gg.gg");
+        $("app-login").$("input", 1).setValue("qazxcdew");
         $("app-login-form").$("ion-button[type='submit']").click();
         sleep(1000);
     }
@@ -135,6 +135,16 @@ public class LogIn extends config.TestBase {
         $("app-main-menu").$(byText("Log in")).click();
         $("app-login").$("input", 0).setValue(testUser10);
         $("app-login").$("input", 1).setValue(testPassword10);
+        $("app-login-form").$("ion-button[type='submit']").click();
+        sleep(1000);
+    }
+    public void account12() {
+        forceEN();
+        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
+        sleep(500);
+        $("app-main-menu").$("[id='main-menu.log-in']").click();
+        $("app-login").$("input", 0).setValue(user12Email);
+        $("app-login").$("input", 1).setValue(user12Password);
         $("app-login-form").$("ion-button[type='submit']").click();
         sleep(1000);
     }
