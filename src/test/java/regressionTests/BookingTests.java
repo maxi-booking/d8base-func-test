@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import static helpers.RegressionTestsHelpers.serviceRegister;
 import static helpers.RegressionTestsHelpers.userRegister;
 
-public class BookTodaysDate extends config.TestBase {
+public class BookingTests extends config.TestBase {
     @Test
-    @Feature("User can book order in calendar for today's date")
+    @Feature("Booking")
     @Owner("Egor Khlebnikov")
     @Story("https://redmine.maxi-booking.ru/issues/4857")
     @Severity(SeverityLevel.CRITICAL)

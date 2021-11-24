@@ -13,7 +13,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00000() {
-        log.popupSelect(user1Country, user1City);
+        log.popupSkip();
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -57,7 +57,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00002() {
-        log.popupSelect(user3Country, user3City);
+        log.popupSkip();
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -99,7 +99,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00004() {
-        log.popupSelect(user6Country, user6City);
+        log.popupSkip();
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();

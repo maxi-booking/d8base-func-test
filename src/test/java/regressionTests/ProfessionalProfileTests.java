@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import static helpers.RegressionTestsHelpers.serviceRegister;
 import static helpers.RegressionTestsHelpers.userRegister;
 
-public class DeleteAddedEducation extends config.TestBase {
+public class ProfessionalProfileTests extends config.TestBase {
     @Test
-    @Feature("User can delete added education")
+    @Feature("Professional Profile")
     @Owner("Egor Khlebnikov")
     @Story("https://redmine.maxi-booking.ru/issues/4848")
     @Severity(SeverityLevel.NORMAL)
