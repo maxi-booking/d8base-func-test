@@ -380,8 +380,8 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
-        bkn.pickDateToday();
+        bkn.clickOrder();
+        bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -418,9 +418,8 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
-        bkn.pickDateToday();
-        bkn.clickNextDay();
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
         bkn.bookTime();
         bkn.clickForward();
         bkn.clickAccept();
@@ -456,8 +455,8 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
-        bkn.pickDateToday();
+        bkn.clickOrder();
+        bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -493,9 +492,8 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
-        bkn.pickDateToday();
-        bkn.clickNextDay();
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
         bkn.clickNextDay();
         bkn.bookTime();
         bkn.clickForward();
@@ -530,9 +528,8 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
-        bkn.pickDateToday();
-        bkn.clickNextDay();
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
         bkn.bookTime();
         bkn.clickForward();
         bkn.clickAccept();
@@ -907,7 +904,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
+        bkn.clickOrder();
 
         log.refreshPage();
         log.popupSkip();
@@ -958,7 +955,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking();
-        bkn.clickDate();
+        bkn.clickOrder();
 
         log.refreshPage();
         log.popupSkip();

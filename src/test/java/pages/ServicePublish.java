@@ -35,36 +35,22 @@ public class ServicePublish {
         sleep(500);
         $("ionic-selectable").click();
         sleep(500);
-        while (true) {
-            if ($("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).exists()) {
-                String text = $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).scrollIntoView(false).getText();
-                $("ionic-selectable-modal").$("ion-virtual-scroll").$(byText(text)).scrollIntoView(false).click();
-                break;
-            } else {
-                Faker generate = new Faker(new Locale("en-US"));
-                value = generate.number().numberBetween(0, 8);
-            }
-        }
+        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).click();
         sleep(500);
+        Attach.screenshotAs("Screenshot");
+
     }
 
     @Step("Choose a subcategory: {value}")
-    //value 0-9
+    //value 0-8
     public void chooseSubcategory(Integer value) {
         sleep(500);
         $("ionic-selectable", 1).scrollIntoView(false).click();
         sleep(500);
-        while (true) {
-            if ($("ionic-selectable-modal").$("ion-content").$("ion-item", value).exists()) {
-                String text = $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(false).getText();
-                $("ionic-selectable-modal").$("ion-content").$(byText(text)).scrollIntoView(false).click();
-                break;
-            } else {
-                Faker generate = new Faker(new Locale("en-US"));
-                value = generate.number().numberBetween(0, 9);
-            }
-        }
+        $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(false).click();
         sleep(500);
+        Attach.screenshotAs("Screenshot");
+
     }
 
     public void clickFirstStep() {
@@ -123,9 +109,9 @@ public class ServicePublish {
             Faker generate = new Faker(new Locale("en-US"));
             picture = String.valueOf(generate.number().numberBetween(1, 12)) + ".png";
         }
-        sleep(500);
+        sleep(2000);
         $("app-service-publish-step-three").$("app-image-carousel").$("input[type='file']").uploadFile(new File("src/test/resources/img/" + picture));
-        sleep(1000);
+        sleep(2000);
     }
 
     @Step("Verify the amount of photos")
@@ -239,6 +225,11 @@ public class ServicePublish {
         $("app-service-publish-step-six").$("form").$("ionic-selectable").scrollIntoView(false).click();
         sleep(500);
         switch (value) {
+            case "random":
+                Faker generate = new Faker(new Locale("en-US"));
+                Integer level = generate.number().numberBetween(0, 2);
+                $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", level).click();
+                break;
             case "junior":
                 $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", 0).click();
                 break;
@@ -354,11 +345,9 @@ public class ServicePublish {
 
         if (serviceTotalDurationLong > 1440) {
             $("app-duration-viewer").shouldHave(text(serviceDurationDays), text(serviceDurationHours), text(serviceDurationMinutes));
-        }
-        else if (serviceTotalDurationLong > 60) {
+        } else if (serviceTotalDurationLong > 60) {
             $("app-duration-viewer").shouldHave(text(serviceDurationHours), text(serviceDurationMinutes));
-        }
-        else {
+        } else {
             $("app-duration-viewer").shouldHave(text(serviceDurationMinutes));
         }
 
@@ -384,11 +373,9 @@ public class ServicePublish {
 
         if (serviceTotalDurationLong > 1440) {
             $("app-duration-viewer").shouldHave(text(serviceDurationDays), text(serviceDurationHours), text(serviceDurationMinutes));
-        }
-        else if (serviceTotalDurationLong > 60) {
+        } else if (serviceTotalDurationLong > 60) {
             $("app-duration-viewer").shouldHave(text(serviceDurationHours), text(serviceDurationMinutes));
-        }
-        else {
+        } else {
             $("app-duration-viewer").shouldHave(text(serviceDurationMinutes));
         }
 

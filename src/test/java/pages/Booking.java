@@ -3,13 +3,13 @@ package pages;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
-import static config.TestData.nextDay;
-import static config.TestData.nextDayPlus;
+import static config.TestData.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
@@ -112,29 +112,33 @@ public class Booking {
     }
 
     @Step("Click the 'Order' button to book")
-    public void clickDate() {
+    public void clickOrder() {
         sleep(500);
         $(byText("Order")).click();
         sleep(500);
     }
 
-    @Step("Pick the date from calendar - today")
-    public void pickDateToday() {
-        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+    @Step("Pick the date from calendar - ({date})")
+    public void pickTheDate(String date) {
+        $("app-book").$("div.calendar").$(withText(date)).scrollIntoView(true).click();
+        sleep(200);
+        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
     }
 
-    @Step("Pick the date from calendar - next day")
+    @Step("Pick the date from calendar - next day ({nextDay})")
     public void pickDateNextDay() {
-        $("app-book").$("app-date-step").$("main").$(byText(nextDay)).click();
-        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        $("app-book").$("div.calendar").$(byText(nextDay)).click();
+        sleep(200);
+        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
     }
 
-    @Step("Pick the date from calendar - next 2 days")
+    @Step("Pick the date from calendar - next 2 days ({nextDayPlus})")
     public void pickDateNext2Days() {
-        $("app-book").$("app-date-step").$("main").$(byText(nextDayPlus)).click();
-        $("app-date-step").$(byText("Accept and continue")).scrollIntoView(true).click();
+        $("app-book").$("div.calendar").$(byText(nextDayPlus)).click();
+        sleep(200);
+        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
     }
 

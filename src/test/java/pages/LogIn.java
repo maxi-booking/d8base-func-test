@@ -14,6 +14,10 @@ public class LogIn extends config.TestBase {
         Selenide.refresh();
     }
 
+    public void openMainPage() {
+        open(urlBase);
+    }
+
     public void logTempAcc() {
         forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();

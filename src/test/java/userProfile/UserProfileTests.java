@@ -34,7 +34,7 @@ public class UserProfileTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("User Profile")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Profile functionality verification")
+    @DisplayName("Profile: functionality verification")
     void t00001() {
         log.popupSkip();
         log.account10();
