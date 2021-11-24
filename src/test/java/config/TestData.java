@@ -192,6 +192,7 @@ public class TestData {
             tomorrow,
             nextDay,
             nextDayPlus,
+            nextDayPlusPlus,
             user12Email,
             user12Password,
             user12FirstName,
@@ -303,6 +304,7 @@ public class TestData {
             master,
             nextDayInt,
             nextDayPlusInt,
+            nextDayPlusPlusInt,
             randomServiceCategory,
             randomServiceSubcategory,
             master12MainCategory,
@@ -354,7 +356,9 @@ public class TestData {
             nextDay = Integer.toString(nextDayInt);
         }
         nextDayPlusInt = nextDayInt + 1;
+        nextDayPlusPlusInt = nextDayInt + 2;
         nextDayPlus = Integer.toString(nextDayPlusInt);
+        nextDayPlusPlus = Integer.toString(nextDayPlusPlusInt);
 
         Faker generate = new Faker(new Locale("en-US"));
         empty = " ";

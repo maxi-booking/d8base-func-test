@@ -142,6 +142,15 @@ public class Booking {
         sleep(500);
     }
 
+    @Step("Pick the date from calendar - next 3 days ({nextDayPlusPlus})")
+    public void pickDateNext3Days() {
+        $("app-book").$("div.calendar").$(byText(nextDayPlusPlus)).click();
+        sleep(200);
+        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
+        sleep(500);
+    }
+
+
     @Step("Select the next day")
     public void clickNextDay() {
         sleep(200);
