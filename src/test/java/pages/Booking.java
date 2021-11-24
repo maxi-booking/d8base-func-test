@@ -237,6 +237,6 @@ public class Booking {
 
     @Step("Click Orders button")
     public void clickOrders() {
-        $("app-sent-order-page").$("ion-toolbar").$("ion-item",2).click();
+        $("app-sent-order-page").$("ion-toolbar").$("ion-item.my-orders").click();
     }
 }

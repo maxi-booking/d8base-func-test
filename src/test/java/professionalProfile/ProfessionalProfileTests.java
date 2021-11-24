@@ -13,7 +13,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
     void t00000() {
-        log.popupSkip();
+        log.popupSelect(user12Country, user12City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();

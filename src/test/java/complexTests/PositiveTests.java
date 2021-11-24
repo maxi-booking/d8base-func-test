@@ -13,7 +13,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00000() {
-        log.popupSkip();
+        log.popupSelect(user1Country, user1City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -35,7 +35,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00001() {
-        log.popupSkip();
+        log.popupSelect(user2Country, user2City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -57,7 +57,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00002() {
-        log.popupSkip();
+        log.popupSelect(user3Country, user3City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -79,7 +79,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic Positive User Registration")
     void t00003() {
-        log.popupSkip();
+        log.popupSelect(user5Country, user5City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -99,7 +99,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00004() {
-        log.popupSkip();
+        log.popupSelect(user6Country, user6City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -121,7 +121,7 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration")
     void t00005() {
-        log.popupSkip();
+        log.popupSelect(user7Country, user7City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
@@ -142,7 +142,7 @@ public class PositiveTests extends config.TestBase {
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Online")
-    void t00006() {
+    void t00100() {
         log.popupSkip();
         log.account1();
         log.forceEN();
@@ -185,7 +185,7 @@ public class PositiveTests extends config.TestBase {
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Client's place")
-    void t00100() {
+    void t00101() {
         log.popupSkip();
         log.account2();
         log.forceEN();
@@ -230,7 +230,7 @@ public class PositiveTests extends config.TestBase {
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Professional's place")
-    void t00101() {
+    void t00102() {
         log.popupSkip();
         log.account3();
         log.forceEN();
@@ -274,7 +274,7 @@ public class PositiveTests extends config.TestBase {
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing with no account, service location: Online")
-    void t00102() {
+    void t00103() {
         log.popupSkip();
         log.forceEN();
         log.clickSideMenu();
@@ -320,7 +320,7 @@ public class PositiveTests extends config.TestBase {
     @Story("Minimal service publication")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Online (2)")
-    void t00103() {
+    void t00104() {
         log.popupSkip();
         log.account7();
         log.forceEN();

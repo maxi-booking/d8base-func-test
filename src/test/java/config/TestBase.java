@@ -62,6 +62,7 @@ public class TestBase extends TestData {
 
     @BeforeEach
     public void setupConfig() {
+        setRandomData();
         open(urlBase);
     }
 

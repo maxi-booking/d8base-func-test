@@ -704,4 +704,34 @@ public class TestData {
 
         service12TotalDuration = Long.toString(service12TotalDurationLong);
     }
+
+    public static String userCountry,
+            userCity,
+            userFirstName,
+            userEmail,
+            userPassword,
+            serviceName,
+            serviceDescription,
+            serviceDuration,
+            servicePrice,
+            serviceSpecialization,
+            masterEducationUniversity;
+
+    public static void setRandomData() {
+
+        Faker generate = new Faker(new Locale("en-US"));
+        userCountry = "Russia";
+        userCity = "Moscow";
+        userFirstName = generate.name().firstName();
+        userEmail = generate.lorem().characters(8,12) + "@" + generate.lorem().characters(2,3) + ".pp";
+        userPassword = generate.internet().password();
+
+        serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
+        serviceDescription = generate.lorem().characters(20, 200);
+        serviceDuration = String.valueOf(generate.number().numberBetween(15, 45));
+        servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
+        serviceSpecialization = generate.job().title() + " " + generate.ancient().god();
+
+        masterEducationUniversity = generate.university().name();
+    }
 }

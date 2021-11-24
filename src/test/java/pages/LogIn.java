@@ -261,19 +261,25 @@ public class LogIn extends config.TestBase {
         $(byText("OK")).click();
     }
 
-    public void popupSelect() {
+    public void popupSelect(String country, String city) {
+        popupSkip();
+        forceEN();
+        refreshPage();
+
         $("ion-alert").$("button", 1).click();
 
         $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
         sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(user1Country);
+        $("ionic-selectable-modal").$("input").sendKeys(country);
         sleep(500);
-        $("ionic-selectable-modal").$("ion-label").click();
+        $("ionic-selectable-modal").$("ion-item").click();
 
         $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
         sleep(1000);
-        $("ionic-selectable-modal").$("ion-label").click();
-        $("app-on-map-popover").$(byText("Save")).click();
+        $("ionic-selectable-modal").$("input").sendKeys(city);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-item").click();
+        $("app-on-map-popover").$("ion-button").click();
     }
 
     public void popupSkip() {
@@ -297,4 +303,5 @@ public class LogIn extends config.TestBase {
     public void clickLogoFromProfile() {
         $("app-profile").$("ion-item").click();
     }
+
 }

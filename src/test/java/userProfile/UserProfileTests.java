@@ -14,7 +14,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration for User Profile test")
     void t00000() {
-        log.popupSkip();
+        log.popupSelect(user10Country, user10City);
         log.forceEN();
         log.clickSideMenu();
         reg.openPageEN();
