@@ -43,7 +43,7 @@ public class UserProfileTests extends config.TestBase {
         log.clickSideMenu();
         up.openUserProfile();
 
-        up.verifyProfile(user10FirstName, user10LastName,testUser10, user10Country, user10City);
+        up.verifyProfile(user10FirstName, user10LastName, testUser10, user10Country, user10City);
         up.openUserProfileMain();
         up.verifyProfileMainMin(user10FirstName, user10LastName, testUser10);
         up.clickBackMain();
@@ -56,7 +56,7 @@ public class UserProfileTests extends config.TestBase {
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.clickBackAbout();
-        up.verifyProfile(user10FirstName, user10LastName,testUser10,user10Country, user10City);
+        up.verifyProfile(user10FirstName, user10LastName, testUser10, user10Country, user10City);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class UserProfileTests extends config.TestBase {
         up.fillPhoneNumber(user10PhoneNumberNew, user10CountryNew);
         up.inputEmail(testUser10New);
         up.clickSaveMain();
-        up.verifyProfile(user10FirstNameNew, user10LastNameNew,testUser10New,user10Country, user10City);
+        up.verifyProfile(user10FirstNameNew, user10LastNameNew, testUser10New, user10Country, user10City);
         up.checkVerificationEmailSent(testUser10New);
         up.openUserProfileMain();
         up.verifyGenderMale();

@@ -5,10 +5,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-public class LoginTests extends config.TestBase {
+public class RegistrationTests extends config.TestBase {
 
     @Test
-    @Feature("Language")
+    @Feature("User Registration")
     @Owner("Egor Khlebnikov")
     @Story("https://redmine.maxi-booking.ru/issues/4753")
     @Severity(SeverityLevel.NORMAL)
@@ -28,5 +28,33 @@ public class LoginTests extends config.TestBase {
         reg.confirm();
         reg.verifyRegistrationDataFull(user11FirstName, user11LastName, user11Email, user11PhoneNumber, user11Country, user11City);
         up.verifyRussianLang();
+    }
+
+    @Test
+    @Feature("User Registration")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4873")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Phone number should not be autofilled if user's location unknown")
+    void t00001() {
+        log.popupSkip();
+        log.forceEN();
+        log.clickSideMenu();
+        reg.openPageEN();
+        reg.verifyNoPhoneCountryCode();
+    }
+
+    @Test
+    @Feature("User Registration")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4873")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Phone number should be autofilled if user's location known")
+    void t00002() {
+        log.popupSelect(userCountry, userCity);
+        log.forceEN();
+        log.clickSideMenu();
+        reg.openPageEN();
+        reg.verifyPhoneCountryCode(userCountry);
     }
 }

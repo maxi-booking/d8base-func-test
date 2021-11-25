@@ -121,6 +121,7 @@ public class ServicePublish {
 
     public void clickThirdStep() {
         $("app-service-publish-step-three").$("ion-button[type='submit']").scrollIntoView(false).click();
+        sleep(500);
     }
 
     @Step("Fill email")
@@ -247,6 +248,7 @@ public class ServicePublish {
 
     public void clickSixthStep() {
         $("app-service-publish-step-six").$("ion-button[type='submit']").scrollIntoView(false).click();
+        sleep(500);
     }
 
     @Step("Set a schedule")

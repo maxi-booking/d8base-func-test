@@ -47,12 +47,6 @@ public class ProfessionalProfileTests extends config.TestBase {
 //        pbl.verifyPictureUpload(1);
         pbl.clickThirdStep();
 
-        pbl.enterFirstName(user12FirstName1);
-        pbl.enterLastName(user12LastName1);
-        pbl.selectGender(female);
-        pbl.uploadAvatar(random);
-        pbl.clickFifthStep();
-
         pbl.selectPersonOrCompany(person);
         pbl.fillAbout(master12MainDescription);
         pbl.fillSpecialization(master12MainSpecialization);

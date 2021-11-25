@@ -117,13 +117,17 @@ public class Registration extends TestBase {
     @Step("Verify that there is no phone country code autofilled")
     public void verifyNoPhoneCountryCode() {
         String value = $("app-registration").$("app-phone-editor").$("ionic-selectable").getText();
-        if (!value.equals(empty)) {fail();}
+        if (!value.equals(empty)) {
+            fail();
+        }
     }
 
     @Step("Verify autofilled phone country code")
     public void verifyPhoneCountryCode(String userCountry) {
         String value = $("app-registration").$("app-phone-editor").$("ionic-selectable").getText();
-        if (value.equals(empty)) {fail();}
+        if (value.equals(empty)) {
+            fail();
+        }
         $("app-registration-form").$("button[type='button']").click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(userCountry);

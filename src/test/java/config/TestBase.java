@@ -2,6 +2,7 @@ package config;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.codeborne.selenide.webdriver.WebDriverFactory;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -53,7 +54,9 @@ public class TestBase extends TestData {
 
 //        Configuration.startMaximized = true;
         Configuration.headless = true;
-        System.setProperty("chromeoptions.prefs","intl.accept_languages=en");
+
+        Configuration.browser = System.setProperty("browser", "chrome");
+        System.setProperty("chromeoptions.prefs", "intl.accept_languages=en");
 
 
         setTestData();

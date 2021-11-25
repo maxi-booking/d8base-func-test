@@ -34,8 +34,6 @@ public class RegressionTestsHelpers extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.clickFifthStep();
-
         pbl.fillSpecialization(serviceSpecialization);
         pbl.clickSixthStep();
 

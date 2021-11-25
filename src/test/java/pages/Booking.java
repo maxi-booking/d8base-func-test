@@ -58,7 +58,9 @@ public class Booking {
         $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
         String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
-        if (!servicePriceActual.contains(servicePrice)) {fail();}
+        if (!servicePriceActual.contains(servicePrice)) {
+            fail();
+        }
     }
 
     @Step("Select a service")
@@ -77,7 +79,9 @@ public class Booking {
         $("app-service-widget").$("app-service-title").shouldHave(text(serviceName));
         String servicePriceActual = $("app-service-widget").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
-        if (!servicePriceActual.contains(servicePrice)) {fail();}
+        if (!servicePriceActual.contains(servicePrice)) {
+            fail();
+        }
         $("app-service-widget").$("app-duration-viewer").shouldHave(text(serviceDuration));
         $("app-service-widget").$("app-professional-card")
                 .shouldHave(text(firstName), text(lastName));
@@ -193,7 +197,7 @@ public class Booking {
 
     @Step("app-order")
     public void selectNewUser() {
-        $("app-confirmation-step").$("section").$("ion-item",1).click();
+        $("app-confirmation-step").$("section").$("ion-item", 1).click();
     }
 
     @Step("Fill E-Mail")
@@ -204,8 +208,8 @@ public class Booking {
 
     @Step("Fill the form")
     public void fillFrom(String Password, String Country, String FirstName, String LastName) {
-        $("app-order").$("app-client-identification").$("input[type='password']",0).sendKeys(Password);
-        $("app-order").$("app-client-identification").$("input[type='password']",1).sendKeys(Password);
+        $("app-order").$("app-client-identification").$("input[type='password']", 0).sendKeys(Password);
+        $("app-order").$("app-client-identification").$("input[type='password']", 1).sendKeys(Password);
 
         $("app-country-selector").$("button").click();
         sleep(1000);
@@ -213,8 +217,8 @@ public class Booking {
         sleep(500);
         $("ionic-selectable-modal").$("ion-label", 0).click();
 
-        $("app-order").$("app-client-identification").$("form").$("input[type='text']",0).sendKeys(FirstName);
-        $("app-order").$("app-client-identification").$("form").$("input[type='text']",1).sendKeys(LastName);
+        $("app-order").$("app-client-identification").$("form").$("input[type='text']", 0).sendKeys(FirstName);
+        $("app-order").$("app-client-identification").$("form").$("input[type='text']", 1).sendKeys(LastName);
         $("app-order").$("app-client-identification").$("ion-button[type='submit']").click();
     }
 

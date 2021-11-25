@@ -2,11 +2,9 @@
 
 Требуются JDK Java 11 и Gradle 6.8.3
 
-`gradle clean test -Durl=https://app.maxibooking.ru/`
+запуск с параметрами:
 
-или
-
-`gradle clean test -Durl=https://localhost/`
+`gradle clean test -Durl=https://app.maxibooking.ru/ -Dbrowser=chrome`
 
 после окончания тестов
 `gradle allureServe` для отчетов

@@ -343,7 +343,6 @@ public class TestData {
         random = "random";
 
 
-
         LocalDate currentDate = LocalDate.now();
         int day = currentDate.getDayOfMonth();
         int year = currentDate.getYear();
@@ -727,7 +726,7 @@ public class TestData {
         userCountry = "Russia";
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
-        userEmail = generate.lorem().characters(8,12) + "@" + generate.lorem().characters(2,3) + ".pp";
+        userEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
         userPassword = generate.internet().password();
 
         serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";

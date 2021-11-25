@@ -120,7 +120,9 @@ public class Favorites {
         $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
         String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
-        if (!servicePriceActual.contains(servicePrice)) {fail();}
+        if (!servicePriceActual.contains(servicePrice)) {
+            fail();
+        }
     }
 
     @Step("Click booking button from the search results")

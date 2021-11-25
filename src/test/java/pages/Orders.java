@@ -72,7 +72,9 @@ public class Orders extends config.TestBase {
             servicePriceActualString = servicePriceActualString + " " + servicePriceActual;
             ++cardNumber;
         }
-        if (!servicePriceActualString.contains(servicePrice)) {fail();}
+        if (!servicePriceActualString.contains(servicePrice)) {
+            fail();
+        }
     }
 
     @Step("Simple order check outbox")
@@ -95,7 +97,9 @@ public class Orders extends config.TestBase {
             servicePriceActualString = servicePriceActualString + " " + servicePriceActual;
             ++cardNumber;
         }
-        if (!servicePriceActualString.contains(servicePrice)) {fail();}
+        if (!servicePriceActualString.contains(servicePrice)) {
+            fail();
+        }
     }
 
     @Step("Click Professional's name")

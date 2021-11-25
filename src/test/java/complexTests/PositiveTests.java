@@ -163,8 +163,6 @@ public class PositiveTests extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.clickFifthStep();
-
         pbl.fillSpecialization(service1Specialization);
         pbl.clickSixthStep();
 
@@ -205,8 +203,6 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
-
-        pbl.clickFifthStep();
 
         pbl.fillSpecialization(service2Specialization);
         pbl.clickSixthStep();
@@ -250,8 +246,6 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
-
-        pbl.clickFifthStep();
 
         pbl.fillSpecialization(service3Specialization);
         pbl.clickSixthStep();
@@ -340,8 +334,6 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
-
-        pbl.clickFifthStep();
 
         pbl.fillSpecialization(service7Specialization);
         pbl.clickSixthStep();
@@ -1086,5 +1078,3 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceBase(service3Name, service3Price, service3TotalDuration, user3FirstName, user3LastName, service3Description);
     }
 }
-
-

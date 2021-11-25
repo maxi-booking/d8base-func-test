@@ -90,17 +90,17 @@ public class UserProfile {
 
     @Step("Select gender: male")
     public void selectGenderMale() {
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",0).click();
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 0).click();
     }
 
     @Step("Select gender: female")
     public void selectGenderFemale() {
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",1).click();
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 1).click();
     }
 
     @Step("Select gender: no gender")
     public void selectGenderNot() {
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",2).click();
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 2).click();
     }
 
     @Step("Fill a phone number")
@@ -147,25 +147,25 @@ public class UserProfile {
     @Step("Verify Profile: Main - Gender: Male")
     public void verifyGenderMale() {
         sleep(500);
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",0).should(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",1).shouldNot(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",2).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 0).should(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 1).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 2).shouldNot(cssClass("segment-button-checked"));
     }
 
     @Step("Verify Profile: Main - Gender: Female")
     public void verifyGenderFemale() {
         sleep(500);
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",0).shouldNot(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",1).should(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",2).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 0).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 1).should(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 2).shouldNot(cssClass("segment-button-checked"));
     }
 
     @Step("Verify Profile: Main - Gender: Not Specified")
     public void verifyGenderNot() {
         sleep(500);
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",0).shouldNot(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",1).shouldNot(cssClass("segment-button-checked"));
-        $("app-user-edit").$("app-gender-selector").$("ion-segment-button",2).should(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 0).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 1).shouldNot(cssClass("segment-button-checked"));
+        $("app-user-edit").$("app-gender-selector").$("ion-segment-button", 2).should(cssClass("segment-button-checked"));
     }
 
     @Step("Profile: Contacts - click edit")
@@ -200,7 +200,7 @@ public class UserProfile {
 
     @Step("Profile: Contacts - remove contact")
     public void removeContact() {
-        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button",0).click();
+        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button", 0).click();
         sleep(500);
     }
 
@@ -261,7 +261,7 @@ public class UserProfile {
 
     @Step("Profile: address - remove address")
     public void removeAddress() {
-        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button",0).click();
+        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button", 0).click();
         sleep(500);
     }
 
@@ -407,19 +407,19 @@ public class UserProfile {
     @Step("Verify 'About' default")
     public void verifyAboutDefault() {
         sleep(500);
-        $("app-about-edit").$("form").$("ion-input[class='ng-pristine']",0).exists();
-        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']",0).exists();
-        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']",1).exists();
+        $("app-about-edit").$("form").$("ion-input[class='ng-pristine']", 0).exists();
+        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']", 0).exists();
+        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']", 1).exists();
     }
 
     @Step("Profile: About - select birth date")
     public void selectDateBirth(String dateDD, String dateMM, String dateYYYY) {
-        $("app-about-edit").$("form").$("input").setValue(dateDD+dateMM+dateYYYY);
+        $("app-about-edit").$("form").$("input").setValue(dateDD + dateMM + dateYYYY);
     }
 
     @Step("Profile: About - select nationality")
     public void selectNationality(String value) {
-        $("app-about-edit").$("form").$("button",0).click();
+        $("app-about-edit").$("form").$("button", 0).click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(value);
         sleep(500);
@@ -428,12 +428,12 @@ public class UserProfile {
 
     @Step("Profile: About - select languages")
     public void selectLanguage(String value) {
-        $("app-about-edit").$("form").$("button",1).click();
+        $("app-about-edit").$("form").$("button", 1).click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(value);
         sleep(500);
         $("ionic-selectable-modal").$("ion-label", 0).click();
-        $("ionic-selectable-modal").$("ion-footer").$("ion-button",1).click();
+        $("ionic-selectable-modal").$("ion-footer").$("ion-button", 1).click();
         sleep(500);
     }
 
