@@ -29,6 +29,7 @@ public class ProfessionalProfile {
         sleep(500);
         while ($("app-professional-page").$("app-collapse-item ion-item.item-lines-full").exists()) {
             $("app-professional-page").$("app-collapse-item ion-item.item-lines-full").scrollIntoView(false).click();
+            sleep(100);
         }
     }
 
@@ -37,6 +38,7 @@ public class ProfessionalProfile {
         sleep(500);
         while ($("app-professional-page").$("app-collapse-item ion-item.item-lines-none").exists()) {
             $("app-professional-page").$("app-collapse-item ion-item.item-lines-none").scrollIntoView(false).click();
+            sleep(100);
         }
     }
 

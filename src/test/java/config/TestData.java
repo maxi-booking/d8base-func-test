@@ -709,6 +709,8 @@ public class TestData {
             serviceDuration,
             servicePrice,
             serviceSpecialization,
+            serviceAddress,
+            serviceDistance,
             masterEducationUniversity;
 
     public static void setRandomData() {
@@ -725,6 +727,8 @@ public class TestData {
         serviceDuration = String.valueOf(generate.number().numberBetween(15, 45));
         servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
         serviceSpecialization = generate.job().title() + " " + generate.ancient().god();
+        serviceAddress = generate.address().fullAddress();
+        serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));
 
         masterEducationUniversity = generate.university().name();
     }
