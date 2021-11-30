@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
+import static helpers.DayHelper.*;
 import static helpers.MonthHelper.generateMonth;
 import static helpers.MonthHelper.monthConvertToNumber;
 import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
@@ -187,12 +188,6 @@ public class TestData {
             masterComment,
             testMessage1,
             testMessage2,
-            empty,
-            today,
-            tomorrow,
-            nextDay,
-            nextDayPlus,
-            nextDayPlusPlus,
             user12Email,
             user12Password,
             user12FirstName,
@@ -282,6 +277,12 @@ public class TestData {
             master12CertificateIDNew,
             master12CertificateLinkNew,
             master12CertificatePhotoNew,
+            empty,
+            today,
+            tomorrow,
+            next1Day,
+            next2Days,
+            next3Days,
             random,
             randomFile,
             man,
@@ -302,9 +303,6 @@ public class TestData {
             online,
             client,
             master,
-            nextDayInt,
-            nextDayPlusInt,
-            nextDayPlusPlusInt,
             randomServiceCategory,
             randomServiceSubcategory,
             master12MainCategory,
@@ -347,17 +345,10 @@ public class TestData {
         int day = currentDate.getDayOfMonth();
         int year = currentDate.getYear();
         today = Integer.toString(day);
-        tomorrow = Integer.toString(day + 1);
-        nextDayInt = day + 1;
-        if (nextDayInt >= 28) {
-            nextDayInt = 1;
-        } else {
-            nextDay = Integer.toString(nextDayInt);
-        }
-        nextDayPlusInt = nextDayInt + 1;
-        nextDayPlusPlusInt = nextDayInt + 2;
-        nextDayPlus = Integer.toString(nextDayPlusInt);
-        nextDayPlusPlus = Integer.toString(nextDayPlusPlusInt);
+        tomorrow = getDayXDaysForward(1);
+        next1Day = getDayXDaysForward(1);
+        next2Days = getDayXDaysForward(2);
+        next3Days = getDayXDaysForward(3);
 
         Faker generate = new Faker(new Locale("en-US"));
         empty = " ";

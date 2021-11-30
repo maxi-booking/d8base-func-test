@@ -124,36 +124,17 @@ public class Booking {
 
     @Step("Pick the date from calendar - ({date})")
     public void pickTheDate(String date) {
-        $("app-book").$("div.calendar").$(withText(date)).scrollIntoView(true).click();
+        if ($("app-book").$("div.calendar").$(withText(date)).has(cssClass("unavailable"))) {
+            $("app-book").$("div.calendar", 1).$(withText(date)).scrollIntoView(true).click();
+        } else if ($("app-book").$("div.calendar", 1).$(withText(date)).has(cssClass("unavailable"))) {
+            $("app-book").$("div.calendar", 2).$(withText(date)).scrollIntoView(true).click();
+        } else {
+            $("app-book").$("div.calendar").$(withText(date)).scrollIntoView(true).click();
+        }
         sleep(200);
         $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
     }
-
-    @Step("Pick the date from calendar - next day ({nextDay})")
-    public void pickDateNextDay() {
-        $("app-book").$("div.calendar").$(byText(nextDay)).click();
-        sleep(200);
-        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
-    }
-
-    @Step("Pick the date from calendar - next 2 days ({nextDayPlus})")
-    public void pickDateNext2Days() {
-        $("app-book").$("div.calendar").$(byText(nextDayPlus)).click();
-        sleep(200);
-        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
-    }
-
-    @Step("Pick the date from calendar - next 3 days ({nextDayPlusPlus})")
-    public void pickDateNext3Days() {
-        $("app-book").$("div.calendar").$(byText(nextDayPlusPlus)).click();
-        sleep(200);
-        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
-    }
-
 
     @Step("Select the next day")
     public void clickNextDay() {

@@ -6,7 +6,7 @@
 
 `gradle clean test -Durl=https://app.maxibooking.ru/ -Dbrowser=chrome`
 
-браузеры: `chrome`, `firefox`, `legacy_firefox`, `ie`, `opera`, `edge`
+браузеры: `chrome`, `safari`, `firefox`, `legacy_firefox`, `ie`, `opera`, `edge`
 
 после окончания тестов
 `gradle allureServe` для отчетов

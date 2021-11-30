@@ -901,7 +901,7 @@ public class PositiveTests extends config.TestBase {
         log.refreshPage();
         log.popupSkip();
 
-        bkn.pickDateNext2Days();
+        bkn.pickTheDate(next2Days);
         bkn.bookTime();
         bkn.clickForward();
 
@@ -950,7 +950,7 @@ public class PositiveTests extends config.TestBase {
         log.refreshPage();
         log.popupSkip();
 
-        bkn.pickDateNext3Days();
+        bkn.pickTheDate(next3Days);
         bkn.bookTime();
         bkn.clickForward();
 

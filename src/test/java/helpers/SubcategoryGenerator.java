@@ -4,8 +4,6 @@ import com.github.javafaker.Faker;
 
 import java.util.Locale;
 
-import static com.codeborne.selenide.Condition.cssClass;
-import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class SubcategoryGenerator {
