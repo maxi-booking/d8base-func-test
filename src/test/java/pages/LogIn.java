@@ -283,9 +283,17 @@ public class LogIn extends config.TestBase {
         $("app-on-map-popover").$("ion-button").click();
     }
 
-    public void popupSkip() {
+    public void popupSkipOld() {
         sleep(200);
         $("ion-alert").pressEscape();
+        sleep(200);
+    }
+
+    public void popupSkip() {
+        sleep(200);
+        $("ion-alert").$("button",1).click();
+        sleep(200);
+        $("app-on-map-popover").$("ion-button",1).click();
         sleep(200);
     }
 
