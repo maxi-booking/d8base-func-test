@@ -1,10 +1,12 @@
 package pages;
 
+import helpers.Attach;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Reviews {
 
@@ -24,19 +26,14 @@ public class Reviews {
         $("app-outbox-page").$("ion-segment-button", 1).click();
     }
 
-    @Step("Click master")
-    public void clickMaster1() {
-        $("app-outbox").$("app-professional-card", 0).$("a").click();
-    }
-
-    @Step("Click master")
-    public void clickMaster2() {
-        $("app-outbox").$("app-professional-card", 1).$("a").click();
-    }
-
-    @Step("Click master")
-    public void clickMaster3() {
-        $("app-outbox").$("app-professional-card", 2).$("a").click();
+    @Step("Chose master {order}")
+    public void choseMaster(int order) {
+        if (order < 1) {
+            fail();
+        }
+        order--;
+        Attach.screenshotAs("Screenshot");
+        $("app-outbox").$("app-professional-card", order).$("a").click();
     }
 
     @Step("Open reviews tab")
@@ -59,24 +56,14 @@ public class Reviews {
         $("app-reviews-list").$(byText("Send review")).click();
     }
 
-    @Step("Choose rating 1 stars")
-    public void choseRating1() {
+    @Step("Choose rating {value} star(s)")
+    public void choseRating(int value) {
+        if (value < 1 || value > 5) {
+            fail();
+        }
+        value--;
         sleep(200);
-        $("app-edit-review").$("app-rating-picker").$("ion-item", 0).click();
-        sleep(200);
-    }
-
-    @Step("Choose rating 4 stars")
-    public void choseRating4() {
-        sleep(200);
-        $("app-edit-review").$("app-rating-picker").$("ion-item", 3).click();
-        sleep(200);
-    }
-
-    @Step("Choose rating 5 stars")
-    public void choseRating5() {
-        sleep(200);
-        $("app-edit-review").$("app-rating-picker").$("ion-item", 4).click();
+        $("app-edit-review").$("app-rating-picker").$("ion-item", value).click();
         sleep(200);
     }
 

@@ -1,4 +1,4 @@
-package complexTests;
+package smokeTests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -651,11 +651,11 @@ public class PositiveTests extends config.TestBase {
         log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
-        rev.clickMaster1();
+        rev.choseMaster(1);
         rev.clickReviewTab();
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
-        rev.choseRating4();
+        rev.choseRating(4);
         rev.sendReviewText(reviewText1);
         rev.pressSend();
         rev.verifyReview(user3FirstName + " " + user3LastName, user5FirstName, reviewText1);
@@ -675,11 +675,11 @@ public class PositiveTests extends config.TestBase {
         log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
-        rev.clickMaster2();
+        rev.choseMaster(2);
         rev.clickReviewTab();
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
-        rev.choseRating1();
+        rev.choseRating(1);
         rev.sendReviewText(reviewText2);
         rev.scrollDown();
         rev.pressSend();
@@ -700,12 +700,12 @@ public class PositiveTests extends config.TestBase {
         log.clickSideMenu();
         rev.clickOutboxEN();
         rev.tabArchivedOrdersOutbox();
-        rev.clickMaster3();
+        rev.choseMaster(3);
         rev.clickReviewTab();
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
         rev.addToFavorite();
-        rev.choseRating5();
+        rev.choseRating(5);
         rev.sendReviewText(reviewText3 + " " + reviewText4);
         rev.pressSend();
         rev.verifyReview(user1FirstName + " " + user1LastName, user5FirstName, reviewText3 + " " + reviewText4);
