@@ -15,7 +15,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase extends TestData {
 
-    public static Menu menu = new Menu();
+    public static SideMenu sideMenu = new SideMenu();
+    public static TopBar topBar = new TopBar();
     public static Registration reg = new Registration();
     public static ServicePublish pbl = new ServicePublish();
     public static Booking bkn = new Booking();
@@ -35,7 +36,9 @@ public class TestBase extends TestData {
             urlServicePublish = urlBase + "service/publish",
             urlOrders = urlBase + "my-orders/inbox",
             urlUserRegistration = urlBase + "auth/registration",
-            urlProfile = urlBase + "profile";
+            urlProfile = urlBase + "profile",
+            urlClientDetails = "client-details",
+            urlProfessionalProfile = urlBase + "professional";
 
     @BeforeAll
     public static void init() {
@@ -52,6 +55,8 @@ public class TestBase extends TestData {
 //        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
 
         Configuration.timeout = 10000;
+
+//        Configuration.clickViaJs = true;
 
 //        Configuration.startMaximized = true;
         Configuration.headless = true;

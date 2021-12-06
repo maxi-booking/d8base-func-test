@@ -13,13 +13,6 @@ import static config.TestData.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
-
-    @Step("Click Search button")
-    public void clickSearchEN() {
-        $("app-main-menu").$(byText("Search")).click();
-        sleep(300);
-    }
-
     @Step("Close default filters")
     public void closeFilters() {
         $("app-applied-filters").$("ion-chip").click();
@@ -32,7 +25,6 @@ public class Booking {
         $("app-search").$("form").$("input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("app-search").$("form").$("input").pressEnter();
-        Attach.screenshotAs("Screenshot");
         sleep(500);
     }
 
@@ -65,6 +57,7 @@ public class Booking {
 
     @Step("Select a service")
     public void chooseService() {
+        Attach.screenshotAs("Screenshot");
         $("app-search-result").$("ion-card-content").$("app-service-link").$("a").click();
     }
 
@@ -118,7 +111,7 @@ public class Booking {
     @Step("Click the 'Order' button to book")
     public void clickOrder() {
         sleep(500);
-        $(byText("Order")).click();
+        $(byText("Order")).scrollIntoView(false).click();
         sleep(500);
     }
 
@@ -144,9 +137,11 @@ public class Booking {
     }
 
     @Step("Pick booking time")
-    public void bookTime() {
+    public void bookTime(int value) {
+        String hours = String.valueOf(value).substring(0, 2);
+        String minutes = String.valueOf(value).substring(2);
         sleep(500);
-        $("app-time-step").$(withText("11:00")).scrollIntoView(true).click();
+        $("app-time-step").$(withText(hours + ":" + minutes)).scrollIntoView(true).click();
         sleep(500);
     }
 
@@ -162,6 +157,38 @@ public class Booking {
         sleep(500);
         $("app-confirmation-step").$(byText("Accept and continue")).scrollIntoView(true).click();
         sleep(500);
+    }
+
+
+    @Step("Click 'Order for another person")
+    public void clickOrderForAnotherPerson() {
+        sleep(200);
+        $("app-client-details-step").$("form").$("ion-checkbox").scrollIntoView(true).click();
+    }
+
+    @Step("Order for another person: name - {value}")
+    public void fillOrderForAPName(String value) {
+        $("app-client-details-step").$("form").$("section").$("input[type='text']",0).scrollIntoView(true).setValue(value);
+    }
+
+    @Step("Order for another person: surname - {value}")
+    public void fillOrderForAPSurname(String value) {
+        $("app-client-details-step").$("form").$("section").$("input[type='text']",1).scrollIntoView(true).setValue(value);
+    }
+
+    @Step("Order for another person: email - {value}")
+    public void fillOrderForAPEmail(String value) {
+        $("app-client-details-step").$("form").$("section").$("input[type='email']").scrollIntoView(true).setValue(value);
+    }
+
+    @Step("Order for another person: phone - {country} {number}")
+    public void fillOrderForAPPhoneNumber(String country, String number) {
+        $("app-client-details-step").$("form").$("section").$("ionic-selectable").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(country);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-item", 0).click();
+        $("app-client-details-step").$("form").$("section").$("input[type='text']",2).scrollIntoView(true).setValue(number);
     }
 
     @Step("Select address")
@@ -214,6 +241,7 @@ public class Booking {
     @Step("Place the order")
     public void placeOrder() {
         sleep(1000);
+        Attach.screenshotAs("Screenshot");
         $("app-client-details-step").$(byText("Accept and continue")).click();
         sleep(2000);
     }

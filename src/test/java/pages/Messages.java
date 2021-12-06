@@ -12,16 +12,6 @@ public class Messages {
         $("app-sent-order-page").$("app-chat-button").$("ion-button").click();
     }
 
-    @Step("Open the chat from top bar")
-    public void openChatFromTopBar() {
-        $("app-main").$("ion-toolbar").$("ion-buttons", 1).$("ion-button").click();
-    }
-
-    @Step("Open the chat from top bar")
-    public void openChatFromTopBarProfile() {
-        $("app-profile").$("ion-toolbar").$("ion-buttons", 1).$("ion-button").click();
-    }
-
     @Step("Find the messenger")
     public void findUserChat(String userName) {
         $("app-chats-list-page").$("ion-searchbar").$("input").sendKeys(userName);

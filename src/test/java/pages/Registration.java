@@ -16,16 +16,6 @@ public class Registration extends TestBase {
         open(urlUserRegistration);
     }
 
-    @Step("Open the page")
-    public void openPageEN() {
-        $("app-main-menu").$(byText("Sign up")).click();
-    }
-
-    @Step("Open the page")
-    public void openPageRU() {
-        $("app-main-menu").$(byText("Регистрация")).click();
-    }
-
     @Step("Fill the first name")
     public void fillUserFirstName(String userFirstName) {
         $("input[name='name']").setValue(userFirstName);
@@ -59,7 +49,7 @@ public class Registration extends TestBase {
 
     @Step("Select a country")
     public void selectCountry(String userCountry) {
-        $("app-country-selector").$("button").click();
+        $("app-registration-form").$("app-country-selector").$("ion-item").click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(userCountry);
         sleep(500);
@@ -68,7 +58,7 @@ public class Registration extends TestBase {
 
     @Step("Select a city")
     public void selectCity(String userCity) {
-        $("app-city-selector").$("button").click();
+        $("app-registration-form").$("app-city-selector").$("ion-item").click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(userCity);
         sleep(1000);
@@ -78,7 +68,13 @@ public class Registration extends TestBase {
     @Step("Confirm")
     public void confirm() {
         sleep(400);
+        int timeOut = 0;
         $("app-registration").$("ion-button[type='submit']").click();
+        while ($("app-registration").isDisplayed()) {
+            timeOut = timeOut + 2;
+            if (timeOut >= 20) {fail();}
+            sleep(2000);
+        }
         sleep(2000);
     }
 

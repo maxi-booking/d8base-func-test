@@ -10,44 +10,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class Favorites {
 
-    @Step("Open side menu button")
-    public void clickMenuMain() {
-        sleep(300);
-        $("app-main").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
-    }
-
-    @Step("Click side menu button")
-    public void clickMenuProfile() {
-        sleep(300);
-        $("app-profile").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
-    }
-
-    @Step("Click side menu button")
-    public void clickMenuSearch() {
-        sleep(300);
-        $("app-search").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
-    }
-
-    @Step("Click side menu button")
-    public void clickMenuMasterProfile() {
-        sleep(300);
-        $("app-professional-page").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
-    }
-
     @Step("Click side menu button")
     public void clickMenuServiceInfo() {
         sleep(300);
         $("app-service-viewer-page").$("ion-menu-toggle").$("ion-button").click();
         sleep(300);
-    }
-
-    @Step("Open bookmarks from the menu")
-    public void openBookmarksMenuEN() {
-        $("app-main-menu").$(byText("Bookmarks")).click();
     }
 
     @Step("Verify bookmarks")
@@ -76,24 +43,9 @@ public class Favorites {
     }
 
     @Step("Remove first bookmark")
-    public void removeBookmark1() {
-        $("app-professional-card", 0).$("app-saved-professional-toggle").$("ion-button").click();
-    }
-
-    @Step("Remove second bookmark")
-    public void removeBookmark2() {
-        $("app-professional-card", 1).$("app-saved-professional-toggle").$("ion-button").click();
-    }
-
-    @Step("Remove third bookmark")
-    public void removeBookmark3() {
-        $("app-professional-card", 2).$("app-saved-professional-toggle").$("ion-button").click();
-    }
-
-    @Step("Click Search button")
-    public void clickSearchEN() {
-        $("app-main-menu").$(byText("Search")).click();
-        sleep(300);
+    public void removeBookmarkIndex(int value) {
+        int index = value - 1;
+        $("app-professional-card", index).$("app-saved-professional-toggle").$("ion-button").click();
     }
 
     @Step("Close default filters")

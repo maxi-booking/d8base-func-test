@@ -20,7 +20,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.openMainPage();
         log.forceEN();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.educationVerificationEmpty();

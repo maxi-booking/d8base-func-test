@@ -4,7 +4,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.RegressionTestsHelpers.serviceRegister;
 import static helpers.RegressionTestsHelpers.userRegister;
 
 public class ServicePublicationTests extends config.TestBase {
@@ -18,9 +17,7 @@ public class ServicePublicationTests extends config.TestBase {
         userRegister();
         log.openMainPage();
         log.forceEN();
-
-        log.clickSideMenu();
-        pbl.clickPublishNewService();
+        sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
@@ -58,9 +55,7 @@ public class ServicePublicationTests extends config.TestBase {
         userRegister();
         log.openMainPage();
         log.forceEN();
-
-        log.clickSideMenu();
-        pbl.clickPublishNewService();
+        sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
@@ -85,5 +80,180 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.clickSeventhStep();
 
         pbl.publishService();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4237")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Service publish: user can not select fixed price with the value: 0")
+    void t00100() {
+        userRegister();
+        log.openMainPage();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration("0", "0", serviceDuration);
+        pbl.setPriceFixed("0", rub);
+        pbl.selectServiceLocation(master);
+        pbl.clickSecondStep();
+        pbl.fieldIsRequiredPresent();
+        pbl.isStepTwo();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4237")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Service publish: user can not select price range with min value: 0")
+    void t00101() {
+        userRegister();
+        log.openMainPage();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration("0", "0", serviceDuration);
+        pbl.setPriceRange("0", "100", rub);
+        pbl.selectServiceLocation(master);
+        pbl.clickSecondStep();
+        pbl.fieldIsRequiredPresent();
+        pbl.isStepTwo();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4237")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Service publish: user can not select price range with max value: 0")
+    void t00102() {
+        userRegister();
+        log.openMainPage();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration("0", "0", serviceDuration);
+        pbl.setPriceRange("0", "0", rub);
+        pbl.selectServiceLocation(master);
+        pbl.clickSecondStep();
+        pbl.fieldIsRequiredPresent();
+        pbl.isStepTwo();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4256")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Service publish: element language retention start with English - check titles")
+    void t00200() {
+        log.popupSkip();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        log.forceRU();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4256")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Service publish: element language retention start with Russian - check titles")
+    void t00201() {
+        log.popupSkip();
+        log.forceRU();
+        sideMenu.clickPublishNewService();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        log.forceEN();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4256")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Service publish: element language retention start with English - check lists")
+    void t00202() {
+        log.popupSkip();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        pbl.verifyCategoryListLanguageEng();
+        pbl.verifySubcategoryListLanguageEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        pbl.verifyCategoryListLanguageEng();
+        pbl.verifySubcategoryListLanguageEng();
+        log.forceRU();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        pbl.verifyCategoryListLanguageNotEng();
+        pbl.verifySubcategoryListLanguageNotEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        pbl.verifyCategoryListLanguageNotEng();
+        pbl.verifySubcategoryListLanguageNotEng();
+    }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4256")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Service publish: element language retention start with Russian - check lists")
+    void t00203() {
+        log.popupSkip();
+        log.forceRU();
+        sideMenu.clickPublishNewService();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        pbl.verifyCategoryListLanguageNotEng();
+        pbl.verifySubcategoryListLanguageNotEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageNotEng();
+        pbl.verifyCategoryListLanguageNotEng();
+        pbl.verifySubcategoryListLanguageNotEng();
+        log.forceEN();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        pbl.verifyCategoryListLanguageEng();
+        pbl.verifySubcategoryListLanguageEng();
+        log.refreshPage();
+        log.popupSkip();
+        pbl.verifyCategorySubcategoryTitleLanguageEng();
+        pbl.verifyCategoryListLanguageEng();
+        pbl.verifySubcategoryListLanguageEng();
     }
 }

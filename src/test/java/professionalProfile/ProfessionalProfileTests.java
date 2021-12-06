@@ -15,8 +15,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     void t00000() {
         log.popupSelect(user12Country, user12City);
         log.forceEN();
-        log.clickSideMenu();
-        reg.openPageEN();
+        sideMenu.clickSignUp();
         reg.fillUserFirstName(user12FirstName);
         reg.fillUserLastName(user12LastName);
         reg.fillEmail(user12Email);
@@ -28,9 +27,8 @@ public class ProfessionalProfileTests extends config.TestBase {
         reg.verifyRegistrationDataFull(user12FirstName, user12LastName, user12Email, user12PhoneNumber, user12Country, user12City);
 
         log.forceEN();
-
-        log.clickSideMenu();
-        pbl.clickPublishNewService();
+        log.openMainPage();
+        sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(master12MainCategory);
         pbl.chooseSubcategory(master12MainSubcategory);
@@ -75,8 +73,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
         pp.verifyProfessionalProfileBasic(user12FirstName1, user12LastName1, user12Country, user12City, user12Address, master12MainDescription, master12MainLevel);
 
@@ -99,8 +98,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.editProfessionalAddress();
@@ -137,8 +137,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.clickEditMain();
@@ -185,8 +186,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.qualificationVerificationEmpty();
@@ -247,8 +249,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.educationVerificationEmpty();
@@ -314,8 +317,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.certificatesVerificationEmpty();
@@ -378,8 +382,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         log.popupSkip();
         log.account12();
         log.forceEN();
+        log.openMainPage();
 
-        menu.menuClickProfessionalProfile();
+        sideMenu.clickProfessionalProfile();
         pp.expandItems();
         pp.verifyProfessionalProfileBasic(user12FirstName1, user12LastName1, user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainLevelNew);
 

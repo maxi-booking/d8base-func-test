@@ -22,6 +22,7 @@ public class ProfessionalProfile {
     public void clickChat() {
         $("app-professional-page").$("#chatbtn").click();
     }
+
 // your own professional profile methods
 
     @Step("Expand all collapse items")

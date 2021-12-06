@@ -3,10 +3,10 @@ package helpers;
 public class RegressionTestsHelpers extends config.TestBase {
 
     public static void userRegister() {
+        log.forceMainPage();
         log.popupSelect(userCountry, userCity);
         log.forceEN();
-        log.clickSideMenu();
-        reg.openPageEN();
+        sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmail);
         reg.choosePassword(userPassword);
@@ -16,10 +16,9 @@ public class RegressionTestsHelpers extends config.TestBase {
     }
 
     public static void serviceRegister() {
+        log.forceMainPage();
         log.forceEN();
-
-        log.clickSideMenu();
-        pbl.clickPublishNewService();
+        sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);

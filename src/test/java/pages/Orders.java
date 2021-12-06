@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -12,21 +13,6 @@ public class Orders extends config.TestBase {
     @Step("Open the page by url")
     public void openPageUrl(String urlOrders) {
         open(urlOrders);
-    }
-
-    @Step("Open the page (top bar)")
-    public void openOrderPageTopEN() {
-        $("app-main").$("ion-toolbar").$(byText("My orders")).click();
-    }
-
-    @Step("Open the page (top bar)")
-    public void openOrderPageTopProfileEN() {
-        $("app-profile").$("ion-toolbar").$(byText("My orders")).click();
-    }
-
-    @Step("Open the page (top bar)")
-    public void openPageTopRU() {
-        $("app-profile").$("ion-toolbar").$(byText("Мои заказы")).click();
     }
 
     @Step("Select new orders: Inbox")
@@ -60,6 +46,7 @@ public class Orders extends config.TestBase {
             String servicePrice,
             String serviceTotalDuration
     ) {
+        sleep(400);
         $("app-inbox-page").shouldHave(
                 text(userFirstName),
                 text(serviceTotalDuration)

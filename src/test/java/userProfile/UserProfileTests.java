@@ -3,7 +3,6 @@ package userProfile;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.*;
 
 public class UserProfileTests extends config.TestBase {
 
@@ -16,8 +15,7 @@ public class UserProfileTests extends config.TestBase {
     void t00000() {
         log.popupSelect(user10Country, user10City);
         log.forceEN();
-        log.clickSideMenu();
-        reg.openPageEN();
+        sideMenu.clickSignUp();
         reg.fillUserFirstName(user10FirstName);
         reg.fillUserLastName(user10LastName);
         reg.fillEmail(testUser10);
@@ -39,9 +37,7 @@ public class UserProfileTests extends config.TestBase {
         log.popupSkip();
         log.account10();
         log.forceEN();
-
-        log.clickSideMenu();
-        up.openUserProfile();
+        sideMenu.clickProfile();
 
         up.verifyProfile(user10FirstName, user10LastName, testUser10, user10Country, user10City);
         up.openUserProfileMain();
@@ -69,9 +65,7 @@ public class UserProfileTests extends config.TestBase {
         log.popupSkip();
         log.account10();
         log.forceEN();
-
-        log.clickSideMenu();
-        up.openUserProfile();
+        sideMenu.clickProfile();
 
         up.openUserProfileMain();
         up.inputFirstName(user10FirstNameNew);
@@ -98,9 +92,7 @@ public class UserProfileTests extends config.TestBase {
         log.popupSkip();
         log.account10();
         log.forceEN();
-
-        log.clickSideMenu();
-        up.openUserProfile();
+        sideMenu.clickProfile();
 
         up.clickEditContacts(0);
         up.verifySelectContactDefault();
@@ -147,9 +139,7 @@ public class UserProfileTests extends config.TestBase {
         log.popupSkip();
         log.account10();
         log.forceEN();
-
-        log.clickSideMenu();
-        up.openUserProfile();
+        sideMenu.clickProfile();
         up.verifyProfileAddressExists(user10Country, user10City);
         up.openUserProfileLocationEdit(0);
         up.verifyProfileAddress(user10Country, user10City);
@@ -222,9 +212,7 @@ public class UserProfileTests extends config.TestBase {
         log.popupSkip();
         log.account10();
         log.forceEN();
-
-        log.clickSideMenu();
-        up.openUserProfile();
+        sideMenu.clickProfile();
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.clickBackAbout();

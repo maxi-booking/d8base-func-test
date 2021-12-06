@@ -10,14 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class UserProfile {
-
-    @Step("Open the page")
-    public void openUserProfile() {
-        sleep(200);
-        $("app-main-menu").$(byText("Profile")).click();
-        sleep(300);
-    }
-
     @Step("Verify profile data")
     public void verifyProfile(
             String firstName,

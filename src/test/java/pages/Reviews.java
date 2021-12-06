@@ -9,13 +9,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Reviews {
-
-    @Step("Click Outbox button")
-    public void clickOutboxEN() {
-        $("app-main-menu").$(byText("Sent orders")).click();
-        sleep(300);
-    }
-
     @Step("Select current orders")
     public void tabCurrentOrdersOutbox() {
         $("app-outbox-page").$("ion-segment-button", 0).click();
@@ -152,8 +145,8 @@ public class Reviews {
         $("app-edit-review-comment").$("textarea").scrollIntoView(true);
         $("app-edit-review-comment").$("textarea").sendKeys(masterComment);
         sleep(500);
-        $x("//ion-button[@class='md button button-block button-solid ion-activatable ion-focusable hydrated']").scrollIntoView(true);
-        $x("//ion-button[@class='md button button-block button-solid ion-activatable ion-focusable hydrated']").click();
+        $("#send-btn").scrollIntoView(true);
+        $("#send-btn").click();
         sleep(2000);
     }
 

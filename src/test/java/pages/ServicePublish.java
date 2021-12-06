@@ -21,14 +21,6 @@ public class ServicePublish {
         open(urlServicePublish);
     }
 
-    @Step("Open the page")
-    public void clickPublishNewService() {
-        sleep(200);
-        $("app-main-menu").$("[id='main-menu.become-professional']").scrollIntoView(false).click();
-        sleep(300);
-    }
-
-
     @Step("Choose a category: {value}")
     //value 0-8
     public void chooseCategory(Integer value) {
@@ -275,12 +267,12 @@ public class ServicePublish {
     public void fillScheduleLite() {
         sleep(300);
         $("app-service-publish-step-seven").$("form").$("ion-icon").scrollIntoView(false).click();
-        sleep(500);
-        $("app-add-button").$("ion-label").scrollIntoView(false).click();
+        sleep(1000);
+        $("app-timetable").$("app-add-button").$("ion-item").scrollIntoView(false).click();
         sleep(300);
         $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(false).click();
         sleep(300);
-        $("app-add-button").$("ion-label").scrollIntoView(false).click();
+        $("app-timetable").$("app-add-button").$("ion-item").scrollIntoView(false).click();
         sleep(300);
         $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(false).click();
         sleep(1000);
@@ -407,5 +399,95 @@ public class ServicePublish {
         sleep(5000);
     }
 
+    @Step("Verify that 'Field is required.' error appeared")
+    public void fieldIsRequiredPresent() {
+        $(byText("Field is required.")).shouldBe(visible);
+    }
 
+    @Step("Verify publishing step: step two")
+    public void isStepTwo() {
+        $("app-service-publish-step-two").$("ion-button").shouldBe(visible);
+    }
+
+    @Step("Verify that category/subcategory title language is in English")
+    public void verifyCategorySubcategoryTitleLanguageEng() {
+        String category = $("app-service-publish-step-one").$("app-category-selector").$("ion-label").getText();
+        String subcategory = $("app-service-publish-step-one").$("app-subcategory-selector").$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (!category.equals("Select category")) {
+            fail();
+        }
+        if (!subcategory.equals("Select subcategory")) {
+            fail();
+        }
+    }
+
+    @Step("Verify that category/subcategory title language is not in English")
+    public void verifyCategorySubcategoryTitleLanguageNotEng() {
+        String category = $("app-service-publish-step-one").$("app-category-selector").$("ion-label").getText();
+        String subcategory = $("app-service-publish-step-one").$("app-subcategory-selector").$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (category.equals("Select category")) {
+            fail();
+        }
+        if (subcategory.equals("Select subcategory")) {
+            fail();
+        }
+    }
+
+    @Step("Verify that category list language is in English")
+    public void verifyCategoryListLanguageEng() {
+        sleep(500);
+        $("ionic-selectable").click();
+        sleep(500);
+        String value = $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (!value.equals("Tutors")) {
+            fail();
+        }
+        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).scrollIntoView(false).click();
+        sleep(500);
+    }
+
+    @Step("Verify that subcategory list language is in English")
+    public void verifySubcategoryListLanguageEng() {
+        sleep(500);
+        $("ionic-selectable", 1).scrollIntoView(false).click();
+        sleep(500);
+        String value = $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (!value.equals("English language")) {
+            fail();
+        }
+        $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).scrollIntoView(false).click();
+        sleep(500);
+    }
+
+    @Step("Verify that category list language is not in English")
+    public void verifyCategoryListLanguageNotEng() {
+        sleep(500);
+        $("ionic-selectable").click();
+        sleep(500);
+        String value = $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (value.equals("Tutors")) {
+            fail();
+        }
+        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).click();
+        sleep(500);
+    }
+
+    @Step("Verify that subcategory list language is not in English")
+    public void verifySubcategoryListLanguageNotEng() {
+        sleep(500);
+        $("ionic-selectable", 1).scrollIntoView(false).click();
+        sleep(500);
+        String value = $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).$("ion-label").getText();
+        Attach.screenshotAs("Screenshot");
+        if (value.equals("English language")) {
+            fail();
+        }
+        $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).scrollIntoView(false).click();
+        sleep(500);
+    }
 }

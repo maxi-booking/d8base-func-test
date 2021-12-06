@@ -703,7 +703,11 @@ public class TestData {
             userCity,
             userFirstName,
             userEmail,
+            userEmailUppercase,
+            userEmailLowercase,
+            userEmailMixedCase,
             userPassword,
+            userPhoneNumber,
             serviceName,
             serviceDescription,
             serviceDuration,
@@ -714,6 +718,8 @@ public class TestData {
             masterEducationUniversity;
 
     public static void setRandomData() {
+        Random r = new Random();
+        char c = (char) (r.nextInt(26) + 'a');
 
         Faker generate = new Faker(new Locale("en-US"));
         userCountry = "Russia";
@@ -721,6 +727,7 @@ public class TestData {
         userFirstName = generate.name().firstName();
         userEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
         userPassword = generate.internet().password();
+        userPhoneNumber = "911" + generate.number().digits(7);
 
         serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
         serviceDescription = generate.lorem().characters(20, 200);
@@ -731,5 +738,10 @@ public class TestData {
         serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));
 
         masterEducationUniversity = generate.university().name();
+
+        userEmailMixedCase = (generate.lorem().characters(2, 4)).toUpperCase() + (generate.lorem().characters(2, 4)).toLowerCase() + (generate.lorem().characters(2, 4)).toUpperCase() + "@" + (generate.lorem().characters(1, 2)).toUpperCase() + (generate.lorem().characters(1, 2)).toLowerCase() + "." + Character.toUpperCase(c) + Character.toLowerCase(c);
+        userEmailUppercase = userEmailMixedCase.toUpperCase();
+        userEmailLowercase = userEmailMixedCase.toLowerCase();
+
     }
 }
