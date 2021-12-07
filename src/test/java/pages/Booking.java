@@ -140,8 +140,25 @@ public class Booking {
     public void bookTime(int value) {
         String hours = String.valueOf(value).substring(0, 2);
         String minutes = String.valueOf(value).substring(2);
+        int hoursInt = Integer.parseInt(hours);
+        String time = "";
+        if ($("app-time-step").$("main").$(withText("AM")).exists() && $("app-time-step").$("main").$(withText("PM")).exists()) {
+            if (hoursInt < 12) {
+                time = hours + ":" + minutes + " AM";
+            }
+            if (hoursInt == 12) {
+                time = hours + ":" + minutes + " PM";
+            }
+            if (hoursInt > 12) {
+                hoursInt = hoursInt - 12;
+                hours = String.valueOf(hoursInt);
+                time = hours + ":" + minutes + " PM";
+            }
+        } else {
+            time = hours + ":" + minutes;
+        }
         sleep(500);
-        $("app-time-step").$(withText(hours + ":" + minutes)).scrollIntoView(true).click();
+        $("app-time-step").$(withText(time)).scrollIntoView(true).click();
         sleep(500);
     }
 

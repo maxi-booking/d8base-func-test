@@ -376,61 +376,61 @@ public class TestData {
         testPassword9 = generate.internet().password();
         testPassword10 = generate.internet().password();
 
-        user1FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
-        user1LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
+        user1FirstName = generate.name().firstName() + generate.name().firstName();
+        user1LastName = generate.name().lastName() + generate.name().lastName();
         user1PhoneNumber = "911" + generate.number().digits(7);
         user1Country = "Russia";
         user1City = "Moscow";
 
-        user2FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user2FirstName = generate.name().firstName() + generate.name().firstName();
         user2LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user2PhoneNumber = "911" + generate.number().digits(7);
         user2Country = "Russia";
         user2City = "Moscow";
 
-        user3FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user3FirstName = generate.name().firstName() + generate.name().firstName();
         user3LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user3PhoneNumber = "911" + generate.number().digits(7);
         user3Country = "Russia";
         user3City = "Moscow";
 
-        user4FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user4FirstName = generate.name().firstName() + generate.name().firstName();
         user4LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user4PhoneNumber = "911" + generate.number().digits(7);
         user4Country = "Russia";
         user4City = "Moscow";
 
-        user5FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user5FirstName = generate.name().firstName() + generate.name().firstName();
         user5LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user5PhoneNumber = "911" + generate.number().digits(7);
         user5Country = "Russia";
         user5City = "Moscow";
 
-        user6FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user6FirstName = generate.name().firstName() + generate.name().firstName();
         user6LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user6PhoneNumber = "6135" + generate.number().digits(6);
         user6Country = "Canada";
         user6City = "Toronto";
 
-        user7FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user7FirstName = generate.name().firstName() + generate.name().firstName();
         user7LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user7PhoneNumber = "4575" + generate.number().digits(6);
         user7Country = "Finland";
         user7City = "Helsinki";
 
-        user8FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user8FirstName = generate.name().firstName() + generate.name().firstName();
         user8LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user8PhoneNumber = "5905" + generate.number().digits(6);
         user8Country = "France";
         user8City = "Paris";
 
-        user9FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user9FirstName = generate.name().firstName() + generate.name().firstName();
         user9LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user9PhoneNumber = "1595" + generate.number().digits(6);
         user9Country = "Germany";
         user9City = "Berlin";
 
-        user10FirstName = generate.name().firstName() + generate.name().suffix() + generate.name().suffix();
+        user10FirstName = generate.name().firstName() + generate.name().firstName();
         user10LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
         user10PhoneNumber = "911" + generate.number().digits(7);
         user10Country = "Russia";

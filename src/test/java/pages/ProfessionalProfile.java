@@ -68,13 +68,13 @@ public class ProfessionalProfile {
             String masterAbout,
             String masterLevel
     ) {
-        $("app-professional-page").$("app-professional-card-large").shouldHave(text(firstName + " " + lastName));
-        $("app-professional-page").$("app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
+        $("app-professional-page").$("app-professional-card-large").scrollIntoView(false).shouldHave(text(firstName + " " + lastName));
+        $("app-professional-page").$("app-location-viewer").scrollIntoView(false).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         if ($("app-professional-page").$("app-shorten").$("span.ext").exists()) {
             $("app-professional-page").$("app-shorten").$("span.ext").click();
         }
-        $("app-professional-page").$("app-shorten").shouldHave(text(masterAbout));
-        $("app-professional-page").$("main").shouldHave(text(masterLevel));
+        $("app-professional-page").$("app-shorten").scrollIntoView(false).shouldHave(text(masterAbout));
+        $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(masterLevel));
     }
 
     @Step("Professional Profile: verify professional experience {value}")
@@ -82,12 +82,12 @@ public class ProfessionalProfile {
             String value
     ) {
         Attach.screenshotAs("Screenshot");
-        $("app-professional-page").$("main").shouldHave(text(value));
+        $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(value));
     }
 
     @Step("Professional Profile: verify professional name ({firstName} {lastName})")
     public void verifyProfessionalProfileName(String firstName, String lastName) {
-        $("app-professional-page").$("app-professional-card-large").shouldHave(text(firstName + " " + lastName));
+        $("app-professional-page").$("app-professional-card-large").scrollIntoView(false).shouldHave(text(firstName + " " + lastName));
 
     }
 
