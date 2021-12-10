@@ -4,6 +4,7 @@ import helpers.Attach;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -73,26 +74,18 @@ public class Reviews {
         sleep(200);
     }
 
-    public void scrollDown() {
-        $("app-edit-review").$("ion-row").$("ion-button", 1).scrollIntoView(false);
-    }
-
-    public void scrollDown2() {
-        $("app-professional-page").$("main").$(byText("Reviews")).scrollIntoView(true);
-    }
-
     @Step("Send review")
     public void pressSend() {
-        sleep(200);
-        $("app-edit-review").$("ion-row").$("ion-button", 1).click();
+        sleep(2000);
+        $("app-edit-review").$("ion-row ion-col ion-button",1).scrollIntoView(false).click();
         sleep(3000);
     }
 
     @Step("Verify review")
     public void verifyReview(String masterName, String userName, String reviewText) {
         $("app-reviews-list").$("app-professional-card").shouldHave(text(masterName));
-        $("app-reviews-list").$("ion-card").shouldHave(text(userName));
-        $("app-reviews-list").$("ion-card").shouldHave(text(reviewText));
+        $("app-reviews-list").$("app-review-card").shouldHave(text(userName));
+        $("app-reviews-list").$("app-review-card").shouldHave(text(reviewText));
     }
 
     @Step("Open side menu")

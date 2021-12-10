@@ -1,6 +1,5 @@
 package regressionTests;
 
-import helpers.RegressionTestsHelpers;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -61,7 +60,7 @@ public class BookingTests extends config.TestBase {
         bkn.clickAccept();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userFirstName);
-        bkn.fillOrderForAPEmail(userEmail);
+        bkn.fillOrderForAPEmail(userEmailRandom);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
         bkn.showOrderDetails();
@@ -102,7 +101,7 @@ public class BookingTests extends config.TestBase {
         bkn.clickOrderForAnotherPerson();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userFirstName);
-        bkn.fillOrderForAPEmail(userEmail);
+        bkn.fillOrderForAPEmail(userEmailRandom);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
         bkn.showOrderDetails();

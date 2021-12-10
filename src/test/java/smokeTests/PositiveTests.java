@@ -11,20 +11,22 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Full Positive User Registration")
+    @DisplayName("Full Positive User Registration - in order")
     void t00000() {
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
         reg.fillUserFirstName(user1FirstName);
         reg.fillUserLastName(user1LastName);
-        reg.fillEmail(testUser1);
-        reg.choosePassword(testPassword1);
+        reg.fillEmail(emails[0]);
+        reg.choosePassword(passwords[0]);
         reg.fillPhoneNumber(user1PhoneNumber, user1Country);
         reg.selectCountry(user1Country);
         reg.selectCity(user1City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user1FirstName, user1LastName, testUser1, user1PhoneNumber, user1Country, user1City);
+        reg.confirmAndWait();
+        reg.completeTutorSlidesToSearch();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user1FirstName, user1LastName, emails[0], user1PhoneNumber, user1Country, user1City);
     }
 
     @Test
@@ -32,20 +34,22 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Full Positive User Registration")
+    @DisplayName("Full Positive User Registration - reverse order")
     void t00001() {
         log.popupSelect(user2Country, user2City);
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user2FirstName);
-        reg.fillUserLastName(user2LastName);
-        reg.fillEmail(testUser2);
-        reg.choosePassword(testPassword2);
-        reg.fillPhoneNumber(user2PhoneNumber, user2Country);
         reg.selectCountry(user2Country);
         reg.selectCity(user2City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user2FirstName, user2LastName, testUser2, user2PhoneNumber, user2Country, user2City);
+        reg.fillPhoneNumber(user2PhoneNumber, user2Country);
+        reg.choosePassword(passwords[1]);
+        reg.fillEmail(emails[1]);
+        reg.fillUserLastName(user2LastName);
+        reg.fillUserFirstName(user2FirstName);
+        reg.confirmAndWait();
+        reg.completeTutorSlidesToPublish();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user2FirstName, user2LastName, emails[1], user2PhoneNumber, user2Country, user2City);
     }
 
     @Test
@@ -53,20 +57,22 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Full Positive User Registration")
+    @DisplayName("Full Positive User Registration - mixed order 1")
     void t00002() {
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user3FirstName);
-        reg.fillUserLastName(user3LastName);
-        reg.fillEmail(testUser3);
-        reg.choosePassword(testPassword3);
         reg.fillPhoneNumber(user3PhoneNumber, user3Country);
+        reg.choosePassword(passwords[2]);
+        reg.fillUserFirstName(user3FirstName);
+        reg.fillEmail(emails[2]);
+        reg.fillUserLastName(user3LastName);
         reg.selectCountry(user3Country);
         reg.selectCity(user3City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user3FirstName, user3LastName, testUser3, user3PhoneNumber, user3Country, user3City);
+        reg.confirmAndWait();
+        reg.completeTutorSlidesToSearch();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user3FirstName, user3LastName, emails[2], user3PhoneNumber, user3Country, user3City);
     }
 
     @Test
@@ -80,12 +86,14 @@ public class PositiveTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSignUp();
         reg.fillUserFirstName(user5FirstName);
-        reg.fillEmail(testUser5);
-        reg.choosePassword(testPassword5);
+        reg.fillEmail(emails[4]);
+        reg.choosePassword(passwords[4]);
         reg.selectCountry(user5Country);
         reg.selectCity(user5City);
-        reg.confirm();
-        reg.verifyRegistrationDataBasic(user5FirstName, testUser5, user5Country, user5City);
+        reg.confirmAndWait();
+        reg.completeTutorSlidesToPublish();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataBasic(user5FirstName, emails[4], user5Country, user5City);
     }
 
     @Test
@@ -93,20 +101,21 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Full Positive User Registration")
+    @DisplayName("Full Positive User Registration - mixed order 2")
     void t00004() {
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user6FirstName);
-        reg.fillUserLastName(user6LastName);
-        reg.fillEmail(testUser6);
-        reg.choosePassword(testPassword6);
+        reg.fillEmail(emails[5]);
+        reg.choosePassword(passwords[5]);
         reg.fillPhoneNumber(user6PhoneNumber, user6Country);
         reg.selectCountry(user6Country);
         reg.selectCity(user6City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user6FirstName, user6LastName, testUser6, user6PhoneNumber, user6Country, user6City);
+        reg.fillUserFirstName(user6FirstName);
+        reg.fillUserLastName(user6LastName);
+        reg.confirmAndWait();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user6FirstName, user6LastName, emails[5], user6PhoneNumber, user6Country, user6City);
     }
 
     @Test
@@ -114,20 +123,21 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Full Positive User Registration")
+    @DisplayName("Full Positive User Registration - mixed order 3")
     void t00005() {
         log.popupSelect(user7Country, user7City);
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user7FirstName);
         reg.fillUserLastName(user7LastName);
-        reg.fillEmail(testUser7);
-        reg.choosePassword(testPassword7);
-        reg.fillPhoneNumber(user7PhoneNumber, user7Country);
+        reg.fillUserFirstName(user7FirstName);
+        reg.choosePassword(passwords[6]);
+        reg.fillEmail(emails[6]);
         reg.selectCountry(user7Country);
         reg.selectCity(user7City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user7FirstName, user7LastName, testUser7, user7PhoneNumber, user7Country, user7City);
+        reg.fillPhoneNumber(user7PhoneNumber, user7Country);
+        reg.confirmAndWait();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user7FirstName, user7LastName, emails[6], user7PhoneNumber, user7Country, user7City);
     }
 
     @Test
@@ -138,7 +148,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic positive service publishing, service location: Online")
     void t00100() {
         log.popupSkip();
-        log.account1();
+        log.account(0);
         log.forceEN();
         sideMenu.clickPublishNewService();
 
@@ -177,7 +187,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic positive service publishing, service location: Client's place")
     void t00101() {
         log.popupSkip();
-        log.account2();
+        log.account(1);
         log.forceEN();
         sideMenu.clickPublishNewService();
 
@@ -218,7 +228,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic positive service publishing, service location: Professional's place")
     void t00102() {
         log.popupSkip();
-        log.account3();
+        log.account(2);
         log.forceEN();
         sideMenu.clickPublishNewService();
 
@@ -274,8 +284,8 @@ public class PositiveTests extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.fillEmail(testUser4);
-        pbl.fillUserInfo(user4FirstName, user4LastName, testPassword4, user4Country, user4City);
+        pbl.fillEmail(emails[3]);
+        pbl.fillUserInfo(user4FirstName, user4LastName, passwords[3], user4Country, user4City);
         pbl.clickFourthStep();
 
         pbl.clickFifthStep();
@@ -302,7 +312,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic positive service publishing, service location: Online (2)")
     void t00104() {
         log.popupSkip();
-        log.account7();
+        log.account(6);
         log.forceEN();
         sideMenu.clickPublishNewService();
 
@@ -341,7 +351,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking online")
     void t00200() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSearch();
 
@@ -375,7 +385,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking client's place")
     void t00201() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSearch();
 
@@ -410,7 +420,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking master's place")
     void t00202() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSearch();
 
@@ -446,7 +456,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking online (2)")
     void t00203() {
         log.popupSkip();
-        log.account6();
+        log.account(5);
         log.forceEN();
         sideMenu.clickSearch();
 
@@ -480,7 +490,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Basic booking online (3)")
     void t00204() {
         log.popupSkip();
-        log.account6();
+        log.account(5);
         log.forceEN();
         sideMenu.clickSearch();
 
@@ -514,7 +524,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Check orders from user side")
     void t00300() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         topBar.clickMyOrders();
         ord.checkOrderOutbox(user1FirstName, service1Name, service1Price, service1TotalDuration);
@@ -531,7 +541,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Master completes order: online")
     void t00301() {
         log.popupSkip();
-        log.account1();
+        log.account(0);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
@@ -547,7 +557,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Master completes order: client's place")
     void t00302() {
         log.popupSkip();
-        log.account2();
+        log.account(1);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
@@ -563,7 +573,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Master completes order: master's place")
     void t00303() {
         log.popupSkip();
-        log.account3();
+        log.account(2);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
@@ -579,7 +589,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Client side order cancel")
     void t00304() {
         log.popupSkip();
-        log.account6();
+        log.account(5);
         log.forceEN();
         topBar.clickMyOrders();
         ord.checkOrderOutbox(user4FirstName, service4Name, service4Price, service4TotalDuration);
@@ -595,7 +605,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Master side order cancel")
     void t00305() {
         log.popupSkip();
-        log.account7();
+        log.account(6);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
@@ -612,7 +622,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Post and check review with 10 words")
     void t00400() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
@@ -634,7 +644,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Post and check review with a lot of characters")
     void t00401() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
@@ -644,7 +654,6 @@ public class PositiveTests extends config.TestBase {
         rev.clickSendReviewButton();
         rev.choseRating(1);
         rev.sendReviewText(reviewText2);
-        rev.scrollDown();
         rev.pressSend();
         rev.verifyReview(user2FirstName + " " + user2LastName, user5FirstName, reviewText2);
     }
@@ -657,7 +666,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Post and check review add to favorites in the process")
     void t00402() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
@@ -684,7 +693,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Review answer")
     void t00403() {
         log.popupSkip();
-        log.account2();
+        log.account(1);
         log.forceEN();
         sideMenu.clickProfessionalProfile();
         rev.clickMasterReviews();
@@ -700,7 +709,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Conversation test: step 1 out of 3")
     void t00500() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSentOrders();
         ord.tabArchivedOrdersOutbox();
@@ -718,7 +727,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Conversation test: step 2 out of 3")
     void t00501() {
         log.popupSkip();
-        log.account3();
+        log.account(2);
         log.forceEN();
         topBar.clickChat();
         msg.findUserChat(user5FirstName);
@@ -736,7 +745,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Conversation test: step 3 out of 3")
     void t00502() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         topBar.clickChat();
         msg.findUserChat(user3FirstName);
@@ -753,7 +762,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Remove master from favorites")
     void t00600() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
 
         sideMenu.clickBookmarks();
@@ -771,7 +780,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Add master to favorite from search results")
     void t00601() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSearch();
         fav.closeFilters();
@@ -790,7 +799,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Add master to favorite from master's profile")
     void t00602() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
 
         sideMenu.clickSearch();
@@ -812,7 +821,7 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Add master to favorite from the service info")
     void t00603() {
         log.popupSkip();
-        log.account5();
+        log.account(4);
         log.forceEN();
         sideMenu.clickSearch();
         fav.closeFilters();
@@ -855,12 +864,12 @@ public class PositiveTests extends config.TestBase {
 
         reg.fillUserFirstName(user8FirstName);
         reg.fillUserLastName(user8LastName);
-        reg.fillEmail(testUser8);
-        reg.choosePassword(testPassword8);
+        reg.fillEmail(emails[7]);
+        reg.choosePassword(passwords[7]);
 
         reg.selectCountry(user8Country);
         reg.selectCity(user8City);
-        reg.confirm();
+        reg.confirmAndWait();
 
         bkn.placeOrder(); //todo
 
@@ -900,12 +909,12 @@ public class PositiveTests extends config.TestBase {
 
         reg.fillUserFirstName(user9FirstName);
         reg.fillUserLastName(user9LastName);
-        reg.fillEmail(testUser9);
-        reg.choosePassword(testPassword9);
+        reg.fillEmail(emails[8]);
+        reg.choosePassword(passwords[8]);
 
         reg.selectCountry(user9Country);
         reg.selectCity(user9City);
-        reg.confirm();
+        reg.confirmAndWait();
 
         bkn.placeOrder(); //todo
 

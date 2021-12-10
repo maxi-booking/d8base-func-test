@@ -8,11 +8,11 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.forceEN();
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
-        reg.fillEmail(userEmail);
-        reg.choosePassword(userPassword);
+        reg.fillEmail(userEmailRandom);
+        reg.choosePassword(userPasswordRandom);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
-        reg.confirm();
+        reg.confirmAndWait();
     }
 
     public static void serviceRegister() {

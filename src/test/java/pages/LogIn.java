@@ -5,9 +5,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import config.Lang;
 import helpers.Attach;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.devtools.v96.browser.model.WindowState;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -37,12 +34,13 @@ public class LogIn extends config.TestBase {
         }
     }
 
+    @Step("Log out")
     public void logOut() {
         open(urlLogOut);
     }
 
     public void logoClick() {
-        $("ion-item").click();
+        $$("ion-item").filter(visible).get(0).scrollIntoView(false).click();
     }
 
     @Step("Log In with {login} : {password}")
@@ -54,6 +52,18 @@ public class LogIn extends config.TestBase {
         Attach.screenshotAs("Screenshot");
         $("app-login-form").$("ion-button[type='submit']").click();
         sleep(1000);
+    }
+
+    @Step("No error message")
+    public void noErrorMessage() {
+        sleep(1000);
+        $("ion-toast").shouldNotBe(visible);
+    }
+
+    @Step("Error message")
+    public void errorMessage() {
+        sleep(1000);
+        $("ion-toast").shouldBe(visible);
     }
 
     public void logTempAcc() {
@@ -89,102 +99,14 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    public void account1() {
+    @Step("Log in with {emails[number]} : {passwords[number]}")
+    public void account(int value) {
         forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser1);
-        $("app-login").$("input", 1).setValue(testPassword1);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account2() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser2);
-        $("app-login").$("input", 1).setValue(testPassword2);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account3() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser3);
-        $("app-login").$("input", 1).setValue(testPassword3);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account4() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser4);
-        $("app-login").$("input", 1).setValue(testPassword4);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account5() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser5);
-        $("app-login").$("input", 1).setValue(testPassword5);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account6() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser6);
-        $("app-login").$("input", 1).setValue(testPassword6);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account7() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser7);
-        $("app-login").$("input", 1).setValue(testPassword7);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account10() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue(testUser10);
-        $("app-login").$("input", 1).setValue(testPassword10);
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void account12() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$("[id='main-menu.log-in']").click();
-        $("app-login").$("input", 0).setValue(user12Email);
-        $("app-login").$("input", 1).setValue(user12Password);
-        $("app-login-form").$("ion-button[type='submit']").click();
+        sideMenu.clickLogIn();
+        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(emails[value]);
+        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(passwords[value]);
+        Attach.screenshotAs("Login_info");
+        $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(false).click();
         sleep(1000);
     }
 

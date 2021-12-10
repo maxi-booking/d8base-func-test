@@ -18,13 +18,13 @@ public class UserProfileTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(user10FirstName);
         reg.fillUserLastName(user10LastName);
-        reg.fillEmail(testUser10);
-        reg.choosePassword(testPassword10);
+        reg.fillEmail(emails[9]);
+        reg.choosePassword(passwords[9]);
         reg.fillPhoneNumber(user10PhoneNumber, user10Country);
         reg.selectCountry(user10Country);
         reg.selectCity(user10City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user10FirstName, user10LastName, testUser10, user10PhoneNumber, user10Country, user10City);
+        reg.confirmAndWait();
+        reg.verifyRegistrationDataFull(user10FirstName, user10LastName, emails[9], user10PhoneNumber, user10Country, user10City);
     }
 
     @Test
@@ -35,13 +35,13 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Profile: functionality verification")
     void t00001() {
         log.popupSkip();
-        log.account10();
+        log.account(9);
         log.forceEN();
         sideMenu.clickProfile();
 
-        up.verifyProfile(user10FirstName, user10LastName, testUser10, user10Country, user10City);
+        up.verifyProfile(user10FirstName, user10LastName, emails[9], user10Country, user10City);
         up.openUserProfileMain();
-        up.verifyProfileMainMin(user10FirstName, user10LastName, testUser10);
+        up.verifyProfileMainMin(user10FirstName, user10LastName, emails[9]);
         up.clickBackMain();
         up.clickEditContacts(0);
         up.verifyContactDefault();
@@ -52,7 +52,7 @@ public class UserProfileTests extends config.TestBase {
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.clickBackAbout();
-        up.verifyProfile(user10FirstName, user10LastName, testUser10, user10Country, user10City);
+        up.verifyProfile(user10FirstName, user10LastName, emails[9], user10Country, user10City);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Profile: main - change all the info and verify")
     void t00002() {
         log.popupSkip();
-        log.account10();
+        log.account(9);
         log.forceEN();
         sideMenu.clickProfile();
 
@@ -79,7 +79,7 @@ public class UserProfileTests extends config.TestBase {
         up.checkVerificationEmailSent(testUser10New);
         up.openUserProfileMain();
         up.verifyGenderMale();
-        up.verifyProfileMainMax(user10FirstNameNew, user10LastNameNew, user10PatronymicNew, user10PhoneNumberNew, testUser10);
+        up.verifyProfileMainMax(user10FirstNameNew, user10LastNameNew, user10PatronymicNew, user10PhoneNumberNew, emails[9]);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Profile: contacts - change info, add new and verify")
     void t00003() {
         log.popupSkip();
-        log.account10();
+        log.account(9);
         log.forceEN();
         sideMenu.clickProfile();
 
@@ -116,17 +116,17 @@ public class UserProfileTests extends config.TestBase {
         up.verifyContactExists(testUser10New);
 
         up.clickEditContacts(1);
-        up.enterContact(testUser10);
+        up.enterContact(emails[9]);
         up.saveContact();
         up.verifyContactExists(user10PhoneNumberNew);
         up.verifyContactRemoved(testUser10New);
-        up.verifyContactExists(testUser10);
+        up.verifyContactExists(emails[9]);
 
         up.clickEditContacts(1);
         up.removeContact();
         up.verifyContactExists(user10PhoneNumberNew);
         up.verifyContactRemoved(testUser10New);
-        up.verifyContactRemoved(testUser10);
+        up.verifyContactRemoved(emails[9]);
     }
 
     @Test
@@ -137,7 +137,7 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Profile: address - change info and verify")
     void t00004() {
         log.popupSkip();
-        log.account10();
+        log.account(9);
         log.forceEN();
         sideMenu.clickProfile();
         up.verifyProfileAddressExists(user10Country, user10City);
@@ -210,7 +210,7 @@ public class UserProfileTests extends config.TestBase {
     @DisplayName("Profile: about - change info and verify")
     void t00005() {
         log.popupSkip();
-        log.account10();
+        log.account(9);
         log.forceEN();
         sideMenu.clickProfile();
         up.openUserProfileAbout();

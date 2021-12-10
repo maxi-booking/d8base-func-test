@@ -14,33 +14,55 @@ import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue
 import static java.lang.Long.parseLong;
 import static org.junit.jupiter.api.Assertions.fail;
 
-
 public class TestData {
+
+    public static class UserEmails {
+        Faker generate = new Faker(new Locale("en-US"));
+        Random r = new Random();
+        char c = (char) (r.nextInt(26) + 'a');
+        String[] userEmail = {
+                generate.name().username() + "@aa.bb",
+                generate.name().username() + "@bb.cc",
+                generate.name().username() + "@cc.dd",
+                generate.name().username() + "@dd.ee",
+                generate.name().username() + "@ee.ff",
+                generate.name().username() + "@cc.aa",
+                generate.name().username() + "@tt.jj",
+                generate.name().username() + "@cc.ff",
+                generate.name().username() + "@ii.oo",
+                generate.name().username() + "@ll.tt",
+                generate.name().username() + "@pp.nn",
+                generate.name().username() + "@" + generate.lorem().characters(2, 5) + "." + c + c
+        };
+        public String[] userEmail() {
+            return userEmail;
+        }
+    }
+
+    public static class UserPasswords {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] userPassword = {
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.internet().password(),
+                generate.lorem().characters(8, 50)
+        };
+        public String[] userPassword() {
+            return userPassword;
+        }
+    }
+
     public static String
-            testUser1,
-            testUser2,
-            testUser3,
-            testUser4,
-            testUser5,
-            testUser6,
-            testUser7,
-            testUser8,
-            testUser9,
-            testUser10,
             testUser10New,
-            testPassword1,
-            testPassword2,
-            testPassword3,
-            testPassword4,
-            testPassword5,
-            testPassword6,
-            testPassword7,
-            testPassword8,
-            testPassword9,
-            testPassword10,
             testPassword10New,
-            user11Email,
-            user11Password,
             user1FirstName,
             user1LastName,
             user1PhoneNumber,
@@ -188,8 +210,6 @@ public class TestData {
             masterComment,
             testMessage1,
             testMessage2,
-            user12Email,
-            user12Password,
             user12FirstName,
             user12Patronymic,
             user12LastName,
@@ -305,6 +325,7 @@ public class TestData {
             master,
             randomServiceCategory,
             randomServiceSubcategory,
+            randomRating,
             master12MainCategory,
             master12MainSubcategory,
             master12MainCategoryNew,
@@ -355,26 +376,7 @@ public class TestData {
         randomServiceCategory = generate.number().numberBetween(0, 8);
         randomServiceSubcategory = getRandomSubcategoryFromCategoryValue(randomServiceCategory);
         randomFile = "src/test/resources/img/" + generate.number().numberBetween(1, 12) + ".png";
-        testUser1 = generate.name().username() + "@uu.dd";
-        testUser2 = generate.name().username() + "@uu.dd";
-        testUser3 = generate.name().username() + "@uu.dd";
-        testUser4 = generate.name().username() + "@uu.dd";
-        testUser5 = generate.name().username() + "@uu.dd";
-        testUser6 = generate.name().username() + "@cc.aa";
-        testUser7 = generate.name().username() + "@tt.jj";
-        testUser8 = generate.name().username() + "@cc.ff";
-        testUser9 = generate.name().username() + "@ii.oo";
-        testUser10 = generate.name().username() + "@ll.tt";
-        testPassword1 = generate.internet().password();
-        testPassword2 = generate.internet().password();
-        testPassword3 = generate.internet().password();
-        testPassword4 = generate.internet().password();
-        testPassword5 = generate.internet().password();
-        testPassword6 = generate.internet().password();
-        testPassword7 = generate.internet().password();
-        testPassword8 = generate.internet().password();
-        testPassword9 = generate.internet().password();
-        testPassword10 = generate.internet().password();
+        randomRating = generate.number().numberBetween(1, 5);
 
         user1FirstName = generate.name().firstName() + generate.name().firstName();
         user1LastName = generate.name().lastName() + generate.name().lastName();
@@ -505,8 +507,6 @@ public class TestData {
         testMessage1 = generate.dragonBall().character() + " > " + generate.dragonBall().character();
         testMessage2 = generate.friends().quote() + " (c) " + generate.dragonBall().character();
 
-        user11Email = generate.name().username() + "@pp.nn";
-        user11Password = generate.internet().password();
         user11FirstName = generate.name().firstName() + generate.name().suffix();
         user11LastName = generate.name().lastName() + generate.name().suffix();
         user11PhoneNumber = "923" + generate.number().digits(7);
@@ -581,8 +581,6 @@ public class TestData {
 
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
-        user12Email = generate.name().username() + "@" + generate.lorem().characters(2, 5) + "." + c + c;
-        user12Password = generate.lorem().characters(8, 50);
         user12FirstName = generate.funnyName().name();
         user12Patronymic = generate.aviation().aircraft();
         user12LastName = generate.animal().name();
@@ -702,11 +700,11 @@ public class TestData {
     public static String userCountry,
             userCity,
             userFirstName,
-            userEmail,
+            userEmailRandom,
             userEmailUppercase,
             userEmailLowercase,
             userEmailMixedCase,
-            userPassword,
+            userPasswordRandom,
             userPhoneNumber,
             serviceName,
             serviceDescription,
@@ -725,8 +723,8 @@ public class TestData {
         userCountry = "Russia";
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
-        userEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
-        userPassword = generate.internet().password();
+        userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
+        userPasswordRandom = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
 
         serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";

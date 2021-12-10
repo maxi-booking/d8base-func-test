@@ -29,6 +29,11 @@ public class TestBase extends TestData {
     public static UserProfile up = new UserProfile();
     public static ProfessionalProfile pp = new ProfessionalProfile();
 
+    public static UserEmails getEmail = new UserEmails();
+    public static String[] emails = getEmail.userEmail();
+    public static UserPasswords getPassword = new UserPasswords();
+    public static String[] passwords = getPassword.userPassword();
+
     public String
             urlBase = System.getProperty("url", "https://app.maxibooking.ru/"),
             urlLogin = urlBase + "auth/login",

@@ -18,13 +18,14 @@ public class ProfessionalProfileTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(user12FirstName);
         reg.fillUserLastName(user12LastName);
-        reg.fillEmail(user12Email);
-        reg.choosePassword(user12Password);
+        reg.fillEmail(emails[11]);
+        reg.choosePassword(passwords[11]);
         reg.fillPhoneNumber(user12PhoneNumber, user12Country);
         reg.selectCountry(user12Country);
         reg.selectCity(user12City);
-        reg.confirm();
-        reg.verifyRegistrationDataFull(user12FirstName, user12LastName, user12Email, user12PhoneNumber, user12Country, user12City);
+        reg.confirmAndWait();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataFull(user12FirstName, user12LastName, emails[11], user12PhoneNumber, user12Country, user12City);
 
         log.forceEN();
         log.openMainPage();
@@ -71,7 +72,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: info verification")
     void t00001() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -96,7 +97,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: functionality verification")
     void t00002() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -135,7 +136,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: main - change all the info and verify")
     void t00004() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -184,7 +185,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: qualification - change all the info and verify")
     void t00006() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -247,7 +248,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: education - change all the info and verify")
     void t00007() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -315,7 +316,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: certificates - change all the info and verify")
     void t00008() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 
@@ -380,7 +381,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @DisplayName("Professional profile: full test")
     void t00100() {
         log.popupSkip();
-        log.account12();
+        log.account(11);
         log.forceEN();
         log.openMainPage();
 

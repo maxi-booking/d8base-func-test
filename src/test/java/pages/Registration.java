@@ -2,8 +2,10 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import config.TestBase;
+import helpers.Attach;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
@@ -28,13 +30,13 @@ public class Registration extends TestBase {
 
     @Step("Fill an email")
     public void fillEmail(String userEmail) {
-        $("input[name='email']").setValue(userEmail);
+        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(userEmail);
     }
 
     @Step("Choose a password")
     public void choosePassword(String userPassword) {
-        $("input[name='password']").setValue(userPassword);
-        $("input[name='confirm']").setValue(userPassword);
+        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(userPassword);
+        $$("input[name='confirm']").filter(visible).get(0).scrollIntoView(false).setValue(userPassword);
     }
 
     @Step("Fill a phone number")
@@ -68,11 +70,20 @@ public class Registration extends TestBase {
     @Step("Confirm")
     public void confirm() {
         sleep(400);
+        $("app-registration").$("ion-button[type='submit']").click();
+        sleep(2000);
+    }
+
+    @Step("Confirm")
+    public void confirmAndWait() {
+        sleep(400);
         int timeOut = 0;
         $("app-registration").$("ion-button[type='submit']").click();
         while ($("app-registration").isDisplayed()) {
             timeOut = timeOut + 2;
-            if (timeOut >= 20) {fail();}
+            if (timeOut >= 20) {
+                Attach.screenshotAs("Screenshot");
+                fail();}
             sleep(2000);
         }
         sleep(2000);
@@ -86,10 +97,10 @@ public class Registration extends TestBase {
             String userCountry,
             String userCity
     ) {
-        $("app-profile").$(withText(userFirstName)).should(Condition.visible);
-        $("app-profile").$(withText(userEmail)).should(Condition.visible);
-        $("app-profile").$(withText(userCountry)).should(Condition.visible);
-        $("app-profile").$(withText(userCity)).should(Condition.visible);
+        $("app-profile").$(withText(userFirstName)).should(visible);
+        $("app-profile").$(withText(userEmail)).should(visible);
+        $("app-profile").$(withText(userCountry)).should(visible);
+        $("app-profile").$(withText(userCity)).should(visible);
 
     }
 
@@ -102,12 +113,12 @@ public class Registration extends TestBase {
             String userCountry,
             String userCity
     ) {
-        $("app-profile").$(withText(userFirstName)).should(Condition.visible);
-        $("app-profile").$(withText(userLastName)).should(Condition.visible);
-        $("app-profile").$(withText(userEmail)).should(Condition.visible);
-        $("app-profile").$(withText(userPhoneNumber)).should(Condition.visible);
-        $("app-profile").$(withText(userCountry)).should(Condition.visible);
-        $("app-profile").$(withText(userCity)).should(Condition.visible);
+        $("app-profile").$(withText(userFirstName)).should(visible);
+        $("app-profile").$(withText(userLastName)).should(visible);
+        $("app-profile").$(withText(userEmail)).should(visible);
+        $("app-profile").$(withText(userPhoneNumber)).should(visible);
+        $("app-profile").$(withText(userCountry)).should(visible);
+        $("app-profile").$(withText(userCity)).should(visible);
     }
 
     @Step("Verify that there is no phone country code autofilled")
@@ -129,5 +140,19 @@ public class Registration extends TestBase {
         $("ionic-selectable-modal").$("input").sendKeys(userCountry);
         sleep(500);
         $("ionic-selectable-modal").$("ion-item", 0).shouldHave(Condition.cssClass("ionic-selectable-item-is-selected"));
+    }
+
+    @Step("Complete turor slides to search")
+    public void completeTutorSlidesToSearch() {
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+    }
+
+    @Step("Complete turor slides to service publish")
+    public void completeTutorSlidesToPublish() {
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(1).scrollIntoView(true).click();
     }
 }

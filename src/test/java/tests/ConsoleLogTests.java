@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class consoleLogTests extends TestBase {
+public class ConsoleLogTests extends TestBase {
     @Test
     @Description("Checking the console logs for severe errors")
     @DisplayName("Page console log should not have errors")

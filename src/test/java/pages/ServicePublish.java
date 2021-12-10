@@ -25,7 +25,7 @@ public class ServicePublish {
     //value 0-8
     public void chooseCategory(Integer value) {
         sleep(500);
-        $("ionic-selectable").click();
+        $("app-category-selector").$("ionic-selectable").click();
         sleep(500);
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).click();
         sleep(500);
@@ -37,7 +37,7 @@ public class ServicePublish {
     //value 0-8
     public void chooseSubcategory(Integer value) {
         sleep(500);
-        $("ionic-selectable", 1).scrollIntoView(false).click();
+        $("app-subcategory-selector").$("ionic-selectable").scrollIntoView(false).click();
         sleep(500);
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(false).click();
         sleep(500);
