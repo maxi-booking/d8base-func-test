@@ -58,6 +58,8 @@ public class TestBase extends TestData {
         Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "1920x1080";
 //        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+//        Configuration.remote = "http://test:test@localhost:4445/wd/hub/";
+        Configuration.remote = "http://localhost:8080/wd/hub/";
 
         Configuration.timeout = 10000;
 

@@ -1,10 +1,13 @@
 package pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import config.Lang;
 import helpers.Attach;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -144,38 +147,6 @@ public class LogIn extends config.TestBase {
         }
     }
 
-    public void langRU() {
-        $("app-main").$("ion-item").click();
-        $("[menu='flag-menu']").click();
-        $("app-flag-menu").$("ion-select").click();
-        $("ion-alert").$("button", 0).click();
-        $(byText("OK")).click();
-    }
-
-    public void langEN() {
-        $("app-main").$("ion-item").click();
-        $("[menu='flag-menu']").click();
-        $("app-flag-menu").$("ion-select").click();
-        $("ion-alert").$("button", 0).click();
-        $(byText("OK")).click();
-    }
-
-    public void langRUProfile() {
-        $("app-profile").$("ion-item").click();
-        $("[menu='flag-menu']").click();
-        $("app-flag-menu").$("ion-select").click();
-        $("ion-alert").$("button", 1).click();
-        $(byText("OK")).click();
-    }
-
-    public void langENProfile() {
-        $("app-profile").$("ion-item").click();
-        $("[menu='flag-menu']").click();
-        $("app-flag-menu").$("ion-select").click();
-        $("ion-alert").$("button", 0).click();
-        $(byText("OK")).click();
-    }
-
     public void popupSelect(String country, String city) {
         popupSkip();
         forceEN();
@@ -198,39 +169,16 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkip() {
-        sleep(200);
-        $("ion-alert").pressEscape();
-        sleep(200);
-    }
-
-    public void popupSkipAlt() {
-        sleep(200);
-        $("ion-alert").$("button", 1).click();
-        sleep(200);
-        $("app-on-map-popover").$("ion-button", 1).click();
-        sleep(200);
-    }
-
-    public void clickSideMenu() {
-        sleep(300);
-        String currentUrl = WebDriverRunner.url();
-        String value = "";
-        if (currentUrl.equals(urlProfile)) {
-            value = "app-profile";
-        } else if (currentUrl.equals(urlBase)) {
-            value = "app-main";
-        } else if (currentUrl.contains(urlProfessionalProfile)) {
-            value = "app-professional-page";
+        sleep(500);
+        if (!Configuration.browser.equals("safari")) {
+            $("ion-alert").pressEscape();
         } else {
-            fail();
+            $("ion-alert").$("button", 1).click();
+            sleep(500);
+            $("app-on-map-popover").$("ion-row ion-col ion-button", 1).click();
         }
-        $(value).$("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
-    }
-
-    public void clickLogoFromProfile() {
-        $("app-profile").$("ion-item").click();
-    }
+        sleep(500);
+}
 
     public void verifySuccessfulLogIn() {
         sleep(1000);
