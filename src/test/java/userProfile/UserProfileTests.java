@@ -24,6 +24,7 @@ public class UserProfileTests extends config.TestBase {
         reg.selectCountry(user10Country);
         reg.selectCity(user10City);
         reg.confirmAndWait();
+        sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(user10FirstName, user10LastName, emails[9], user10PhoneNumber, user10Country, user10City);
     }
 

@@ -240,7 +240,7 @@ public class TestData {
             master12MainCompany,
             master12MainCompanyNew,
             master12MainExperience,
-            master12ExperienceNew,
+            master12MainExperienceNew,
             master12MainLevel,
             master12MainLevelNew,
             service12Country,
@@ -641,7 +641,8 @@ public class TestData {
         master12QualificationDescriptionNew = generate.shakespeare().hamletQuote();
 
 
-        master12ExperienceNew = Integer.toString(year - Integer.parseInt(master12QualificationFromYearNew));
+        master12MainExperience = Integer.toString(year - Integer.parseInt(master12QualificationFromYear));
+        master12MainExperienceNew = Integer.toString(year - Integer.parseInt(master12QualificationFromYearNew));
 
         master12QualificationDate = master12QualificationFromYear + "-" + monthConvertToNumber(master12QualificationFromMonth) + "-" + "01" + " - " + master12QualificationToYear + "-" + monthConvertToNumber(master12QualificationToMonth) + "-" + "01";
         master12QualificationDateNew = master12QualificationFromYearNew + "-" + monthConvertToNumber(master12QualificationFromMonthNew) + "-" + "01" + " - ";

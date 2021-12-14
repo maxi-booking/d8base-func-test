@@ -22,4 +22,9 @@ public class Search {
         $("ion-searchbar").$("input").pressEnter();
         Attach.screenshotAs("Screenshot");
     }
+
+    @Step("Click on the first name in search results")
+    public void clickProfessionalsName() {
+        $("app-search").$("app-search-result").$("app-professional-card").$("div.title").$("a").click();
+    }
 }

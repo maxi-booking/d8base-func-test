@@ -74,21 +74,21 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailLowercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailUppercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -113,21 +113,21 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailLowercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailUppercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -152,21 +152,21 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailLowercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
         log.logIn(userEmailUppercase, userPasswordRandom);
         log.verifySuccessfulLogIn();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -188,9 +188,9 @@ public class RegistrationTests extends config.TestBase {
         reg.fillEmail(userEmailLowercase);
         reg.choosePassword(userPasswordRandom);
         reg.confirm();
-        log.noErrorMessage();
+        log.noToast();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -202,9 +202,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -216,9 +216,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -230,7 +230,7 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
     }
 
     @Test
@@ -247,9 +247,9 @@ public class RegistrationTests extends config.TestBase {
         reg.fillEmail(userEmailMixedCase);
         reg.choosePassword(userPasswordRandom);
         reg.confirm();
-        log.noErrorMessage();
+        log.noToast();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -261,9 +261,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -275,9 +275,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -289,7 +289,7 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
     }
 
     @Test
@@ -306,9 +306,9 @@ public class RegistrationTests extends config.TestBase {
         reg.fillEmail(userEmailUppercase);
         reg.choosePassword(userPasswordRandom);
         reg.confirm();
-        log.noErrorMessage();
+        log.noToast();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -320,9 +320,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -334,9 +334,9 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
@@ -348,6 +348,21 @@ public class RegistrationTests extends config.TestBase {
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
-        log.errorMessage();
+        log.toastVisible();
+    }
+
+    @Test
+    @Feature("User Registration")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4935")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Country code and phone number inputs should be visible and interactable, after pup-up got canceled")
+    void t00200() {
+        log.popupClickCancel();
+        log.forceEN();
+        sideMenu.clickSignUp();
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
+        reg.verifyPhoneNumber(userPhoneNumber);
+        reg.verifyPhoneCountryCode(userCountry);
     }
 }

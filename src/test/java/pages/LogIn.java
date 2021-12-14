@@ -1,5 +1,6 @@
 package pages;
 
+import com.beust.jcommander.StringKey;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -37,8 +38,8 @@ public class LogIn extends config.TestBase {
         }
     }
 
-    @Step("Log out")
-    public void logOut() {
+    @Step("Log out by URL")
+    public void forceLogOut() {
         open(urlLogOut);
     }
 
@@ -57,14 +58,14 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    @Step("No error message")
-    public void noErrorMessage() {
+    @Step("No toast message")
+    public void noToast() {
         sleep(1000);
         $("ion-toast").shouldNotBe(visible);
     }
 
-    @Step("Error message")
-    public void errorMessage() {
+    @Step("EToast message visible")
+    public void toastVisible() {
         sleep(1000);
         $("ion-toast").shouldBe(visible);
     }
@@ -102,12 +103,14 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    @Step("Log in with {emails[number]} : {passwords[number]}")
+    @Step("Log in with {login} : {password}")
     public void account(int value) {
         forceEN();
+        String login = emails[value];
+        String password = passwords[value];
         sideMenu.clickLogIn();
-        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(emails[value]);
-        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(passwords[value]);
+        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(login);
+        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(password);
         Attach.screenshotAs("Login_info");
         $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(false).click();
         sleep(1000);
@@ -178,7 +181,21 @@ public class LogIn extends config.TestBase {
             $("app-on-map-popover").$("ion-row ion-col ion-button", 1).click();
         }
         sleep(500);
-}
+    }
+
+    public void popupSkipEsc() {
+        sleep(500);
+        $("ion-alert").pressEscape();
+        sleep(500);
+    }
+
+    public void popupClickCancel() {
+        sleep(500);
+        $("ion-alert").$("button", 1).click();
+        sleep(500);
+        $("app-on-map-popover").$("ion-row ion-col ion-button", 1).click();
+        sleep(500);
+    }
 
     public void verifySuccessfulLogIn() {
         sleep(1000);

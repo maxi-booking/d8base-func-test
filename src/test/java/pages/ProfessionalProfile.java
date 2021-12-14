@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.selector.ByShadow;
 import com.github.javafaker.Faker;
 import helpers.Attach;
 import io.qameta.allure.Step;
@@ -15,6 +14,11 @@ import static helpers.MonthHelper.monthConvertToNumber;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ProfessionalProfile {
+
+    @Step("Click social share button")
+    public void clickSocialShare() {
+        $$("ion-icon[name='share-social-outline']").filter(visible).get(0).scrollIntoView(false).parent().click();
+    }
 
 // other person's professional profile methods
 

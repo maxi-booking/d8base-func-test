@@ -111,7 +111,7 @@ public class Booking {
     @Step("Click the 'Order' button to book")
     public void clickOrder() {
         sleep(500);
-        $(byText("Order")).scrollIntoView(false).click();
+        $("#pick-service").scrollIntoView(false).click();
         sleep(500);
     }
 
@@ -129,10 +129,17 @@ public class Booking {
         sleep(500);
     }
 
-    @Step("Select the next day")
+    @Step("Select previous day")
+    public void clickPreviousDay() {
+        sleep(200);
+        $("app-time-step").$("app-calendar-component").$("ion-button",0).click();
+        sleep(200);
+    }
+
+    @Step("Select next day")
     public void clickNextDay() {
         sleep(200);
-        $("app-time-step").$("ion-content").$("ion-item").$("[slot=end]").click();
+        $("app-time-step").$("app-calendar-component").$("ion-button",1).click();
         sleep(200);
     }
 

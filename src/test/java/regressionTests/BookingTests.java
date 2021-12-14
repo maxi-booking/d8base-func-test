@@ -79,7 +79,7 @@ public class BookingTests extends config.TestBase {
 
         String service = serviceName;
 
-        log.logOut();
+        log.forceLogOut();
         closeWindow();
         setRandomData();
         log.forceMainPage();

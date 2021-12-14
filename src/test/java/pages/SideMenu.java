@@ -21,6 +21,13 @@ public class SideMenu {
         sleep(300);
     }
 
+    @Step("Click Menu > Log out")
+    public void clickLogOut() {
+        openMenu();
+        $("[id='main-menu.log-out']").scrollIntoView(false).click();
+        sleep(300);
+    }
+
     @Step("Click Menu > Profile")
     public void clickProfile() {
         openMenu();

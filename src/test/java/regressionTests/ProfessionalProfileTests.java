@@ -34,4 +34,24 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.educationClickRemove();
         pp.educationVerificationEmpty();
     }
+
+    @Test
+    @Feature("Professional Profile")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4909")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Professional Profile: social share button should be clickable (another person)")
+    void t00001() {
+        userRegister();
+        serviceRegister();
+        log.openMainPage();
+        log.forceEN();
+        sideMenu.clickLogOut();
+
+        sideMenu.clickSearch();
+        sch.search(serviceName);
+        sch.clickProfessionalsName();
+        pp.clickSocialShare();
+        log.toastVisible();
+    }
 }

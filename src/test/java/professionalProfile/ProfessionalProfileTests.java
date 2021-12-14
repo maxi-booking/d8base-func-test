@@ -78,7 +78,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(user12FirstName1, user12LastName1, user12Country, user12City, user12Address, master12MainDescription, master12MainLevel);
+        pp.verifyProfessionalProfileBasic(user12FirstName, user12LastName, user12Country, user12City, user12Address, master12MainDescription, master12MainLevel);
 
         pp.clickEditMain();
         pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
@@ -86,6 +86,9 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.qualificationVerificationEmpty();
         pp.educationVerificationEmpty();
         pp.certificatesVerificationEmpty();
+        pp.clickEditMain();
+        pp.editExperience(master12MainExperience);
+        pp.mainClickSave();
         pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
     }
 
@@ -152,7 +155,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.editSpecialization(master12MainSpecializationNew);
         pp.editDescription(master12MainDescriptionNew);
         pp.editCompany(master12MainCompanyNew);
-        pp.editExperience(master12ExperienceNew);
+        pp.editExperience(master12MainExperienceNew);
         pp.editExpertiseLevel(master12MainLevelNew);
         pp.editCategory(master12MainCategoryNew);
         pp.editSubcategory(master12MainSubcategoryNew);
@@ -163,18 +166,18 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.editSpecialization(master12MainSpecializationNew);
         pp.editDescription(master12MainDescriptionNew);
         pp.editCompany(master12MainCompanyNew);
-        pp.editExperience(master12ExperienceNew);
+        pp.editExperience(master12MainExperienceNew);
         pp.editExpertiseLevel(master12MainLevelNew);
         pp.editCategory(master12MainCategoryNew);
         pp.editSubcategory(master12MainSubcategoryNew);
         pp.mainClickSave();
-        pp.verifyProfessionalExp(master12ExperienceNew);
+        pp.verifyProfessionalExp(master12MainExperienceNew);
 
         pp.clickEditMain();
         pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
         pp.mainClickBack();
 
-        pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescriptionNew, master12ExperienceNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainExperienceNew, master12MainLevelNew);
     }
 
     @Test
@@ -387,7 +390,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(user12FirstName1, user12LastName1, user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileBasic(user12FirstName, user12LastName, user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainLevelNew);
 
         pp.editProfessionalAddress();
         pp.addressClickBack();

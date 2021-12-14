@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.selector.ByShadow;
 import config.TestBase;
 import helpers.Attach;
 import io.qameta.allure.Step;
@@ -129,7 +130,7 @@ public class Registration extends TestBase {
         }
     }
 
-    @Step("Verify autofilled phone country code")
+    @Step("Verify phone country code - {userCountry}")
     public void verifyPhoneCountryCode(String userCountry) {
         String value = $("app-registration").$("app-phone-editor").$("ionic-selectable").getText();
         if (value.equals(empty)) {
@@ -139,7 +140,14 @@ public class Registration extends TestBase {
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(userCountry);
         sleep(500);
-        $("ionic-selectable-modal").$("ion-item", 0).shouldHave(Condition.cssClass("ionic-selectable-item-is-selected"));
+        $("ion-virtual-scroll").$("ion-item", 0).shouldHave(Condition.cssClass("ionic-selectable-item-is-selected"));
+        sleep(500);
+        $("ion-virtual-scroll").$("ion-item", 0).pressEscape();
+    }
+
+    @Step("Verify phone number filled")
+    public void verifyPhoneNumber(String userPhoneNumber) {
+        $("app-phone-editor input").parent().shouldHave(Condition.cssClass("has-value"));
     }
 
     @Step("Complete turor slides to search")
