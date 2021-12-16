@@ -630,7 +630,7 @@ public class PositiveTests extends config.TestBase {
         rev.clickReviewTab();
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
-        rev.choseRating(4);
+        rev.choseRating(randomRating);
         rev.sendReviewText(reviewText1);
         rev.pressSend();
         rev.verifyReview(user3FirstName + " " + user3LastName, user5FirstName, reviewText1);
@@ -652,7 +652,7 @@ public class PositiveTests extends config.TestBase {
         rev.clickReviewTab();
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
-        rev.choseRating(1);
+        rev.choseRating(randomRating);
         rev.sendReviewText(reviewText2);
         rev.pressSend();
         rev.verifyReview(user2FirstName + " " + user2LastName, user5FirstName, reviewText2);
@@ -675,7 +675,7 @@ public class PositiveTests extends config.TestBase {
         rev.clickAllReviewsLink();
         rev.clickSendReviewButton();
         rev.addToFavorite();
-        rev.choseRating(5);
+        rev.choseRating(randomRating);
         rev.sendReviewText(reviewText3 + " " + reviewText4);
         rev.pressSend();
         rev.verifyReview(user1FirstName + " " + user1LastName, user5FirstName, reviewText3 + " " + reviewText4);

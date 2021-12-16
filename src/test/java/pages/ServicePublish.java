@@ -377,8 +377,10 @@ public class ServicePublish {
         $("app-service-location").shouldHave(Condition.text(serviceCountry + ", " + serviceCity + ", " + serviceAddress));
     }
 
+    @Step("Check that actual service price equals to expected (${servicePriceActual}{servicePriceActual} : {servicePrice})")
     public void checkPrice(String servicePrice) {
         String servicePriceActual = $("app-price").getText();
+        servicePriceActual = servicePriceActual.replaceAll("[,.]", "");
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(servicePrice)) {
             fail();

@@ -35,7 +35,6 @@ public interface WebDriverConfig extends Config {
     String getBaseUrl();
 
     @Config.Key("remote")
-    @Config.DefaultValue("")
     String getRemote();
 
     @Config.Key("enableVNC")
