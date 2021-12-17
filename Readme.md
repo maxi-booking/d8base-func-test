@@ -8,7 +8,7 @@
 
 * `./gradlew clean test -Denvironment=remote_chrome`
 
-* `./gradlew clean test -Denvironment=remote_chrome`
+* `./gradlew clean test -Denvironment=remote_safari`
 
 ###Запуск с параметрами, пример:
 
