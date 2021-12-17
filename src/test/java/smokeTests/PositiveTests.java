@@ -628,7 +628,7 @@ public class PositiveTests extends config.TestBase {
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(1);
         rev.clickReviewTab();
-        rev.clickAllReviewsLink();
+        rev.clickSendReviewLink();
         rev.clickSendReviewButton();
         rev.choseRating(randomRating);
         rev.sendReviewText(reviewText1);
@@ -650,7 +650,7 @@ public class PositiveTests extends config.TestBase {
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(2);
         rev.clickReviewTab();
-        rev.clickAllReviewsLink();
+        rev.clickSendReviewLink();
         rev.clickSendReviewButton();
         rev.choseRating(randomRating);
         rev.sendReviewText(reviewText2);
@@ -672,7 +672,7 @@ public class PositiveTests extends config.TestBase {
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(3);
         rev.clickReviewTab();
-        rev.clickAllReviewsLink();
+        rev.clickSendReviewLink();
         rev.clickSendReviewButton();
         rev.addToFavorite();
         rev.choseRating(randomRating);

@@ -32,12 +32,12 @@ public class Reviews {
 
     @Step("Open reviews tab")
     public void clickReviewTab() {
-        $("app-professional-page").$(byText("Reviews")).click();
+        $("app-professional-page a.review-count").click();
     }
 
-    @Step("Click all reviews link")
-    public void clickAllReviewsLink() {
-        $("app-professional-page").$(byText("All reviews")).click();
+    @Step("Click send review link")
+    public void clickSendReviewLink() {
+        $("app-reviews-list ion-item.edit-review a").click();
     }
 
     @Step("Click review/rating button")
@@ -47,7 +47,7 @@ public class Reviews {
 
     @Step("Click send review button")
     public void clickSendReviewButton() {
-        $("app-reviews-list").$(byText("Send review")).click();
+        $("app-edit-review ion-row ion-col ion-button",1).click();
     }
 
     @Step("Choose rating {value} star(s)")
@@ -57,13 +57,13 @@ public class Reviews {
         }
         value--;
         sleep(200);
-        $("app-edit-review").$("app-rating-picker").$("ion-item", value).click();
+        $("app-edit-review app-rating-picker ion-item", value).click();
         sleep(200);
     }
 
     @Step("Type review text")
     public void sendReviewText(String reviewText) {
-        $("app-edit-review").$("textarea").sendKeys(reviewText);
+        $("app-edit-review textarea").sendKeys(reviewText);
         sleep(200);
     }
 
@@ -77,7 +77,7 @@ public class Reviews {
     @Step("Send review")
     public void pressSend() {
         sleep(2000);
-        $("app-edit-review").$("ion-row ion-col ion-button",1).scrollIntoView(false).click();
+        $("app-edit-review ion-row ion-col ion-button",1).scrollIntoView(true).click();
         sleep(3000);
     }
 

@@ -111,7 +111,7 @@ public class Booking {
     @Step("Click the 'Order' button to book")
     public void clickOrder() {
         sleep(500);
-        $("#pick-service").scrollIntoView(false).click();
+        $("#pick-service").scrollIntoView(true).click();
         sleep(500);
     }
 
@@ -142,6 +142,21 @@ public class Booking {
         $("app-time-step").$("app-calendar-component").$("ion-button",1).click();
         sleep(200);
     }
+
+    @Step("Verify previous day button inactive")
+    public void verifyPreviousDayInactive() {
+        sleep(200);
+        $("app-time-step").$("app-calendar-component").$("ion-button",0).shouldHave(cssClass("button-disabled"));
+        sleep(200);
+    }
+
+    @Step("Verify previous day button active")
+    public void verifyPreviousDayActive() {
+        sleep(200);
+        $("app-time-step").$("app-calendar-component").$("ion-button",0).shouldNotHave(cssClass("button-disabled"));
+        sleep(200);
+    }
+
 
     @Step("Pick booking time")
     public void bookTime(int value) {
@@ -212,7 +227,7 @@ public class Booking {
         $("ionic-selectable-modal").$("input").sendKeys(country);
         sleep(500);
         $("ionic-selectable-modal").$("ion-item", 0).click();
-        $("app-client-details-step").$("form").$("section").$("input[type='text']",2).scrollIntoView(true).setValue(number);
+        $("app-client-details-step input[inputmode='decimal']").setValue(number);
     }
 
     @Step("Select address")

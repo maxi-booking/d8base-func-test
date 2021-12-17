@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.WebDriverRunner;
+import helpers.Attach;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -47,6 +48,7 @@ public class Orders extends config.TestBase {
             String serviceTotalDuration
     ) {
         sleep(400);
+        Attach.screenshotAs("Screenshot");
         $("app-inbox-page").shouldHave(
                 text(userFirstName),
                 text(serviceTotalDuration)
@@ -112,7 +114,7 @@ public class Orders extends config.TestBase {
 
     @Step("Discard the order: client")
     public void discardOrderClient(String discardComment) {
-        $("app-sent-order-list-item").$("ion-card").$("ion-button", 2).click();
+        $("app-sent-order-list-item ion-card ion-button", 1).click();
         sleep(200);
         $("ion-popover").$("app-cancel-confirmation-popover").$("ion-item", 0).click();
         sleep(200);

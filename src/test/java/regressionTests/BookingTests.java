@@ -107,4 +107,29 @@ public class BookingTests extends config.TestBase {
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service);
     }
+
+    @Test
+    @Feature("Booking")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4929")
+    @Severity(SeverityLevel.TRIVIAL)
+    @DisplayName("Booking: time step, can't navigate back in time via arrows")
+    void t00100() {
+        userRegister();
+        serviceRegister();
+        log.forceMainPage();
+        log.forceEN();
+        sideMenu.clickSearch();
+
+        bkn.closeFilters();
+        bkn.findService(serviceName);
+        bkn.chooseService();
+        bkn.clickOrder();
+        bkn.pickTheDate(today);
+        bkn.verifyPreviousDayInactive();
+        bkn.clickNextDay();
+        bkn.verifyPreviousDayActive();
+        bkn.clickPreviousDay();
+        bkn.verifyPreviousDayInactive();
+    }
 }

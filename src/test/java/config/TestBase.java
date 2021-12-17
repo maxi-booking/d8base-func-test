@@ -61,10 +61,8 @@ public class TestBase extends TestData {
         }
         Configuration.timeout = config.getTimeout();
         Configuration.headless = config.getHeadless();
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        Configuration.browserCapabilities = capabilities;
-        capabilities.setCapability("enableVNC", config.getVNC());
-        capabilities.setCapability("enableVideo", config.getVideo());
+        Configuration.browserCapabilities.setCapability("enableVNC", config.getVNC());
+        Configuration.browserCapabilities.setCapability("enableVideo", config.getVideo());
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         setTestData();
     }

@@ -711,6 +711,8 @@ public class TestData {
             serviceDescription,
             serviceDuration,
             servicePrice,
+            servicePriceMin,
+            servicePriceMax,
             serviceSpecialization,
             serviceAddress,
             serviceDistance,
@@ -732,6 +734,8 @@ public class TestData {
         serviceDescription = generate.lorem().characters(20, 200);
         serviceDuration = String.valueOf(generate.number().numberBetween(15, 45));
         servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
+        servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
+        servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
         serviceSpecialization = generate.job().title() + " " + generate.ancient().god();
         serviceAddress = generate.address().fullAddress();
         serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));

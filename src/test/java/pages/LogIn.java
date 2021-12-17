@@ -1,6 +1,5 @@
 package pages;
 
-import com.beust.jcommander.StringKey;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -44,10 +43,10 @@ public class LogIn extends config.TestBase {
     }
 
     public void logoClick() {
-        $$("ion-item").filter(visible).get(0).scrollIntoView(false).click();
+        $$("ion-item").filter(visible).get(0).scrollIntoView(true).click();
     }
 
-    @Step("Log In with {login} : {password}")
+    @Step("Log In with ${login} : ${password}")
     public void logIn(String login, String password) {
         forceEN();
         sideMenu.clickLogIn();
@@ -109,10 +108,10 @@ public class LogIn extends config.TestBase {
         String login = emails[value];
         String password = passwords[value];
         sideMenu.clickLogIn();
-        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(login);
-        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(password);
+        $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(login);
+        $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
         Attach.screenshotAs("Login_info");
-        $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(false).click();
+        $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
         sleep(1000);
     }
 
@@ -172,7 +171,13 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkip() {
+        sleep(1000);
+        $("ion-alert div.alert-head").click(-400, 0);
         sleep(500);
+    }
+
+    public void popupSkipMenus() {
+        sleep(1000);
         if (!Configuration.browser.equals("safari")) {
             $("ion-alert").pressEscape();
         } else {
@@ -184,7 +189,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkipEsc() {
-        sleep(500);
+        sleep(1000);
         $("ion-alert").pressEscape();
         sleep(500);
     }

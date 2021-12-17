@@ -411,6 +411,7 @@ public class UserProfile {
 
     @Step("Profile: About - select nationality")
     public void selectNationality(String value) {
+        sleep(500);
         $("app-about-edit").$("form").$("button", 0).click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(value);
@@ -420,6 +421,7 @@ public class UserProfile {
 
     @Step("Profile: About - select languages")
     public void selectLanguage(String value) {
+        sleep(500);
         $("app-about-edit").$("form").$("button", 1).click();
         sleep(1000);
         $("ionic-selectable-modal").$("input").sendKeys(value);
@@ -432,7 +434,7 @@ public class UserProfile {
     @Step("Profile: About - click 'save'")
     public void clickSaveAbout() {
         $("app-about-edit").$("form").$("ion-button").click();
-        sleep(500);
+        sleep(2000);
     }
 
 }

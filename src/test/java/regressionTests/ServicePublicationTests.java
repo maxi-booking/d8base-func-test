@@ -3,6 +3,10 @@ package regressionTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static helpers.RegressionTestsHelpers.userRegister;
 
@@ -255,5 +259,42 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         pbl.verifyCategoryListLanguageEng();
         pbl.verifySubcategoryListLanguageEng();
+    }
+
+    @ParameterizedTest(name = "Service publish: verify that with price range {1} currency stays the same")
+    @CsvSource({
+            "0, CAD",
+            "1, EUR",
+            "2, RUB",
+            "3, USD"
+    })
+    void t00300(int currency, String currencyName) {
+        userRegister();
+        log.openMainPage();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration("0", "0", serviceDuration);
+        pbl.setPriceRange(servicePriceMin, servicePriceMax, currency);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(serviceSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.fillScheduleLite();
+        pbl.selectPaymentByCash();
+        pbl.selectOnlinePayment();
+        pbl.clickSeventhStep();
+
+        pbl.verifyPriceCurrency(servicePriceMin, servicePriceMax, currency);
+        pbl.publishService();
     }
 }

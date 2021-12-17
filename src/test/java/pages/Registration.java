@@ -31,13 +31,13 @@ public class Registration extends TestBase {
 
     @Step("Fill an email")
     public void fillEmail(String userEmail) {
-        $$("input[name='email']").filter(visible).get(0).scrollIntoView(false).setValue(userEmail);
+        $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(userEmail);
     }
 
     @Step("Choose a password")
     public void choosePassword(String userPassword) {
-        $$("input[name='password']").filter(visible).get(0).scrollIntoView(false).setValue(userPassword);
-        $$("input[name='confirm']").filter(visible).get(0).scrollIntoView(false).setValue(userPassword);
+        $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(userPassword);
+        $$("input[name='confirm']").filter(visible).get(0).scrollIntoView(true).setValue(userPassword);
     }
 
     @Step("Fill a phone number")

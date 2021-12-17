@@ -17,7 +17,7 @@ public class ProfessionalProfile {
 
     @Step("Click social share button")
     public void clickSocialShare() {
-        $$("ion-icon[name='share-social-outline']").filter(visible).get(0).scrollIntoView(false).parent().click();
+        $$("ion-icon[name='share-social-outline']").filter(visible).get(0).scrollIntoView(true).parent().click();
     }
 
 // other person's professional profile methods
@@ -33,7 +33,7 @@ public class ProfessionalProfile {
     public void expandItems() {
         sleep(500);
         while ($("app-professional-page").$("app-collapse-item ion-item.item-lines-full").exists()) {
-            $("app-professional-page").$("app-collapse-item ion-item.item-lines-full").scrollIntoView(false).click();
+            $("app-professional-page").$("app-collapse-item ion-item.item-lines-full").scrollIntoView(true).click();
             sleep(100);
         }
     }
@@ -42,24 +42,24 @@ public class ProfessionalProfile {
     public void collapseItems() {
         sleep(500);
         while ($("app-professional-page").$("app-collapse-item ion-item.item-lines-none").exists()) {
-            $("app-professional-page").$("app-collapse-item ion-item.item-lines-none").scrollIntoView(false).click();
+            $("app-professional-page").$("app-collapse-item ion-item.item-lines-none").scrollIntoView(true).click();
             sleep(100);
         }
     }
 
     @Step("Open reviews")
     public void clickReviews() {
-        $("app-professional-page").$("a.review-count").scrollIntoView(false).click();
+        $("app-professional-page").$("a.review-count").scrollIntoView(true).click();
     }
 
     @Step("Click avatar edit button")
     public void clickAvatarEdit() {
-        $("app-professional-page").$("a[routerlink='/profile'] img").scrollIntoView(false).click();
+        $("app-professional-page").$("a[routerlink='/profile'] img").scrollIntoView(true).click();
     }
 
     @Step("Click create reservation button")
     public void clickCreateReservation() {
-        $("app-professional-page").$("ion-button.book-btn").scrollIntoView(false).click();
+        $("app-professional-page").$("ion-button.book-btn").scrollIntoView(true).click();
     }
 
     @Step("Professional Profile: verify profile data - basic")
@@ -72,13 +72,13 @@ public class ProfessionalProfile {
             String masterAbout,
             String masterLevel
     ) {
-        $("app-professional-page").$("app-professional-card-large").scrollIntoView(false).shouldHave(text(firstName + " " + lastName));
-        $("app-professional-page").$("app-location-viewer").scrollIntoView(false).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
+        $("app-professional-page").$("app-professional-card-large").scrollIntoView(true).shouldHave(text(firstName + " " + lastName));
+        $("app-professional-page").$("app-location-viewer").scrollIntoView(true).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         if ($("app-professional-page").$("app-shorten").$("span.ext").exists()) {
             $("app-professional-page").$("app-shorten").$("span.ext").click();
         }
-        $("app-professional-page").$("app-shorten").scrollIntoView(false).shouldHave(text(masterAbout));
-        $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(masterLevel));
+        $("app-professional-page").$("app-shorten").scrollIntoView(true).shouldHave(text(masterAbout));
+        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterLevel));
     }
 
     @Step("Professional Profile: verify professional experience {value}")
@@ -86,12 +86,12 @@ public class ProfessionalProfile {
             String value
     ) {
         Attach.screenshotAs("Screenshot");
-        $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(value));
+        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(value));
     }
 
     @Step("Professional Profile: verify professional name ({firstName} {lastName})")
     public void verifyProfessionalProfileName(String firstName, String lastName) {
-        $("app-professional-page").$("app-professional-card-large").scrollIntoView(false).shouldHave(text(firstName + " " + lastName));
+        $("app-professional-page").$("app-professional-card-large").scrollIntoView(true).shouldHave(text(firstName + " " + lastName));
 
     }
 
@@ -104,34 +104,34 @@ public class ProfessionalProfile {
             String masterExperience,
             String masterLevel
     ) {
-        $("app-professional-page").$("app-location-viewer").scrollIntoView(false).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
+        $("app-professional-page").$("app-location-viewer").scrollIntoView(true).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         if ($("app-professional-page").$("app-shorten").$("span.ext").exists()) {
-            $("app-professional-page").$("app-shorten").$("span.ext").scrollIntoView(false).click();
+            $("app-professional-page").$("app-shorten").$("span.ext").scrollIntoView(true).click();
         }
-        $("app-professional-page").$("app-shorten").scrollIntoView(false).shouldHave(text(masterAbout));
+        $("app-professional-page").$("app-shorten").scrollIntoView(true).shouldHave(text(masterAbout));
 
         String masterExperienceX = String.valueOf(Long.parseLong(masterExperience) + 1);
-        if ($("app-professional-page").$("main").scrollIntoView(false).has(text(masterExperience))) {
-            $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(masterExperience));
-        } else if ($("app-professional-page").$("main").scrollIntoView(false).has(text(masterExperienceX))) {
-            $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(masterExperienceX));
+        if ($("app-professional-page").$("main").scrollIntoView(true).has(text(masterExperience))) {
+            $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterExperience));
+        } else if ($("app-professional-page").$("main").scrollIntoView(true).has(text(masterExperienceX))) {
+            $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterExperienceX));
         } else {
             fail();
         }
 
-        $("app-professional-page").$("main").scrollIntoView(false).shouldHave(text(masterLevel));
+        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterLevel));
     }
 
     //address
 
     @Step("Address: click edit professional address")
     public void editProfessionalAddress() {
-        $("app-professional-page").$("app-location-viewer").scrollIntoView(false).click();
+        $("app-professional-page").$("app-location-viewer").scrollIntoView(true).click();
     }
 
     @Step("Address: click add new address")
     public void clickAddNewAddress() {
-        $("app-professional-page").$("app-add-button").$("ion-item").scrollIntoView(false).click();
+        $("app-professional-page").$("app-add-button").$("ion-item").scrollIntoView(true).click();
     }
 
     @Step("Address: click back")
@@ -144,7 +144,7 @@ public class ProfessionalProfile {
 
     @Step("Main: click edit data")
     public void clickEditMain() {
-        $("app-professional-page").$("ion-item[routerlink='edit']").scrollIntoView(false).click();
+        $("app-professional-page").$("ion-item[routerlink='edit']").scrollIntoView(true).click();
     }
 
     @Step("Main: click back")
@@ -228,9 +228,9 @@ public class ProfessionalProfile {
     //value 0-8
     public void editCategory(Integer value) {
         sleep(500);
-        $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='category']").scrollIntoView(false).click();
+        $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='category']").scrollIntoView(true).click();
         sleep(500);
-        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).scrollIntoView(false).click();
+        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).scrollIntoView(true).click();
         sleep(500);
         Attach.screenshotAs("Screenshot");
 
@@ -240,7 +240,7 @@ public class ProfessionalProfile {
     //value 0-8
     public void editSubcategory(Integer value) {
         sleep(500);
-        $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='subcategory']").scrollIntoView(false).click();
+        $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='subcategory']").scrollIntoView(true).click();
         sleep(500);
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).click();
         sleep(500);
@@ -299,7 +299,7 @@ public class ProfessionalProfile {
 
     @Step("About: click edit about")
     public void clickEditAbout() {
-        $("app-professional-page").$("ion-button[routerlink='/profile/about']").scrollIntoView(false).click();
+        $("app-professional-page").$("ion-button[routerlink='/profile/about']").scrollIntoView(true).click();
     }
 
     @Step("About: click back")
@@ -312,13 +312,13 @@ public class ProfessionalProfile {
 
     @Step("Qualification: click add new qualification")
     public void clickAddNewQualification() {
-        $("app-professional-page").$("app-add-button[routerlink='experience-add/']").$("ion-item").scrollIntoView(false).click();
+        $("app-professional-page").$("app-add-button[routerlink='experience-add/']").$("ion-item").scrollIntoView(true).click();
     }
 
     @Step("Qualification: click edit existing qualification")
     // values 1-99
     public void clickEditQualification(Integer value) {
-        $("app-professional-page").$("app-collapse-item", 1).$("ion-item app-experience", value).parent().scrollIntoView(false).click();
+        $("app-professional-page").$("app-collapse-item", 1).$("ion-item app-experience", value).parent().scrollIntoView(true).click();
     }
 
     @Step("Qualification: click back")
@@ -423,13 +423,13 @@ public class ProfessionalProfile {
 
     @Step("Education: click add new education")
     public void clickAddNewEducation() {
-        $("app-professional-page").$("app-add-button[routerlink='education-add/'] ion-item").scrollIntoView(false).click();
+        $("app-professional-page").$("app-add-button[routerlink='education-add/'] ion-item").scrollIntoView(true).click();
     }
 
     @Step("Education: click edit existing education")
     // values 1-99
     public void clickEditEducation(Integer value) {
-        $("app-professional-page").$("app-collapse-item", 2).$("ion-item app-education", value).parent().scrollIntoView(false).click();
+        $("app-professional-page").$("app-collapse-item", 2).$("ion-item app-education", value).parent().scrollIntoView(true).click();
     }
 
     @Step("Education: click back")
@@ -538,13 +538,13 @@ public class ProfessionalProfile {
 
     @Step("Certificates: click add new certificate")
     public void clickAddNewCertificate() {
-        $("app-professional-page").$("app-add-button[routerlink='certificate-add/'] ion-item").scrollIntoView(false).click();
+        $("app-professional-page").$("app-add-button[routerlink='certificate-add/'] ion-item").scrollIntoView(true).click();
     }
 
     @Step("Certificates: click edit existing certificate")
     // values 1-99
     public void clickEditCertificate(Integer value) {
-        $("app-professional-page").$("app-collapse-item", 3).$("ion-item app-certificate", value).parent().scrollIntoView(false).click();
+        $("app-professional-page").$("app-collapse-item", 3).$("ion-item app-certificate", value).parent().scrollIntoView(true).click();
     }
 
     @Step("Certificates: click back")
@@ -656,6 +656,6 @@ public class ProfessionalProfile {
 
     @Step("Reviews: click 'all reviews'")
     public void clickAllReviews() {
-        $("app-professional-page").$("app-review-cards").parent().$("ion-item a").scrollIntoView(false).click();
+        $("app-professional-page").$("app-review-cards").parent().$("ion-item a").scrollIntoView(true).click();
     }
 }
