@@ -28,7 +28,8 @@ public class TestBase extends TestData {
             urlUserRegistration = urlBase + "auth/registration",
             urlProfile = urlBase + "profile",
             urlClientDetails = "client-details",
-            urlProfessionalProfile = urlBase + "professional";
+            urlProfessionalProfile = urlBase + "professional",
+            urlForPerformers = urlBase + "for-performers";
 
     public static SideMenu sideMenu = new SideMenu();
     public static TopBar topBar = new TopBar();
@@ -43,6 +44,7 @@ public class TestBase extends TestData {
     public static LogIn log = new LogIn();
     public static UserProfile up = new UserProfile();
     public static ProfessionalProfile pp = new ProfessionalProfile();
+    public static Footer ftr = new Footer();
 
     public static UserEmails getEmail = new UserEmails();
     public static String[] emails = getEmail.userEmail();

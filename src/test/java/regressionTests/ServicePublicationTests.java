@@ -4,7 +4,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -262,6 +261,10 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @ParameterizedTest(name = "Service publish: verify that with price range {1} currency stays the same")
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4900")
+    @Severity(SeverityLevel.CRITICAL)
     @CsvSource({
             "0, CAD",
             "1, EUR",

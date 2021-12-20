@@ -170,6 +170,27 @@ public class LogIn extends config.TestBase {
         $("app-on-map-popover").$("ion-button").click();
     }
 
+    public void popupSelectOld(String country, String city) {
+        popupSkip();
+        forceEN();
+        refreshPage();
+
+        $("ion-alert").$("button", 1).click();
+
+        $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(country);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-item").click();
+
+        $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
+        sleep(1000);
+        $("ionic-selectable-modal").$("input").sendKeys(city);
+        sleep(500);
+        $("ionic-selectable-modal").$("ion-item").click();
+        $("app-on-map-popover").$("ion-button").click();
+    }
+
     public void popupSkip() {
         sleep(1000);
         $("ion-alert div.alert-head").click(-400, 0);

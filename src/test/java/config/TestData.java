@@ -21,17 +21,17 @@ public class TestData {
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
         String[] userEmail = {
-                generate.name().username() + "@aa.bb",
-                generate.name().username() + "@bb.cc",
-                generate.name().username() + "@cc.dd",
-                generate.name().username() + "@dd.ee",
-                generate.name().username() + "@ee.ff",
-                generate.name().username() + "@cc.aa",
-                generate.name().username() + "@tt.jj",
-                generate.name().username() + "@cc.ff",
-                generate.name().username() + "@ii.oo",
-                generate.name().username() + "@ll.tt",
-                generate.name().username() + "@pp.nn",
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
                 generate.name().username() + "@" + generate.lorem().characters(2, 5) + "." + c + c
         };
         public String[] userEmail() {
@@ -360,7 +360,6 @@ public class TestData {
 
         //random confirmation
         random = "random";
-
 
         LocalDate currentDate = LocalDate.now();
         int day = currentDate.getDayOfMonth();

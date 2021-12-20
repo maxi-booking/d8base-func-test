@@ -139,7 +139,6 @@ public class Orders extends config.TestBase {
         );
     }
 
-
     @Step("Simple order check outbox")
     public void checkDiscardOrderOutbox(
             String userFirstName,
