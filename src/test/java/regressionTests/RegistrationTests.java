@@ -18,16 +18,16 @@ public class RegistrationTests extends config.TestBase {
         log.popupSkip();
         log.forceRU();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user11FirstName);
-        reg.fillUserLastName(user11LastName);
+        reg.fillUserFirstName(firstNames[10]);
+        reg.fillUserLastName(lastNames[10]);
         reg.fillEmail(emails[10]);
         reg.choosePassword(passwords[10]);
-        reg.fillPhoneNumber(user11PhoneNumber, user11Country);
-        reg.selectCountry(user11Country);
-        reg.selectCity(user11City);
+        reg.fillPhoneNumber(phoneNumbers[10], countries[10]);
+        reg.selectCountry(countries[10]);
+        reg.selectCity(cities[10]);
         reg.confirmAndWait();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(user11FirstName, user11LastName, emails[10], user11PhoneNumber, user11Country, user11City);
+        reg.verifyRegistrationDataFull(firstNames[10], lastNames[10], emails[10], phoneNumbers[10], countries[10], cities[10]);
         up.verifyRussianLang();
     }
 

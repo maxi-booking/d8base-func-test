@@ -13,19 +13,19 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
     void t00000() {
-        log.popupSelect(user12Country, user12City);
+        log.popupSelect(countries[11], cities[11]);
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(user12FirstName);
-        reg.fillUserLastName(user12LastName);
+        reg.fillUserFirstName(firstNames[11]);
+        reg.fillUserLastName(lastNames[11]);
         reg.fillEmail(emails[11]);
         reg.choosePassword(passwords[11]);
-        reg.fillPhoneNumber(user12PhoneNumber, user12Country);
-        reg.selectCountry(user12Country);
-        reg.selectCity(user12City);
+        reg.fillPhoneNumber(phoneNumbers[11], countries[11]);
+        reg.selectCountry(countries[11]);
+        reg.selectCity(cities[11]);
         reg.confirmAndWait();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(user12FirstName, user12LastName, emails[11], user12PhoneNumber, user12Country, user12City);
+        reg.verifyRegistrationDataFull(firstNames[11], lastNames[11], emails[11], phoneNumbers[11], countries[11], cities[11]);
 
         log.forceEN();
         log.openMainPage();
@@ -78,7 +78,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(user12FirstName, user12LastName, user12Country, user12City, user12Address, master12MainDescription, master12MainLevel);
+        pp.verifyProfessionalProfileBasic(firstNames[11], lastNames[11], countries[11], cities[11], user12Address, master12MainDescription, master12MainLevel);
 
         pp.clickEditMain();
         pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
@@ -89,7 +89,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.clickEditMain();
         pp.editExperience(master12MainExperience);
         pp.mainClickSave();
-        pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
+        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
     }
 
     @Test
@@ -177,7 +177,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
         pp.mainClickBack();
 
-        pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainExperienceNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescriptionNew, master12MainExperienceNew, master12MainLevelNew);
     }
 
     @Test
@@ -390,7 +390,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(user12FirstName, user12LastName, user12Country, user12City, user12Address, master12MainDescriptionNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileBasic(firstNames[11], lastNames[11], countries[11], cities[11], user12Address, master12MainDescriptionNew, master12MainLevelNew);
 
         pp.editProfessionalAddress();
         pp.addressClickBack();
@@ -580,6 +580,6 @@ public class ProfessionalProfileTests extends config.TestBase {
         pp.certificatesClickRemove();
         pp.certificatesVerificationEmpty();
 
-        pp.verifyProfessionalProfileMain(user12Country, user12City, user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
+        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
     }
 }

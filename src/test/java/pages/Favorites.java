@@ -48,19 +48,6 @@ public class Favorites {
         $("app-professional-card", index).$("app-saved-professional-toggle").$("ion-button").click();
     }
 
-    @Step("Close default filters")
-    public void closeFilters() {
-        $("app-applied-filters").$("ion-chip").click();
-        sleep(1000);
-    }
-
-    @Step("Input search text and press Enter")
-    public void findService(String serviceName) {
-        $("app-search").$("form").$("input").setValue("\"" + serviceName + "\"");
-        sleep(1000);
-        $("app-search").$("form").$("input").pressEnter();
-    }
-
     @Step("Verify that the search result is correct")
     public void verifyServiceSearch(
             String firstName,

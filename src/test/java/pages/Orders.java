@@ -118,8 +118,7 @@ public class Orders extends config.TestBase {
         sleep(200);
         $("ion-popover").$("app-cancel-confirmation-popover").$("ion-item", 0).click();
         sleep(200);
-        $("ion-alert").$("button", 1).click();
-        $("ion-alert").$(byText("OK")).click();
+        $("ion-action-sheet button", 1).click();
         sleep(200);
         $("ion-popover").$("app-cancel-confirmation-popover").$("ion-item", 1).sendKeys(discardComment);
         $("ion-popover").$("app-cancel-confirmation-popover").$("ion-button").click();
@@ -158,7 +157,7 @@ public class Orders extends config.TestBase {
 
     @Step("Complete the order")
     public void completeOrder() {
-        $("app-received-order-list-item").$("ion-card").$("ion-button", 1).click();
+        $("app-received-order-list-item ion-card ion-button").click();
         sleep(500);
     }
 

@@ -1,6 +1,7 @@
 package pages;
 
 import com.github.javafaker.Faker;
+import config.TestBase;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static helpers.MonthHelper.monthConvertToNumber;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class ProfessionalProfile {
+public class ProfessionalProfile extends TestBase {
 
     @Step("Click social share button")
     public void clickSocialShare() {
@@ -28,6 +29,17 @@ public class ProfessionalProfile {
     }
 
 // your own professional profile methods
+
+    @Step("Open my professional profile via link")
+    public void openMyProfessionalProfileLink() {
+        open(urlMyProfessionalProfile);
+    }
+
+    @Step("Upload 'Best works' picture: {image}")
+    public void uploadBestWorks(String image) {
+        $("app-professional-page").$("app-image-carousel").$("input[type='file']").uploadFile(new File(image));
+        sleep(5000);
+    }
 
     @Step("Expand all collapse items")
     public void expandItems() {

@@ -29,6 +29,7 @@ public class TestBase extends TestData {
             urlProfile = urlBase + "profile",
             urlClientDetails = "client-details",
             urlProfessionalProfile = urlBase + "professional",
+            urlMyProfessionalProfile = urlBase + "professional/my-profile",
             urlForPerformers = urlBase + "for-performers";
 
     public static SideMenu sideMenu = new SideMenu();
@@ -40,7 +41,7 @@ public class TestBase extends TestData {
     public static Messages msg = new Messages();
     public static Favorites fav = new Favorites();
     public static Reviews rev = new Reviews();
-    public static Search sch = new Search();
+    public static Search search = new Search();
     public static LogIn log = new LogIn();
     public static UserProfile up = new UserProfile();
     public static ProfessionalProfile pp = new ProfessionalProfile();
@@ -48,8 +49,24 @@ public class TestBase extends TestData {
 
     public static UserEmails getEmail = new UserEmails();
     public static String[] emails = getEmail.userEmail();
+
     public static UserPasswords getPassword = new UserPasswords();
     public static String[] passwords = getPassword.userPassword();
+
+    public static userFirstNames getFirstName = new userFirstNames();
+    public static String[] firstNames = getFirstName.userFirstName();
+
+    public static userLastNames getLastName = new userLastNames();
+    public static String[] lastNames = getLastName.userLastName();
+
+    public static userPhoneNumbers getPhoneNumber = new userPhoneNumbers();
+    public static String[] phoneNumbers = getPhoneNumber.userPhoneNumber();
+
+    public static userCountries getCountry = new userCountries();
+    public static String[] countries = getCountry.userCountry();
+
+    public static userCities getCity = new userCities();
+    public static String[] cities = getCity.userCity();
 
     @BeforeAll
     public static void init() {

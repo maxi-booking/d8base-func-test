@@ -49,8 +49,8 @@ public class ProfessionalProfileTests extends config.TestBase {
         sideMenu.clickLogOut();
 
         sideMenu.clickSearch();
-        sch.search(serviceName);
-        sch.clickProfessionalsName();
+        search.search(serviceName);
+        search.clickProfessionalsName();
         pp.clickSocialShare();
         log.toastVisible();
     }

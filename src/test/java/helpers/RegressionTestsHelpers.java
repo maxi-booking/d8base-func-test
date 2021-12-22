@@ -27,7 +27,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         pbl.enterServiceName(serviceName);
         pbl.enterServiceDescription(serviceDescription);
         pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, rub);
+        pbl.setPriceFixed(servicePrice, randomCurrency);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 

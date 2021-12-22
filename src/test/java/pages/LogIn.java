@@ -9,6 +9,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -192,7 +194,7 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkip() {
-        sleep(1000);
+        $("ion-alert div.alert-head").shouldBe(visible, Duration.ofSeconds(5));
         $("ion-alert div.alert-head").click(-400, 0);
         sleep(500);
     }

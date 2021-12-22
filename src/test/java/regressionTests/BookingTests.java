@@ -22,7 +22,7 @@ public class BookingTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.closeFilters();
+        search.closeAllChips();
         bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
@@ -49,7 +49,7 @@ public class BookingTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.closeFilters();
+        search.closeAllChips();
         bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
@@ -89,7 +89,7 @@ public class BookingTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.closeFilters();
+        search.closeAllChips();
         bkn.findService(service);
         bkn.chooseService();
         bkn.clickOrder();
@@ -121,7 +121,7 @@ public class BookingTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.closeFilters();
+        search.closeAllChips();
         bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();

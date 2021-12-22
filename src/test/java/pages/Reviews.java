@@ -101,9 +101,9 @@ public class Reviews {
     }
 
     @Step("Verify bookmarks")
-    public void verifyBookmark(String masterName) {
+    public void verifyBookmark(String masterName, String rating) {
         $("app-bookmarks-list-page").$("app-professional-card").shouldHave(text(masterName));
-        $("app-bookmarks-list-page").$("app-rating").shouldHave(text("5.00"));
+        $("app-bookmarks-list-page").$("app-rating").shouldHave(text(rating));
     }
 
     @Step("Click menu button")

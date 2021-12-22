@@ -60,75 +60,131 @@ public class TestData {
         }
     }
 
+    public static class userFirstNames {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] userFirstName = {
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().firstName(),
+                generate.name().firstName() + generate.name().suffix(),
+                generate.funnyName().name()
+        };
+        public String[] userFirstName() {
+            return userFirstName;
+        }
+    }
+
+    public static class userLastNames {
+        Faker generate = new Faker(new Locale("en-US"));
+        String animalName = generate.animal().name();
+        String[] userLastName = {
+                generate.name().lastName() + generate.name().lastName(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
+                generate.name().lastName() + generate.name().suffix(),
+                animalName.substring(0, 1).toUpperCase() + animalName.substring(1)
+        };
+        public String[] userLastName() {
+            return userLastName;
+        }
+    }
+
+    public static class userPhoneNumbers {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] userPhoneNumber = {
+                "911" + generate.number().digits(7),
+                "911" + generate.number().digits(7),
+                "911" + generate.number().digits(7),
+                "911" + generate.number().digits(7),
+                "911" + generate.number().digits(7),
+                "6135" + generate.number().digits(6),
+                "4575" + generate.number().digits(6),
+                "5905" + generate.number().digits(6),
+                "1595" + generate.number().digits(6),
+                "911" + generate.number().digits(7),
+                "923" + generate.number().digits(7),
+                "903" + generate.number().digits(7)
+        };
+        public String[] userPhoneNumber() {
+            return userPhoneNumber;
+        }
+    }
+
+    public static class userCountries {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] userCountry = {
+                "Russia",
+                "Russia",
+                "Russia",
+                "Russia",
+                "Russia",
+                "Canada",
+                "Finland",
+                "France",
+                "Germany",
+                "Russia",
+                "Россия",
+                "Russia"
+        };
+        public String[] userCountry() {
+            return userCountry;
+        }
+    }
+
+    public static class userCities {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] userCity = {
+                "Moscow",
+                "Moscow",
+                "Moscow",
+                "Moscow",
+                "Moscow",
+                "Toronto",
+                "Helsinki",
+                "Paris",
+                "Berlin",
+                "Moscow",
+                "Москва",
+                "Moscow"
+        };
+        public String[] userCity() {
+            return userCity;
+        }
+    }
+
     public static String
             testUser10New,
             testPassword10New,
-            user1FirstName,
-            user1LastName,
-            user1PhoneNumber,
-            user1Country,
-            user1City,
-            user2FirstName,
-            user2LastName,
-            user2PhoneNumber,
-            user2Country,
-            user2City,
-            user3FirstName,
-            user3LastName,
-            user3PhoneNumber,
-            user3Country,
-            user3City,
-            user4FirstName,
-            user4LastName,
-            user4PhoneNumber,
-            user4Country,
-            user4City,
-            user5FirstName,
-            user5LastName,
-            user5PhoneNumber,
-            user5Country,
-            user5City,
-            user6FirstName,
-            user6LastName,
-            user6PhoneNumber,
-            user6Country,
-            user6City,
-            user7FirstName,
-            user7LastName,
-            user7PhoneNumber,
-            user7Country,
-            user7City,
-            user8FirstName,
-            user8LastName,
-            user8PhoneNumber,
-            user8Country,
-            user8City,
-            user9FirstName,
-            user9LastName,
-            user9PhoneNumber,
-            user9Country,
-            user9City,
-            user10FirstName,
-            user10LastName,
-            user10PhoneNumber,
-            user10Country,
-            user10City,
-            user10FirstNameNew,
-            user10LastNameNew,
+            userFirstName9,
+            userLastName9,
             user10PatronymicNew,
-            user10PhoneNumberNew,
-            user10CountryNew,
+            userPhoneNumber9,
+            userCountry9,
             user10Region,
             user10RegionNew,
             user10SubregionNew,
-            user10CityNew,
+            userCity9,
             user10DistrictNew,
             user10ZipCodeNew,
             user10AddressNew,
-            user10Country2,
+            userCountry9_2,
             user10Region2,
             user10Subregion2,
-            user10City2,
+            userCity9_2,
             user10District2,
             user10ZipCode2,
             user10Address2,
@@ -138,11 +194,6 @@ public class TestData {
             user10Nationality,
             user10Language1,
             user10Language2,
-            user11FirstName,
-            user11LastName,
-            user11PhoneNumber,
-            user11Country,
-            user11City,
             service1Name,
             service1Description,
             service1DurationDays,
@@ -210,12 +261,7 @@ public class TestData {
             masterComment,
             testMessage1,
             testMessage2,
-            user12FirstName,
             user12Patronymic,
-            user12LastName,
-            user12PhoneNumber,
-            user12Country,
-            user12City,
             user12Region,
             user12Subregion,
             user12District,
@@ -247,8 +293,8 @@ public class TestData {
             service12City,
             service12Address,
             service12Distance,
-            user12FirstName1,
-            user12LastName1,
+            userFirstName11,
+            userLastName11,
             master12QualificationJobTitle,
             master12QualificationCompany,
             master12QualificationFromMonth,
@@ -326,6 +372,7 @@ public class TestData {
             randomServiceCategory,
             randomServiceSubcategory,
             randomRating,
+            randomCurrency,
             master12MainCategory,
             master12MainSubcategory,
             master12MainCategoryNew,
@@ -376,66 +423,7 @@ public class TestData {
         randomServiceSubcategory = getRandomSubcategoryFromCategoryValue(randomServiceCategory);
         randomFile = "src/test/resources/img/" + generate.number().numberBetween(1, 12) + ".png";
         randomRating = generate.number().numberBetween(1, 5);
-
-        user1FirstName = generate.name().firstName() + generate.name().firstName();
-        user1LastName = generate.name().lastName() + generate.name().lastName();
-        user1PhoneNumber = "911" + generate.number().digits(7);
-        user1Country = "Russia";
-        user1City = "Moscow";
-
-        user2FirstName = generate.name().firstName() + generate.name().firstName();
-        user2LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user2PhoneNumber = "911" + generate.number().digits(7);
-        user2Country = "Russia";
-        user2City = "Moscow";
-
-        user3FirstName = generate.name().firstName() + generate.name().firstName();
-        user3LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user3PhoneNumber = "911" + generate.number().digits(7);
-        user3Country = "Russia";
-        user3City = "Moscow";
-
-        user4FirstName = generate.name().firstName() + generate.name().firstName();
-        user4LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user4PhoneNumber = "911" + generate.number().digits(7);
-        user4Country = "Russia";
-        user4City = "Moscow";
-
-        user5FirstName = generate.name().firstName() + generate.name().firstName();
-        user5LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user5PhoneNumber = "911" + generate.number().digits(7);
-        user5Country = "Russia";
-        user5City = "Moscow";
-
-        user6FirstName = generate.name().firstName() + generate.name().firstName();
-        user6LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user6PhoneNumber = "6135" + generate.number().digits(6);
-        user6Country = "Canada";
-        user6City = "Toronto";
-
-        user7FirstName = generate.name().firstName() + generate.name().firstName();
-        user7LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user7PhoneNumber = "4575" + generate.number().digits(6);
-        user7Country = "Finland";
-        user7City = "Helsinki";
-
-        user8FirstName = generate.name().firstName() + generate.name().firstName();
-        user8LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user8PhoneNumber = "5905" + generate.number().digits(6);
-        user8Country = "France";
-        user8City = "Paris";
-
-        user9FirstName = generate.name().firstName() + generate.name().firstName();
-        user9LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user9PhoneNumber = "1595" + generate.number().digits(6);
-        user9Country = "Germany";
-        user9City = "Berlin";
-
-        user10FirstName = generate.name().firstName() + generate.name().firstName();
-        user10LastName = generate.name().lastName() + generate.name().suffix() + generate.name().suffix();
-        user10PhoneNumber = "911" + generate.number().digits(7);
-        user10Country = "Russia";
-        user10City = "Moscow";
+        randomCurrency = generate.number().numberBetween(0, 3);
 
         service1Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
         service1Description = generate.lorem().characters(20, 2000);
@@ -506,32 +494,26 @@ public class TestData {
         testMessage1 = generate.dragonBall().character() + " > " + generate.dragonBall().character();
         testMessage2 = generate.friends().quote() + " (c) " + generate.dragonBall().character();
 
-        user11FirstName = generate.name().firstName() + generate.name().suffix();
-        user11LastName = generate.name().lastName() + generate.name().suffix();
-        user11PhoneNumber = "923" + generate.number().digits(7);
-        user11Country = "Россия";
-        user11City = "Москва";
-
         testUser10New = generate.name().username() + "@new.kk";
         testPassword10New = generate.internet().password() + "New";
-        user10FirstNameNew = generate.name().firstName() + "New";
-        user10LastNameNew = generate.name().lastName() + "New";
+        userFirstName9 = generate.name().firstName() + "New";
+        userLastName9 = generate.name().lastName() + "New";
         user10PatronymicNew = generate.name().username() + "New";
-        user10PhoneNumberNew = "964" + generate.number().digits(7);
+        userPhoneNumber9 = "964" + generate.number().digits(7);
 
-        user10CountryNew = "Russia";
+        userCountry9 = "Russia";
         user10Region = "Moscow";
         user10RegionNew = "St.-Petersburg";
         user10SubregionNew = "Petrogradskiy Rayon";
-        user10CityNew = "Saint Petersburg";
+        userCity9 = "Saint Petersburg";
         user10DistrictNew = "Petrogradka";
         user10ZipCodeNew = "197101";
         user10AddressNew = "Каменноостровский пр., 38/96";
 
-        user10Country2 = "Canada";
+        userCountry9_2 = "Canada";
         user10Region2 = "Ontario";
         user10Subregion2 = "Toronto country";
-        user10City2 = "Toronto";
+        userCity9_2 = "Toronto";
         user10District2 = "Etobicoke";
         user10ZipCode2 = "M9A";
         user10Address2 = "8 Orkney Crescent";
@@ -580,13 +562,7 @@ public class TestData {
 
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
-        user12FirstName = generate.funnyName().name();
         user12Patronymic = generate.aviation().aircraft();
-        user12LastName = generate.animal().name();
-        user12LastName = user12LastName.substring(0, 1).toUpperCase() + user12LastName.substring(1); //1st letter to Upper case
-        user12PhoneNumber = "903" + generate.number().digits(7);
-        user12Country = "Russia";
-        user12City = "Moscow";
         user12Region = "Moscow";
         user12Subregion = "Yugo-Vostochnyy Administrativnyy Okrug";
         user12District = "Lefortovo";
@@ -686,8 +662,8 @@ public class TestData {
         master12CertificateLinkNew = master12CertificateLinkNew.replaceAll("\\s+", "").toLowerCase();
         master12CertificatePhotoNew = "src/test/resources/img/" + generate.number().numberBetween(7, 12) + ".png";
 
-        user12FirstName1 = generate.funnyName().name() + " 1";
-        user12LastName1 = generate.animal().name() + " 1";
+        userFirstName11 = generate.funnyName().name() + " 1";
+        userLastName11 = generate.animal().name() + " 1";
 
         long service12DurationDaysLong = parseLong(service12DurationDays),
                 service12DurationHoursLong = parseLong(service12DurationHours),

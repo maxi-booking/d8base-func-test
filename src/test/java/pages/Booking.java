@@ -13,11 +13,6 @@ import static config.TestData.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
-    @Step("Close default filters")
-    public void closeFilters() {
-        $("app-applied-filters").$("ion-chip").click();
-        sleep(1000);
-    }
 
     @Step("Input search text and press Enter")
     public void findService(String searchQuery) {
