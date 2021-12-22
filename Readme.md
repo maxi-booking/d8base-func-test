@@ -1,6 +1,7 @@
-# Параметры запуска для командной строки
+## Параметры запуска для командной строки
 
-##Пресеты через system.properties:
+
+###Пресеты через system.properties:
 
 * `./gradlew clean test -Denvironment=local_chrome`
 
@@ -10,11 +11,13 @@
 
 * `./gradlew clean test -Denvironment=remote_safari`
 
-##Запуск с параметрами, пример:
+
+###Запуск с параметрами, пример:
 
 `./gradlew clean test -DbaseUrl=https://app.maxibooking.ru/ -DbrowserName=chrome`
 
-##Доступные параметры: 
+
+###Доступные параметры: 
 
 * `browserName` - название браузера, default: `chrome` 
 
@@ -36,5 +39,7 @@
 
 браузеры: `chrome`, `safari`, `firefox`, `legacy_firefox`, `ie`, `opera`, `edge`.
 
-##После окончания тестов:
+
+###После окончания тестов:
+
 `./gradlew allureServe` для отчетов.
