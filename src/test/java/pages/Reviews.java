@@ -3,8 +3,9 @@ package pages;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -76,9 +77,9 @@ public class Reviews {
 
     @Step("Send review")
     public void pressSend() {
-        sleep(2000);
+        $("app-edit-review ion-row ion-col ion-button",1).shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
         $("app-edit-review ion-row ion-col ion-button",1).scrollIntoView(true).click();
-        sleep(3000);
+        $("app-reviews-list app-professional-card").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify review")

@@ -49,6 +49,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         sideMenu.clickLogOut();
 
         sideMenu.clickSearch();
+        search.closeAllChips();
         search.search(serviceName);
         search.clickProfessionalsName();
         pp.clickSocialShare();
