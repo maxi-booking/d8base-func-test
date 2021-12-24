@@ -9,12 +9,14 @@ import io.qameta.allure.Step;
 
 import java.io.File;
 import java.text.NumberFormat;
+import java.time.Duration;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -28,25 +30,23 @@ public class ServicePublish extends config.TestBase {
     @Step("Choose a category: {value}")
     //value 0-8
     public void chooseCategory(Integer value) {
-        sleep(500);
-        $("app-category-selector").$("ionic-selectable").click();
-        sleep(500);
+        $("app-category-selector").$("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-category-selector").$("ionic-selectable").scrollIntoView(true).click();
+        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).click();
-        sleep(500);
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
         Attach.screenshotAs("Screenshot");
-
     }
 
     @Step("Choose a subcategory: {value}")
     //value 0-8
     public void chooseSubcategory(Integer value) {
-        sleep(500);
+        $("app-subcategory-selector").$("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
         $("app-subcategory-selector").$("ionic-selectable").scrollIntoView(true).click();
-        sleep(500);
+        $("ionic-selectable-modal").$("ion-content").$("ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(true).click();
-        sleep(500);
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
         Attach.screenshotAs("Screenshot");
-
     }
 
     public void clickFirstStep() {
@@ -105,8 +105,8 @@ public class ServicePublish extends config.TestBase {
             Faker generate = new Faker(new Locale("en-US"));
             picture = String.valueOf(generate.number().numberBetween(1, 12)) + ".png";
         }
-        sleep(2000);
-        $("app-service-publish-step-three").$("app-image-carousel").$("input[type='file']").uploadFile(new File("src/test/resources/img/" + picture));
+        $("app-service-publish-step-three app-image-carousel input[type='file']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-service-publish-step-three app-image-carousel input[type='file']").uploadFile(new File("src/test/resources/img/" + picture));
         sleep(2000);
     }
 
@@ -127,24 +127,16 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Fill user info")
     public void fillUserInfo(String userFirstName, String userLastName, String userPassword, String userCountry, String userCity) {
-        sleep(200);
+        $("app-service-publish-step-four").$("input", 1).shouldBe(visible, Duration.ofSeconds(10));
         $("app-service-publish-step-four").$("input", 1).scrollIntoView(true).val(userFirstName);
         $("app-service-publish-step-four").$("input", 2).scrollIntoView(true).val(userLastName);
         $("app-service-publish-step-four").$("input", 3).scrollIntoView(true).val(userPassword);
         $("app-service-publish-step-four").$("input", 4).scrollIntoView(true).val(userPassword);
 
         $("app-service-publish-step-four").$("app-country-selector").$("button").scrollIntoView(true).click();
-        sleep(300);
-        $("ionic-selectable-modal").$("input").scrollIntoView(true).sendKeys(userCountry);
-        sleep(300);
-        $("ionic-selectable-modal").$("ion-label", 0).scrollIntoView(true).click();
-        sleep(300);
+        selectModal(userCountry);
         $("app-service-publish-step-four").$("app-city-selector").$("button").scrollIntoView(true).click();
-        sleep(300);
-        $("ionic-selectable-modal").$("input").scrollIntoView(true).sendKeys(userCity);
-        sleep(300);
-        $("ionic-selectable-modal").$("ion-item", 0).scrollIntoView(true).click();
-        sleep(300);
+        selectModal(userCity);
     }
 
     public void clickFourthStep() {
@@ -187,8 +179,8 @@ public class ServicePublish extends config.TestBase {
             Faker generate = new Faker(new Locale("en-US"));
             avatar = String.valueOf(generate.number().numberBetween(1, 12)) + ".png";
         }
-        sleep(500);
-        $("app-service-publish-step-five").$("app-picture-selector").$("input[type='file']").uploadFile(new File("src/test/resources/img/" + avatar));
+        $("app-service-publish-step-five app-picture-selector input[type='file']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-service-publish-step-five app-picture-selector input[type='file']").uploadFile(new File("src/test/resources/img/" + avatar));
         sleep(1000);
     }
 
@@ -220,21 +212,21 @@ public class ServicePublish extends config.TestBase {
     @Step("Select level: {value}")
     public void selectLevel(String value) {
         $("app-service-publish-step-six").$("form").$("ionic-selectable").scrollIntoView(true).click();
-        sleep(500);
+        $("ion-modal ionic-selectable-modal ion-list ion-item").shouldBe(visible, Duration.ofSeconds(10));
         switch (value) {
             case "random":
                 Faker generate = new Faker(new Locale("en-US"));
                 Integer level = generate.number().numberBetween(0, 2);
-                $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", level).click();
+                $("ion-modal ionic-selectable-modal ion-list ion-item", level).click();
                 break;
             case "junior":
-                $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", 0).click();
+                $("ion-modal ionic-selectable-modal ion-list ion-item", 0).click();
                 break;
             case "middle":
-                $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", 1).click();
+                $("ion-modal ionic-selectable-modal ion-list ion-item", 1).click();
                 break;
             case "senior":
-                $("ion-modal").$("ionic-selectable-modal").$("ion-list").$("ion-item", 2).click();
+                $("ion-modal ionic-selectable-modal ion-list ion-item", 2).click();
                 break;
             default:
                 fail();
@@ -271,61 +263,53 @@ public class ServicePublish extends config.TestBase {
     public void fillScheduleLite() {
         sleep(300);
         $("app-service-publish-step-seven").$("form").$("ion-icon").scrollIntoView(true).click();
-        sleep(1000);
-        $("app-timetable").$("app-add-button").$("ion-item").scrollIntoView(true).click();
-        sleep(300);
+        $("app-timetable app-add-button ion-item").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-timetable app-add-button ion-item").scrollIntoView(true).click();
+        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
         $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(true).click();
-        sleep(300);
-        $("app-timetable").$("app-add-button").$("ion-item").scrollIntoView(true).click();
-        sleep(300);
+        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-timetable app-add-button ion-item").scrollIntoView(true).click();
+        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
         $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
-        sleep(1000);
-        $("app-timetable").$("ion-button[type='submit']").scrollIntoView(true).click();
-        sleep(300);
+        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+        Attach.screenshotAs("Schedule");
+        $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
+        $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Confirm Instant Booking")
     public void confirmInstantBooking() {
-        sleep(2000);
-        $("app-service-publish-step-seven").$("form").$("ion-item", 9).scrollIntoView(true).click();
+        $("app-service-publish-step-seven form ion-item.item-label").scrollIntoView(false).click();
         Attach.screenshotAs("Screenshot");
     }
 
-    @Step("Fill a service geography")
+    @Step("Fill service geography")
     public void fillServiceGeo(String serviceCountry, String serviceCity, String serviceAddress) {
-        $("app-country-selector").$("button").scrollIntoView(true).click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").scrollIntoView(true).sendKeys(serviceCountry);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-label", 0).scrollIntoView(true).click();
-
-        $("app-city-selector").$("button").scrollIntoView(true).click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").scrollIntoView(true).sendKeys(serviceCity);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item", 0).scrollIntoView(true).click();
-
-        $("app-service-publish-step-seven").$("form").$("textarea").scrollIntoView(true).setValue(serviceAddress);
+        $("app-country-selector button").scrollIntoView(false).click();
+        selectModal(serviceCountry);
+        $("app-city-selector button").scrollIntoView(false).click();
+        selectModal(serviceCity);
+        $("app-service-publish-step-seven").$("form").$("textarea").scrollIntoView(false).setValue(serviceAddress);
     }
 
     @Step("Fill a service distance")
     public void fillServiceDistance(String serviceDistance) {
-        $("app-service-publish-step-seven").$("form").$("ion-input").$("input").scrollIntoView(true).setValue(serviceDistance);
+        $("app-service-publish-step-seven").$("form").$("ion-input").$("input").scrollIntoView(false).setValue(serviceDistance);
     }
 
     @Step("Select payment by cash")
     public void selectPaymentByCash() {
-        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(true).click();
+        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(false).click();
     }
 
     @Step("Select online payment")
     public void selectOnlinePayment() {
-        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 1).scrollIntoView(true).click();
+        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 1).scrollIntoView(false).click();
         Attach.screenshotAs("Screenshot");
     }
 
     public void clickSeventhStep() {
-        $("app-service-publish-step-seven").$("ion-button[type='submit']").scrollIntoView(true).click();
+        $("app-service-publish-step-seven").$("ion-button[type='submit']").scrollIntoView(false).click();
     }
 
     @Step("Verify data")
@@ -443,58 +427,58 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Verify that category list language is in English")
     public void verifyCategoryListLanguageEng() {
-        sleep(500);
+        $("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable").click();
-        sleep(500);
-        String value = $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).$("ion-label").getText();
+        $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
+        String value = $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
         if (!value.equals("Tutors")) {
             fail();
         }
-        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).scrollIntoView(true).click();
-        sleep(500);
+        $("ionic-selectable-modal ion-virtual-scroll ion-item").scrollIntoView(true).click();
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify that subcategory list language is in English")
     public void verifySubcategoryListLanguageEng() {
-        sleep(500);
-        $("ionic-selectable", 1).scrollIntoView(true).click();
-        sleep(500);
-        String value = $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).$("ion-label").getText();
+        $("ionic-selectable",1).shouldBe(visible, Duration.ofSeconds(10));
+        $("ionic-selectable",1).scrollIntoView(true).click();
+        $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
+        String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
         if (!value.equals("English language")) {
             fail();
         }
         $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).scrollIntoView(true).click();
-        sleep(500);
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify that category list language is not in English")
     public void verifyCategoryListLanguageNotEng() {
-        sleep(500);
+        $("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable").click();
-        sleep(500);
-        String value = $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).$("ion-label").getText();
+        $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
+        String value = $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
         if (value.equals("Tutors")) {
             fail();
         }
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", 0).click();
-        sleep(500);
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify that subcategory list language is not in English")
     public void verifySubcategoryListLanguageNotEng() {
-        sleep(500);
+        $("ionic-selectable",1).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable", 1).scrollIntoView(true).click();
-        sleep(500);
-        String value = $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).$("ion-label").getText();
+        $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
+        String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
         if (value.equals("English language")) {
             fail();
         }
         $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).scrollIntoView(true).click();
-        sleep(500);
+        $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify price currency is {currency}")

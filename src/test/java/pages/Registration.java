@@ -6,10 +6,13 @@ import config.TestBase;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.SelectableModal.selectModal;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Registration extends TestBase {
@@ -40,54 +43,37 @@ public class Registration extends TestBase {
         $$("input[name='confirm']").filter(visible).get(0).scrollIntoView(true).setValue(userPassword);
     }
 
-    @Step("Fill a phone number")
+    @Step("Fill a phone number : {userCountry} - {userPhoneNumber}")
     public void fillPhoneNumber(String userPhoneNumber, String userCountry) {
         $("app-phone-editor").$("input").setValue(userPhoneNumber);
         $("app-registration-form").$("button[type='button']").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(userCountry);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item", 0).click();
+        selectModal(userCountry);
     }
 
-    @Step("Select a country")
+    @Step("Select a country: {userCountry}")
     public void selectCountry(String userCountry) {
         $("app-registration-form").$("app-country-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(userCountry);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-label", 0).click();
+        selectModal(userCountry);
     }
 
-    @Step("Select a city")
+    @Step("Select a city: {userCity}")
     public void selectCity(String userCity) {
         $("app-registration-form").$("app-city-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(userCity);
-        sleep(1000);
-        $("ionic-selectable-modal").$("ion-item", 0).click();
+        selectModal(userCity);
     }
 
     @Step("Confirm")
     public void confirm() {
-        sleep(400);
+        $("app-registration").$("ion-button[type='submit']").shouldBe(visible, Duration.ofSeconds(10));
         $("app-registration").$("ion-button[type='submit']").click();
-        sleep(2000);
+        sleep(500);
     }
 
     @Step("Confirm")
     public void confirmAndWait() {
-        sleep(400);
-        int timeOut = 0;
-        $("app-registration").$("ion-button[type='submit']").click();
-        while ($("app-registration").isDisplayed()) {
-            timeOut = timeOut + 2;
-            if (timeOut >= 20) {
-                Attach.screenshotAs("Screenshot");
-                fail();}
-            sleep(2000);
-        }
-        sleep(2000);
+        $("app-registration ion-button[type='submit']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-registration ion-button[type='submit']").click();
+        $("app-registration ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify basic registration data")

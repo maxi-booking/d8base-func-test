@@ -370,12 +370,12 @@ public class PositiveTests extends config.TestBase {
         bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service1Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[0], service1Name, service1Price, service1TotalDuration);
     }
 
@@ -404,13 +404,13 @@ public class PositiveTests extends config.TestBase {
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service2Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[1], service2Name, service2Price, service2TotalDuration);
     }
 
@@ -440,13 +440,13 @@ public class PositiveTests extends config.TestBase {
         bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service3Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[2], service3Name, service3Price, service3TotalDuration);
     }
 
@@ -475,12 +475,12 @@ public class PositiveTests extends config.TestBase {
         bkn.pickTheDate(tomorrow);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service7Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[6], service7Name, service7Price, service7TotalDuration);
     }
 
@@ -508,12 +508,12 @@ public class PositiveTests extends config.TestBase {
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service4Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[3], service4Name, service4Price, service4TotalDuration);
     }
 
@@ -857,10 +857,10 @@ public class PositiveTests extends config.TestBase {
 
         bkn.pickTheDate(next2Days);
         bkn.bookTime(1100);
-        bkn.clickForward();
+        bkn.acceptTimeSelection();
 
         bkn.selectNewUser();
-        bkn.clickAccept();
+        bkn.acceptConfirmation();
 
         reg.fillUserFirstName(firstNames[7]);
         reg.fillUserLastName(lastNames[7]);
@@ -871,11 +871,11 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[7]);
         reg.confirmAndWait();
 
-        bkn.placeOrder(); //todo
+        bkn.placeOrder();
 
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service1Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[0], service1Name, service1Price, service1TotalDuration);
     }
 
@@ -902,10 +902,10 @@ public class PositiveTests extends config.TestBase {
 
         bkn.pickTheDate(next3Days);
         bkn.bookTime(1100);
-        bkn.clickForward();
+        bkn.acceptTimeSelection();
 
         bkn.selectNewUser();
-        bkn.clickAccept();
+        bkn.acceptConfirmation();
 
         reg.fillUserFirstName(firstNames[8]);
         reg.fillUserLastName(lastNames[8]);
@@ -916,11 +916,11 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[8]);
         reg.confirmAndWait();
 
-        bkn.placeOrder(); //todo
+        bkn.placeOrder();
 
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(service1Name);
-        bkn.clickOrders();
+        topBar.clickMyOrders();
         ord.checkOrderOutbox(firstNames[0], service1Name, service1Price, service1TotalDuration);
     }
 

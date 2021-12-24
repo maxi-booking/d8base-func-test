@@ -38,7 +38,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         pbl.enterServiceName(service12Name);
         pbl.enterServiceDescription(service12Description);
         pbl.setDuration(service12DurationDays, service12DurationHours, service12DurationMinutes);
-        pbl.setPriceFixed(service12Price, rub);
+        pbl.setPriceFixed(service12Price, randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
 

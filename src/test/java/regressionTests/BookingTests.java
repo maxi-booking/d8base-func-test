@@ -29,8 +29,8 @@ public class BookingTests extends config.TestBase {
         bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(serviceName);
@@ -56,8 +56,8 @@ public class BookingTests extends config.TestBase {
         bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userFirstName);
         bkn.fillOrderForAPEmail(userEmailRandom);
@@ -96,8 +96,8 @@ public class BookingTests extends config.TestBase {
         bkn.pickTheDate(today);
         bkn.clickNextDay();
         bkn.bookTime(1100);
-        bkn.clickForward();
-        bkn.clickAccept();
+        bkn.acceptTimeSelection();
+        bkn.acceptConfirmation();
         bkn.clickOrderForAnotherPerson();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userFirstName);

@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static helpers.SelectableModal.selectModal;
 
 public class UserProfile {
     @Step("Verify profile data")
@@ -99,10 +100,7 @@ public class UserProfile {
     public void fillPhoneNumber(String userPhoneNumber, String userCountry) {
         $("app-phone-editor").$("input").setValue(userPhoneNumber);
         $("app-phone-editor").$("button[type='button']").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(userCountry);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item", 0).click();
+        selectModal(userCountry);
     }
 
     @Step("Change E-mail")

@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.SelectableModal.selectModal;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
@@ -55,20 +56,18 @@ public class LogIn extends config.TestBase {
         $("app-login").$("input", 0).setValue(login);
         $("app-login").$("input", 1).setValue(password);
         Attach.screenshotAs("Screenshot");
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
+        $("app-login-form ion-button[type='submit']").click();
+        $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("No toast message")
     public void noToast() {
-        sleep(1000);
-        $("ion-toast").shouldNotBe(visible);
+        $("ion-toast").shouldNotBe(visible, Duration.ofSeconds(1));
     }
 
     @Step("EToast message visible")
     public void toastVisible() {
-        sleep(1000);
-        $("ion-toast").shouldBe(visible);
+        $("ion-toast").shouldBe(visible, Duration.ofSeconds(1));
     }
 
     public void logTempAcc() {
@@ -104,7 +103,7 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    @Step("Log in with {login} : {password}")
+    @Step("Log in with ${login} : ${password}")
     public void account(int value) {
         forceEN();
         String login = emails[value];
@@ -114,22 +113,21 @@ public class LogIn extends config.TestBase {
         $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
         Attach.screenshotAs("Login_info");
         $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
-        sleep(1000);
+        $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     public void forceRU() {
         sleep(500);
         String desiredLanguage = Lang.RUSSIAN.getLangText();
         String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-        sleep(500);
         if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
             $$("[menu='flag-menu']").filter(visible).get(0).click();
-            $("app-flag-menu").$("ion-select").click();
-            $("ion-alert").$("button", 1).click();
-            $(byText("OK")).click();
+            $("app-flag-menu ion-select").click();
+            $("ion-alert button", 1).click();
+            $("div.alert-button-group button",1).click();
             sleep(1000);
             if ($("ion-alert").exists()) {
-                $("ion-alert").pressEscape();
+                $("ion-alert").click(0, 300);
             }
         }
     }
@@ -138,15 +136,14 @@ public class LogIn extends config.TestBase {
         sleep(500);
         String desiredLanguage = Lang.ENGLISH.getLangText();
         String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-        sleep(500);
         if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
             $$("[menu='flag-menu']").filter(visible).get(0).click();
-            $("app-flag-menu").$("ion-select").click();
-            $("ion-alert").$("button", 0).click();
-            $(byText("OK")).click();
+            $("app-flag-menu ion-select").click();
+            $("ion-alert button", 0).click();
+            $("div.alert-button-group button",1).click();
             sleep(1000);
             if ($("ion-alert").exists()) {
-                $("ion-alert").pressEscape();
+                $("ion-alert").click(0, 300);
             }
         }
     }
@@ -159,16 +156,10 @@ public class LogIn extends config.TestBase {
         $("ion-alert").$("button", 1).click();
 
         $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(country);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item").click();
+        selectModal(country);
 
         $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(city);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item").click();
+        selectModal(city);
         $("app-on-map-popover").$("ion-button").click();
     }
 

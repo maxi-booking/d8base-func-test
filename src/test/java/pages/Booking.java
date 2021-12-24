@@ -3,13 +3,15 @@ package pages;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.cssClass;
-import static com.codeborne.selenide.Condition.text;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static config.TestData.*;
+import static helpers.SelectableModal.selectModal;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
@@ -174,23 +176,22 @@ public class Booking {
         } else {
             time = hours + ":" + minutes;
         }
-        sleep(500);
+        $("app-time-step main div ion-button").shouldBe(visible, Duration.ofSeconds(10));
         $("app-time-step").$(withText(time)).scrollIntoView(true).click();
-        sleep(500);
     }
 
     @Step("Click the 'Accept and continue' button")
-    public void clickForward() {
-        sleep(500);
-        $("app-time-step").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
+    public void acceptTimeSelection() {
+        $("app-time-step div.footer ion-button").shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
+        $("app-time-step div.footer ion-button").scrollIntoView(true).click();
+        $("app-time-step div.footer ion-button").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Click the 'Accept and continue' button")
-    public void clickAccept() {
-        sleep(500);
-        $("app-confirmation-step").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
+    public void acceptConfirmation() {
+        $("app-confirmation-step div.footer ion-button").shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
+        $("app-confirmation-step div.footer ion-button").scrollIntoView(true).click();
+        $("app-confirmation-step div.footer ion-button").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
 
@@ -218,10 +219,7 @@ public class Booking {
     @Step("Order for another person: phone - {country} {number}")
     public void fillOrderForAPPhoneNumber(String country, String number) {
         $("app-client-details-step").$("form").$("section").$("ionic-selectable").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(country);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item", 0).click();
+        selectModal(country);
         $("app-client-details-step input[inputmode='decimal']").setValue(number);
     }
 
@@ -274,25 +272,20 @@ public class Booking {
 
     @Step("Place the order")
     public void placeOrder() {
-        sleep(1000);
+        $("app-client-details-step div.footer ion-button").shouldBe(visible, Duration.ofSeconds(10));
         Attach.screenshotAs("Screenshot");
-        $("app-client-details-step").$(byText("Accept and continue")).click();
-        sleep(2000);
+        $("app-client-details-step div.footer ion-button").click();
+        $("app-sent-order-page div.order-full-info").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Click to see order details")
     public void showOrderDetails() {
-        $("app-sent-order-page").$("div div a").click();
+        $("app-sent-order-page div.order-full-info a").click();
     }
 
     @Step("Verify the order details")
     public void verifyOrderDetails(String ServiceName) {
         sleep(1000);
         $("app-sent-order-page").$("section").shouldHave(text(ServiceName));
-    }
-
-    @Step("Click Orders button")
-    public void clickOrders() {
-        $("app-sent-order-page").$("ion-toolbar").$("ion-item.my-orders").click();
     }
 }

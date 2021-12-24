@@ -28,7 +28,7 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.enterServiceName(serviceName);
         pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, rub);
+        pbl.setPriceFixed(servicePrice, randomCurrency);
         pbl.selectServiceLocation(client);
         pbl.clickSecondStep();
 
@@ -66,7 +66,7 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.enterServiceName(serviceName);
         pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, rub);
+        pbl.setPriceFixed(servicePrice, randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
 
@@ -103,7 +103,7 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.enterServiceName(serviceName);
         pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed("0", rub);
+        pbl.setPriceFixed("0", randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
         pbl.fieldIsRequiredPresent();
