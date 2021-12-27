@@ -187,7 +187,9 @@ public class LogIn extends config.TestBase {
     public void popupSkip() {
         sleep(200);
         $("ion-alert div.alert-head").shouldBe(visible, Duration.ofSeconds(10));
-        $("ion-alert div.alert-head").click(0, 300);
+        sleep(600);
+        $("ion-alert div.alert-head").click(200, 200);
+        $("ion-alert").shouldNotBe(visible, Duration.ofSeconds(10));
         sleep(200);
     }
 
