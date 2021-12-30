@@ -5,8 +5,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.RegressionTestsHelpers.serviceRegister;
-import static helpers.RegressionTestsHelpers.userRegister;
+import static helpers.RegressionTestsHelpers.*;
 
 public class SearchTests extends TestBase {
     @Test
@@ -17,13 +16,13 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will not show if professional doesn't have any")
     void t00000() {
         //setup
-        userRegister();
+        userReadyAPI();
         serviceRegister();
 
         //search and check
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceName);
+        search.search(serviceNameRandom);
         search.verifyBestWorksNotExists();
     }
 
@@ -35,7 +34,7 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will show if filled")
     void t00001() {
         //setup
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         pp.openMyProfessionalProfileLink();
         pp.uploadBestWorks(randomFile);
@@ -43,7 +42,7 @@ public class SearchTests extends TestBase {
         //search and check
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceName);
+        search.search(serviceNameRandom);
         search.verifyBestWorksExists();
     }
 }

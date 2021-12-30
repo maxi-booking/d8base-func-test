@@ -13,6 +13,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
     void t00000() {
+        log.openMainPage();
         log.popupSelect(countries[11], cities[11]);
         log.forceEN();
         sideMenu.clickSignUp();
@@ -35,10 +36,10 @@ public class ProfessionalProfileTests extends config.TestBase {
         pbl.chooseSubcategory(master12MainSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(service12Name);
-        pbl.enterServiceDescription(service12Description);
-        pbl.setDuration(service12DurationDays, service12DurationHours, service12DurationMinutes);
-        pbl.setPriceFixed(service12Price, randomCurrency);
+        pbl.enterServiceName(serviceNames[11]);
+        pbl.enterServiceDescription(serviceDescriptions[11]);
+        pbl.setDuration(serviceDurations[11]);
+        pbl.setPriceFixed(servicePrices[11], randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
 
@@ -48,7 +49,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         pbl.selectPersonOrCompany(person);
         pbl.fillAbout(master12MainDescription);
-        pbl.fillSpecialization(master12MainSpecialization);
+        pbl.fillSpecialization(specializations[11]);
         pbl.selectLevel(master12MainLevel);
         pbl.clickSixthStep();
 
@@ -59,8 +60,8 @@ public class ProfessionalProfileTests extends config.TestBase {
         pbl.selectOnlinePayment();
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(service12Name, service12TotalDuration, service12Description);
-        pbl.checkPrice(service12Price);
+        pbl.checkPublishFormOnline(serviceNames[11], serviceDurations[11], serviceDescriptions[11]);
+        pbl.checkPrice(servicePrices[11]);
         pbl.publishService();
     }
 
@@ -71,6 +72,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: info verification")
     void t00001() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -99,6 +101,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: functionality verification")
     void t00002() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -138,6 +141,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: main - change all the info and verify")
     void t00004() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -187,6 +191,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: qualification - change all the info and verify")
     void t00006() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -250,6 +255,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: education - change all the info and verify")
     void t00007() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -318,6 +324,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: certificates - change all the info and verify")
     void t00008() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -383,6 +390,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: full test")
     void t00100() {
+        log.openMainPage();
         log.popupSkip();
         log.account(11);
         log.forceEN();
@@ -404,7 +412,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         pp.clickEditMain();
         pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
-        pp.editSpecialization(master12MainSpecialization);
+        pp.editSpecialization(specializations[11]);
         pp.editDescription(master12MainDescription);
         pp.editCompany(master12MainCompany);
         pp.editExperience(master12MainExperience);
@@ -415,7 +423,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         pp.clickEditMain();
         pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
-        pp.editSpecialization(master12MainSpecialization);
+        pp.editSpecialization(specializations[11]);
         pp.editDescription(master12MainDescription);
         pp.editCompany(master12MainCompany);
         pp.editExperience(master12MainExperience);

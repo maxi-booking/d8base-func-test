@@ -44,7 +44,7 @@ public class UserProfile {
     @Step("Verify language")
     public void verifyRussianLang() {
         sleep(500);
-        $("app-profile").$("ion-toolbar").shouldHave(text(Lang.RUSSIAN.getLangText()));
+        $("app-profile ion-toolbar ion-menu-toggle ion-label").shouldHave(text(Lang.RUSSIAN.getLangText()));
     }
 
 
@@ -371,40 +371,41 @@ public class UserProfile {
 
     @Step("Open Profile: About")
     public void openUserProfileAbout() {
-        $("app-profile").$("ion-button[routerlink='about/']").click();
+        $("app-profile ion-button[routerlink='about/']").click();
         sleep(500);
     }
 
     @Step("Profile: About - click 'back'")
     public void clickBackAbout() {
-        $("app-about-edit").$("app-column-header").$("ion-button").click();
+        $("app-about-edit app-column-header ion-button").click();
         sleep(500);
     }
 
     @Step("Verify 'About'")
     public void verifyAbout(String nationality, String language, String dateDD, String dateMM, String dateYYYY) {
         sleep(500);
-        $("app-profile").$("main").shouldHave(text(nationality), text(language), text(dateYYYY + "-" + dateMM + "-" + dateDD));
+        $("app-profile ion-button[routerlink='about/']").scrollIntoView(true);
+        $("app-profile main").shouldHave(text(nationality), text(language), text(dateYYYY + "-" + dateMM + "-" + dateDD));
     }
 
     @Step("Verify 'About' language")
     public void verifyAboutExtraLanguage(String language) {
         sleep(500);
-        $("app-profile").$("main").shouldHave(text(language));
+        $("app-profile main").shouldHave(text(language));
     }
 
 
     @Step("Verify 'About' default")
     public void verifyAboutDefault() {
         sleep(500);
-        $("app-about-edit").$("form").$("ion-input[class='ng-pristine']", 0).exists();
-        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']", 0).exists();
-        $("app-about-edit").$("form").$("ionic-selectable[class='ion-untouched']", 1).exists();
+        $("app-about-edit form ion-input[class='ng-pristine']", 0).exists();
+        $("app-about-edit form ionic-selectable[class='ion-untouched']", 0).exists();
+        $("app-about-edit form ionic-selectable[class='ion-untouched']", 1).exists();
     }
 
     @Step("Profile: About - select birth date")
     public void selectDateBirth(String dateDD, String dateMM, String dateYYYY) {
-        $("app-about-edit").$("form").$("input").setValue(dateDD + dateMM + dateYYYY);
+        $("app-about-edit form input").setValue(dateDD + dateMM + dateYYYY);
     }
 
     @Step("Profile: About - select nationality")

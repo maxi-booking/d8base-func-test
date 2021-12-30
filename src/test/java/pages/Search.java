@@ -3,8 +3,9 @@ package pages;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.text;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -52,7 +53,9 @@ public class Search {
 
     @Step("Click on the first name in search results")
     public void clickProfessionalsName() {
-        $("app-search app-search-result app-professional-card div.title a").click();
+        $("app-search-result app-professional-card a").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-search-result app-professional-card a").click();
+        $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Verify that 'Best works' field exists")

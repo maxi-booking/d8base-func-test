@@ -2,11 +2,15 @@ package pages;
 
 import com.codeborne.selenide.WebDriverRunner;
 import helpers.Attach;
+import helpers.ServiceDuration;
 import io.qameta.allure.Step;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.ServiceDuration.getDuration;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Orders extends config.TestBase {

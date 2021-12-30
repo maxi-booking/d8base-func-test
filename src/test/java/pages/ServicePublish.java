@@ -2,21 +2,20 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
-import config.TestData;
 import helpers.Attach;
-import helpers.PriceHelper;
+import helpers.PriceFormatter;
+import helpers.ServiceDuration;
 import io.qameta.allure.Step;
 
 import java.io.File;
-import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.SelectableModal.selectModal;
+import static helpers.ServiceDuration.getDuration;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -67,10 +66,12 @@ public class ServicePublish extends config.TestBase {
     }
 
     @Step("Enter a service duration")
-    public void setDuration(String serviceDurationDays, String serviceDurationHours, String serviceDurationMinutes) {
-        $("app-duration-editor").$("input").scrollIntoView(true).setValue(serviceDurationDays);
-        $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(serviceDurationHours);
-        $("app-duration-editor").$("input", 2).scrollIntoView(true).setValue(serviceDurationMinutes);
+    public void setDuration(String serviceDurationTotal) {
+        ServiceDuration duration = getDuration(serviceDurationTotal);
+        $("app-duration-editor").$("input").scrollIntoView(true).setValue(duration.days);
+        $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(duration.hours);
+        $("app-duration-editor").$("input", 2).scrollIntoView(true).setValue(duration.minutes);
+        Attach.screenshotAs("Service duration");
     }
 
     @Step("Enter a fixed price")
@@ -333,7 +334,7 @@ public class ServicePublish extends config.TestBase {
             $("app-duration-viewer").shouldHave(text(serviceDurationMinutes));
         }
 
-        $("app-service-publish-final-step").$("ion-content").$("ion-item", 2).shouldHave(Condition.textCaseSensitive(serviceDescription));
+        $("app-service-publish-final-step ion-content ion-item", 2).$("div").shouldHave(Condition.textCaseSensitive(serviceDescription));
     }
 
     public void checkPublishFormWithAddress(String serviceName, String serviceTotalDuration, String serviceDescription, String serviceCountry, String serviceCity, String serviceAddress) {
@@ -365,12 +366,13 @@ public class ServicePublish extends config.TestBase {
         $("app-service-location").shouldHave(Condition.text(serviceCountry + ", " + serviceCity + ", " + serviceAddress));
     }
 
-    @Step("Check that actual service price equals to expected (${servicePriceActual}{servicePriceActual} : {servicePrice})")
+    @Step("Check that actual service price equals to expected ({servicePrice})")
     public void checkPrice(String servicePrice) {
         String servicePriceActual = $("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("[,.]", "");
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(servicePrice)) {
+            System.out.println(servicePriceActual + " (actual) not equal to " + servicePrice + " (expected)");
             fail();
         }
     }
@@ -379,13 +381,16 @@ public class ServicePublish extends config.TestBase {
         String servicePriceActual = $("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(serviceMinPrice) || !servicePriceActual.contains(serviceMaxPrice)) {
+            System.out.println(servicePriceActual + " (actual) not equal to " + serviceMaxPrice + " (expected max) \n or " + serviceMinPrice + " (expected min)");
             fail();
         }
     }
 
     @Step("Publish a service")
     public void publishService() {
-        $("app-service-publish-final-step").$("ion-content").$("ion-button", 1).scrollIntoView(true).click();
+        $("app-service-publish-final-step ion-content ion-button", 1).scrollIntoView(true).click();
+        $("app-service-publish-final-step").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(5000);
     }
 
@@ -484,8 +489,8 @@ public class ServicePublish extends config.TestBase {
     @Step("Verify price currency is {currency}")
     public void verifyPriceCurrency(String minPrice, String maxPrice, int currency) {
         String value = $("app-service-publish-final-step app-price").getText();
-        minPrice = PriceHelper.addSpaces(minPrice);
-        maxPrice = PriceHelper.addSpaces(maxPrice);
+        minPrice = PriceFormatter.addSpaces(minPrice);
+        maxPrice = PriceFormatter.addSpaces(maxPrice);
         if (currency == cad && value.contains("$")) {
             $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " $ — " + maxPrice));
             return;

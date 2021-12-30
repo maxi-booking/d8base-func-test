@@ -5,9 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static helpers.RegressionTestsHelpers.userRegister;
+import static helpers.RegressionTestsHelpers.userReadyAPI;
 
 public class ServicePublicationTests extends config.TestBase {
     @Test
@@ -17,18 +16,16 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Service publish: city is selectable - client's place")
     void t00000() {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, randomCurrency);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
+        pbl.setPriceFixed(servicePriceRandom, randomCurrency);
         pbl.selectServiceLocation(client);
         pbl.clickSecondStep();
 
@@ -55,18 +52,16 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Service publish: city is selectable - professional's place")
     void t00001() {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, randomCurrency);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
+        pbl.setPriceFixed(servicePriceRandom, randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
 
@@ -92,17 +87,15 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select fixed price with the value: 0")
     void t00100() {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
         pbl.setPriceFixed("0", randomCurrency);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
@@ -117,17 +110,15 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select price range with min value: 0")
     void t00101() {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
         pbl.setPriceRange("0", "100", rub);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
@@ -142,17 +133,15 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select price range with max value: 0")
     void t00102() {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
         pbl.setPriceRange("0", "0", rub);
         pbl.selectServiceLocation(master);
         pbl.clickSecondStep();
@@ -167,6 +156,7 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: element language retention start with English - check titles")
     void t00200() {
+        log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickPublishNewService();
@@ -188,6 +178,7 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: element language retention start with Russian - check titles")
     void t00201() {
+        log.openMainPage();
         log.popupSkip();
         log.forceRU();
         sideMenu.clickPublishNewService();
@@ -209,6 +200,7 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: element language retention start with English - check lists")
     void t00202() {
+        log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickPublishNewService();
@@ -238,6 +230,7 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: element language retention start with Russian - check lists")
     void t00203() {
+        log.openMainPage();
         log.popupSkip();
         log.forceRU();
         sideMenu.clickPublishNewService();
@@ -272,17 +265,15 @@ public class ServicePublicationTests extends config.TestBase {
             "3, USD"
     })
     void t00300(int currency, String currencyName) {
-        userRegister();
-        log.openMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(randomServiceCategory);
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.setDuration("0", "0", serviceDuration);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.setDuration(serviceDurationRandom);
         pbl.setPriceRange(servicePriceMin, servicePriceMax, currency);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();

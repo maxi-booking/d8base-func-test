@@ -13,6 +13,7 @@ public class FooterTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Footer: '/for-performers' can be opened via footer click")
     void t00000() {
+        log.openMainPage();
         log.popupClickCancel();
         ftr.clickForPerformersPage();
         ftr.verifyForPerformers();

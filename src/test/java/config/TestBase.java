@@ -1,6 +1,7 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -8,30 +9,27 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.*;
-import helpers.*;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestBase extends TestData {
 
     private static final WebDriverConfig config =
             ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-    public String
+    public static String
             urlBase = config.getBaseUrl(),
-            urlLogin = urlBase + "auth/login",
-            urlLogOut = urlBase + "auth/login?logout=",
-            urlServicePublish = urlBase + "service/publish",
-            urlOrders = urlBase + "my-orders/inbox",
-            urlUserRegistration = urlBase + "auth/registration",
-            urlProfile = urlBase + "profile",
-            urlClientDetails = "client-details",
-            urlProfessionalProfile = urlBase + "professional",
-            urlMyProfessionalProfile = urlBase + "professional/my-profile",
-            urlForPerformers = urlBase + "for-performers";
+            urlLogin = urlBase + "/auth/login",
+            urlLogOut = urlBase + "/auth/login?logout=",
+            urlServicePublish = urlBase + "/service/publish",
+            urlOrders = urlBase + "/my-orders/inbox",
+            urlUserRegistration = urlBase + "/auth/registration",
+            urlProfile = urlBase + "/profile",
+            urlClientDetails = "/client-details",
+            urlProfessionalProfile = urlBase + "/professional",
+            urlMyProfessionalProfile = urlBase + "/professional/my-profile",
+            urlForPerformers = urlBase + "/for-performers";
 
     public static SideMenu sideMenu = new SideMenu();
     public static TopBar topBar = new TopBar();
@@ -54,20 +52,35 @@ public class TestBase extends TestData {
     public static UserPasswords getPassword = new UserPasswords();
     public static String[] passwords = getPassword.userPassword();
 
-    public static userFirstNames getFirstName = new userFirstNames();
+    public static UserFirstNames getFirstName = new UserFirstNames();
     public static String[] firstNames = getFirstName.userFirstName();
 
-    public static userLastNames getLastName = new userLastNames();
+    public static UserLastNames getLastName = new UserLastNames();
     public static String[] lastNames = getLastName.userLastName();
 
-    public static userPhoneNumbers getPhoneNumber = new userPhoneNumbers();
+    public static UserPhoneNumbers getPhoneNumber = new UserPhoneNumbers();
     public static String[] phoneNumbers = getPhoneNumber.userPhoneNumber();
 
-    public static userCountries getCountry = new userCountries();
+    public static UserCountries getCountry = new UserCountries();
     public static String[] countries = getCountry.userCountry();
 
-    public static userCities getCity = new userCities();
+    public static UserCities getCity = new UserCities();
     public static String[] cities = getCity.userCity();
+
+    public static ServiceNames getServiceName = new ServiceNames();
+    public static String[] serviceNames = getServiceName.serviceName();
+
+    public static ServiceDescriptions getServiceDescription = new ServiceDescriptions();
+    public static String[] serviceDescriptions = getServiceDescription.serviceDescription();
+
+    public static ServiceDurations getServiceDuration = new ServiceDurations();
+    public static String[] serviceDurations = getServiceDuration.serviceDuration();
+
+    public static ServicePrices getServicePrice = new ServicePrices();
+    public static String[] servicePrices = getServicePrice.servicePrice();
+
+    public static Specializations getSpecialization = new Specializations();
+    public static String[] specializations = getSpecialization.specialization();
 
     @BeforeAll
     public static void init() {
@@ -90,15 +103,16 @@ public class TestBase extends TestData {
     @BeforeEach
     public void setupConfig() {
         setRandomData();
-        open(urlBase);
     }
 
     @AfterEach
     public void tearDown() {
-        Attach.screenshotAs("Screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-        closeWebDriver();
+        if (WebDriverRunner.hasWebDriverStarted()) {
+            Attach.screenshotAs("Screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            Attach.addVideo();
+            closeWebDriver();
+        }
     }
 }

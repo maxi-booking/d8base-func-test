@@ -13,6 +13,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration for User Profile test")
     void t00000() {
+        log.openMainPage();
         log.popupSelect(countries[9], cities[9]);
         log.forceEN();
         sideMenu.clickSignUp();
@@ -35,6 +36,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: functionality verification")
     void t00001() {
+        log.openMainPage();
         log.popupSkip();
         log.account(9);
         log.forceEN();
@@ -63,6 +65,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: main - change all the info and verify")
     void t00002() {
+        log.openMainPage();
         log.popupSkip();
         log.account(9);
         log.forceEN();
@@ -90,6 +93,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: contacts - change info, add new and verify")
     void t00003() {
+        log.openMainPage();
         log.popupSkip();
         log.account(9);
         log.forceEN();
@@ -137,6 +141,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: address - change info and verify")
     void t00004() {
+        log.openMainPage();
         log.popupSkip();
         log.account(9);
         log.forceEN();
@@ -210,6 +215,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: about - change info and verify")
     void t00005() {
+        log.openMainPage();
         log.popupSkip();
         log.account(9);
         log.forceEN();

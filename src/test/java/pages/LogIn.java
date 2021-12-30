@@ -6,8 +6,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import config.Lang;
 import helpers.Attach;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
@@ -19,6 +17,10 @@ import static helpers.SelectableModal.selectModal;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
+
+    private void closeAlert() {
+        $("ion-alert").pressEscape();
+    }
 
     public void refreshPage() {
         Selenide.refresh();
@@ -125,9 +127,10 @@ public class LogIn extends config.TestBase {
             $("app-flag-menu ion-select").click();
             $("ion-alert button", 1).click();
             $("div.alert-button-group button",1).click();
-            sleep(1000);
+            $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+            sleep(500);
             if ($("ion-alert").exists()) {
-                $("ion-alert").click(0, 300);
+                closeAlert();
             }
         }
     }
@@ -141,9 +144,10 @@ public class LogIn extends config.TestBase {
             $("app-flag-menu ion-select").click();
             $("ion-alert button", 0).click();
             $("div.alert-button-group button",1).click();
-            sleep(1000);
+            $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+            sleep(500);
             if ($("ion-alert").exists()) {
-                $("ion-alert").click(0, 300);
+                closeAlert();
             }
         }
     }
@@ -186,9 +190,9 @@ public class LogIn extends config.TestBase {
 
     public void popupSkip() {
         sleep(200);
-        $("ion-alert div.alert-head").shouldBe(visible, Duration.ofSeconds(10));
-        sleep(600);
-        $("ion-alert div.alert-head").click(200, 200);
+        $("#alert-1-sub-hdr").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(1000);
+        closeAlert();
         $("ion-alert").shouldNotBe(visible, Duration.ofSeconds(10));
         sleep(200);
     }

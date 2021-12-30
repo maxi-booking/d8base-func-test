@@ -1,6 +1,6 @@
 package helpers;
 
-public class PriceHelper {
+public class PriceFormatter {
 
     private static String reverseString(String value) {
         StringBuilder sb = new StringBuilder(value);

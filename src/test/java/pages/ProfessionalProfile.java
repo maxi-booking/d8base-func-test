@@ -6,19 +6,20 @@ import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.MonthHelper.monthConvertToNumber;
+import static helpers.MonthConverter.monthConvertToNumber;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ProfessionalProfile extends TestBase {
 
     @Step("Click social share button")
     public void clickSocialShare() {
-        $$("ion-icon[name='share-social-outline']").filter(visible).get(0).scrollIntoView(true).parent().click();
+        $$("ion-icon[name='share-social-outline']").filter(visible).get(0).scrollIntoView(false).parent().click();
     }
 
 // other person's professional profile methods
@@ -317,6 +318,7 @@ public class ProfessionalProfile extends TestBase {
     @Step("About: click back")
     public void aboutClickBack() {
         $("app-about-edit").$("main").$("ion-button").click();
+        $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(500);
     }
 

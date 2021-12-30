@@ -4,8 +4,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.RegressionTestsHelpers.serviceRegister;
-import static helpers.RegressionTestsHelpers.userRegister;
+import static helpers.RegressionTestsHelpers.*;
 
 public class ProfessionalProfileTests extends config.TestBase {
     @Test
@@ -15,7 +14,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Professional Profile: delete education")
     void t00000() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.openMainPage();
         log.forceEN();
@@ -42,7 +41,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Professional Profile: social share button should be clickable (another person)")
     void t00001() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.openMainPage();
         log.forceEN();
@@ -50,7 +49,7 @@ public class ProfessionalProfileTests extends config.TestBase {
 
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceName);
+        search.search(serviceNameRandom);
         search.clickProfessionalsName();
         pp.clickSocialShare();
         log.toastVisible();

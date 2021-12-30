@@ -24,10 +24,10 @@ public class RegressionTestsHelpers extends config.TestBase {
         pbl.chooseSubcategory(randomServiceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceName);
-        pbl.enterServiceDescription(serviceDescription);
-        pbl.setDuration("0", "0", serviceDuration);
-        pbl.setPriceFixed(servicePrice, randomCurrency);
+        pbl.enterServiceName(serviceNameRandom);
+        pbl.enterServiceDescription(serviceDescriptionRandom);
+        pbl.setDuration(serviceDurationRandom);
+        pbl.setPriceFixed(servicePriceRandom, randomCurrency);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
@@ -43,5 +43,13 @@ public class RegressionTestsHelpers extends config.TestBase {
         pbl.clickSeventhStep();
 
         pbl.publishService();
+    }
+
+    public static void userReadyAPI() {
+        helpers.API.registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(userEmailRandom, userPasswordRandom);
+        log.forceEN();
     }
 }

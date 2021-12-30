@@ -4,8 +4,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static helpers.RegressionTestsHelpers.serviceRegister;
-import static helpers.RegressionTestsHelpers.userRegister;
+import static helpers.RegressionTestsHelpers.*;
 
 public class UserProfileTests extends config.TestBase {
     @Test
@@ -15,7 +14,7 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional Profile: delete education")
     void t00000() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.openMainPage();
         log.forceEN();

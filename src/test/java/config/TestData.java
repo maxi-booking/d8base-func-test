@@ -7,9 +7,9 @@ import java.util.Locale;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
-import static helpers.DayHelper.*;
-import static helpers.MonthHelper.generateMonth;
-import static helpers.MonthHelper.monthConvertToNumber;
+import static helpers.DayConverter.*;
+import static helpers.MonthConverter.generateMonth;
+import static helpers.MonthConverter.monthConvertToNumber;
 import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
 import static java.lang.Long.parseLong;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -21,19 +21,20 @@ public class TestData {
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
         String[] userEmail = {
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word(),
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
+                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
                 generate.name().username() + "@" + generate.lorem().characters(2, 5) + "." + c + c
         };
+
         public String[] userEmail() {
             return userEmail;
         }
@@ -55,12 +56,13 @@ public class TestData {
                 generate.internet().password(),
                 generate.lorem().characters(8, 50)
         };
+
         public String[] userPassword() {
             return userPassword;
         }
     }
 
-    public static class userFirstNames {
+    public static class UserFirstNames {
         Faker generate = new Faker(new Locale("en-US"));
         String[] userFirstName = {
                 generate.name().firstName() + generate.name().firstName(),
@@ -76,12 +78,13 @@ public class TestData {
                 generate.name().firstName() + generate.name().suffix(),
                 generate.funnyName().name()
         };
+
         public String[] userFirstName() {
             return userFirstName;
         }
     }
 
-    public static class userLastNames {
+    public static class UserLastNames {
         Faker generate = new Faker(new Locale("en-US"));
         String animalName = generate.animal().name();
         String[] userLastName = {
@@ -98,12 +101,13 @@ public class TestData {
                 generate.name().lastName() + generate.name().suffix(),
                 animalName.substring(0, 1).toUpperCase() + animalName.substring(1)
         };
+
         public String[] userLastName() {
             return userLastName;
         }
     }
 
-    public static class userPhoneNumbers {
+    public static class UserPhoneNumbers {
         Faker generate = new Faker(new Locale("en-US"));
         String[] userPhoneNumber = {
                 "911" + generate.number().digits(7),
@@ -119,12 +123,13 @@ public class TestData {
                 "923" + generate.number().digits(7),
                 "903" + generate.number().digits(7)
         };
+
         public String[] userPhoneNumber() {
             return userPhoneNumber;
         }
     }
 
-    public static class userCountries {
+    public static class UserCountries {
         Faker generate = new Faker(new Locale("en-US"));
         String[] userCountry = {
                 "Russia",
@@ -140,12 +145,13 @@ public class TestData {
                 "Россия",
                 "Russia"
         };
+
         public String[] userCountry() {
             return userCountry;
         }
     }
 
-    public static class userCities {
+    public static class UserCities {
         Faker generate = new Faker(new Locale("en-US"));
         String[] userCity = {
                 "Moscow",
@@ -161,8 +167,119 @@ public class TestData {
                 "Москва",
                 "Moscow"
         };
+
         public String[] userCity() {
             return userCity;
+        }
+    }
+
+    public static class ServiceNames {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] serviceName = {
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
+                "",
+                "",
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
+                "",
+                "",
+                "",
+                "",
+                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")"
+        };
+
+        public String[] serviceName() {
+            return serviceName;
+        }
+    }
+
+    public static class ServiceDescriptions {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] serviceDescription = {
+                generate.lorem().characters(20, 2000),
+                generate.lorem().characters(20, 2000),
+                generate.lorem().characters(20, 2000),
+                generate.lorem().characters(20, 2000),
+                "",
+                "",
+                generate.rickAndMorty().quote() + " " + generate.dune().quote(),
+                "",
+                "",
+                "",
+                "",
+                generate.backToTheFuture().quote() + " " + generate.hitchhikersGuideToTheGalaxy().quote()
+        };
+
+        public String[] serviceDescription() {
+            return serviceDescription;
+        }
+    }
+
+    public static class ServiceDurations {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] serviceDuration = {
+                String.valueOf(generate.number().numberBetween(15, 105)),
+                String.valueOf(generate.number().numberBetween(15, 105)),
+                String.valueOf(generate.number().numberBetween(15, 105)),
+                String.valueOf(generate.number().numberBetween(15, 105)),
+                "",
+                "",
+                String.valueOf(generate.number().numberBetween(15, 105)),
+                "",
+                "",
+                "",
+                "",
+                String.valueOf(generate.number().numberBetween(15, 165))
+        };
+
+        public String[] serviceDuration() {
+            return serviceDuration;
+        }
+    }
+
+    public static class ServicePrices {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] servicePrice = {
+                String.valueOf(generate.number().numberBetween(1, 9999999)),
+                String.valueOf(generate.number().numberBetween(1, 2000)),
+                String.valueOf(generate.number().numberBetween(1, 70000)),
+                String.valueOf(generate.number().numberBetween(1, 999)),
+                "",
+                "",
+                String.valueOf(generate.number().numberBetween(1, 99)),
+                "",
+                "",
+                "",
+                "",
+                String.valueOf(generate.number().numberBetween(1500, 90000))
+        };
+
+        public String[] servicePrice() {
+            return servicePrice;
+        }
+    }
+
+    public static class Specializations {
+        Faker generate = new Faker(new Locale("en-US"));
+        String[] specialization = {
+                generate.job().title() + " " + generate.ancient().god(),
+                generate.job().title() + " " + generate.ancient().hero(),
+                generate.job().title() + " " + generate.ancient().titan(),
+                generate.job().title() + " " + generate.ancient().primordial(),
+                "",
+                "",
+                generate.job().title() + " " + generate.name().suffix(),
+                "",
+                "",
+                "",
+                "",
+                generate.job().title() + " " + generate.business().creditCardType()
+        };
+
+        public String[] specialization() {
+            return specialization;
         }
     }
 
@@ -194,62 +311,22 @@ public class TestData {
             user10Nationality,
             user10Language1,
             user10Language2,
-            service1Name,
-            service1Description,
-            service1DurationDays,
-            service1DurationHours,
-            service1DurationMinutes,
-            service1TotalDuration,
-            service1Price,
-            service1Specialization,
             service1Country,
             service1City,
             service1Address,
             service1Distance,
-            service2Name,
-            service2Description,
-            service2DurationDays,
-            service2DurationHours,
-            service2DurationMinutes,
-            service2TotalDuration,
-            service2Price,
-            service2Specialization,
             service2Country,
             service2City,
             service2Address,
             service2Distance,
-            service3Name,
-            service3Description,
-            service3DurationDays,
-            service3DurationHours,
-            service3DurationMinutes,
-            service3TotalDuration,
-            service3Price,
-            service3Specialization,
             service3Country,
             service3City,
             service3Address,
             service3Distance,
-            service4Name,
-            service4Description,
-            service4DurationDays,
-            service4DurationHours,
-            service4DurationMinutes,
-            service4TotalDuration,
-            service4Price,
-            service4Specialization,
             service4Country,
             service4City,
             service4Address,
             service4Distance,
-            service7Name,
-            service7Description,
-            service7DurationDays,
-            service7DurationHours,
-            service7DurationMinutes,
-            service7TotalDuration,
-            service7Price,
-            service7Specialization,
             service7Country,
             service7City,
             service7Address,
@@ -272,16 +349,8 @@ public class TestData {
             user12dateYYYY,
             user12Nationality,
             user12Language,
-            service12Name,
-            service12Description,
-            service12DurationDays,
-            service12DurationHours,
-            service12DurationMinutes,
-            service12TotalDuration,
-            service12Price,
             master12MainDescription,
             master12MainDescriptionNew,
-            master12MainSpecialization,
             master12MainSpecializationNew,
             master12MainCompany,
             master12MainCompanyNew,
@@ -425,61 +494,26 @@ public class TestData {
         randomRating = generate.number().numberBetween(1, 5);
         randomCurrency = generate.number().numberBetween(0, 3);
 
-        service1Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service1Description = generate.lorem().characters(20, 2000);
-        service1DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service1DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service1DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service1Price = String.valueOf(generate.number().numberBetween(1, 9999999));
-        service1Specialization = generate.job().title() + " " + generate.ancient().god();
         service1Country = "Russia";
         service1City = "Moscow";
         service1Address = generate.address().fullAddress();
         service1Distance = String.valueOf(generate.number().numberBetween(0, 9999));
 
-        service2Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service2Description = generate.lorem().characters(20, 2000);
-        service2DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service2DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service2DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service2Price = String.valueOf(generate.number().numberBetween(1, 2000));
-        service2Specialization = generate.job().title() + " " + generate.ancient().hero();
         service2Country = "Russia";
         service2City = "Moscow";
         service2Address = generate.address().fullAddress();
         service2Distance = String.valueOf(generate.number().numberBetween(0, 9999));
 
-        service3Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service3Description = generate.lorem().characters(20, 2000);
-        service3DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service3DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service3DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service3Price = String.valueOf(generate.number().numberBetween(1, 70000));
-        service3Specialization = generate.job().title() + " " + generate.ancient().titan();
         service3Country = "Russia";
         service3City = "Moscow";
         service3Address = generate.address().fullAddress();
         service3Distance = String.valueOf(generate.number().numberBetween(0, 9999));
 
-        service4Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service4Description = generate.lorem().characters(20, 2000);
-        service4DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service4DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service4DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service4Price = String.valueOf(generate.number().numberBetween(1, 999));
-        service4Specialization = generate.job().title() + " " + generate.ancient().primordial();
         service4Country = "Russia";
         service4City = "Moscow";
         service4Address = generate.address().fullAddress();
         service4Distance = String.valueOf(generate.number().numberBetween(0, 9999));
 
-        service7Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service7Description = generate.rickAndMorty().quote() + " " + generate.dune().quote();
-        service7DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service7DurationHours = String.valueOf(generate.number().numberBetween(0, 1));
-        service7DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service7Price = String.valueOf(generate.number().numberBetween(1, 99));
-        service7Specialization = generate.job().title() + " " + generate.name().suffix();
         service7Country = "Finland";
         service7City = "Helsinki";
         service7Address = generate.address().fullAddress();
@@ -525,41 +559,6 @@ public class TestData {
         user10Language1 = "Arabic";
         user10Language2 = "Irish";
 
-        long service1DurationDaysLong = parseLong(service1DurationDays),
-                service1DurationHoursLong = parseLong(service1DurationHours),
-                service1DurationMinutesLong = parseLong(service1DurationMinutes),
-                service1TotalDurationLong = service1DurationDaysLong * 24 * 60 + service1DurationHoursLong * 60 + service1DurationMinutesLong;
-
-        service1TotalDuration = Long.toString(service1TotalDurationLong);
-
-        long service2DurationDaysLong = parseLong(service2DurationDays),
-                service2DurationHoursLong = parseLong(service2DurationHours),
-                service2DurationMinutesLong = parseLong(service2DurationMinutes),
-                service2TotalDurationLong = service2DurationDaysLong * 24 * 60 + service2DurationHoursLong * 60 + service2DurationMinutesLong;
-
-        service2TotalDuration = Long.toString(service2TotalDurationLong);
-
-        long service3DurationDaysLong = parseLong(service3DurationDays),
-                service3DurationHoursLong = parseLong(service3DurationHours),
-                service3DurationMinutesLong = parseLong(service3DurationMinutes),
-                service3TotalDurationLong = service3DurationDaysLong * 24 * 60 + service3DurationHoursLong * 60 + service3DurationMinutesLong;
-
-        service3TotalDuration = Long.toString(service3TotalDurationLong);
-
-        long service4DurationDaysLong = parseLong(service4DurationDays),
-                service4DurationHoursLong = parseLong(service4DurationHours),
-                service4DurationMinutesLong = parseLong(service4DurationMinutes),
-                service4TotalDurationLong = service4DurationDaysLong * 24 * 60 + service4DurationHoursLong * 60 + service4DurationMinutesLong;
-
-        service4TotalDuration = Long.toString(service4TotalDurationLong);
-
-        long service7DurationDaysLong = parseLong(service7DurationDays),
-                service7DurationHoursLong = parseLong(service7DurationHours),
-                service7DurationMinutesLong = parseLong(service7DurationMinutes),
-                service7TotalDurationLong = service7DurationDaysLong * 24 * 60 + service7DurationHoursLong * 60 + service7DurationMinutesLong;
-
-        service7TotalDuration = Long.toString(service7TotalDurationLong);
-
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
         user12Patronymic = generate.aviation().aircraft();
@@ -577,15 +576,8 @@ public class TestData {
         master12MainSubcategory = getRandomSubcategoryFromCategoryValue(master12MainCategory);
         master12MainCategoryNew = generate.number().numberBetween(0, 8);
         master12MainSubcategoryNew = getRandomSubcategoryFromCategoryValue(master12MainCategoryNew);
-        service12Name = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        service12Description = generate.backToTheFuture().quote() + " " + generate.hitchhikersGuideToTheGalaxy().quote();
-        service12DurationDays = String.valueOf(generate.number().numberBetween(0, 0));
-        service12DurationHours = String.valueOf(generate.number().numberBetween(0, 2));
-        service12DurationMinutes = String.valueOf(generate.number().numberBetween(15, 45));
-        service12Price = String.valueOf(generate.number().numberBetween(1500, 90000));
         master12MainDescription = generate.rickAndMorty().quote() + " " + generate.twinPeaks().quote();
         master12MainDescriptionNew = generate.aquaTeenHungerForce().character() + " " + generate.princessBride().quote();
-        master12MainSpecialization = generate.job().title() + " " + generate.business().creditCardType();
         master12MainSpecializationNew = generate.job().title() + " " + generate.app().name();
         master12MainCompany = generate.app().author() + " " + generate.ancient().titan();
         master12MainCompanyNew = generate.app().author() + " " + generate.ancient().god();
@@ -664,28 +656,22 @@ public class TestData {
 
         userFirstName11 = generate.funnyName().name() + " 1";
         userLastName11 = generate.animal().name() + " 1";
-
-        long service12DurationDaysLong = parseLong(service12DurationDays),
-                service12DurationHoursLong = parseLong(service12DurationHours),
-                service12DurationMinutesLong = parseLong(service12DurationMinutes),
-                service12TotalDurationLong = service12DurationDaysLong * 24 * 60 + service12DurationHoursLong * 60 + service12DurationMinutesLong;
-
-        service12TotalDuration = Long.toString(service12TotalDurationLong);
     }
 
     public static String userCountry,
             userCity,
             userFirstName,
+            userLastName,
             userEmailRandom,
             userEmailUppercase,
             userEmailLowercase,
             userEmailMixedCase,
             userPasswordRandom,
             userPhoneNumber,
-            serviceName,
-            serviceDescription,
-            serviceDuration,
-            servicePrice,
+            serviceNameRandom,
+            serviceDescriptionRandom,
+            serviceDurationRandom,
+            servicePriceRandom,
             servicePriceMin,
             servicePriceMax,
             serviceSpecialization,
@@ -701,14 +687,15 @@ public class TestData {
         userCountry = "Russia";
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
+        userFirstName = generate.name().lastName();
         userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
         userPasswordRandom = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
 
-        serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        serviceDescription = generate.lorem().characters(20, 200);
-        serviceDuration = String.valueOf(generate.number().numberBetween(15, 45));
-        servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
+        serviceNameRandom = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
+        serviceDescriptionRandom = generate.lorem().characters(20, 200);
+        serviceDurationRandom = String.valueOf(generate.number().numberBetween(15, 45));
+        servicePriceRandom = String.valueOf(generate.number().numberBetween(1, 500));
         servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
         servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
         serviceSpecialization = generate.job().title() + " " + generate.ancient().god();

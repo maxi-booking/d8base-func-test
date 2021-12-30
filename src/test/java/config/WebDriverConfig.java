@@ -31,7 +31,7 @@ public interface WebDriverConfig extends Config {
     long getTimeout();
 
     @Config.Key("baseUrl")
-    @Config.DefaultValue("https://app.maxibooking.ru/")
+    @Config.DefaultValue("https://app.maxibooking.ru")
     String getBaseUrl();
 
     @Config.Key("remote")

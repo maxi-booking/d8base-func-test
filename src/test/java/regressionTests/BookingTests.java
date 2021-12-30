@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.RegressionTestsHelpers.serviceRegister;
-import static helpers.RegressionTestsHelpers.userRegister;
+import static helpers.RegressionTestsHelpers.*;
 
 public class BookingTests extends config.TestBase {
     @Test
@@ -16,14 +15,14 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Booking: today's date")
     void t00000() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        bkn.findService(serviceNameRandom);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -33,7 +32,7 @@ public class BookingTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceName);
+        bkn.verifyOrderDetails(serviceNameRandom);
     }
 
     @Test
@@ -43,14 +42,14 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: your own service for another person")
     void t00001() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        bkn.findService(serviceNameRandom);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -64,7 +63,7 @@ public class BookingTests extends config.TestBase {
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceName);
+        bkn.verifyOrderDetails(serviceNameRandom);
     }
 
     @Test
@@ -74,10 +73,10 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: a service for another person")
     void t00002() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
 
-        String service = serviceName;
+        String service = serviceNameRandom;
 
         log.forceLogOut();
         closeWindow();
@@ -115,14 +114,14 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.TRIVIAL)
     @DisplayName("Booking: time step, can't navigate back in time via arrows")
     void t00100() {
-        userRegister();
+        userReadyAPI();
         serviceRegister();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        bkn.findService(serviceNameRandom);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);

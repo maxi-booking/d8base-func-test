@@ -2,7 +2,7 @@ package helpers;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class MonthHelper {
+public class MonthConverter {
 
     public static String generateMonth() {
         return new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}[(int) (Math.random() * 12)];

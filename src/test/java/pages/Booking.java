@@ -1,6 +1,7 @@
 package pages;
 
 import helpers.Attach;
+import helpers.ServiceDuration;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static config.TestData.*;
 import static helpers.SelectableModal.selectModal;
+import static helpers.ServiceDuration.getDuration;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
@@ -55,7 +57,7 @@ public class Booking {
     @Step("Select a service")
     public void chooseService() {
         Attach.screenshotAs("Screenshot");
-        $("app-search-result").$("ion-card-content").$("app-service-link").$("a").click();
+        $("app-search-result ion-card-content app-service-link a").click();
     }
 
     @Step("Verify that the service data is correct")
@@ -69,10 +71,25 @@ public class Booking {
         $("app-service-widget").$("app-service-title").shouldHave(text(serviceName));
         String servicePriceActual = $("app-service-widget").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
+
+        ServiceDuration duration = getDuration(serviceDuration);
         if (!servicePriceActual.contains(servicePrice)) {
             fail();
         }
-        $("app-service-widget").$("app-duration-viewer").shouldHave(text(serviceDuration));
+        if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+            System.out.println("Duration can not be 0");
+            fail();
+        }
+        if (!duration.days.equals("0")) {
+            $("app-service-widget").$("app-duration-viewer").shouldHave(text(duration.days));
+        }
+        if (!duration.hours.equals("0")) {
+            $("app-service-widget").$("app-duration-viewer").shouldHave(text(duration.hours));
+        }
+        if (!duration.minutes.equals("0")) {
+            $("app-service-widget").$("app-duration-viewer").shouldHave(text(duration.minutes));
+        }
+
         $("app-service-widget").$("app-professional-card")
                 .shouldHave(text(firstName), text(lastName));
         $("app-service-widget").shouldHave(text(serviceDescription));

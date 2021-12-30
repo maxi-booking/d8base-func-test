@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.time.LocalDate;
 import java.time.Month;
 
-public class DayHelper {
+public class DayConverter {
 
     public static String getDayXDaysForward(int value) {
         String desiredDay = "0";
