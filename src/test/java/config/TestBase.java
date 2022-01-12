@@ -96,6 +96,7 @@ public class TestBase extends TestData {
         Configuration.headless = config.getHeadless();
         Configuration.browserCapabilities.setCapability("enableVNC", config.getVNC());
         Configuration.browserCapabilities.setCapability("enableVideo", config.getVideo());
+        System.setProperty("chromeoptions.prefs","intl.accept_languages=en");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         setTestData();
     }
