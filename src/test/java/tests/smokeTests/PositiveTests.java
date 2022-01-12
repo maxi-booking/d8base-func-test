@@ -1,6 +1,5 @@
-package smokeTests;
+package tests.smokeTests;
 
-import config.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

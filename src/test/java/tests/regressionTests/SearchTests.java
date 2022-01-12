@@ -1,4 +1,4 @@
-package regressionTests;
+package tests.regressionTests;
 
 import config.TestBase;
 import io.qameta.allure.*;

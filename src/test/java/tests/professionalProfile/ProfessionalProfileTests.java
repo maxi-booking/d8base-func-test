@@ -1,4 +1,4 @@
-package professionalProfile;
+package tests.professionalProfile;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;

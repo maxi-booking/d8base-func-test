@@ -1,4 +1,4 @@
-package regressionTests;
+package tests.regressionTests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;

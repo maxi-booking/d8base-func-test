@@ -687,7 +687,7 @@ public class TestData {
         userCountry = "Russia";
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
-        userFirstName = generate.name().lastName();
+        userLastName = generate.name().lastName();
         userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
         userPasswordRandom = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);

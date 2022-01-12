@@ -1,4 +1,4 @@
-package userProfile;
+package tests.userProfile;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;

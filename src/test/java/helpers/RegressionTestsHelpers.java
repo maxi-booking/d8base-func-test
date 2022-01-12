@@ -1,5 +1,7 @@
 package helpers;
 
+import api.Registration;
+
 public class RegressionTestsHelpers extends config.TestBase {
 
     public static void userRegister() {
@@ -46,7 +48,7 @@ public class RegressionTestsHelpers extends config.TestBase {
     }
 
     public static void userReadyAPI() {
-        helpers.API.registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        Registration.registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmailRandom, userPasswordRandom);
