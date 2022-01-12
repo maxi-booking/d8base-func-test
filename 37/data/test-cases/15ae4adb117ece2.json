@@ -1,0 +1,497 @@
+{
+  "uid" : "15ae4adb117ece2",
+  "name" : "Main page search: professional name",
+  "fullName" : "tests.smokeTests.PositiveTests.t00800",
+  "historyId" : "fd137908e2550f2bd2ba7b91a075723e",
+  "time" : {
+    "start" : 1642021617698,
+    "stop" : 1642021627337,
+    "duration" : 9639
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1642021618405,
+        "stop" : 1642021620975,
+        "duration" : 2570
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642021621175,
+        "stop" : 1642021621245,
+        "duration" : 70
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1642021622245,
+        "stop" : 1642021622315,
+        "duration" : 70
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642021622315,
+        "stop" : 1642021622610,
+        "duration" : 295
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1642021623311,
+        "stop" : 1642021623363,
+        "duration" : 52
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Main page: Search without quotes RudolfLouis KossConnelly",
+      "time" : {
+        "start" : 1642021623363,
+        "stop" : 1642021624854,
+        "duration" : 1491
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar input\") set value(RudolfLouis KossConnelly)",
+        "time" : {
+          "start" : 1642021623363,
+          "stop" : 1642021623473,
+          "duration" : 110
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"ion-searchbar input\") press enter()",
+        "time" : {
+          "start" : 1642021624473,
+          "stop" : 1642021624508,
+          "duration" : 35
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "ae20a406f428ff6d",
+        "name" : "Screenshot",
+        "source" : "ae20a406f428ff6d.png",
+        "type" : "image/png",
+        "size" : 250312
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "RudolfLouis KossConnelly"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1642021624854,
+        "stop" : 1642021625739,
+        "duration" : 885
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'RudolfLouis', text 'KossConnelly'])",
+        "time" : {
+          "start" : 1642021624857,
+          "stop" : 1642021625670,
+          "duration" : 813
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Lead Research Director (l2ydmg)')",
+        "time" : {
+          "start" : 1642021625670,
+          "stop" : 1642021625705,
+          "duration" : 35
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1642021625705,
+          "stop" : 1642021625739,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "RudolfLouis"
+      }, {
+        "name" : "lastName",
+        "value" : "KossConnelly"
+      }, {
+        "name" : "serviceName",
+        "value" : "Lead Research Director (l2ydmg)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "6084420"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1642021625739,
+        "stop" : 1642021625966,
+        "duration" : 227
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1642021625889,
+          "stop" : 1642021625966,
+          "duration" : 77
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "45b88c8b38453a2b",
+        "name" : "Screenshot",
+        "source" : "45b88c8b38453a2b.png",
+        "type" : "image/png",
+        "size" : 89960
+      } ],
+      "parameters" : [ ],
+      "hasContent" : true,
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1642021625966,
+        "stop" : 1642021627080,
+        "duration" : 1114
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Lead Research Director (l2ydmg)')",
+        "time" : {
+          "start" : 1642021625966,
+          "stop" : 1642021626922,
+          "duration" : 956
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1642021626922,
+          "stop" : 1642021626954,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '57')",
+        "time" : {
+          "start" : 1642021626954,
+          "stop" : 1642021626986,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'RudolfLouis', text 'KossConnelly'])",
+        "time" : {
+          "start" : 1642021626986,
+          "stop" : 1642021627043,
+          "duration" : 57
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'pawa8iw98hbr4zqdidesg2log1sxp1fyfg9r3rupo7edmgjrir8f0mqh1lr9mdtd2chg6sqtmoy0s1g68y63rgm1iawke84l2r4gpn0ufmidmmzmyuyh6nuk3g4vsdwsfpy1yi7z1zqepwk0vzk5brxlzlpw0stal2fa89c5l4m5k1won9i0qgkw07phzhqcbp7rom2375200rnpt31cdbbekgbgkdslzbros7u221md4adgrm2uj3tv4ujmcnu23cx1sj0l8tzessd4r6cj5gjyltx8inl6kk39ivvpsqcx1rg2637l5b94h35935xujjoi5dwip55g6y21ko7qjn7ol68s161yuk8z6vjf5hqh8qyi5uw4u4obxndfnd6ty400vdr86tr6mx9khqytqu48su78yn8r3fudkhpna80tsxuokpq7fe98w3k1xefyhpwa0hl5jrahb2v5aym4zv5ychfxtsq3r1g8jgiw2ac6ymm0znwy3ho7fdpocktcfp0d9mdkf4xfmnj96l77ttkzv7gptrqx7fnys0egqnvy20jqdwzqslj127aydk3dpvmjppcxnxq6emy6q4let3p55wl27nkx3jjwmlkupjc77bgz7xjtvnn4pgrpkkzsvxkuqhuoyoqd898yiyzm2ghiwd33ncub7nbb6gpesehca8jug8wpzlvi3gaw4dttcyyod2ehtj4c46cbtnuaato4i8uc4upbm1s2grskr4zx3h821u1o95xm4r0rqw65hj9v1chofxafhkbnsr59en2pb719rx46tnyc70fhiyhmhnk5acq4laur2pkeici212li7zu62mkmcj8demtplee445xqb1d63k0nw5vf4iszd7bay9pcawt4bicdv556t16pbze5jmw1tbg90cythf85t6h3t3dhdo72ywrshu0syk9py5o4pzz2b318azizhivg4s1flx8kj83nyifljpa91mi595j9yjql2kxr35cml5dnp7rky7gyrrasm6uvlfhbnbm7e04wrvpw36xie7qm550669w001yx455c3vdbak7yo2z5shr8vdwbcq0lg3nmwri531tf56hioqj2jbk11fmgtys9gn3ojz97woet4slwjrsdozttv3n74r59uey6qjp136rno7f3h9yvi8argx9umbqkhf0g0fik4oo3satrljauh7avaomv5ic70kpaydij3yd79tptx6mjqe1vvt538jjup3yzvvzv8vnh24rdf307kr58gkaj8pjwa5utbg67bh037csytbyccickdlpxw3nlty837l6onuez5fshlxmjdlvznjajhmcesumd6k4ay7kffo7lw8r9f65s4cmol8ta88knxncsa3adycsne7isrsnkdikff8b69x01nutepgovhtsirj5u8wd25q7akiy6f5rvxvghpkvj0uf7v4ldv4y72jtcn711e4ut98917wlg0jc5ilvnb6j3rzpwlyxol1sfew3xbks6otsdfsq74qwlvo8clzmu65x5tznqpbr0lmujcjiknu4povorbv740chscqt3pne4')",
+        "time" : {
+          "start" : 1642021627043,
+          "stop" : 1642021627080,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Lead Research Director (l2ydmg)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "6084420"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "57"
+      }, {
+        "name" : "firstName",
+        "value" : "RudolfLouis"
+      }, {
+        "name" : "lastName",
+        "value" : "KossConnelly"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "pawa8iw98hbr4zqdidesg2log1sxp1fyfg9r3rupo7edmgjrir8f0mqh1lr9mdtd2chg6sqtmoy0s1g68y63rgm1iawke84l2r4gpn0ufmidmmzmyuyh6nuk3g4vsdwsfpy1yi7z1zqepwk0vzk5brxlzlpw0stal2fa89c5l4m5k1won9i0qgkw07phzhqcbp7rom2375200rnpt31cdbbekgbgkdslzbros7u221md4adgrm2uj3tv4ujmcnu23cx1sj0l8tzessd4r6cj5gjyltx8inl6kk39ivvpsqcx1rg2637l5b94h35935xujjoi5dwip55g6y21ko7qjn7ol68s161yuk8z6vjf5hqh8qyi5uw4u4obxndfnd6ty400vdr86tr6mx9khqytqu48su78yn8r3fudkhpna80tsxuokpq7fe98w3k1xefyhpwa0hl5jrahb2v5aym4zv5ychfxtsq3r1g8jgiw2ac6ymm0znwy3ho7fdpocktcfp0d9mdkf4xfmnj96l77ttkzv7gptrqx7fnys0egqnvy20jqdwzqslj127aydk3dpvmjppcxnxq6emy6q4let3p55wl27nkx3jjwmlkupjc77bgz7xjtvnn4pgrpkkzsvxkuqhuoyoqd898yiyzm2ghiwd33ncub7nbb6gpesehca8jug8wpzlvi3gaw4dttcyyod2ehtj4c46cbtnuaato4i8uc4upbm1s2grskr4zx3h821u1o95xm4r0rqw65hj9v1chofxafhkbnsr59en2pb719rx46tnyc70fhiyhmhnk5acq4laur2pkeici212li7zu62mkmcj8demtplee445xqb1d63k0nw5vf4iszd7bay9pcawt4bicdv556t16pbze5jmw1tbg90cythf85t6h3t3dhdo72ywrshu0syk9py5o4pzz2b318azizhivg4s1flx8kj83nyifljpa91mi595j9yjql2kxr35cml5dnp7rky7gyrrasm6uvlfhbnbm7e04wrvpw36xie7qm550669w001yx455c3vdbak7yo2z5shr8vdwbcq0lg3nmwri531tf56hioqj2jbk11fmgtys9gn3ojz97woet4slwjrsdozttv3n74r59uey6qjp136rno7f3h9yvi8argx9umbqkhf0g0fik4oo3satrljauh7avaomv5ic70kpaydij3yd79tptx6mjqe1vvt538jjup3yzvvzv8vnh24rdf307kr58gkaj8pjwa5utbg67bh037csytbyccickdlpxw3nlty837l6onuez5fshlxmjdlvznjajhmcesumd6k4ay7kffo7lw8r9f65s4cmol8ta88knxncsa3adycsne7isrsnkdikff8b69x01nutepgovhtsirj5u8wd25q7akiy6f5rvxvghpkvj0uf7v4ldv4y72jtcn711e4ut98917wlg0jc5ilvnb6j3rzpwlyxol1sfew3xbks6otsdfsq74qwlvo8clzmu65x5tznqpbr0lmujcjiknu4povorbv740chscqt3pne4"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1642021627263,
+        "stop" : 1642021627337,
+        "duration" : 74
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "a20b53793ae8b084",
+      "name" : "Screenshot",
+      "source" : "a20b53793ae8b084.png",
+      "type" : "image/png",
+      "size" : 66636
+    }, {
+      "uid" : "a9785b99a09c779b",
+      "name" : "Page source",
+      "source" : "a9785b99a09c779b.html",
+      "type" : "text/plain",
+      "size" : 147477
+    }, {
+      "uid" : "ee5916fbb9581c5d",
+      "name" : "Browser console logs",
+      "source" : "ee5916fbb9581c5d.bin",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "1ca5e6c85cd4fafe",
+      "name" : "Video",
+      "source" : "1ca5e6c85cd4fafe.html",
+      "type" : "text/html",
+      "size" : 208
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 21,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00800()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az183-294"
+  }, {
+    "name" : "thread",
+    "value" : "3300@fv-az183-294.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00800"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 3,
+        "unknown" : 0,
+        "total" : 3
+      },
+      "items" : [ {
+        "uid" : "ae10fe83b181bcaf",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/ae10fe83b181bcaf",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005431264,
+          "stop" : 1642005441919,
+          "duration" : 10655
+        }
+      }, {
+        "uid" : "f33a4e5871b21e44",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/f33a4e5871b21e44",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002027825,
+          "stop" : 1642002039099,
+          "duration" : 11274
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "15ae4adb117ece2.json",
+  "parameterValues" : [ ]
+}

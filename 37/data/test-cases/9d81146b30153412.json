@@ -1,0 +1,497 @@
+{
+  "uid" : "9d81146b30153412",
+  "name" : "Main page search: service name",
+  "fullName" : "tests.smokeTests.PositiveTests.t00801",
+  "historyId" : "2ecc7bb31bcf252cb1aae56e9785821c",
+  "time" : {
+    "start" : 1642021627339,
+    "stop" : 1642021638025,
+    "duration" : 10686
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1642021628069,
+        "stop" : 1642021630362,
+        "duration" : 2293
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642021630562,
+        "stop" : 1642021630809,
+        "duration" : 247
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1642021631809,
+        "stop" : 1642021631871,
+        "duration" : 62
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642021631871,
+        "stop" : 1642021632209,
+        "duration" : 338
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1642021632910,
+        "stop" : 1642021632948,
+        "duration" : 38
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Main page, input search text and press Enter",
+      "time" : {
+        "start" : 1642021632949,
+        "stop" : 1642021635964,
+        "duration" : 3015
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar/input\") set value(\"Direct Program Specialist (o4zdtvptr90)\")",
+        "time" : {
+          "start" : 1642021633949,
+          "stop" : 1642021634092,
+          "duration" : 143
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"ion-searchbar/input\") press enter()",
+        "time" : {
+          "start" : 1642021635092,
+          "stop" : 1642021635135,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "f1c22e7d6543f5c6",
+        "name" : "Screenshot",
+        "source" : "f1c22e7d6543f5c6.png",
+        "type" : "image/png",
+        "size" : 254348
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Direct Program Specialist (o4zdtvptr90)"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1642021635964,
+        "stop" : 1642021636423,
+        "duration" : 459
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'ShinDesire', text 'WilliamsonPhDIV'])",
+        "time" : {
+          "start" : 1642021635964,
+          "stop" : 1642021636352,
+          "duration" : 388
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Direct Program Specialist (o4zdtvptr90)')",
+        "time" : {
+          "start" : 1642021636353,
+          "stop" : 1642021636388,
+          "duration" : 35
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1642021636388,
+          "stop" : 1642021636423,
+          "duration" : 35
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "ShinDesire"
+      }, {
+        "name" : "lastName",
+        "value" : "WilliamsonPhDIV"
+      }, {
+        "name" : "serviceName",
+        "value" : "Direct Program Specialist (o4zdtvptr90)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "1339"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1642021636423,
+        "stop" : 1642021636652,
+        "duration" : 229
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1642021636576,
+          "stop" : 1642021636652,
+          "duration" : 76
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "fdce5521a55e4c48",
+        "name" : "Screenshot",
+        "source" : "fdce5521a55e4c48.png",
+        "type" : "image/png",
+        "size" : 96262
+      } ],
+      "parameters" : [ ],
+      "hasContent" : true,
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1642021636652,
+        "stop" : 1642021637766,
+        "duration" : 1114
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Direct Program Specialist (o4zdtvptr90)')",
+        "time" : {
+          "start" : 1642021636652,
+          "stop" : 1642021637590,
+          "duration" : 938
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1642021637590,
+          "stop" : 1642021637621,
+          "duration" : 31
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '59')",
+        "time" : {
+          "start" : 1642021637621,
+          "stop" : 1642021637650,
+          "duration" : 29
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'ShinDesire', text 'WilliamsonPhDIV'])",
+        "time" : {
+          "start" : 1642021637650,
+          "stop" : 1642021637727,
+          "duration" : 77
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'sry0rb4vk0c4wrps0x5yuwaf4slb651zzreyray9nktgardvgg2tb64pt5zrpgrpa6snhtt8735g2yh47vmqi4uiaom8zsqfljwrfmrpxqoddvgcjr6r0llfuwdo6jiusr13mnjbcgldozuf64lp1o3bdatt8vz53x7hiy1ms3ts6wf8vlkgd89mz5lly7h1ju7mrqtve4r853njn76w4mo9dj268bw4fy9x4c71w64grh205yo5hra0a585mfgh4w446auw9jb86dwsd9a69swlq6auzk91gxd6tqolewtzjfpzrpz5wz32xss1cov3t1j6tekkplpadfl0nlrdx6hv44jiltasmgfqqsq3g14eh9hn2b7t2cgfminpmiqechscjj68qt9xcibsb8fe5ln2zh3t7fboa0n6dg1fws5gv4o4vri9vt9l4qrk3w9f8v8qsh9vcvj7h1gv5et88lkv0kpkb296asytrffgliwyhc4gpeng3nyx3o6nn7dip79r8ffvnls52pqzvuttalt6uetr29uaoi6k5gt7vr28dwv1n06vziombl7xm3tyfb94zqt1wg6meuspalzxfmzigu761gkney1uu58k2e1lwp3rbkn9pd5dx1iwk7dsatms9xg09b7w1b5kb73yzw804enjz1i6ee1km7iay4r2fj7jw72n7xzuvgw9xzgkq5mo7pbx0ky4zxn94rxhqem31z9xwecurnwe5h5m3cryx1ntu4ol8yl4f577it1xoc8w8mu4gcqk4fxcra6h41csb4uq8420hg54rc4j6b13xk74qxb6k7z87h1k9jp0auwb7f9chqt0g2wc304sq0arnfkvni8oszk900b6dh1u9rzi63d3blht1r0go55w2bmay94ib7nswummsc17vw8nfdl05tr9sdtlpwivix3aofowkt4g5ffs0829a41qzamocwz2a72runc9uujpqhah0twom8ts69lish9xwkvpygg8q56guqh5kgil38q25r5yh3yn6pz2koju9ocz9u8hjw43vcg44cqez6t1fiyv8llemry4rugwpqko3dfrsspgtzuxcqf09925mcbtjwjef5wjr5fu4m2ll40bnqadk3yun1ov2ayjo7w7mq42ojc9dzlyq2gid755nu9mgbq1oe5ix7dqxyfwq34igx5n8yfr9t0ydv9dbmiuw04r9o4mjclku804ku4be0kv82w96gso3lsrehrf6a4rq66he5s2g3v5r8s8wk6kqii100fr1e98flyle6rjtb5g0m7f5etikzknl3p2xicxlipuoxleh8n7k2vt9hxa25jh3vcvdgt59kyqoq6o6i5keiq3te9gw77f671sz7giipm31hyo24mpohec4k64ywwm8lw7p3l8geg7kf534fqvwvtce9bmsjyx7drhs0ojgf9npubwdjfzr1p4')",
+        "time" : {
+          "start" : 1642021637727,
+          "stop" : 1642021637766,
+          "duration" : 39
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "hasContent" : false,
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Direct Program Specialist (o4zdtvptr90)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "1339"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "59"
+      }, {
+        "name" : "firstName",
+        "value" : "ShinDesire"
+      }, {
+        "name" : "lastName",
+        "value" : "WilliamsonPhDIV"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "sry0rb4vk0c4wrps0x5yuwaf4slb651zzreyray9nktgardvgg2tb64pt5zrpgrpa6snhtt8735g2yh47vmqi4uiaom8zsqfljwrfmrpxqoddvgcjr6r0llfuwdo6jiusr13mnjbcgldozuf64lp1o3bdatt8vz53x7hiy1ms3ts6wf8vlkgd89mz5lly7h1ju7mrqtve4r853njn76w4mo9dj268bw4fy9x4c71w64grh205yo5hra0a585mfgh4w446auw9jb86dwsd9a69swlq6auzk91gxd6tqolewtzjfpzrpz5wz32xss1cov3t1j6tekkplpadfl0nlrdx6hv44jiltasmgfqqsq3g14eh9hn2b7t2cgfminpmiqechscjj68qt9xcibsb8fe5ln2zh3t7fboa0n6dg1fws5gv4o4vri9vt9l4qrk3w9f8v8qsh9vcvj7h1gv5et88lkv0kpkb296asytrffgliwyhc4gpeng3nyx3o6nn7dip79r8ffvnls52pqzvuttalt6uetr29uaoi6k5gt7vr28dwv1n06vziombl7xm3tyfb94zqt1wg6meuspalzxfmzigu761gkney1uu58k2e1lwp3rbkn9pd5dx1iwk7dsatms9xg09b7w1b5kb73yzw804enjz1i6ee1km7iay4r2fj7jw72n7xzuvgw9xzgkq5mo7pbx0ky4zxn94rxhqem31z9xwecurnwe5h5m3cryx1ntu4ol8yl4f577it1xoc8w8mu4gcqk4fxcra6h41csb4uq8420hg54rc4j6b13xk74qxb6k7z87h1k9jp0auwb7f9chqt0g2wc304sq0arnfkvni8oszk900b6dh1u9rzi63d3blht1r0go55w2bmay94ib7nswummsc17vw8nfdl05tr9sdtlpwivix3aofowkt4g5ffs0829a41qzamocwz2a72runc9uujpqhah0twom8ts69lish9xwkvpygg8q56guqh5kgil38q25r5yh3yn6pz2koju9ocz9u8hjw43vcg44cqez6t1fiyv8llemry4rugwpqko3dfrsspgtzuxcqf09925mcbtjwjef5wjr5fu4m2ll40bnqadk3yun1ov2ayjo7w7mq42ojc9dzlyq2gid755nu9mgbq1oe5ix7dqxyfwq34igx5n8yfr9t0ydv9dbmiuw04r9o4mjclku804ku4be0kv82w96gso3lsrehrf6a4rq66he5s2g3v5r8s8wk6kqii100fr1e98flyle6rjtb5g0m7f5etikzknl3p2xicxlipuoxleh8n7k2vt9hxa25jh3vcvdgt59kyqoq6o6i5keiq3te9gw77f671sz7giipm31hyo24mpohec4k64ywwm8lw7p3l8geg7kf534fqvwvtce9bmsjyx7drhs0ojgf9npubwdjfzr1p4"
+      } ],
+      "hasContent" : true,
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1642021637952,
+        "stop" : 1642021638024,
+        "duration" : 72
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "fa565625ac91d117",
+      "name" : "Screenshot",
+      "source" : "fa565625ac91d117.png",
+      "type" : "image/png",
+      "size" : 76186
+    }, {
+      "uid" : "bf9e15c329389374",
+      "name" : "Page source",
+      "source" : "bf9e15c329389374.html",
+      "type" : "text/plain",
+      "size" : 148056
+    }, {
+      "uid" : "2a012401b76305f3",
+      "name" : "Browser console logs",
+      "source" : "2a012401b76305f3.bin",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "c1a6a8a82f3da4f3",
+      "name" : "Video",
+      "source" : "c1a6a8a82f3da4f3.html",
+      "type" : "text/html",
+      "size" : 208
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 21,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00801()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az183-294"
+  }, {
+    "name" : "thread",
+    "value" : "3300@fv-az183-294.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00801"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 3,
+        "unknown" : 0,
+        "total" : 3
+      },
+      "items" : [ {
+        "uid" : "2ed703201f9833f1",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/2ed703201f9833f1",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005441921,
+          "stop" : 1642005453783,
+          "duration" : 11862
+        }
+      }, {
+        "uid" : "60de7fd677e5cf2a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/60de7fd677e5cf2a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002039104,
+          "stop" : 1642002051494,
+          "duration" : 12390
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "9d81146b30153412.json",
+  "parameterValues" : [ ]
+}
