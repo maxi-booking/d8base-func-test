@@ -47,7 +47,7 @@ public class Attach {
     }
 
     public static URL getVideoUrl(String sessionId) {
-        String videoUrl = "https://localhost/video/" + sessionId + ".mp4";
+        String videoUrl = "https://maxi-booking.github.io/d8base-func-test/video/" + sessionId + ".mp4";
 
         try {
             return new URL(videoUrl);

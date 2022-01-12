@@ -72,10 +72,11 @@ public class Booking {
         String servicePriceActual = $("app-service-widget").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
 
-        ServiceDuration duration = getDuration(serviceDuration);
         if (!servicePriceActual.contains(servicePrice)) {
             fail();
         }
+
+        ServiceDuration duration = getDuration(serviceDuration);
         if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
             System.out.println("Duration can not be 0");
             fail();

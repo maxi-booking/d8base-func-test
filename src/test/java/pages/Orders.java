@@ -54,9 +54,24 @@ public class Orders extends config.TestBase {
         sleep(400);
         Attach.screenshotAs("Screenshot");
         $("app-inbox-page").shouldHave(
-                text(userFirstName),
-                text(serviceTotalDuration)
+                text(userFirstName)
         );
+
+        ServiceDuration duration = getDuration(serviceTotalDuration);
+        if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+            System.out.println("Duration can not be 0");
+            fail();
+        }
+        if (!duration.days.equals("0")) {
+            $("app-inbox app-duration-viewer").shouldHave(text(duration.days));
+        }
+        if (!duration.hours.equals("0")) {
+            $("app-inbox app-duration-viewer").shouldHave(text(duration.hours));
+        }
+        if (!duration.minutes.equals("0")) {
+            $("app-inbox app-duration-viewer").shouldHave(text(duration.minutes));
+        }
+
         int cardNumber = 0;
         String servicePriceActualString = "";
         while ($("app-inbox-page").$("app-price", cardNumber).exists()) {
@@ -79,9 +94,24 @@ public class Orders extends config.TestBase {
     ) {
         $("app-outbox-page").shouldHave(
                 text(userFirstName),
-                text(serviceName),
-                text(serviceTotalDuration)
+                text(serviceName)
         );
+
+        ServiceDuration duration = getDuration(serviceTotalDuration);
+        if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+            System.out.println("Duration can not be 0");
+            fail();
+        }
+        if (!duration.days.equals("0")) {
+            $("app-outbox-page").shouldHave(text(duration.days));
+        }
+        if (!duration.hours.equals("0")) {
+            $("app-outbox-page").shouldHave(text(duration.hours));
+        }
+        if (!duration.minutes.equals("0")) {
+            $("app-outbox-page").shouldHave(text(duration.minutes));
+        }
+
         int cardNumber = 0;
         String servicePriceActualString = "";
         while ($("app-outbox-page").$("app-price", cardNumber).exists()) {
@@ -137,9 +167,23 @@ public class Orders extends config.TestBase {
     ) {
         $("app-inbox-page").shouldNotHave(
                 text(userFirstName),
-                text(servicePrice),
-                text(serviceTotalDuration)
+                text(servicePrice)
         );
+
+        ServiceDuration duration = getDuration(serviceTotalDuration);
+        if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+            System.out.println("Duration can not be 0");
+            fail();
+        }
+        if (!duration.days.equals("0")) {
+            $("app-inbox-page").shouldHave(text(duration.days));
+        }
+        if (!duration.hours.equals("0")) {
+            $("app-inbox-page").shouldHave(text(duration.hours));
+        }
+        if (!duration.minutes.equals("0")) {
+            $("app-inbox-page").shouldHave(text(duration.minutes));
+        }
     }
 
     @Step("Simple order check outbox")

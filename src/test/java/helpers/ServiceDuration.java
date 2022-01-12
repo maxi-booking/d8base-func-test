@@ -1,5 +1,7 @@
 package helpers;
 
+import org.junit.jupiter.api.Test;
+
 import static java.lang.String.valueOf;
 
 public final class ServiceDuration {
@@ -33,3 +35,4 @@ public final class ServiceDuration {
         }
     }
 }
+
