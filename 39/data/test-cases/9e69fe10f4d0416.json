@@ -1,0 +1,524 @@
+{
+  "uid" : "9e69fe10f4d0416",
+  "name" : "Main page search: professional name",
+  "fullName" : "tests.smokeTests.PositiveTests.t00800",
+  "historyId" : "fd137908e2550f2bd2ba7b91a075723e",
+  "time" : {
+    "start" : 1642067915374,
+    "stop" : 1642067925822,
+    "duration" : 10448
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1642067916296,
+        "stop" : 1642067919017,
+        "duration" : 2721
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642067919217,
+        "stop" : 1642067919291,
+        "duration" : 74
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1642067920291,
+        "stop" : 1642067920376,
+        "duration" : 85
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642067920376,
+        "stop" : 1642067920757,
+        "duration" : 381
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1642067921457,
+        "stop" : 1642067921507,
+        "duration" : 50
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page: Search without quotes DaneKeith ColeStreich",
+      "time" : {
+        "start" : 1642067921508,
+        "stop" : 1642067923111,
+        "duration" : 1603
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar input\") set value(DaneKeith ColeStreich)",
+        "time" : {
+          "start" : 1642067921508,
+          "stop" : 1642067921643,
+          "duration" : 135
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar input\") press enter()",
+        "time" : {
+          "start" : 1642067922643,
+          "stop" : 1642067922686,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "264d3157f62e064c",
+        "name" : "Screenshot",
+        "source" : "264d3157f62e064c.png",
+        "type" : "image/png",
+        "size" : 250698
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "DaneKeith ColeStreich"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1642067923111,
+        "stop" : 1642067923999,
+        "duration" : 888
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'DaneKeith', text 'ColeStreich'])",
+        "time" : {
+          "start" : 1642067923111,
+          "stop" : 1642067923907,
+          "duration" : 796
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Central Paradigm Specialist (z38ll6mdb7e)')",
+        "time" : {
+          "start" : 1642067923907,
+          "stop" : 1642067923954,
+          "duration" : 47
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1642067923954,
+          "stop" : 1642067923999,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "DaneKeith"
+      }, {
+        "name" : "lastName",
+        "value" : "ColeStreich"
+      }, {
+        "name" : "serviceName",
+        "value" : "Central Paradigm Specialist (z38ll6mdb7e)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "8198934"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1642067923999,
+        "stop" : 1642067924304,
+        "duration" : 305
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1642067924205,
+          "stop" : 1642067924304,
+          "duration" : 99
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "f2da3e3825d6c744",
+        "name" : "Screenshot",
+        "source" : "f2da3e3825d6c744.png",
+        "type" : "image/png",
+        "size" : 90803
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1642067924304,
+        "stop" : 1642067925525,
+        "duration" : 1221
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Central Paradigm Specialist (z38ll6mdb7e)')",
+        "time" : {
+          "start" : 1642067924304,
+          "stop" : 1642067925298,
+          "duration" : 994
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1642067925298,
+          "stop" : 1642067925338,
+          "duration" : 40
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '1')",
+        "time" : {
+          "start" : 1642067925338,
+          "stop" : 1642067925375,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '2')",
+        "time" : {
+          "start" : 1642067925375,
+          "stop" : 1642067925405,
+          "duration" : 30
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'DaneKeith', text 'ColeStreich'])",
+        "time" : {
+          "start" : 1642067925405,
+          "stop" : 1642067925479,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'zjhxhyggm2fj26tjakwhtmkhruhsyfxu6vaqbio1fooxxkiam110mllcbygxrsavcqbjhxrffbjetubvmcwhevu60xyqb541bela3hhbynuozqnf6kl2oytkmj8vblzkox2eyi5w3or9ubnhxjgmw8cmdftoq8tj7gguh2kvoxd3ul3mh3h0jgw3w2pax6ov422spnxvo78cgg2awxoedbg490gv3wcv7k03xom9m6oz49h4o1yflc14i56889zo4z23eisxkyprg308bye7n7fw9xwdxtaljpwsmveukukamn6rauken8pn8rgmmp4zb6jukpugvcbvmvcxx7swyvo6os009z39uklhd794tq023pt1gyadk90cpgv18igsudkwfyi6mdi2xhr7n2etrqoqjztmj3n31en5e1yx64x95dvwi19sukxkqt28x0zn5vmbpgtitp12ujwkk1pyaditmlipqj5k33xu4jfs723xky0a7r4f5w15jo67z3gxj4xv43j88gl64y4zibt3r9clkyggbhi2xggw4j9dv399issu8w0ay9n536uyzvtkxsk2gffcummmkz3w6kqgxyzk6ubjhw5jb8wl1vnofy01czup8txdx3o2b0nxwozear4dzw2q3nnuiw8bzcbxgd6cwx22y4vys38iglnlatoxxrqxh0zpeyo6m11svfl23i4h33zu90x31rohzbwzytz71nea7lku5hlc5cu5ijga7hefovh8oum0xdrvjacogbms0qnxx003qzj4edj5kx2wedzpzbn9lamabgbaktoa37foodfs4zbkksmn53b4wkv0zrexyefvxosm1b2u1j572hsh4y965yxbjebu31yngj4mzuqopa32meiyxdgackugwhrkywm8pykpkftwnei8a9qcqvduttjdxsuk1s03brfbqeawwdt2sfmynoo2gmx8yvzlelbhbamnnjlmr3to241cbs43p477wr3gqzz0w5lqspfggy6t5n3eu0al7ko8q31wpl0iemzrx6uoo875x6848zavgdjedgja7di1esljuokcj4d5mf0ui5rlimp4o1qps99nv07ljvgjjmk9gzcg0ju02yfcv6xe866qmwgyrtukqnvsrq66107w9aq93vq8zzg46ipa85at4ywfvf0k1k90h2s6ng6kxim30xa312w')",
+        "time" : {
+          "start" : 1642067925479,
+          "stop" : 1642067925525,
+          "duration" : 46
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Central Paradigm Specialist (z38ll6mdb7e)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "8198934"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "62"
+      }, {
+        "name" : "firstName",
+        "value" : "DaneKeith"
+      }, {
+        "name" : "lastName",
+        "value" : "ColeStreich"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "zjhxhyggm2fj26tjakwhtmkhruhsyfxu6vaqbio1fooxxkiam110mllcbygxrsavcqbjhxrffbjetubvmcwhevu60xyqb541bela3hhbynuozqnf6kl2oytkmj8vblzkox2eyi5w3or9ubnhxjgmw8cmdftoq8tj7gguh2kvoxd3ul3mh3h0jgw3w2pax6ov422spnxvo78cgg2awxoedbg490gv3wcv7k03xom9m6oz49h4o1yflc14i56889zo4z23eisxkyprg308bye7n7fw9xwdxtaljpwsmveukukamn6rauken8pn8rgmmp4zb6jukpugvcbvmvcxx7swyvo6os009z39uklhd794tq023pt1gyadk90cpgv18igsudkwfyi6mdi2xhr7n2etrqoqjztmj3n31en5e1yx64x95dvwi19sukxkqt28x0zn5vmbpgtitp12ujwkk1pyaditmlipqj5k33xu4jfs723xky0a7r4f5w15jo67z3gxj4xv43j88gl64y4zibt3r9clkyggbhi2xggw4j9dv399issu8w0ay9n536uyzvtkxsk2gffcummmkz3w6kqgxyzk6ubjhw5jb8wl1vnofy01czup8txdx3o2b0nxwozear4dzw2q3nnuiw8bzcbxgd6cwx22y4vys38iglnlatoxxrqxh0zpeyo6m11svfl23i4h33zu90x31rohzbwzytz71nea7lku5hlc5cu5ijga7hefovh8oum0xdrvjacogbms0qnxx003qzj4edj5kx2wedzpzbn9lamabgbaktoa37foodfs4zbkksmn53b4wkv0zrexyefvxosm1b2u1j572hsh4y965yxbjebu31yngj4mzuqopa32meiyxdgackugwhrkywm8pykpkftwnei8a9qcqvduttjdxsuk1s03brfbqeawwdt2sfmynoo2gmx8yvzlelbhbamnnjlmr3to241cbs43p477wr3gqzz0w5lqspfggy6t5n3eu0al7ko8q31wpl0iemzrx6uoo875x6848zavgdjedgja7di1esljuokcj4d5mf0ui5rlimp4o1qps99nv07ljvgjjmk9gzcg0ju02yfcv6xe866qmwgyrtukqnvsrq66107w9aq93vq8zzg46ipa85at4ywfvf0k1k90h2s6ng6kxim30xa312w"
+      } ],
+      "stepsCount" : 6,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1642067925750,
+        "stop" : 1642067925822,
+        "duration" : 72
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "7722e489bbeff666",
+      "name" : "Screenshot",
+      "source" : "7722e489bbeff666.png",
+      "type" : "image/png",
+      "size" : 66500
+    }, {
+      "uid" : "9906a1d42ea4d5d0",
+      "name" : "Page source",
+      "source" : "9906a1d42ea4d5d0.html",
+      "type" : "text/plain",
+      "size" : 147114
+    }, {
+      "uid" : "ddc8ee35e357fe",
+      "name" : "Browser console logs",
+      "source" : "ddc8ee35e357fe.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 22,
+    "attachmentsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00800()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az208-957"
+  }, {
+    "name" : "thread",
+    "value" : "3324@fv-az208-957.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00800"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 5,
+        "unknown" : 0,
+        "total" : 5
+      },
+      "items" : [ {
+        "uid" : "4b87e88e126cac10",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/4b87e88e126cac10",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642064250879,
+          "stop" : 1642064262890,
+          "duration" : 12011
+        }
+      }, {
+        "uid" : "15ae4adb117ece2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/15ae4adb117ece2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021617698,
+          "stop" : 1642021627337,
+          "duration" : 9639
+        }
+      }, {
+        "uid" : "ae10fe83b181bcaf",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/ae10fe83b181bcaf",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005431264,
+          "stop" : 1642005441919,
+          "duration" : 10655
+        }
+      }, {
+        "uid" : "f33a4e5871b21e44",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/f33a4e5871b21e44",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002027825,
+          "stop" : 1642002039099,
+          "duration" : 11274
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "9e69fe10f4d0416.json",
+  "parameterValues" : [ ]
+}

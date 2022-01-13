@@ -1,0 +1,524 @@
+{
+  "uid" : "38bc0337d06015ce",
+  "name" : "Main page search: speciality",
+  "fullName" : "tests.smokeTests.PositiveTests.t00802",
+  "historyId" : "6c4f4c2d7353d21c51a2c945809c918b",
+  "time" : {
+    "start" : 1642067937385,
+    "stop" : 1642067948972,
+    "duration" : 11587
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1642067938333,
+        "stop" : 1642067941052,
+        "duration" : 2719
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642067941252,
+        "stop" : 1642067941331,
+        "duration" : 79
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1642067942331,
+        "stop" : 1642067942414,
+        "duration" : 83
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642067942414,
+        "stop" : 1642067942784,
+        "duration" : 370
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1642067943484,
+        "stop" : 1642067943539,
+        "duration" : 55
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page, input search text and press Enter",
+      "time" : {
+        "start" : 1642067943539,
+        "stop" : 1642067946653,
+        "duration" : 3114
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar/input\") set value(\"Design Supervisor Tethys\")",
+        "time" : {
+          "start" : 1642067944540,
+          "stop" : 1642067944711,
+          "duration" : 171
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar/input\") press enter()",
+        "time" : {
+          "start" : 1642067945711,
+          "stop" : 1642067945764,
+          "duration" : 53
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "444207c516bfab67",
+        "name" : "Screenshot",
+        "source" : "444207c516bfab67.png",
+        "type" : "image/png",
+        "size" : 251613
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Design Supervisor Tethys"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1642067946654,
+        "stop" : 1642067947166,
+        "duration" : 512
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'SantosTom', text 'KshlerinIDDS'])",
+        "time" : {
+          "start" : 1642067946654,
+          "stop" : 1642067947075,
+          "duration" : 421
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Future Optimization Orchestrator (2blpljs5i)')",
+        "time" : {
+          "start" : 1642067947075,
+          "stop" : 1642067947120,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1642067947120,
+          "stop" : 1642067947166,
+          "duration" : 46
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "SantosTom"
+      }, {
+        "name" : "lastName",
+        "value" : "KshlerinIDDS"
+      }, {
+        "name" : "serviceName",
+        "value" : "Future Optimization Orchestrator (2blpljs5i)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "66005"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1642067947166,
+        "stop" : 1642067947465,
+        "duration" : 299
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1642067947370,
+          "stop" : 1642067947465,
+          "duration" : 95
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "9b83a64acefe0190",
+        "name" : "Screenshot",
+        "source" : "9b83a64acefe0190.png",
+        "type" : "image/png",
+        "size" : 91954
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1642067947465,
+        "stop" : 1642067948670,
+        "duration" : 1205
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Future Optimization Orchestrator (2blpljs5i)')",
+        "time" : {
+          "start" : 1642067947465,
+          "stop" : 1642067948430,
+          "duration" : 965
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1642067948430,
+          "stop" : 1642067948469,
+          "duration" : 39
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '1')",
+        "time" : {
+          "start" : 1642067948469,
+          "stop" : 1642067948506,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '25')",
+        "time" : {
+          "start" : 1642067948506,
+          "stop" : 1642067948543,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'SantosTom', text 'KshlerinIDDS'])",
+        "time" : {
+          "start" : 1642067948543,
+          "stop" : 1642067948621,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text '577t4j2bxd5lwsv5jxzidq0hx2m6eyy1x5qtz9wrh5hcaka09j72lclaqryzsdaeax9stnsqgden6oc5vy5x2e8lvucbhbv3g82rfrtnlgysl0h7vzoexi8z8bkh5bpngin2cggwvz7ih8l6a7n1u8zwhmm3edv78r7egnxtragp6lrjg9dan6q32mjobtavgmu58urjmddp7mba4rjl6axdqgpg5g62il5twnvtqwa2scrmc3mm3v3xn8m8qxm0tmi4u5w482ssul1cv77o1lt0jqpeqxfmhaznttr8oc9w4var0fdt8x250mu3beko9kzb6pss663wzl1wx53h16cp8zabciz96qy7n4r4l4ld5ove07fqncgvwajy60dhte8a767y7y3717wifqx5rjtkcjncns9x019ifgl3nvpawyrsg272g4h7la4ej3htwnl9qd4pgg3jhpln4radmalpoe4q94ao9vd11hpo8huox1uj7of2ias2wo6x9n373a8dzgwz1ppyq511xyp93azds8f4cdehutm403hjoyjevpj5ipgvp866cqdhd987ehr0dxrn5uaapdoat5c2dblajaapo3w4rl30tau8wuh7rab4w')",
+        "time" : {
+          "start" : 1642067948621,
+          "stop" : 1642067948670,
+          "duration" : 49
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Future Optimization Orchestrator (2blpljs5i)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "66005"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "85"
+      }, {
+        "name" : "firstName",
+        "value" : "SantosTom"
+      }, {
+        "name" : "lastName",
+        "value" : "KshlerinIDDS"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "577t4j2bxd5lwsv5jxzidq0hx2m6eyy1x5qtz9wrh5hcaka09j72lclaqryzsdaeax9stnsqgden6oc5vy5x2e8lvucbhbv3g82rfrtnlgysl0h7vzoexi8z8bkh5bpngin2cggwvz7ih8l6a7n1u8zwhmm3edv78r7egnxtragp6lrjg9dan6q32mjobtavgmu58urjmddp7mba4rjl6axdqgpg5g62il5twnvtqwa2scrmc3mm3v3xn8m8qxm0tmi4u5w482ssul1cv77o1lt0jqpeqxfmhaznttr8oc9w4var0fdt8x250mu3beko9kzb6pss663wzl1wx53h16cp8zabciz96qy7n4r4l4ld5ove07fqncgvwajy60dhte8a767y7y3717wifqx5rjtkcjncns9x019ifgl3nvpawyrsg272g4h7la4ej3htwnl9qd4pgg3jhpln4radmalpoe4q94ao9vd11hpo8huox1uj7of2ias2wo6x9n373a8dzgwz1ppyq511xyp93azds8f4cdehutm403hjoyjevpj5ipgvp866cqdhd987ehr0dxrn5uaapdoat5c2dblajaapo3w4rl30tau8wuh7rab4w"
+      } ],
+      "stepsCount" : 6,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1642067948900,
+        "stop" : 1642067948972,
+        "duration" : 72
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "fa864e974358daf1",
+      "name" : "Screenshot",
+      "source" : "fa864e974358daf1.png",
+      "type" : "image/png",
+      "size" : 74368
+    }, {
+      "uid" : "45ae15d194690e7e",
+      "name" : "Page source",
+      "source" : "45ae15d194690e7e.html",
+      "type" : "text/plain",
+      "size" : 147204
+    }, {
+      "uid" : "a6acb303a9c9c08e",
+      "name" : "Browser console logs",
+      "source" : "a6acb303a9c9c08e.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 22,
+    "attachmentsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00802()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az208-957"
+  }, {
+    "name" : "thread",
+    "value" : "3324@fv-az208-957.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00802"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 5,
+        "unknown" : 0,
+        "total" : 5
+      },
+      "items" : [ {
+        "uid" : "475d3600eea46e62",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/475d3600eea46e62",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642064275908,
+          "stop" : 1642064288848,
+          "duration" : 12940
+        }
+      }, {
+        "uid" : "4d51bba6c467e63a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/4d51bba6c467e63a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021638027,
+          "stop" : 1642021648906,
+          "duration" : 10879
+        }
+      }, {
+        "uid" : "d3ec48dfd9dc411",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/d3ec48dfd9dc411",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005453788,
+          "stop" : 1642005466051,
+          "duration" : 12263
+        }
+      }, {
+        "uid" : "2e38fd329e6a7299",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/2e38fd329e6a7299",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002051504,
+          "stop" : 1642002063890,
+          "duration" : 12386
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "38bc0337d06015ce.json",
+  "parameterValues" : [ ]
+}
