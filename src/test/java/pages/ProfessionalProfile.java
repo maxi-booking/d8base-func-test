@@ -317,7 +317,8 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("About: click back")
     public void aboutClickBack() {
-        $("app-about-edit").$("main").$("ion-button").click();
+        $("app-about-edit main ion-button").click();
+        $("app-about-edit main ion-button").shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(500);
     }

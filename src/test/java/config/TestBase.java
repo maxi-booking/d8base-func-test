@@ -112,7 +112,7 @@ public class TestBase extends TestData {
             Attach.screenshotAs("Screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
-            Attach.addVideo();
+//            Attach.addVideo(); //todo
             closeWebDriver();
         }
     }
