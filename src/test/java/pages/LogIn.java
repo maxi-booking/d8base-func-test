@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
 import static helpers.SelectableModal.selectModal;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
@@ -51,15 +52,16 @@ public class LogIn extends config.TestBase {
         $$("ion-item").filter(visible).get(0).scrollIntoView(true).click();
     }
 
-    @Step("Log In with ${login} : ${password}")
     public void logIn(String login, String password) {
-        forceEN();
-        sideMenu.clickLogIn();
-        $("app-login").$("input", 0).setValue(login);
-        $("app-login").$("input", 1).setValue(password);
-        Attach.screenshotAs("Screenshot");
-        $("app-login-form ion-button[type='submit']").click();
-        $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
+        step("Log In with " + login + " : " + password, () -> {
+            forceEN();
+            sideMenu.clickLogIn();
+            $("app-login").$("input", 0).setValue(login);
+            $("app-login").$("input", 1).setValue(password);
+            Attach.screenshotAs("Screenshot");
+            $("app-login-form ion-button[type='submit']").click();
+            $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
     }
 
     @Step("No toast message")

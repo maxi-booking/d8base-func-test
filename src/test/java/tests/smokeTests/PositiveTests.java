@@ -28,6 +28,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[0]);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[0], lastNames[0], emails[0], phoneNumbers[0], countries[0], cities[0]);
     }
@@ -52,6 +53,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillUserFirstName(firstNames[1]);
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[1], lastNames[1], emails[1], phoneNumbers[1], countries[1], cities[1]);
     }
@@ -76,6 +78,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[2]);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[2], lastNames[2], emails[2], phoneNumbers[2], countries[2], cities[2]);
     }
@@ -98,6 +101,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[4]);
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataBasic(firstNames[4], emails[4], countries[4], cities[4]);
     }
@@ -121,6 +125,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillUserFirstName(firstNames[5]);
         reg.fillUserLastName(lastNames[5]);
         reg.confirmAndWait();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[5], lastNames[5], emails[5], phoneNumbers[5], countries[5], cities[5]);
     }
@@ -144,6 +149,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(cities[6]);
         reg.fillPhoneNumber(phoneNumbers[6], countries[6]);
         reg.confirmAndWait();
+        log.forceEN();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[6], lastNames[6], emails[6], phoneNumbers[6], countries[6], cities[6]);
     }
