@@ -107,8 +107,8 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    @Step("Log in with ${login} : ${password}")
     public void account(int value) {
+        step("Log In with " + emails[value] + " : " + passwords[value], () -> {
         forceEN();
         String login = emails[value];
         String password = passwords[value];
@@ -118,6 +118,7 @@ public class LogIn extends config.TestBase {
         Attach.screenshotAs("Login_info");
         $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
         $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
     }
 
     public void forceRU() {

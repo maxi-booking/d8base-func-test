@@ -109,7 +109,7 @@ public class TestBase extends TestData {
     @AfterEach
     public void tearDown() {
         if (WebDriverRunner.hasWebDriverStarted()) {
-            Attach.screenshotAs("Screenshot");
+            Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
 //            Attach.addVideo(); //todo
