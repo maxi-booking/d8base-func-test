@@ -41,8 +41,36 @@ public class Registration extends TestBase {
                 .log().all()
                 .statusCode(201)
                 .extract().response();
-        return response.path("access_token");
+        return response.path("token.access_token");
     }
+
+    @Test
+    public void bookingTest() {
+        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        given()
+                .filter(new AllureRestAssured())
+                .log().all()
+                .contentType("application/json")
+                .accept("application/json, text/plain, */*")
+                .header("Authorization", "Bearer " + accessToken)
+                .body("{\"" +
+                        "start_datetime\":\"2022-02-14T07:00:00.000Z\",\"" +
+                        "service\":3264,\"" +
+                        "is_another_person\":false,\"" +
+                        "first_name\":\"\",\"" +
+                        "last_name\":\"\",\"" +
+                        "email\":\"\",\"" +
+                        "phone\":\"\",\"" +
+                        "note\":\"\",\"" +
+                        "client_location\":7914,\"" +
+                        "source\":\"online\"}")
+                .when()
+                .post(urlBase + ":8000/ru/api/accounts/orders/sent/")
+                .then()
+                .log().all()
+                .statusCode(201);
+    }
+
 
 //    @Test
 //    public void registrationTest() {
