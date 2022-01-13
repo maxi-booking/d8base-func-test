@@ -1,0 +1,506 @@
+{
+  "uid" : "475d3600eea46e62",
+  "name" : "Main page search: speciality",
+  "fullName" : "tests.smokeTests.PositiveTests.t00802",
+  "historyId" : "6c4f4c2d7353d21c51a2c945809c918b",
+  "time" : {
+    "start" : 1642064275908,
+    "stop" : 1642064288848,
+    "duration" : 12940
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1642064276880,
+        "stop" : 1642064280526,
+        "duration" : 3646
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642064280726,
+        "stop" : 1642064280804,
+        "duration" : 78
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1642064281804,
+        "stop" : 1642064281885,
+        "duration" : 81
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1642064281885,
+        "stop" : 1642064282255,
+        "duration" : 370
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1642064282955,
+        "stop" : 1642064283001,
+        "duration" : 46
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page, input search text and press Enter",
+      "time" : {
+        "start" : 1642064283001,
+        "stop" : 1642064286109,
+        "duration" : 3108
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar/input\") set value(\"Technology Consultant Dione\")",
+        "time" : {
+          "start" : 1642064284002,
+          "stop" : 1642064284192,
+          "duration" : 190
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar/input\") press enter()",
+        "time" : {
+          "start" : 1642064285192,
+          "stop" : 1642064285240,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "8cc3425f216e711d",
+        "name" : "Screenshot",
+        "source" : "8cc3425f216e711d.png",
+        "type" : "image/png",
+        "size" : 251270
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Technology Consultant Dione"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1642064286110,
+        "stop" : 1642064286844,
+        "duration" : 734
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'OscarArvilla', text 'SmithamJr.Sr.'])",
+        "time" : {
+          "start" : 1642064286110,
+          "stop" : 1642064286761,
+          "duration" : 651
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Legacy Solutions Architect (ow118mnzu)')",
+        "time" : {
+          "start" : 1642064286761,
+          "stop" : 1642064286804,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1642064286804,
+          "stop" : 1642064286844,
+          "duration" : 40
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "OscarArvilla"
+      }, {
+        "name" : "lastName",
+        "value" : "SmithamJr.Sr."
+      }, {
+        "name" : "serviceName",
+        "value" : "Legacy Solutions Architect (ow118mnzu)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "6950"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1642064286844,
+        "stop" : 1642064287124,
+        "duration" : 280
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1642064287031,
+          "stop" : 1642064287124,
+          "duration" : 93
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "bdba45e3a7e6c4b6",
+        "name" : "Screenshot",
+        "source" : "bdba45e3a7e6c4b6.png",
+        "type" : "image/png",
+        "size" : 92353
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1642064287124,
+        "stop" : 1642064288519,
+        "duration" : 1395
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Legacy Solutions Architect (ow118mnzu)')",
+        "time" : {
+          "start" : 1642064287124,
+          "stop" : 1642064288299,
+          "duration" : 1175
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1642064288299,
+          "stop" : 1642064288339,
+          "duration" : 40
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '52')",
+        "time" : {
+          "start" : 1642064288339,
+          "stop" : 1642064288384,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'OscarArvilla', text 'SmithamJr.Sr.'])",
+        "time" : {
+          "start" : 1642064288384,
+          "stop" : 1642064288462,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'vyejzfnsqflgmc0wn7bt0pq18nt3utfi4hghsuaaism6y316y1tsworfihi4vilaxjnzdi4274tocc5ejbusji7qvl4ozko7r8wfyr0g1t3y8oglirfhojf772y176sh9neyhteq1lf4p9ia3rob5nowfq94bgpjzhyb4cueysyxxpzq7rwmca04a3xdzez51db8dws44nzvi3fwhgb52d1kwxhlmpus085cmiofbqq5kzyw1qyan7drt59a17q3nyi6bdqnopp25503ott0732u6je0wy4qiu00upul5b2nvdlwpwr61ne0az01vdiq1dr8lu0g1pphzslcg401ym3t9w2gpwp79n8wxoo5herm1c56159yu57ecb880fxjhri2az6zrnv7tn3elui792guqfcrmmq4y6u3g4iiaw2kmowp7sypzftpjdjj0yp22knjeh87eh49qjdif2mgnaloktni96cwnciq5kwx4xwxrsc6qt1oqlizvycyr54yc33slkbtfdquagykr1c08vjha2y00py1yl1sqlbyzwrvuhks6ee659k6xabs11kobxhk045k0fzfxh0vvnwxc1cymtuqqq0gh466mrmg7a5vxj4tfsioekhyzp56maswc6kgt8oxjgtwz72417f0bv2ifrgkej68yilghx04ky5021wqpe763hr5fm4bncwx5hinmgf4v460kxsnwqroeqgvxjg1rogmcnhmzsjtzxbgrc8yo2eb3a9dv298yuow076ziiew0etg0sq3j3lr7luypivey3yi8uhft860mnf0n3471hw0yg3a1cdhlgdcwrk6809eijj7k01xc7ay02k2tgkeou0zocan905x33djejklemgx0y1t0dr5r3p60itsymcxlv6na4b8ai9cgi2oacaetprat0dk0l5npq1ewo5mt6i56dv6sdvdkbii2cjy79j6d1bpwt2p6z6qe41fh7fmexm28bn0zzk70gcxutyw9tux69a4l799c4if90k0khvtr2vw97gomj100h7tptah5yw1bxefh9wh8wk327yvqe0gi9cswch4353m2n6x7t66uy4ul93hgqm9y0ebutsk4vf0ghkuerfgdj3pdef8ge8jou3ifjri5eg33pru5zu0lsocc8m6y3tyyrg')",
+        "time" : {
+          "start" : 1642064288462,
+          "stop" : 1642064288519,
+          "duration" : 57
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Legacy Solutions Architect (ow118mnzu)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "6950"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "52"
+      }, {
+        "name" : "firstName",
+        "value" : "OscarArvilla"
+      }, {
+        "name" : "lastName",
+        "value" : "SmithamJr.Sr."
+      }, {
+        "name" : "serviceDescription",
+        "value" : "vyejzfnsqflgmc0wn7bt0pq18nt3utfi4hghsuaaism6y316y1tsworfihi4vilaxjnzdi4274tocc5ejbusji7qvl4ozko7r8wfyr0g1t3y8oglirfhojf772y176sh9neyhteq1lf4p9ia3rob5nowfq94bgpjzhyb4cueysyxxpzq7rwmca04a3xdzez51db8dws44nzvi3fwhgb52d1kwxhlmpus085cmiofbqq5kzyw1qyan7drt59a17q3nyi6bdqnopp25503ott0732u6je0wy4qiu00upul5b2nvdlwpwr61ne0az01vdiq1dr8lu0g1pphzslcg401ym3t9w2gpwp79n8wxoo5herm1c56159yu57ecb880fxjhri2az6zrnv7tn3elui792guqfcrmmq4y6u3g4iiaw2kmowp7sypzftpjdjj0yp22knjeh87eh49qjdif2mgnaloktni96cwnciq5kwx4xwxrsc6qt1oqlizvycyr54yc33slkbtfdquagykr1c08vjha2y00py1yl1sqlbyzwrvuhks6ee659k6xabs11kobxhk045k0fzfxh0vvnwxc1cymtuqqq0gh466mrmg7a5vxj4tfsioekhyzp56maswc6kgt8oxjgtwz72417f0bv2ifrgkej68yilghx04ky5021wqpe763hr5fm4bncwx5hinmgf4v460kxsnwqroeqgvxjg1rogmcnhmzsjtzxbgrc8yo2eb3a9dv298yuow076ziiew0etg0sq3j3lr7luypivey3yi8uhft860mnf0n3471hw0yg3a1cdhlgdcwrk6809eijj7k01xc7ay02k2tgkeou0zocan905x33djejklemgx0y1t0dr5r3p60itsymcxlv6na4b8ai9cgi2oacaetprat0dk0l5npq1ewo5mt6i56dv6sdvdkbii2cjy79j6d1bpwt2p6z6qe41fh7fmexm28bn0zzk70gcxutyw9tux69a4l799c4if90k0khvtr2vw97gomj100h7tptah5yw1bxefh9wh8wk327yvqe0gi9cswch4353m2n6x7t66uy4ul93hgqm9y0ebutsk4vf0ghkuerfgdj3pdef8ge8jou3ifjri5eg33pru5zu0lsocc8m6y3tyyrg"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1642064288769,
+        "stop" : 1642064288848,
+        "duration" : 79
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "db3b8224fa2c7540",
+      "name" : "Screenshot",
+      "source" : "db3b8224fa2c7540.png",
+      "type" : "image/png",
+      "size" : 69895
+    }, {
+      "uid" : "5e05a15c35529f86",
+      "name" : "Page source",
+      "source" : "5e05a15c35529f86.html",
+      "type" : "text/plain",
+      "size" : 147761
+    }, {
+      "uid" : "e645898645df42fe",
+      "name" : "Browser console logs",
+      "source" : "e645898645df42fe.bin",
+      "type" : "text/plain",
+      "size" : 0
+    }, {
+      "uid" : "47343bb75204ad71",
+      "name" : "Video",
+      "source" : "47343bb75204ad71.html",
+      "type" : "text/html",
+      "size" : 191
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 21,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00802()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az209-444"
+  }, {
+    "name" : "thread",
+    "value" : "3292@fv-az209-444.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00802"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 4,
+        "unknown" : 0,
+        "total" : 4
+      },
+      "items" : [ {
+        "uid" : "4d51bba6c467e63a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/4d51bba6c467e63a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021638027,
+          "stop" : 1642021648906,
+          "duration" : 10879
+        }
+      }, {
+        "uid" : "d3ec48dfd9dc411",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/d3ec48dfd9dc411",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005453788,
+          "stop" : 1642005466051,
+          "duration" : 12263
+        }
+      }, {
+        "uid" : "2e38fd329e6a7299",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/2e38fd329e6a7299",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002051504,
+          "stop" : 1642002063890,
+          "duration" : 12386
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "475d3600eea46e62.json",
+  "parameterValues" : [ ]
+}
