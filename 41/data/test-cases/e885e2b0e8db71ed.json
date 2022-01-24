@@ -1,0 +1,527 @@
+{
+  "uid" : "e885e2b0e8db71ed",
+  "name" : "Main page search: service name",
+  "fullName" : "tests.smokeTests.PositiveTests.t00801",
+  "historyId" : "2ecc7bb31bcf252cb1aae56e9785821c",
+  "time" : {
+    "start" : 1643000117220,
+    "stop" : 1643000128320,
+    "duration" : 11100
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643000118076,
+        "stop" : 1643000120656,
+        "duration" : 2580
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000120856,
+        "stop" : 1643000120935,
+        "duration" : 79
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1643000121935,
+        "stop" : 1643000122018,
+        "duration" : 83
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000122018,
+        "stop" : 1643000122375,
+        "duration" : 357
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1643000123076,
+        "stop" : 1643000123121,
+        "duration" : 45
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page, input search text and press Enter",
+      "time" : {
+        "start" : 1643000123121,
+        "stop" : 1643000126182,
+        "duration" : 3061
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar/input\") set value(\"Internal Creative Facilitator (4vqzsi47k)\")",
+        "time" : {
+          "start" : 1643000124121,
+          "stop" : 1643000124276,
+          "duration" : 155
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar/input\") press enter()",
+        "time" : {
+          "start" : 1643000125277,
+          "stop" : 1643000125324,
+          "duration" : 47
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "b5a7d9767a3809b8",
+        "name" : "Screenshot",
+        "source" : "b5a7d9767a3809b8.png",
+        "type" : "image/png",
+        "size" : 252403
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Internal Creative Facilitator (4vqzsi47k)"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1643000126182,
+        "stop" : 1643000126642,
+        "duration" : 460
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'GuyRodrick', text 'QuitzonIVI'])",
+        "time" : {
+          "start" : 1643000126182,
+          "stop" : 1643000126567,
+          "duration" : 385
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Internal Creative Facilitator (4vqzsi47k)')",
+        "time" : {
+          "start" : 1643000126567,
+          "stop" : 1643000126605,
+          "duration" : 38
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1643000126606,
+          "stop" : 1643000126642,
+          "duration" : 36
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "GuyRodrick"
+      }, {
+        "name" : "lastName",
+        "value" : "QuitzonIVI"
+      }, {
+        "name" : "serviceName",
+        "value" : "Internal Creative Facilitator (4vqzsi47k)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "1491"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1643000126642,
+        "stop" : 1643000126899,
+        "duration" : 257
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1643000126817,
+          "stop" : 1643000126899,
+          "duration" : 82
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "96e933f2b91a90b7",
+        "name" : "Screenshot",
+        "source" : "96e933f2b91a90b7.png",
+        "type" : "image/png",
+        "size" : 93051
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1643000126900,
+        "stop" : 1643000128026,
+        "duration" : 1126
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Internal Creative Facilitator (4vqzsi47k)')",
+        "time" : {
+          "start" : 1643000126900,
+          "stop" : 1643000127838,
+          "duration" : 938
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1643000127838,
+          "stop" : 1643000127870,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '55')",
+        "time" : {
+          "start" : 1643000127870,
+          "stop" : 1643000127900,
+          "duration" : 30
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'GuyRodrick', text 'QuitzonIVI'])",
+        "time" : {
+          "start" : 1643000127900,
+          "stop" : 1643000127981,
+          "duration" : 81
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'pj4si9tmtcdse652f41iv07w4r7z9vpy8e14xrh5ubq3j7pun1dgm1pxbbfuqmcxmf1lto3tgwvkmd0eiadqx7ofuqpu8o57atqgj5sg10qr8gjnwadrrvk09uf6qsrxbsdphhzb3t55gz6m4dtss9cqsy77lkrh0ojjyhxyn1yyynox30do4c4jqbc4fhwcayeqz198x370e85cx9lnz1l50vtlaq765cszi40f9iz9p2zt6mtymw7hm70zq9om48016fm6ahxhqwb3h1tg009zksc91z2ultp4fu5wlhrn9ynyjwpiaakbehwc18hh63h5l80b2nsfu2vhket72uzlbmu31nueoqfn52h9dkgui6im0g1gajv50r9bilknuquvqz8r2nbnk29jv8akmi7rp8duyhsmu80ghxyqsf07d8flogibsz4iymmnj0ekmygzsircsrd5vidswu6iupho64cnty9tb6umpi6qus1t8gu9rsmcz9rbblvwazmxtfl07zg4ajgkfz7i99jpn61hv7jmge0481ryv6gdjlm9hzo7apja3x0o71wsu7vmz8bbweabawzxco4uthceaikt2sue8s53rd9w690l7e3nq1baz7gyo9g4ei9hnfz2smxzxsveiaernjm7g5dpul4ht1pci10l6lfnmfigvkdit6l0bqpse7p00z2j5plyh9v5gl3lp8u7ahvziiae2inlr6s79493cep8rzmqxbqvptkarl2fe457phvwgyu2wshdj08znwltrxpy3n7s86fozsscsewotob71l4cfifdavqfaof4irbnp0he5lstj0bi8yvl4vlok4q9jhw8bp6jrnjfhn15xa67wv96jmh95buckt9fgp2hdbb563owkxypablbgkw9vy1ofkd1sijh6bzrfy5m41gt9yr0jr7j0u4hdmqzjp108z0u1gvfha0uta8cs0obba6rtv3wdiu89bbtvsvv2cfcqx4lq0xecwgh5j0tulp6drm1dbwp5v34hsiluq8oop29nzx9ftkxywfpv9e2g8lh5uel4u3fekqtk6a0jijf6swtapfrcaq86guhkc4pij7qcfibfqnnqh7is8kat1k8d6fumxpilrjhisfhun78mq2bc1v82lhp5zoipbg52nmocokb8608enrpfu8d8q7we0ymu07q10t0gk5cl6mt9kdr3lnpnkwgshox9mcym6clnq681w88997tv2i0z02ugl8x1fhwycqihggkhon2kvbgreoywhrl5di9cfdd3bstd1x7wxilux0fsx7bt6d1r9b04ccncj190h26vshytvd70nranxavfgqs6blta3mlqgjsw5q5rpkj6fplyytroj8j6ty1f8qrbugxpnmd2vos7u0ey35je2l6vd6numehf7166f8or5x4p3t22t0p1o4p3atnjwdoxkr79gtth7jqv3smoldluihtw6farfg1uc86ssonvay3pew8i2o6wctsj1og13iuyelt2trg41edv861hslkrdoyzh0jxbwcdozsz7qudw78ac9')",
+        "time" : {
+          "start" : 1643000127981,
+          "stop" : 1643000128026,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Internal Creative Facilitator (4vqzsi47k)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "1491"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "55"
+      }, {
+        "name" : "firstName",
+        "value" : "GuyRodrick"
+      }, {
+        "name" : "lastName",
+        "value" : "QuitzonIVI"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "pj4si9tmtcdse652f41iv07w4r7z9vpy8e14xrh5ubq3j7pun1dgm1pxbbfuqmcxmf1lto3tgwvkmd0eiadqx7ofuqpu8o57atqgj5sg10qr8gjnwadrrvk09uf6qsrxbsdphhzb3t55gz6m4dtss9cqsy77lkrh0ojjyhxyn1yyynox30do4c4jqbc4fhwcayeqz198x370e85cx9lnz1l50vtlaq765cszi40f9iz9p2zt6mtymw7hm70zq9om48016fm6ahxhqwb3h1tg009zksc91z2ultp4fu5wlhrn9ynyjwpiaakbehwc18hh63h5l80b2nsfu2vhket72uzlbmu31nueoqfn52h9dkgui6im0g1gajv50r9bilknuquvqz8r2nbnk29jv8akmi7rp8duyhsmu80ghxyqsf07d8flogibsz4iymmnj0ekmygzsircsrd5vidswu6iupho64cnty9tb6umpi6qus1t8gu9rsmcz9rbblvwazmxtfl07zg4ajgkfz7i99jpn61hv7jmge0481ryv6gdjlm9hzo7apja3x0o71wsu7vmz8bbweabawzxco4uthceaikt2sue8s53rd9w690l7e3nq1baz7gyo9g4ei9hnfz2smxzxsveiaernjm7g5dpul4ht1pci10l6lfnmfigvkdit6l0bqpse7p00z2j5plyh9v5gl3lp8u7ahvziiae2inlr6s79493cep8rzmqxbqvptkarl2fe457phvwgyu2wshdj08znwltrxpy3n7s86fozsscsewotob71l4cfifdavqfaof4irbnp0he5lstj0bi8yvl4vlok4q9jhw8bp6jrnjfhn15xa67wv96jmh95buckt9fgp2hdbb563owkxypablbgkw9vy1ofkd1sijh6bzrfy5m41gt9yr0jr7j0u4hdmqzjp108z0u1gvfha0uta8cs0obba6rtv3wdiu89bbtvsvv2cfcqx4lq0xecwgh5j0tulp6drm1dbwp5v34hsiluq8oop29nzx9ftkxywfpv9e2g8lh5uel4u3fekqtk6a0jijf6swtapfrcaq86guhkc4pij7qcfibfqnnqh7is8kat1k8d6fumxpilrjhisfhun78mq2bc1v82lhp5zoipbg52nmocokb8608enrpfu8d8q7we0ymu07q10t0gk5cl6mt9kdr3lnpnkwgshox9mcym6clnq681w88997tv2i0z02ugl8x1fhwycqihggkhon2kvbgreoywhrl5di9cfdd3bstd1x7wxilux0fsx7bt6d1r9b04ccncj190h26vshytvd70nranxavfgqs6blta3mlqgjsw5q5rpkj6fplyytroj8j6ty1f8qrbugxpnmd2vos7u0ey35je2l6vd6numehf7166f8or5x4p3t22t0p1o4p3atnjwdoxkr79gtth7jqv3smoldluihtw6farfg1uc86ssonvay3pew8i2o6wctsj1og13iuyelt2trg41edv861hslkrdoyzh0jxbwcdozsz7qudw78ac9"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643000128250,
+        "stop" : 1643000128320,
+        "duration" : 70
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "3ecf278f8a475f78",
+      "name" : "Last screenshot",
+      "source" : "3ecf278f8a475f78.png",
+      "type" : "image/png",
+      "size" : 75033
+    }, {
+      "uid" : "4a1ce7ea5e22f5da",
+      "name" : "Page source",
+      "source" : "4a1ce7ea5e22f5da.html",
+      "type" : "text/plain",
+      "size" : 147762
+    }, {
+      "uid" : "9c5c10620d57d035",
+      "name" : "Browser console logs",
+      "source" : "9c5c10620d57d035.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 21,
+    "attachmentsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00801()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az208-475"
+  }, {
+    "name" : "thread",
+    "value" : "3538@fv-az208-475.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00801"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 7,
+        "unknown" : 0,
+        "total" : 7
+      },
+      "items" : [ {
+        "uid" : "f523ff623e8200dc",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/f523ff623e8200dc",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642088288177,
+          "stop" : 1642088301000,
+          "duration" : 12823
+        }
+      }, {
+        "uid" : "db073f2e4adff253",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/db073f2e4adff253",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642067925824,
+          "stop" : 1642067937382,
+          "duration" : 11558
+        }
+      }, {
+        "uid" : "9bab2c43c69acdfd",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/9bab2c43c69acdfd",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642064262892,
+          "stop" : 1642064275906,
+          "duration" : 13014
+        }
+      }, {
+        "uid" : "9d81146b30153412",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/9d81146b30153412",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021627339,
+          "stop" : 1642021638025,
+          "duration" : 10686
+        }
+      }, {
+        "uid" : "2ed703201f9833f1",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/2ed703201f9833f1",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005441921,
+          "stop" : 1642005453783,
+          "duration" : 11862
+        }
+      }, {
+        "uid" : "60de7fd677e5cf2a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/60de7fd677e5cf2a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002039104,
+          "stop" : 1642002051494,
+          "duration" : 12390
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "e885e2b0e8db71ed.json",
+  "parameterValues" : [ ]
+}

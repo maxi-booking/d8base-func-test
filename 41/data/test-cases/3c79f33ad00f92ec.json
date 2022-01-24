@@ -1,0 +1,527 @@
+{
+  "uid" : "3c79f33ad00f92ec",
+  "name" : "Main page search: speciality",
+  "fullName" : "tests.smokeTests.PositiveTests.t00802",
+  "historyId" : "6c4f4c2d7353d21c51a2c945809c918b",
+  "time" : {
+    "start" : 1643000128323,
+    "stop" : 1643000139445,
+    "duration" : 11122
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643000129180,
+        "stop" : 1643000131887,
+        "duration" : 2707
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000132088,
+        "stop" : 1643000132118,
+        "duration" : 30
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1643000133119,
+        "stop" : 1643000133190,
+        "duration" : 71
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000133190,
+        "stop" : 1643000133519,
+        "duration" : 329
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1643000134220,
+        "stop" : 1643000134261,
+        "duration" : 41
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page, input search text and press Enter",
+      "time" : {
+        "start" : 1643000134261,
+        "stop" : 1643000137313,
+        "duration" : 3052
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar/input\") set value(\"Future Government Officer Metis\")",
+        "time" : {
+          "start" : 1643000135262,
+          "stop" : 1643000135421,
+          "duration" : 159
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar/input\") press enter()",
+        "time" : {
+          "start" : 1643000136422,
+          "stop" : 1643000136470,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "2ef82c56010467c1",
+        "name" : "Screenshot",
+        "source" : "2ef82c56010467c1.png",
+        "type" : "image/png",
+        "size" : 251877
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Future Government Officer Metis"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1643000137313,
+        "stop" : 1643000137756,
+        "duration" : 443
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'ClayBettyann', text 'HammesMDMD'])",
+        "time" : {
+          "start" : 1643000137313,
+          "stop" : 1643000137677,
+          "duration" : 364
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'International Division Developer (lfttqd)')",
+        "time" : {
+          "start" : 1643000137677,
+          "stop" : 1643000137717,
+          "duration" : 40
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1643000137717,
+          "stop" : 1643000137756,
+          "duration" : 39
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "ClayBettyann"
+      }, {
+        "name" : "lastName",
+        "value" : "HammesMDMD"
+      }, {
+        "name" : "serviceName",
+        "value" : "International Division Developer (lfttqd)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "30233"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1643000137756,
+        "stop" : 1643000138017,
+        "duration" : 261
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1643000137934,
+          "stop" : 1643000138017,
+          "duration" : 83
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "85f09a29b1675c89",
+        "name" : "Screenshot",
+        "source" : "85f09a29b1675c89.png",
+        "type" : "image/png",
+        "size" : 91696
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1643000138017,
+        "stop" : 1643000139166,
+        "duration" : 1149
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'International Division Developer (lfttqd)')",
+        "time" : {
+          "start" : 1643000138017,
+          "stop" : 1643000138974,
+          "duration" : 957
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1643000138974,
+          "stop" : 1643000139010,
+          "duration" : 36
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '26')",
+        "time" : {
+          "start" : 1643000139010,
+          "stop" : 1643000139043,
+          "duration" : 33
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'ClayBettyann', text 'HammesMDMD'])",
+        "time" : {
+          "start" : 1643000139043,
+          "stop" : 1643000139123,
+          "duration" : 80
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text '0jjob6p1ic3ano5rnqcyk3yqijl7prmgdrshxi9sy8128qeunmtjox6kmesmtcw1at3f8rzfkra5rofbed30rhnh7io248fmo3w396op8wyzkrn5oc8om21r3llasv9qm33heu3jdjle462rwq6cjlviv1bykwwsa4gbd9pqh0n163p30j3nwx947hqvdww6amnkp0t0yw85ef0zmjth9kp82dapmv6qblopry465edw45y0nmiz8fot1tom7odl1pgsmhd4xh4q9bk63docztcdxxqdcs2f43hk26hm47yi8u9dx2qcxodqzexjebp0jl8er8scgvn01ia5vn30r9e2aexmckdcw9xli552qukcxmeqbz980b0rx7vtiwa712c6pq83amncrjewm67zwjqirw9d8jhdigi8zyihrwm178pb74193ldjtx1djgq5lktj1qnjv57x9ywu0e36585yabpuu4gxssuo5e28s4n3qt6bbm0vr2grswnb53r30uiu6x09ndz098kwd66ow05qpe1wl05k11z6wt8q80t7i4qv610g1hmmqr5qdszpvcavojfbmmvwltaudf6vt37p7ppst3ww59ghkaopu98gbf7qwkctk6pxwf3ftgdilk7lb8ktpr7rzxfnhsmnu0ssoi5mew9v1rhv6d2yoemj2nnphz817nrk9sx5fmd7tckpvbnniwozqz6k7iie8fm25uetkzoefdidt0y8p1ckpvwrx00isaf699wdefov18qfk0gkjj4ce3ugl9ua8azoo0qqguh098nawdppyz3yq906k11tu3cs33er6303pdvuil0l6mtz47lc28rfwn2ynin9cr9edw145gdtxztaktefnvd1uc06q1xu3hrfzjozmz59tldsatqsmsr2ye7js90he6yb1sqfzm8tzy4kf5ah0xufuyb7ndond6fvcmyxq15dbeyqm92bht0b50a8d89a9l2pspooy3wptjvv3rsmpg6z7cv4nofm42ytlxs5klq1gf3eq5fajmxaxlgth4myc6o1m6mjn3rdi06gcn9fxffc64dwfx6e1kzsswxb3kas90kogaikdgtaq1nxslvzh5ga3gf40to45m9eymvj8307y7q0dqtw6x2yjdnqblsfo6xjj7ky1qej0zxlmao1ovamny927h3fowxya8gr6glni04g3rsbxkfwdxur4h5mi93c3uzo1tw34fksnod2fkq9vegdad8hiwccyhfq31ap0chjgl44hyiyqfotekvc0sgugshq811c07uvovfk7v4l1eqj3fc7nnkjssrqrbftfzk')",
+        "time" : {
+          "start" : 1643000139123,
+          "stop" : 1643000139166,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "International Division Developer (lfttqd)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "30233"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "26"
+      }, {
+        "name" : "firstName",
+        "value" : "ClayBettyann"
+      }, {
+        "name" : "lastName",
+        "value" : "HammesMDMD"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "0jjob6p1ic3ano5rnqcyk3yqijl7prmgdrshxi9sy8128qeunmtjox6kmesmtcw1at3f8rzfkra5rofbed30rhnh7io248fmo3w396op8wyzkrn5oc8om21r3llasv9qm33heu3jdjle462rwq6cjlviv1bykwwsa4gbd9pqh0n163p30j3nwx947hqvdww6amnkp0t0yw85ef0zmjth9kp82dapmv6qblopry465edw45y0nmiz8fot1tom7odl1pgsmhd4xh4q9bk63docztcdxxqdcs2f43hk26hm47yi8u9dx2qcxodqzexjebp0jl8er8scgvn01ia5vn30r9e2aexmckdcw9xli552qukcxmeqbz980b0rx7vtiwa712c6pq83amncrjewm67zwjqirw9d8jhdigi8zyihrwm178pb74193ldjtx1djgq5lktj1qnjv57x9ywu0e36585yabpuu4gxssuo5e28s4n3qt6bbm0vr2grswnb53r30uiu6x09ndz098kwd66ow05qpe1wl05k11z6wt8q80t7i4qv610g1hmmqr5qdszpvcavojfbmmvwltaudf6vt37p7ppst3ww59ghkaopu98gbf7qwkctk6pxwf3ftgdilk7lb8ktpr7rzxfnhsmnu0ssoi5mew9v1rhv6d2yoemj2nnphz817nrk9sx5fmd7tckpvbnniwozqz6k7iie8fm25uetkzoefdidt0y8p1ckpvwrx00isaf699wdefov18qfk0gkjj4ce3ugl9ua8azoo0qqguh098nawdppyz3yq906k11tu3cs33er6303pdvuil0l6mtz47lc28rfwn2ynin9cr9edw145gdtxztaktefnvd1uc06q1xu3hrfzjozmz59tldsatqsmsr2ye7js90he6yb1sqfzm8tzy4kf5ah0xufuyb7ndond6fvcmyxq15dbeyqm92bht0b50a8d89a9l2pspooy3wptjvv3rsmpg6z7cv4nofm42ytlxs5klq1gf3eq5fajmxaxlgth4myc6o1m6mjn3rdi06gcn9fxffc64dwfx6e1kzsswxb3kas90kogaikdgtaq1nxslvzh5ga3gf40to45m9eymvj8307y7q0dqtw6x2yjdnqblsfo6xjj7ky1qej0zxlmao1ovamny927h3fowxya8gr6glni04g3rsbxkfwdxur4h5mi93c3uzo1tw34fksnod2fkq9vegdad8hiwccyhfq31ap0chjgl44hyiyqfotekvc0sgugshq811c07uvovfk7v4l1eqj3fc7nnkjssrqrbftfzk"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643000139368,
+        "stop" : 1643000139445,
+        "duration" : 77
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "b0b3c4ebef374f5",
+      "name" : "Last screenshot",
+      "source" : "b0b3c4ebef374f5.png",
+      "type" : "image/png",
+      "size" : 75427
+    }, {
+      "uid" : "c79e398de7b2795",
+      "name" : "Page source",
+      "source" : "c79e398de7b2795.html",
+      "type" : "text/plain",
+      "size" : 147539
+    }, {
+      "uid" : "def1b4639b8587d5",
+      "name" : "Browser console logs",
+      "source" : "def1b4639b8587d5.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 21,
+    "attachmentsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00802()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az208-475"
+  }, {
+    "name" : "thread",
+    "value" : "3538@fv-az208-475.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00802"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 7,
+        "unknown" : 0,
+        "total" : 7
+      },
+      "items" : [ {
+        "uid" : "25e648594d84b961",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/25e648594d84b961",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642088301002,
+          "stop" : 1642088314078,
+          "duration" : 13076
+        }
+      }, {
+        "uid" : "38bc0337d06015ce",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/38bc0337d06015ce",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642067937385,
+          "stop" : 1642067948972,
+          "duration" : 11587
+        }
+      }, {
+        "uid" : "475d3600eea46e62",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/475d3600eea46e62",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642064275908,
+          "stop" : 1642064288848,
+          "duration" : 12940
+        }
+      }, {
+        "uid" : "4d51bba6c467e63a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/4d51bba6c467e63a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021638027,
+          "stop" : 1642021648906,
+          "duration" : 10879
+        }
+      }, {
+        "uid" : "d3ec48dfd9dc411",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/d3ec48dfd9dc411",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005453788,
+          "stop" : 1642005466051,
+          "duration" : 12263
+        }
+      }, {
+        "uid" : "2e38fd329e6a7299",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/2e38fd329e6a7299",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002051504,
+          "stop" : 1642002063890,
+          "duration" : 12386
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "3c79f33ad00f92ec.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,527 @@
+{
+  "uid" : "d397de05250be177",
+  "name" : "Main page search: professional name",
+  "fullName" : "tests.smokeTests.PositiveTests.t00800",
+  "historyId" : "fd137908e2550f2bd2ba7b91a075723e",
+  "time" : {
+    "start" : 1643000107181,
+    "stop" : 1643000117216,
+    "duration" : 10035
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "$(\"open\") https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643000108080,
+        "stop" : 1643000110798,
+        "duration" : 2718
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000110998,
+        "stop" : 1643000111076,
+        "duration" : 78
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") press escape()",
+      "time" : {
+        "start" : 1643000112076,
+        "stop" : 1643000112153,
+        "duration" : 77
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+      "time" : {
+        "start" : 1643000112153,
+        "stop" : 1643000112513,
+        "duration" : 360
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+      "time" : {
+        "start" : 1643000113213,
+        "stop" : 1643000113303,
+        "duration" : 90
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Main page: Search without quotes ShanonElfreda SchulistOndricka",
+      "time" : {
+        "start" : 1643000113303,
+        "stop" : 1643000114825,
+        "duration" : 1522
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-searchbar input\") set value(ShanonElfreda SchulistOndricka)",
+        "time" : {
+          "start" : 1643000113303,
+          "stop" : 1643000113427,
+          "duration" : 124
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-searchbar input\") press enter()",
+        "time" : {
+          "start" : 1643000114427,
+          "stop" : 1643000114465,
+          "duration" : 38
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "623a950400c50ee8",
+        "name" : "Screenshot",
+        "source" : "623a950400c50ee8.png",
+        "type" : "image/png",
+        "size" : 251632
+      } ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "ShanonElfreda SchulistOndricka"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1643000114825,
+        "stop" : 1643000115783,
+        "duration" : 958
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'ShanonElfreda', text 'SchulistOndricka'])",
+        "time" : {
+          "start" : 1643000114825,
+          "stop" : 1643000115710,
+          "duration" : 885
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Dynamic Integration Manager (k2j6gq7m)')",
+        "time" : {
+          "start" : 1643000115710,
+          "stop" : 1643000115746,
+          "duration" : 36
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1643000115746,
+          "stop" : 1643000115783,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "ShanonElfreda"
+      }, {
+        "name" : "lastName",
+        "value" : "SchulistOndricka"
+      }, {
+        "name" : "serviceName",
+        "value" : "Dynamic Integration Manager (k2j6gq7m)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "4613450"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1643000115783,
+        "stop" : 1643000116023,
+        "duration" : 240
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1643000115940,
+          "stop" : 1643000116023,
+          "duration" : 83
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "612a89dfeca5aeff",
+        "name" : "Screenshot",
+        "source" : "612a89dfeca5aeff.png",
+        "type" : "image/png",
+        "size" : 92551
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1643000116023,
+        "stop" : 1643000116947,
+        "duration" : 924
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Dynamic Integration Manager (k2j6gq7m)')",
+        "time" : {
+          "start" : 1643000116023,
+          "stop" : 1643000116767,
+          "duration" : 744
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1643000116767,
+          "stop" : 1643000116801,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '21')",
+        "time" : {
+          "start" : 1643000116801,
+          "stop" : 1643000116835,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'ShanonElfreda', text 'SchulistOndricka'])",
+        "time" : {
+          "start" : 1643000116835,
+          "stop" : 1643000116910,
+          "duration" : 75
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'nqasl4xh7jxm9qcsm2yaj74yjqqr9howe5tv3cft4arun67xyrzuz8mwd5u3h0fmdh8piale4vgmuu31rfknxm91m17swuplv6pqkpqtii27mmkkn9vdp1dyt1q0ea18sw1jjzipoz7nzf4lvby1762jvcb2wo3khmku1si76up01gl8aodafhho3k9i0tslyemd8wcnlfm0s9731n6w119senit7c72euebqwutp2y5wrkwjeb3puu0724ht2cg10tctkcwhf36ym2omrhzf48vvl8keqna8u75juo12d7nkcsimj407sgb9sx4qchlrxwou40rz6j9b3q7gugzlqx9mb5nq59l5p47huzrl4zanr5rvcsexobc66i0cor63y6kvzexj0z0dbsdwhtn7wr6glxkhakfk8z9qz8d27i6rn76jh3l468c0o29uqe9xbf59rxm1bts24ea3gicadyp36l990nnluysked419cafpuosdi9mlli5xla0trid37f614xp9n4wz218eeaxjmv1rvylxt2os3sl7zzqzerrtu0c9rd1mcn0tf4umcb3v65ow5rnqwxyzvvag98jvn3psxwh6jcaygxbt7kt8i436s8e54pk90n5y0j8579we9wmp0ncscfg5xvfdzbalyjns6bdauoxjkq95c8fd2enxnpi0fjn55y8q5imtjv2tujkw7qu0zxj1omua5v545kj4pjajyjngf0rv1ie6ksfpi6cfi06jnvh98h0f0nzgnziwfkv99c96o0c3pn08qdhnlnilosj59up20r8uy0sj7pk98f9r22os36n2ueajbooe5gedr8fxq5bjkw0rwoy6bnve3w8hr9ce470yv00zxnbbhmg8b4i3cbdnlvbl1xj2n3757gudoggr75jvv1gsgdnwyrc9f921e9yxnod0s3fha6gjg1tulg0i67aqzv5bvhakfgl44dsetczkz1hzsvczv0v0vds50ais65arkqq716bzrpjodv7fvubbsysa017vuecr99amu6q7wo7hw9d45cjv96j6z18357n0mov3rrbt6ve946adef6kppr2mkaigcv57ctoaquse6om742n161q3nqigw5iex0igsecdhvpb84vzdx4avgxg1pch58g57uwim3f1auruqvjokjcl0e4gap2asr07slq8rbkmv7e1f8wcps1mxn5f10cdxbm1qdsi6r1zmur2cg81t0i6j4agow9ksspukmv0kicue3hsdfs46fs0at18rnlvwlfgu0r75y6tcu48ivctyihxudgzkrlgajrdgwuugjc0ejhp6vskfrxo2hwdg7g5h54aasji6u8ppqs3mlsh3ny13s9e0ijxuzorp1r1763rujoex9sv1jjooandn6x5xztcjccpyoddwj5bs4o7exp5yp2n4uicpqwoqbh9041obgzwnu45sm291ey4la7mcvhspf7edxt83nzo6ubctjyzp8mzexbbb04kgtd6sowo48tgs0ja3ykk19sm5tn355dgob8jq0')",
+        "time" : {
+          "start" : 1643000116910,
+          "stop" : 1643000116947,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Dynamic Integration Manager (k2j6gq7m)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "4613450"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "21"
+      }, {
+        "name" : "firstName",
+        "value" : "ShanonElfreda"
+      }, {
+        "name" : "lastName",
+        "value" : "SchulistOndricka"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "nqasl4xh7jxm9qcsm2yaj74yjqqr9howe5tv3cft4arun67xyrzuz8mwd5u3h0fmdh8piale4vgmuu31rfknxm91m17swuplv6pqkpqtii27mmkkn9vdp1dyt1q0ea18sw1jjzipoz7nzf4lvby1762jvcb2wo3khmku1si76up01gl8aodafhho3k9i0tslyemd8wcnlfm0s9731n6w119senit7c72euebqwutp2y5wrkwjeb3puu0724ht2cg10tctkcwhf36ym2omrhzf48vvl8keqna8u75juo12d7nkcsimj407sgb9sx4qchlrxwou40rz6j9b3q7gugzlqx9mb5nq59l5p47huzrl4zanr5rvcsexobc66i0cor63y6kvzexj0z0dbsdwhtn7wr6glxkhakfk8z9qz8d27i6rn76jh3l468c0o29uqe9xbf59rxm1bts24ea3gicadyp36l990nnluysked419cafpuosdi9mlli5xla0trid37f614xp9n4wz218eeaxjmv1rvylxt2os3sl7zzqzerrtu0c9rd1mcn0tf4umcb3v65ow5rnqwxyzvvag98jvn3psxwh6jcaygxbt7kt8i436s8e54pk90n5y0j8579we9wmp0ncscfg5xvfdzbalyjns6bdauoxjkq95c8fd2enxnpi0fjn55y8q5imtjv2tujkw7qu0zxj1omua5v545kj4pjajyjngf0rv1ie6ksfpi6cfi06jnvh98h0f0nzgnziwfkv99c96o0c3pn08qdhnlnilosj59up20r8uy0sj7pk98f9r22os36n2ueajbooe5gedr8fxq5bjkw0rwoy6bnve3w8hr9ce470yv00zxnbbhmg8b4i3cbdnlvbl1xj2n3757gudoggr75jvv1gsgdnwyrc9f921e9yxnod0s3fha6gjg1tulg0i67aqzv5bvhakfgl44dsetczkz1hzsvczv0v0vds50ais65arkqq716bzrpjodv7fvubbsysa017vuecr99amu6q7wo7hw9d45cjv96j6z18357n0mov3rrbt6ve946adef6kppr2mkaigcv57ctoaquse6om742n161q3nqigw5iex0igsecdhvpb84vzdx4avgxg1pch58g57uwim3f1auruqvjokjcl0e4gap2asr07slq8rbkmv7e1f8wcps1mxn5f10cdxbm1qdsi6r1zmur2cg81t0i6j4agow9ksspukmv0kicue3hsdfs46fs0at18rnlvwlfgu0r75y6tcu48ivctyihxudgzkrlgajrdgwuugjc0ejhp6vskfrxo2hwdg7g5h54aasji6u8ppqs3mlsh3ny13s9e0ijxuzorp1r1763rujoex9sv1jjooandn6x5xztcjccpyoddwj5bs4o7exp5yp2n4uicpqwoqbh9041obgzwnu45sm291ey4la7mcvhspf7edxt83nzo6ubctjyzp8mzexbbb04kgtd6sowo48tgs0ja3ykk19sm5tn355dgob8jq0"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643000117138,
+        "stop" : 1643000117216,
+        "duration" : 78
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "dd81af9d3c85b048",
+      "name" : "Last screenshot",
+      "source" : "dd81af9d3c85b048.png",
+      "type" : "image/png",
+      "size" : 67481
+    }, {
+      "uid" : "67307f1b98d213e4",
+      "name" : "Page source",
+      "source" : "67307f1b98d213e4.html",
+      "type" : "text/plain",
+      "size" : 147090
+    }, {
+      "uid" : "94d65e27fc64690b",
+      "name" : "Browser console logs",
+      "source" : "94d65e27fc64690b.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 21,
+    "attachmentsCount" : 5,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00800()]"
+  }, {
+    "name" : "story",
+    "value" : "Search from the main page"
+  }, {
+    "name" : "feature",
+    "value" : "Search"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az208-475"
+  }, {
+    "name" : "thread",
+    "value" : "3538@fv-az208-475.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00800"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 7,
+        "unknown" : 0,
+        "total" : 7
+      },
+      "items" : [ {
+        "uid" : "598f26d92069eb9d",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/598f26d92069eb9d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642088275530,
+          "stop" : 1642088288175,
+          "duration" : 12645
+        }
+      }, {
+        "uid" : "9e69fe10f4d0416",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/9e69fe10f4d0416",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642067915374,
+          "stop" : 1642067925822,
+          "duration" : 10448
+        }
+      }, {
+        "uid" : "4b87e88e126cac10",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/4b87e88e126cac10",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642064250879,
+          "stop" : 1642064262890,
+          "duration" : 12011
+        }
+      }, {
+        "uid" : "15ae4adb117ece2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/15ae4adb117ece2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642021617698,
+          "stop" : 1642021627337,
+          "duration" : 9639
+        }
+      }, {
+        "uid" : "ae10fe83b181bcaf",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/ae10fe83b181bcaf",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642005431264,
+          "stop" : 1642005441919,
+          "duration" : 10655
+        }
+      }, {
+        "uid" : "f33a4e5871b21e44",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/f33a4e5871b21e44",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642002027825,
+          "stop" : 1642002039099,
+          "duration" : 11274
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "d397de05250be177.json",
+  "parameterValues" : [ ]
+}
