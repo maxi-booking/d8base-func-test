@@ -8,29 +8,42 @@ import static helpers.RegressionTestsHelpers.*;
 
 public class UserProfileTests extends config.TestBase {
     @Test
-    @Feature("Professional Profile")
+    @Feature("Profile")
     @Owner("Egor Khlebnikov")
     @Story("https://redmine.maxi-booking.ru/issues/4844")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Professional Profile: delete education")
+    @DisplayName("Profile: delete address that was default")
     void t00000() {
+        String address1 = "Street 1";
+        String address2 = "Street 2";
         userReadyAPI();
-        serviceRegister();
-        log.openMainPage();
-        log.forceEN();
+        sideMenu.clickProfile();
 
-        sideMenu.clickProfessionalProfile();
-        pp.expandItems();
+        up.clickAddNewAddress();
+        up.addressSelectCountry(userCountry);
+        up.addressSelectCity(userCity);
+        up.addressSelectAddress(address1);
+        up.addressClickMakeDefault();
+        up.addressClickSave();
 
-        pp.educationVerificationEmpty();
-        pp.clickAddNewEducation();
-        pp.educationUniversity(masterEducationUniversity);
+        up.clickAddNewAddress();
+        up.addressSelectCountry(userCountry);
+        up.addressSelectCity(userCity);
+        up.addressSelectAddress(address2);
+        up.addressClickMakeDefault();
+        up.addressClickSave();
 
-        pp.educationClickSave();
-        pp.educationVerificationBasic(0, masterEducationUniversity);
+        up.selectAddress(1);
+        up.addressClickRemove();
+        up.verifyAddressRemoved(userCountry, userCity, address1);
 
-        pp.clickEditEducation(0);
-        pp.educationClickRemove();
-        pp.educationVerificationEmpty();
+        up.selectAddress(1);
+        up.addressClickMakeDefault();
+        up.addressClickSave();
+
+        up.selectAddress(1);
+        up.addressClickRemove();
+        up.verifyAddressRemoved(userCountry, userCity, address1);
+        up.verifyAddressRemoved(userCountry, userCity, address2);
     }
 }

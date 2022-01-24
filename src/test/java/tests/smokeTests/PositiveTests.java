@@ -184,9 +184,9 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.instantBooking(on);
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.checkPublishFormOnline(serviceNames[0], serviceDurations[0], serviceDescriptions[0]);
@@ -224,11 +224,11 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
+        pbl.instantBooking(on);
         pbl.fillServiceGeo(service2Country, service2City, service2Address);
         pbl.fillServiceDistance(service2Distance);
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.checkPublishFormWithAddress(serviceNames[1], serviceDurations[1], serviceDescriptions[1], service2Country, service2City, service2Address);
@@ -257,7 +257,7 @@ public class PositiveTests extends config.TestBase {
         pbl.enterServiceDescription(serviceDescriptions[2]);
         pbl.setDuration(serviceDurations[2]);
         pbl.setPriceFixed(servicePrices[2], randomCurrency);
-        pbl.selectServiceLocation(master);
+        pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
@@ -266,10 +266,10 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
+        pbl.instantBooking(on);
         pbl.fillServiceGeo(service3Country, service3City, service3Address);
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.checkPublishFormWithAddress(serviceNames[2], serviceDurations[2], serviceDescriptions[2], service3Country, service3City, service3Address);
@@ -312,9 +312,9 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.instantBooking(on);
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.checkPublishFormOnline(serviceNames[3], serviceDurations[3], serviceDescriptions[3]);
@@ -352,9 +352,9 @@ public class PositiveTests extends config.TestBase {
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.instantBooking(on);
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.checkPublishFormOnline(serviceNames[6], serviceDurations[6], serviceDescriptions[6]);
@@ -383,7 +383,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
         bkn.pickTheDate(today);
         bkn.clickNextDay();
@@ -419,7 +419,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceGeo(service2Country, service2City, service2Address);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
         bkn.bookTime(1100);
@@ -455,7 +455,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceGeo(service3Country, service3City, service3Address);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
         bkn.pickTheDate(today);
         bkn.clickNextDay();
@@ -491,7 +491,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
         bkn.clickNextDay();
@@ -526,7 +526,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
         bkn.bookTime(1100);
@@ -892,7 +892,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
 
         bkn.pickTheDate(next2Days);
@@ -938,7 +938,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking();
+        bkn.verifyInstantBooking(on);
         bkn.clickOrder();
 
         bkn.pickTheDate(next3Days);

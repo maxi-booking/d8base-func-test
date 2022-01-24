@@ -279,8 +279,10 @@ public class ServicePublish extends config.TestBase {
     }
 
     @Step("Confirm Instant Booking")
-    public void confirmInstantBooking() {
-        $("app-service-publish-step-seven form ion-item.item-label").scrollIntoView(false).click();
+    public void instantBooking(Boolean value) {
+        if (value.equals(true)) {
+            $("app-service-publish-step-seven form ion-item.item-label").scrollIntoView(false).click();
+        }
         Attach.screenshotAs("Screenshot");
     }
 
@@ -299,13 +301,17 @@ public class ServicePublish extends config.TestBase {
     }
 
     @Step("Select payment by cash")
-    public void selectPaymentByCash() {
-        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(false).click();
+    public void PaymentByCash(Boolean value) {
+        if (value.equals(true)) {
+            $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(false).click();
+        }
     }
 
     @Step("Select online payment")
-    public void selectOnlinePayment() {
-        $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 1).scrollIntoView(false).click();
+    public void OnlinePayment(Boolean value) {
+            if (value.equals(true)) {
+                $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 1).scrollIntoView(false).click();
+            }
         Attach.screenshotAs("Screenshot");
     }
 

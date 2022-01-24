@@ -8,9 +8,11 @@ import io.qameta.allure.Step;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.ServiceDuration.getDuration;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Orders extends config.TestBase {
@@ -27,7 +29,7 @@ public class Orders extends config.TestBase {
 
     @Step("Select current orders: Inbox")
     public void tabCurrentOrdersInbox() {
-        $("app-inbox-page").$("ion-segment-button", 1).click();
+        $("app-inbox-page").$("ion-segment-button", 1).scrollIntoView(true).click();
     }
 
     @Step("Select archived orders: Inbox")
@@ -130,14 +132,15 @@ public class Orders extends config.TestBase {
         $("app-sent-order-list-item").$("ion-card").$("app-professional-card").$("a").click();
     }
 
-    @Step("Click view details")
-    public void viewDetails() {
-        $("app-received-order-list-item").$("ion-card").$("ion-button", 0).click();
+    @Step("Click view details: Inbox")
+    public void viewDetailsInbox(int index) {
+        index--;
+        $("app-received-order-list-item ion-card ion-item a", index).scrollIntoView(true).click();
     }
 
     @Step("Click view details: Outbox")
     public void viewDetailsOutbox() {
-        $("app-outbox").$("ion-card").$("ion-button", 1).click();
+        $("app-outbox ion-card ion-button", 1).click();
     }
 
     @Step("Discard the order")
@@ -217,5 +220,37 @@ public class Orders extends config.TestBase {
     @Step("Select master in Outbox")
     public void selectMaster(String userName) {
         $("app-outbox").$(byText(userName)).click();
+    }
+
+    // Share Order
+    public void clickShareOrder()  {
+        step ("Click share order button", () -> {
+            $("app-received-order-page ion-button[slot='start']").scrollIntoView(true).click();
+        });
+    }
+
+    public void shareOrderClickCopy() {
+        step("Click copy button", () -> {
+            $("app-order-share-popover ion-button[slot='end']").click();
+        });
+    }
+
+    public void shareOrderClickStop() {
+        step("Click 'stop viewing by link' button", () -> {
+            $("app-order-share-popover ion-button[color='danger']").click();
+        });
+    }
+
+    public void detailsOrderClickBack() {
+        step("Click back button, order details", () -> {
+            $("ion-button[routerlink='/my-orders/inbox']").scrollIntoView(true).click();
+        });
+    }
+
+    public void openOrderToShare() {
+        step("Paste shared order link and open it", () -> {
+            String copiedText = clipboard().getText();
+            open(copiedText);
+        });
     }
 }

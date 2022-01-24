@@ -79,7 +79,7 @@ public class LogIn extends config.TestBase {
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue("2ServBknTestMaster@gg.gg");
+        $("app-login").$("input", 0).setValue("email@email.gg");
         $("app-login").$("input", 1).setValue("qazxcdew");
         $("app-login-form").$("ion-button[type='submit']").click();
         sleep(1000);

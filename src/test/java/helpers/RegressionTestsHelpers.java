@@ -2,9 +2,14 @@ package helpers;
 
 import api.Registration;
 
+import static api.Registration.locations;
+import static api.Registration.registration;
+import static api.ServicePublish.*;
+import static helpers.DateTimeFormatter.getDateTime;
+
 public class RegressionTestsHelpers extends config.TestBase {
 
-    public static void userRegister() {
+    public static void userRegisterUI() {
         log.forceMainPage();
         log.popupSelect(userCountry, userCity);
         log.forceEN();
@@ -17,7 +22,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         reg.confirmAndWait();
     }
 
-    public static void serviceRegister() {
+    public static void serviceRegisterUI() {
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickPublishNewService();
@@ -35,20 +40,43 @@ public class RegressionTestsHelpers extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecialization);
+        pbl.fillSpecialization(serviceSpecializationRandom);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.instantBooking(on);
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.publishService();
     }
 
+    public static String userRegisterAPI() {
+        String accessToken = registration(userFirstName, userEmailRandom, userPasswordRandom);
+        int locationsId = locations(accessToken, userCountry, userCity);
+        return accessToken;
+    }
+
+    public static void serviceRegisterAPI(String accessToken) {
+        changeAccountTypeToProfessional(accessToken);
+        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
+        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, online, instantBooking);
+        setSchedule(accessToken, professionalId, 7);
+        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
+    }
+
     public static void userReadyAPI() {
-        Registration.registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userEmailRandom, userPasswordRandom);
+        int locationsId = locations(accessToken, userCountry, userCity);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(userEmailRandom, userPasswordRandom);
+        log.forceEN();
+    }
+
+    public static void serviceReadyAPI() {
+        serviceRegisterAPI(userRegisterAPI());
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmailRandom, userPasswordRandom);

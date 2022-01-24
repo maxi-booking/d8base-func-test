@@ -4,6 +4,9 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static api.Registration.locations;
+import static api.Registration.registration;
+
 public class UserProfileTests extends config.TestBase {
 
     @Test
@@ -13,18 +16,12 @@ public class UserProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration for User Profile test")
     void t00000() {
+        String accessToken = registration(firstNames[9], lastNames[9], emails[9], passwords[9], countries[9], phoneNumbers[9]);
+        locations(accessToken, countries[9], cities[9]);
         log.openMainPage();
-        log.popupSelect(countries[9], cities[9]);
+        log.popupSkip();
+        log.account(9);
         log.forceEN();
-        sideMenu.clickSignUp();
-        reg.fillUserFirstName(firstNames[9]);
-        reg.fillUserLastName(lastNames[9]);
-        reg.fillEmail(emails[9]);
-        reg.choosePassword(passwords[9]);
-        reg.fillPhoneNumber(phoneNumbers[9], countries[9]);
-        reg.selectCountry(countries[9]);
-        reg.selectCity(cities[9]);
-        reg.confirmAndWait();
         sideMenu.clickProfile();
         reg.verifyRegistrationDataFull(firstNames[9], lastNames[9], emails[9], phoneNumbers[9], countries[9], cities[9]);
     }
@@ -51,7 +48,7 @@ public class UserProfileTests extends config.TestBase {
         up.clickBackContacts();
         up.openUserProfileLocationEdit(0);
         up.verifyProfileAddress(countries[9], cities[9]);
-        up.clickBackAddress();
+        up.addressClickBack();
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.clickBackAbout();
@@ -101,11 +98,11 @@ public class UserProfileTests extends config.TestBase {
 
         up.clickEditContacts(0);
         up.verifySelectContactDefault();
-        up.verifyEnterYourContact(empty);
+        up.verifyEnterYourContact(emptySpace);
         up.clickBackContacts();
         up.clickAddNewContact();
         up.verifySelectContactDefault();
-        up.verifyEnterYourContact(empty);
+        up.verifyEnterYourContact(emptySpace);
         up.clickBackContacts();
 
         up.clickEditContacts(0);
@@ -149,7 +146,7 @@ public class UserProfileTests extends config.TestBase {
         up.verifyProfileAddressExists(countries[9], cities[9]);
         up.openUserProfileLocationEdit(0);
         up.verifyProfileAddress(countries[9], cities[9]);
-        up.clickBackAddress();
+        up.addressClickBack();
 
         up.openUserProfileLocationEdit(0);
         up.addressSelectCountry(userCountry9);
@@ -160,7 +157,7 @@ public class UserProfileTests extends config.TestBase {
         up.addressSelectZipCode(user10ZipCodeNew);
         up.addressSelectAddress(user10AddressNew);
         up.verifyAddressFull(userCountry9, user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
-        up.clickBackAddress();
+        up.addressClickBack();
         up.verifyProfileAddressExists(countries[9], cities[9]);
 
         up.openUserProfileLocationEdit(0);
@@ -173,7 +170,7 @@ public class UserProfileTests extends config.TestBase {
         up.addressSelectZipCode(user10ZipCodeNew);
         up.addressSelectAddress(user10AddressNew);
         up.verifyAddressFull(userCountry9, user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
-        up.clickSaveAddress();
+        up.addressClickSave();
         up.verifyProfileAddressExists(userCountry9, userCity9);
 
         up.clickAddNewAddress();
@@ -186,7 +183,7 @@ public class UserProfileTests extends config.TestBase {
         up.addressSelectZipCode(user10ZipCode2);
         up.addressSelectAddress(user10Address2);
         up.verifyAddressFull(userCountry9_2, user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
-        up.clickBackAddress();
+        up.addressClickBack();
         up.verifyProfileAddressExists(countries[9], cities[9]);
 
         up.clickAddNewAddress();
@@ -199,7 +196,7 @@ public class UserProfileTests extends config.TestBase {
         up.addressSelectZipCode(user10ZipCode2);
         up.addressSelectAddress(user10Address2);
         up.verifyAddressFull(userCountry9_2, user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
-        up.clickSaveAddress();
+        up.addressClickSave();
         up.verifyProfileAddressExists(userCountry9_2, userCity9_2);
 
         up.openUserProfileLocationEdit(1);

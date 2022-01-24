@@ -15,8 +15,7 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Booking: today's date")
     void t00000() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
@@ -42,8 +41,7 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: your own service for another person")
     void t00001() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
@@ -73,8 +71,7 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: a service for another person")
     void t00002() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
 
         String service = serviceNameRandom;
 
@@ -83,7 +80,7 @@ public class BookingTests extends config.TestBase {
         setRandomData();
         log.forceMainPage();
 
-        userRegister();
+        userRegisterUI();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
@@ -114,8 +111,7 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.TRIVIAL)
     @DisplayName("Booking: time step, can't navigate back in time via arrows")
     void t00100() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();

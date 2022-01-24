@@ -6,15 +6,13 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
 
-import static com.codeborne.selenide.Selenide.$;
-import static helpers.DayConverter.*;
-import static helpers.MonthConverter.generateMonth;
-import static helpers.MonthConverter.monthConvertToNumber;
+import static helpers.DateTimeFormatter.*;
 import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
-import static java.lang.Long.parseLong;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestData {
+
+    public static final String xTimeZone = "Europe/Moscow";
+    public static final int timeZone = 3;
 
     public static class UserEmails {
         Faker generate = new Faker(new Locale("en-US"));
@@ -283,6 +281,28 @@ public class TestData {
         }
     }
 
+    public static String[] dateTimes() { //get 3 unique DateTimes for booking
+
+        String dateTime1 = getDateTime();
+        String date1 = dateTime1.substring(0, 10);
+
+        String dateTime2 = getDateTime();
+        String date2 = dateTime2.substring(0, 10);
+        while (date1.equals(date2)) {
+            dateTime2 = getDateTime();
+            date2 = dateTime2.substring(0, 10);
+        }
+
+        String dateTime3 = getDateTime();
+        String date3 = dateTime3.substring(0, 10);
+        while (date3.equals(date1) || date3.equals(date2)) {
+            dateTime3 = getDateTime();
+            date3 = dateTime3.substring(0, 10);
+        }
+
+        return new String[]{dateTime1, dateTime2, dateTime3};
+    }
+
     public static String
             testUser10New,
             testPassword10New,
@@ -412,7 +432,7 @@ public class TestData {
             master12CertificateIDNew,
             master12CertificateLinkNew,
             master12CertificatePhotoNew,
-            empty,
+            emptySpace,
             today,
             tomorrow,
             next1Day,
@@ -437,7 +457,7 @@ public class TestData {
             usd,
             online,
             client,
-            master,
+            professional,
             randomServiceCategory,
             randomServiceSubcategory,
             randomRating,
@@ -445,7 +465,25 @@ public class TestData {
             master12MainCategory,
             master12MainSubcategory,
             master12MainCategoryNew,
-            master12MainSubcategoryNew;
+            master12MainSubcategoryNew,
+            unitsKilometers,
+            unitsMiles;
+
+    public static Object
+            emptyNull;
+
+    public static Boolean
+            on,
+            off,
+            instantBooking,
+            noInstantBooking,
+            forAnotherPerson,
+            forMyself;
+
+    public static String[]
+            paymentCashOnline = {"cash", "online"},
+            paymentCash = {"cash"},
+            paymentOnline = {"online"};
 
     public static void setTestData() {
         //currency
@@ -457,7 +495,7 @@ public class TestData {
         //service location
         online = 0;
         client = 1;
-        master = 2;
+        professional = 2;
 
         //gender helpers
         man = "man";
@@ -474,8 +512,19 @@ public class TestData {
         middle = "middle";
         senior = "senior";
 
+        //units of distance
+        unitsKilometers = 0;
+        unitsMiles = 1;
+
         //random confirmation
         random = "random";
+
+        on = true;
+        off = false;
+        instantBooking = true;
+        noInstantBooking = false;
+        forAnotherPerson = true;
+        forMyself = false;
 
         LocalDate currentDate = LocalDate.now();
         int day = currentDate.getDayOfMonth();
@@ -487,7 +536,8 @@ public class TestData {
         next3Days = getDayXDaysForward(3);
 
         Faker generate = new Faker(new Locale("en-US"));
-        empty = " ";
+        emptyNull = null;
+        emptySpace = " ";
         randomServiceCategory = generate.number().numberBetween(0, 8);
         randomServiceSubcategory = getRandomSubcategoryFromCategoryValue(randomServiceCategory);
         randomFile = "src/test/resources/img/" + generate.number().numberBetween(1, 12) + ".png";
@@ -658,7 +708,8 @@ public class TestData {
         userLastName11 = generate.animal().name() + " 1";
     }
 
-    public static String userCountry,
+    public static String
+            userCountry,
             userCity,
             userFirstName,
             userLastName,
@@ -674,10 +725,15 @@ public class TestData {
             servicePriceRandom,
             servicePriceMin,
             servicePriceMax,
-            serviceSpecialization,
+            serviceCurrencyRandom,
+            serviceSpecializationRandom,
             serviceAddress,
             serviceDistance,
+            bookingDateTimeRandom,
             masterEducationUniversity;
+
+    public static int
+            serviceLocationRandomDistance;
 
     public static void setRandomData() {
         Random r = new Random();
@@ -688,7 +744,7 @@ public class TestData {
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
-        userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().characters(2, 3) + ".pp";
+        userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".pp";
         userPasswordRandom = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
 
@@ -698,9 +754,13 @@ public class TestData {
         servicePriceRandom = String.valueOf(generate.number().numberBetween(1, 500));
         servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
         servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
-        serviceSpecialization = generate.job().title() + " " + generate.ancient().god();
+        serviceCurrencyRandom = new String[]{"CAD", "EUR", "RUB", "USD"}[(int) (Math.random() * 4)];
+        serviceSpecializationRandom = generate.job().title() + " " + generate.ancient().god();
         serviceAddress = generate.address().fullAddress();
         serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));
+        serviceLocationRandomDistance = generate.number().numberBetween(1, 9999);
+
+        bookingDateTimeRandom = getDateTime();
 
         masterEducationUniversity = generate.university().name();
 

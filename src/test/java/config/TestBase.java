@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.RegressionTestsHelpers.dateTimes;
 
 public class TestBase extends TestData {
 
@@ -81,6 +82,8 @@ public class TestBase extends TestData {
 
     public static Specializations getSpecialization = new Specializations();
     public static String[] specializations = getSpecialization.specialization();
+
+    public static String [] dateTime = dateTimes();
 
     @BeforeAll
     public static void init() {

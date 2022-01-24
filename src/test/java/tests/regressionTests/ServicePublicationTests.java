@@ -31,15 +31,15 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecialization);
+        pbl.fillSpecialization(serviceSpecializationRandom);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
+        pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
         pbl.fillServiceDistance(serviceDistance);
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.publishService();
@@ -62,19 +62,19 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.enterServiceName(serviceNameRandom);
         pbl.setDuration(serviceDurationRandom);
         pbl.setPriceFixed(servicePriceRandom, randomCurrency);
-        pbl.selectServiceLocation(master);
+        pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecialization);
+        pbl.fillSpecialization(serviceSpecializationRandom);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
+        pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.publishService();
@@ -97,7 +97,7 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.enterServiceName(serviceNameRandom);
         pbl.setDuration(serviceDurationRandom);
         pbl.setPriceFixed("0", randomCurrency);
-        pbl.selectServiceLocation(master);
+        pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
         pbl.fieldIsRequiredPresent();
         pbl.isStepTwo();
@@ -120,7 +120,7 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.enterServiceName(serviceNameRandom);
         pbl.setDuration(serviceDurationRandom);
         pbl.setPriceRange("0", "100", rub);
-        pbl.selectServiceLocation(master);
+        pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
         pbl.fieldIsRequiredPresent();
         pbl.isStepTwo();
@@ -143,7 +143,7 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.enterServiceName(serviceNameRandom);
         pbl.setDuration(serviceDurationRandom);
         pbl.setPriceRange("0", "0", rub);
-        pbl.selectServiceLocation(master);
+        pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
         pbl.fieldIsRequiredPresent();
         pbl.isStepTwo();
@@ -280,12 +280,12 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecialization);
+        pbl.fillSpecialization(serviceSpecializationRandom);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
+        pbl.PaymentByCash(on);
+        pbl.OnlinePayment(on);
         pbl.clickSeventhStep();
 
         pbl.verifyPriceCurrency(servicePriceMin, servicePriceMax, currency);

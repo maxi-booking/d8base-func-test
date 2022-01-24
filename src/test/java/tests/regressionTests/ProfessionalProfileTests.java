@@ -14,8 +14,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Professional Profile: delete education")
     void t00000() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         log.openMainPage();
         log.forceEN();
 
@@ -41,8 +40,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Professional Profile: social share button should be clickable (another person)")
     void t00001() {
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         log.openMainPage();
         log.forceEN();
         sideMenu.clickLogOut();

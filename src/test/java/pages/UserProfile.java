@@ -3,12 +3,16 @@ package pages;
 import config.Lang;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.SelectableModal.selectModal;
+import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class UserProfile {
     @Step("Verify profile data")
@@ -239,19 +243,29 @@ public class UserProfile {
         sleep(500);
     }
 
-    @Step("Click Back: Address")
-    public void clickBackAddress() {
+    @Step("Profile address: click Back")
+    public void addressClickBack() {
         $("app-user-location-edit").$("app-column-header").$("ion-button").click();
     }
 
-    @Step("Click Save: Address")
-    public void clickSaveAddress() {
-        $("app-user-location-edit").$("app-location-editor").$("ion-button").click();
+    @Step("Profile address: click Save")
+    public void addressClickSave() {
+            $("app-user-location-edit app-location-editor ion-button[id='save-btn']").click();
     }
 
-    @Step("Profile: address - remove address")
+    @Step("Profile address: click Remove")
+    public void addressClickRemove() {
+        if ($("app-user-location-edit app-location-editor ion-button[id='save-btn']").exists()) {
+            $("app-user-location-edit app-location-editor ion-button").click();
+        } else {
+            System.out.println("Can not verify remove button.");
+            fail();
+        }
+    }
+
+    @Step("Profile: remove address")
     public void removeAddress() {
-        $("app-user-contact-edit").$("app-contact-edit").$("ion-row").$("ion-button", 0).click();
+        $("app-user-contact-edit app-contact-edit ion-row ion-button", 0).click();
         sleep(500);
     }
 
@@ -266,8 +280,15 @@ public class UserProfile {
 
     @Step("Profile: address - click 'Add new address'")
     public void clickAddNewAddress() {
-        $("app-profile").$("ion-button[routerlink='location-add/']").click();
-        sleep(500);
+        $("app-profile app-add-button[routerlink='location-add/'] ion-item").click();
+        $("app-user-location-edit app-location-editor ion-button").shouldBe(visible, Duration.ofSeconds(10));
+    }
+
+    public void selectAddress(int value) {
+        step("Profile: select address, index: " + value, () -> {
+            $("app-profile main ion-item-group ion-button" , value).click();
+            $("app-user-location-edit app-location-editor ion-button").shouldBe(visible, Duration.ofSeconds(10));
+        });
     }
 
     @Step("Profile address: select country")
@@ -367,6 +388,11 @@ public class UserProfile {
     @Step("Verify address removed")
     public void verifyAddressRemoved(String country, String city) {
         $("app-profile").$("app-contacts-edit").shouldNotHave(text(country + ", " + city));
+    }
+
+    @Step("Verify address removed")
+    public void verifyAddressRemoved(String country, String city, String address) {
+        $("app-profile").$("app-contacts-edit").shouldNotHave(text(country + ", " + city + ", " + address));
     }
 
     @Step("Open Profile: About")

@@ -1,15 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.selector.ByShadow;
 import config.TestBase;
-import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.SelectableModal.selectModal;
@@ -111,7 +108,7 @@ public class Registration extends TestBase {
     @Step("Verify that there is no phone country code autofilled")
     public void verifyNoPhoneCountryCode() {
         String value = $("app-registration app-phone-editor ionic-selectable span").getText();
-        if (!value.equals(empty)) {
+        if (!value.equals(emptySpace)) {
             System.out.println("Expected empty value, actual value : " + value);
             fail();
         }
@@ -120,7 +117,7 @@ public class Registration extends TestBase {
     @Step("Verify phone country code - {userCountry}")
     public void verifyPhoneCountryCode(String userCountry) {
         String value = $("app-registration app-phone-editor ionic-selectable").getText();
-        if (value.equals(empty)) {
+        if (value.equals(emptySpace)) {
             fail();
         }
         $("app-registration-form").$("button[type='button']").click();

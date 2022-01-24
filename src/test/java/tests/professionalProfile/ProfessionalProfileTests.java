@@ -4,6 +4,9 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static api.Registration.*;
+import static api.ServicePublish.*;
+
 public class ProfessionalProfileTests extends config.TestBase {
 
     @Test
@@ -13,57 +16,15 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
     void t00000() {
-        log.openMainPage();
-        log.popupSelect(countries[11], cities[11]);
-        log.forceEN();
-        sideMenu.clickSignUp();
-        reg.fillUserFirstName(firstNames[11]);
-        reg.fillUserLastName(lastNames[11]);
-        reg.fillEmail(emails[11]);
-        reg.choosePassword(passwords[11]);
-        reg.fillPhoneNumber(phoneNumbers[11], countries[11]);
-        reg.selectCountry(countries[11]);
-        reg.selectCity(cities[11]);
-        reg.confirmAndWait();
-        log.forceEN();
-        sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[11], lastNames[11], emails[11], phoneNumbers[11], countries[11], cities[11]);
-
-        log.forceEN();
-        log.openMainPage();
-        sideMenu.clickPublishNewService();
-
-        pbl.chooseCategory(master12MainCategory);
-        pbl.chooseSubcategory(master12MainSubcategory);
-        pbl.clickFirstStep();
-
-        pbl.enterServiceName(serviceNames[11]);
-        pbl.enterServiceDescription(serviceDescriptions[11]);
-        pbl.setDuration(serviceDurations[11]);
-        pbl.setPriceFixed(servicePrices[11], randomCurrency);
-        pbl.selectServiceLocation(master);
-        pbl.clickSecondStep();
-
-//        pbl.addServicePhotos(random);
-//        pbl.verifyPictureUpload(1);
-        pbl.clickThirdStep();
-
-        pbl.selectPersonOrCompany(person);
-        pbl.fillAbout(master12MainDescription);
-        pbl.fillSpecialization(specializations[11]);
-        pbl.selectLevel(master12MainLevel);
-        pbl.clickSixthStep();
-
-        pbl.fillScheduleLite();
-        pbl.confirmInstantBooking();
-        pbl.fillServiceGeo(service12Country, service12City, service12Address);
-        pbl.selectPaymentByCash();
-        pbl.selectOnlinePayment();
-        pbl.clickSeventhStep();
-
-        pbl.checkPublishFormOnline(serviceNames[11], serviceDurations[11], serviceDescriptions[11]);
-        pbl.checkPrice(servicePrices[11]);
-        pbl.publishService();
+        String accessToken = registration(firstNames[11], lastNames[11], emails[11], passwords[11], countries[11], phoneNumbers[11]);
+        int locationsId = locations(accessToken, countries[11], cities[11]);
+        changeAccountTypeToProfessional(accessToken);
+        int professionalId = createProfessional(accessToken, master12MainCategory, master12MainSubcategory, specializations[11], master12MainLevel, master12MainDescription);
+        int serviceId = servicePublish(accessToken, professionalId, serviceNames[11], serviceDescriptions[11], serviceDurations[11], professional, instantBooking);
+        int serviceLocationId = professionalLocations(accessToken, professionalId, service12Country, service12City, service12Address);
+        serviceLocations(accessToken, serviceId, serviceLocationId);
+        setSchedule(accessToken, professionalId, 7);
+        servicePrices(accessToken, serviceId, servicePrices[11], serviceCurrencyRandom, paymentCashOnline);
     }
 
     @Test

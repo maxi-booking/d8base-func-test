@@ -16,8 +16,7 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will not show if professional doesn't have any")
     void t00000() {
         //setup
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
 
         //search and check
         sideMenu.clickSearch();
@@ -34,8 +33,7 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will show if filled")
     void t00001() {
         //setup
-        userReadyAPI();
-        serviceRegister();
+        serviceReadyAPI();
         pp.openMyProfessionalProfileLink();
         pp.uploadBestWorks(randomFile);
 

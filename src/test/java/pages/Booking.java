@@ -119,8 +119,13 @@ public class Booking {
     }
 
     @Step("Check instant booking")
-    public void verifyInstantBooking() {
-        $("app-service-widget").shouldHave(text("Ordering of this service will be approved automatically"));
+    public void verifyInstantBooking(Boolean value) {
+        if (value.equals(true)) {
+            $("app-service-widget").shouldHave(text("Ordering of this service will be approved automatically"));
+        } else {
+
+            $("app-service-widget").shouldNotHave(text("Ordering of this service will be approved automatically"));
+        }
     }
 
     @Step("Click the 'Order' button to book")

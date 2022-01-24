@@ -12,7 +12,7 @@ import java.util.Locale;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.MonthConverter.monthConvertToNumber;
+import static helpers.DateTimeFormatter.monthConvertToNumber;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ProfessionalProfile extends TestBase {
