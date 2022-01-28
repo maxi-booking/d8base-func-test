@@ -96,7 +96,7 @@ public class Orders extends config.TestBase {
             String servicePrice,
             String serviceTotalDuration
     ) {
-        $("app-outbox-page app-client-widget").shouldHave(text(userFirstName));
+        $("app-outbox-page app-professional-card").shouldHave(text(userFirstName));
         $("app-outbox-page app-service-title").shouldHave(text(serviceName));
 
         ServiceDuration duration = getDuration(serviceTotalDuration);
