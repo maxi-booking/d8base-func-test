@@ -1,0 +1,40 @@
+<div>POST to https://app.maxibooking.ru:8000/en/api/accounts/service-prices/</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+    {
+    &quot;is_price_fixed&quot;: true,
+    &quot;payment_methods&quot;: [
+        &quot;cash&quot;,
+        &quot;online&quot;
+    ],
+    &quot;price&quot;: &quot;149&quot;,
+    &quot;service&quot;: 5259,
+    &quot;price_currency&quot;: &quot;RUB&quot;
+}
+    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Authorization: Bearer j0PAxFGZZsRDqiYBpFZBhZK975UHL8</div>
+        <div>Accept: application/json, text/plain, */*</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;https://app.maxibooking.ru:8000/en/api/accounts/service-prices/&#39; -H &#39;Authorization: Bearer j0PAxFGZZsRDqiYBpFZBhZK975UHL8&#39; -H &#39;Accept: application/json, text/plain, */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;is_price_fixed&quot;: true,
+    &quot;payment_methods&quot;: [
+        &quot;cash&quot;,
+        &quot;online&quot;
+    ],
+    &quot;price&quot;: &quot;149&quot;,
+    &quot;service&quot;: 5259,
+    &quot;price_currency&quot;: &quot;RUB&quot;
+}&#39;
+</div>
