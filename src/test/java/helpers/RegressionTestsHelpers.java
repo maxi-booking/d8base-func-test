@@ -75,6 +75,21 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.forceEN();
     }
 
+    public static String clientRegisterAPI() {
+        String accessToken = registration(clientFirstName, clientEmailRandom, clientPasswordRandom);
+        int locationsId = locations(accessToken, clientCountry, clientCity);
+        return accessToken;
+    }
+
+    public static void clientReadyAPI() {
+        String accessToken = registration(clientFirstName, clientEmailRandom, clientPasswordRandom);
+        int locationsId = locations(accessToken, clientCountry, clientCity);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(clientEmailRandom, clientPasswordRandom);
+        log.forceEN();
+    }
+
     public static void serviceReadyAPI() {
         serviceRegisterAPI(userRegisterAPI());
         log.openMainPage();

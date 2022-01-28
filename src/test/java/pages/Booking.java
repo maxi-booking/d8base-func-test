@@ -9,8 +9,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static config.TestData.*;
 import static helpers.SelectableModal.selectModal;
 import static helpers.ServiceDuration.getDuration;
@@ -303,12 +302,12 @@ public class Booking {
 
     @Step("Click to see order details")
     public void showOrderDetails() {
-        $("app-sent-order-page div.order-full-info a").click();
+        $$("div.order-full-info a").filter(visible).get(0).click();
     }
 
     @Step("Verify the order details")
     public void verifyOrderDetails(String ServiceName) {
-        sleep(1000);
-        $("app-sent-order-page").$("section").shouldHave(text(ServiceName));
+        $("app-sent-order-page section").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-sent-order-page section").shouldHave(text(ServiceName));
     }
 }

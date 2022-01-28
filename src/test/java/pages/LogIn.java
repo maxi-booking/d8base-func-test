@@ -28,24 +28,34 @@ public class LogIn extends config.TestBase {
     }
 
     public void openMainPage() {
-        open(urlBase);
+        openUrl(urlBase);
     }
 
     public void forceMainPage() {
         if (!$("body").exists()) {
-            open(urlBase);
+            openUrl(urlBase);
             return;
         }
         sleep(500);
         String currentUrl = WebDriverRunner.url();
         if (!currentUrl.equals(urlBase)) {
-            open(urlBase);
+            openUrl(urlBase);
         }
+    }
+
+    public void openUrl(String url) {
+        step("Open URL: " + url, () -> {
+            open(url);
+        });
+    }
+
+    public String copy() {
+        return clipboard().getText();
     }
 
     @Step("Log out by URL")
     public void forceLogOut() {
-        open(urlLogOut);
+        openUrl(urlLogOut);
     }
 
     public void logoClick() {
@@ -109,65 +119,71 @@ public class LogIn extends config.TestBase {
 
     public void account(int value) {
         step("Log In with " + emails[value] + " : " + passwords[value], () -> {
-        forceEN();
-        String login = emails[value];
-        String password = passwords[value];
-        sideMenu.clickLogIn();
-        $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(login);
-        $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
-        Attach.screenshotAs("Login_info");
-        $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
-        $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
+            forceEN();
+            String login = emails[value];
+            String password = passwords[value];
+            sideMenu.clickLogIn();
+            $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(login);
+            $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
+            Attach.screenshotAs("Login_info");
+            $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
+            $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
         });
     }
 
     public void forceRU() {
-        sleep(500);
-        String desiredLanguage = Lang.RUSSIAN.getLangText();
-        String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-        if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-            $$("[menu='flag-menu']").filter(visible).get(0).click();
-            $("app-flag-menu ion-select").click();
-            $("ion-alert button", 1).click();
-            $("div.alert-button-group button",1).click();
-            $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+        step("Change language to Russian", () -> {
             sleep(500);
-            if ($("ion-alert").exists()) {
-                closeAlert();
+            String desiredLanguage = Lang.RUSSIAN.getLangText();
+            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $$("[menu='flag-menu']").filter(visible).get(0).click();
+                $("app-flag-menu ion-select").click();
+                $("ion-alert button", 1).click();
+                $("div.alert-button-group button", 1).click();
+                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+                sleep(500);
+                if ($("ion-alert").exists()) {
+                    closeAlert();
+                }
             }
-        }
+        });
     }
 
     public void forceEN() {
-        sleep(500);
-        String desiredLanguage = Lang.ENGLISH.getLangText();
-        String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-        if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-            $$("[menu='flag-menu']").filter(visible).get(0).click();
-            $("app-flag-menu ion-select").click();
-            $("ion-alert button", 0).click();
-            $("div.alert-button-group button",1).click();
-            $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+        step("Change language to English", () -> {
             sleep(500);
-            if ($("ion-alert").exists()) {
-                closeAlert();
+            String desiredLanguage = Lang.ENGLISH.getLangText();
+            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $$("[menu='flag-menu']").filter(visible).get(0).click();
+                $("app-flag-menu ion-select").click();
+                $("ion-alert button", 0).click();
+                $("div.alert-button-group button", 1).click();
+                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+                sleep(500);
+                if ($("ion-alert").exists()) {
+                    closeAlert();
+                }
             }
-        }
+        });
     }
 
     public void popupSelect(String country, String city) {
-        popupSkip();
-        forceEN();
-        refreshPage();
+        step("Pop-up select country: " + country + "; city: " + city, () -> {
+            popupSkip();
+            forceEN();
+            refreshPage();
 
-        $("ion-alert").$("button", 1).click();
+            $("ion-alert").$("button", 1).click();
 
-        $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
-        selectModal(country);
+            $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
+            selectModal(country);
 
-        $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
-        selectModal(city);
-        $("app-on-map-popover").$("ion-button").click();
+            $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
+            selectModal(city);
+            $("app-on-map-popover").$("ion-button").click();
+        });
     }
 
     public void popupSelectOld(String country, String city) {
@@ -192,12 +208,14 @@ public class LogIn extends config.TestBase {
     }
 
     public void popupSkip() {
-        sleep(200);
-        $("#alert-1-sub-hdr").shouldBe(visible, Duration.ofSeconds(10));
-        sleep(1000);
-        closeAlert();
-        $("ion-alert").shouldNotBe(visible, Duration.ofSeconds(10));
-        sleep(200);
+        step("Pop-up skip", () -> {
+            sleep(200);
+            $("#alert-1-sub-hdr").shouldBe(visible, Duration.ofSeconds(10));
+            sleep(1000);
+            closeAlert();
+            $("ion-alert").shouldNotBe(visible, Duration.ofSeconds(10));
+            sleep(200);
+        });
     }
 
     public void popupSkipMenus() {

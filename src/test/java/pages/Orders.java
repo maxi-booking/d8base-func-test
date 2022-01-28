@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.selector.ByShadow;
 import helpers.Attach;
 import helpers.ServiceDuration;
 import io.qameta.allure.Step;
@@ -10,6 +11,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.ServiceDuration.getDuration;
 import static io.qameta.allure.Allure.step;
@@ -135,7 +137,7 @@ public class Orders extends config.TestBase {
     @Step("Click view details: Inbox")
     public void viewDetailsInbox(int index) {
         index--;
-        $("app-received-order-list-item ion-card ion-item a", index).scrollIntoView(true).click();
+        $("app-infinite-scroll-container ion-card ion-item a", index).scrollIntoView(true).click();
     }
 
     @Step("Click view details: Outbox")
@@ -223,8 +225,8 @@ public class Orders extends config.TestBase {
     }
 
     // Share Order
-    public void clickShareOrder()  {
-        step ("Click share order button", () -> {
+    public void clickShareOrder() {
+        step("Click share order button", () -> {
             $("app-received-order-page ion-button[slot='start']").scrollIntoView(true).click();
         });
     }
@@ -233,6 +235,12 @@ public class Orders extends config.TestBase {
         step("Click copy button", () -> {
             $("app-order-share-popover ion-button[slot='end']").click();
         });
+    }
+
+    @Step("Get share order link")
+    public String shareOrderGetId() {
+        String value = $("app-order-share-popover input").getValue();
+        return value;
     }
 
     public void shareOrderClickStop() {
@@ -251,6 +259,74 @@ public class Orders extends config.TestBase {
         step("Paste shared order link and open it", () -> {
             String copiedText = clipboard().getText();
             open(copiedText);
+        });
+    }
+
+    public void shareOrderClickConfirm() {
+        step("User confirms shared order", () -> {
+            $("app-order-share main ion-button").click();
+        });
+    }
+
+    public void shareOrderHaveAccount() {
+        step("Select: I already have an account", () -> {
+            $("ion-item ion-radio",0).click();
+        });
+    }
+
+    public void shareOrderNewUser() {
+        step("Select: I'm new user", () -> {
+            $("ion-item ion-radio",1).click();
+        });
+    }
+
+    public void verifyOrderId(int orderId) {
+        step("Verify that order ID is " + orderId, () -> {
+            $$("app-sent-order div h1").filter(visible).get(0).shouldHave(text(String.valueOf(orderId)));
+        });
+    }
+
+    public void showOrderDetails() {
+        step("Click 'show order details'", () -> {
+            $$("div.order-full-info a").filter(visible).get(0).click();
+        });
+    }
+
+    public void verifyOrderData(String firstName, String lastName, String specialization, String serviceName, String servicePrice, String serviceDuration) {
+        step("Verify that order data is all correct.", () -> {
+            $$("app-infinite-scroll-container app-order-status ion-badge[color='success']").filter(visible).get(0).shouldBe(visible);
+            $$("app-infinite-scroll-container app-professional-card ").filter(visible).get(0).shouldHave(text(firstName + " " + lastName), text(specialization));
+            $$("app-infinite-scroll-container app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
+            $$("app-infinite-scroll-container app-price").filter(visible).get(0).shouldHave(text(servicePrice));
+            $$("app-infinite-scroll-container app-duration-viewer").filter(visible).get(0).shouldHave(text(serviceDuration));
+        });
+    }
+
+    public void clickViewDetails() {
+        step("Click 'View Details'", () -> {
+            $("app-infinite-scroll-container ion-item a").click();
+        });
+    }
+
+    public void verifyOrderDetails(String serviceName, String serviceDuration, int serviceLocation) {
+        step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration, () -> {
+            $$("section").filter(visible).get(0).shouldHave(text(serviceName), text(serviceDuration));
+            if (serviceLocation == 0) {
+                $$("section").filter(visible).get(0).shouldHave(text(onlineLocation));
+            } else if (serviceLocation == 1) {
+                $$("section").filter(visible).get(0).shouldHave(text(clientLocation));
+            } else if (serviceLocation == 2) {
+                $$("section").filter(visible).get(0).shouldHave(text(professionalLocation));
+            } else {
+                System.out.println("Impossible service location. Should be online/client/professional.");
+                throw new IllegalArgumentException();
+            }
+        });
+    }
+
+    public void verifyOrderDetails(String serviceName, String serviceDuration, String serviceAddress) {
+        step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration + ". Service duration: " + serviceAddress, () -> {
+            $$("section").filter(visible).get(0).shouldHave(text(serviceName), text(serviceDuration), text(serviceAddress));
         });
     }
 }

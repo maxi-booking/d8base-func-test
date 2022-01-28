@@ -448,7 +448,10 @@ public class TestData {
             company,
             junior,
             middle,
-            senior;
+            senior,
+            onlineLocation,
+            clientLocation,
+            professionalLocation;
 
     public static Integer
             cad,
@@ -496,6 +499,11 @@ public class TestData {
         online = 0;
         client = 1;
         professional = 2;
+
+    //service location strings
+        onlineLocation = "Online";
+        clientLocation = "Client's place";
+        professionalLocation = "Professional's place";
 
         //gender helpers
         man = "man";
@@ -719,6 +727,13 @@ public class TestData {
             userEmailMixedCase,
             userPasswordRandom,
             userPhoneNumber,
+            clientCountry,
+            clientCity,
+            clientFirstName,
+            clientLastName,
+            clientEmailRandom,
+            clientPasswordRandom,
+            clientPhoneNumber,
             serviceNameRandom,
             serviceDescriptionRandom,
             serviceDurationRandom,
@@ -747,6 +762,14 @@ public class TestData {
         userEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".pp";
         userPasswordRandom = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
+
+        clientCountry = "Russia";
+        clientCity = "Moscow";
+        clientFirstName = generate.name().firstName();
+        clientLastName = generate.name().lastName();
+        clientEmailRandom = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".cl";
+        clientPasswordRandom = generate.internet().password();
+        clientPhoneNumber = "911" + generate.number().digits(7);
 
         serviceNameRandom = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
         serviceDescriptionRandom = generate.lorem().characters(20, 200);

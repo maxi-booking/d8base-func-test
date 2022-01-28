@@ -15,9 +15,7 @@ import static io.restassured.RestAssured.given;
 
 public class ServiceBooking extends TestBase {
 
-    public static  void booking(String accessToken, int serviceId, int locationsId, int serviceLocation, Boolean isAnotherPerson, String dateTime) {
-
-        String source;
+    public static int booking(String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -33,20 +31,15 @@ public class ServiceBooking extends TestBase {
             }
         }
         data.put("start_datetime", dateTime);
-        data.put("is_another_person", isAnotherPerson);
+        data.put("is_another_person", false);
         data.put("first_name", "");
         data.put("last_name", "");
         data.put("email", "");
         data.put("phone", "");
         data.put("note", "");
-        if (isAnotherPerson) {
-            source = "online";
-        } else {
-            source = "manual";
-        }
-        data.put("source", source);
+        data.put("source", "manual");
 
-        given()
+        return given()
                 .filter(new AllureRestAssured())
                 .log().all()
                 .contentType("application/json")
@@ -57,12 +50,11 @@ public class ServiceBooking extends TestBase {
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .log().all()
-                .statusCode(201);
+                .statusCode(201)
+                .extract().response().path("id");
     }
 
-    public static  void booking(String accessToken, int serviceId, int locationsId, int serviceLocation, Boolean isAnotherPerson) {
-
-        String source;
+    public static int booking(String accessToken, int serviceId, int locationsId, int serviceLocation) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -78,20 +70,15 @@ public class ServiceBooking extends TestBase {
             }
         }
         data.put("start_datetime", getDateTime());
-        data.put("is_another_person", isAnotherPerson);
+        data.put("is_another_person", false);
         data.put("first_name", "");
         data.put("last_name", "");
         data.put("email", "");
         data.put("phone", "");
         data.put("note", "");
-        if (isAnotherPerson) {
-            source = "online";
-        } else {
-            source = "manual";
-        }
-        data.put("source", source);
+        data.put("source", "manual");
 
-        given()
+        return given()
                 .filter(new AllureRestAssured())
                 .log().all()
                 .contentType("application/json")
@@ -102,6 +89,87 @@ public class ServiceBooking extends TestBase {
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .log().all()
-                .statusCode(201);
+                .statusCode(201)
+                .extract().response().path("id");
+    }
+
+    public static int booking(String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime,
+                                String firstName, String lastName, String email, String phone, String note) {
+
+        Map<String, Object> data = new HashMap<>();
+
+        data.put("service", serviceId);
+        if (serviceLocation > 0) {
+            if (serviceLocation == 1) {
+                data.put("client_location", locationsId);
+            } else if (serviceLocation == 2) {
+                data.put("service_location", locationsId);
+            } else {
+                System.out.println("Service location is not a valid choice.");
+                throw new IllegalArgumentException();
+            }
+        }
+        data.put("start_datetime", dateTime);
+        data.put("is_another_person", true);
+        data.put("first_name", firstName);
+        data.put("last_name", lastName);
+        data.put("email", email);
+        data.put("phone", phone);
+        data.put("note", note);
+        data.put("source", "online");
+
+        return given()
+                .filter(new AllureRestAssured())
+                .log().all()
+                .contentType("application/json")
+                .accept("application/json, text/plain, */*")
+                .header("Authorization", "Bearer " + accessToken)
+                .body(data)
+                .when()
+                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .then()
+                .log().all()
+                .statusCode(201)
+                .extract().response().path("id");
+    }
+
+    public static int booking(String accessToken, int serviceId, int locationsId, int serviceLocation,
+                                String firstName, String lastName, String email, String phone, String note) {
+
+        Map<String, Object> data = new HashMap<>();
+
+        data.put("service", serviceId);
+        if (serviceLocation > 0) {
+            if (serviceLocation == 1) {
+                data.put("client_location", locationsId);
+            } else if (serviceLocation == 2) {
+                data.put("service_location", locationsId);
+            } else {
+                System.out.println("Service location is not a valid choice.");
+                throw new IllegalArgumentException();
+            }
+        }
+        data.put("start_datetime", getDateTime());
+        data.put("is_another_person", true);
+        data.put("first_name", firstName);
+        data.put("last_name", lastName);
+        data.put("email", email);
+        data.put("phone", phone);
+        data.put("note", note);
+        data.put("source", "online");
+
+        return given()
+                .filter(new AllureRestAssured())
+                .log().all()
+                .contentType("application/json")
+                .accept("application/json, text/plain, */*")
+                .header("Authorization", "Bearer " + accessToken)
+                .body(data)
+                .when()
+                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .then()
+                .log().all()
+                .statusCode(201)
+                .extract().response().path("id");
     }
 }
