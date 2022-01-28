@@ -3,11 +3,13 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.selector.ByShadow;
 import config.Lang;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -250,5 +252,18 @@ public class LogIn extends config.TestBase {
         if (!currentUrl.equals(urlProfile)) {
             fail();
         }
+    }
+
+    public void checkForErrors() {
+        String errorCheck = "No errors found.";
+        sleep(200);
+        if ($("ion-toast").exists()) {
+            errorCheck = "Error found: " + $(ByShadow.cssSelector("div", "ion-toast")).getText();
+        }
+        step("Check for errors. " + errorCheck, () -> {
+            if ($("ion-toast").exists()) {
+                fail();
+            }
+        });
     }
 }

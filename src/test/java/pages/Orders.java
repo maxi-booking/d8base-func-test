@@ -49,7 +49,7 @@ public class Orders extends config.TestBase {
         $("app-outbox").$("ion-segment-button", 1).click();
     }
 
-    @Step("Simple order check inbox")
+    @Step("Simple order check inbox: order exists")
     public void checkOrderInbox(
             String userFirstName,
             String servicePrice,
@@ -57,7 +57,7 @@ public class Orders extends config.TestBase {
     ) {
         sleep(400);
         Attach.screenshotAs("Screenshot");
-        $("app-inbox-page").shouldHave(
+        $("app-inbox-page app-client-widget").shouldHave(
                 text(userFirstName)
         );
 
@@ -96,10 +96,8 @@ public class Orders extends config.TestBase {
             String servicePrice,
             String serviceTotalDuration
     ) {
-        $("app-outbox-page").shouldHave(
-                text(userFirstName),
-                text(serviceName)
-        );
+        $("app-outbox-page app-client-widget").shouldHave(text(userFirstName));
+        $("app-outbox-page app-service-title").shouldHave(text(serviceName));
 
         ServiceDuration duration = getDuration(serviceTotalDuration);
         if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
@@ -107,13 +105,13 @@ public class Orders extends config.TestBase {
             fail();
         }
         if (!duration.days.equals("0")) {
-            $("app-outbox-page").shouldHave(text(duration.days));
+            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.days));
         }
         if (!duration.hours.equals("0")) {
-            $("app-outbox-page").shouldHave(text(duration.hours));
+            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.hours));
         }
         if (!duration.minutes.equals("0")) {
-            $("app-outbox-page").shouldHave(text(duration.minutes));
+            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.minutes));
         }
 
         int cardNumber = 0;
@@ -147,7 +145,7 @@ public class Orders extends config.TestBase {
 
     @Step("Discard the order")
     public void discardOrder() {
-        $("app-received-order-list-item").$("ion-card").$("ion-button", 1).click();
+        $("app-received-order-list-item ion-card ion-button", 1).click();
         sleep(500);
     }
 
@@ -164,16 +162,14 @@ public class Orders extends config.TestBase {
         sleep(500);
     }
 
-    @Step("Simple order check inbox")
+    @Step("Simple order check inbox: order discarded")
     public void checkDiscardOrderInbox(
             String userFirstName,
             String servicePrice,
             String serviceTotalDuration
     ) {
-        $("app-inbox-page").shouldNotHave(
-                text(userFirstName),
-                text(servicePrice)
-        );
+        $("app-outbox-page app-client-widget").shouldNotHave(text(userFirstName));
+        $("app-outbox-page app-price").shouldNotHave(text(servicePrice));
 
         ServiceDuration duration = getDuration(serviceTotalDuration);
         if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
@@ -181,13 +177,13 @@ public class Orders extends config.TestBase {
             fail();
         }
         if (!duration.days.equals("0")) {
-            $("app-inbox-page").shouldHave(text(duration.days));
+            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.days));
         }
         if (!duration.hours.equals("0")) {
-            $("app-inbox-page").shouldHave(text(duration.hours));
+            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.hours));
         }
         if (!duration.minutes.equals("0")) {
-            $("app-inbox-page").shouldHave(text(duration.minutes));
+            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.minutes));
         }
     }
 
@@ -204,14 +200,26 @@ public class Orders extends config.TestBase {
 
     @Step("Accept the order")
     public void acceptOrder() {
-        $("app-received-order-list-item").$("ion-card").$("ion-button", 2).click();
-        sleep(500);
+        int value = 0;
+        while ($("ion-card", value).exists()) {
+            value++;
+        }
+        $("app-received-order-list-item ion-card ion-button", 2).click();
+        $("ion-card", value).shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Complete the order")
     public void completeOrder() {
-        $("app-received-order-list-item ion-card ion-button").click();
-        sleep(500);
+        int value = 0;
+        while ($("ion-card", value).exists()) {
+            value++;
+        }
+        if ($("app-received-order-list-item ion-card ion-button[color='danger']", 0).exists()) {
+            $("app-received-order-list-item ion-card ion-button", 1).click();
+        } else {
+            $("app-received-order-list-item ion-card ion-button").click();
+        }
+        $("ion-card", value).shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Click 'show more'")
@@ -270,13 +278,13 @@ public class Orders extends config.TestBase {
 
     public void shareOrderHaveAccount() {
         step("Select: I already have an account", () -> {
-            $("ion-item ion-radio",0).click();
+            $("ion-item ion-radio", 0).click();
         });
     }
 
     public void shareOrderNewUser() {
         step("Select: I'm new user", () -> {
-            $("ion-item ion-radio",1).click();
+            $("ion-item ion-radio", 1).click();
         });
     }
 

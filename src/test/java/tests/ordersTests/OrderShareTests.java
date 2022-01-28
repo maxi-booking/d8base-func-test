@@ -1,4 +1,4 @@
-package tests.OrdersTests;
+package tests.ordersTests;
 
 import config.TestBase;
 import io.qameta.allure.*;
@@ -234,6 +234,7 @@ public class OrderShareTests extends TestBase {
 
         String clientAccessToken = clientRegisterAPI();
         log.openUrl(onlineServiceShareLink);
+        log.checkForErrors();
         log.popupSkip();
         log.forceEN();
         ord.verifyOrderId(orderId);
@@ -405,6 +406,7 @@ public class OrderShareTests extends TestBase {
         log.forceLogOut();
 
         log.openUrl(onlineServiceShareLink);
+        log.checkForErrors();
         log.popupSkip();
         log.forceEN();
         ord.verifyOrderId(orderId);
