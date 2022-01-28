@@ -1,0 +1,803 @@
+{
+  "uid" : "ee9fe39c57e2be4d",
+  "name" : "Remove master from favorites",
+  "fullName" : "tests.smokeTests.PositiveTests.t00600",
+  "historyId" : "a8f4762b5a94af12f35d775f9d6b824d",
+  "time" : {
+    "start" : 1643364673122,
+    "stop" : 1643364686538,
+    "duration" : 13416
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643364674053,
+        "stop" : 1643364676731,
+        "duration" : 2678
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1643364674053,
+          "stop" : 1643364676731,
+          "duration" : 2678
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1643364676731,
+        "stop" : 1643364678707,
+        "duration" : 1976
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643364676932,
+          "stop" : 1643364677008,
+          "duration" : 76
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1643364678009,
+          "stop" : 1643364678092,
+          "duration" : 83
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643364678092,
+          "stop" : 1643364678507,
+          "duration" : 415
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Log In with nannie.lubowitz@omnis.velith : rohy1reb3bl267",
+      "time" : {
+        "start" : 1643364678707,
+        "stop" : 1643364683319,
+        "duration" : 4612
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Change language to English",
+        "time" : {
+          "start" : 1643364678707,
+          "stop" : 1643364679256,
+          "duration" : 549
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+          "time" : {
+            "start" : 1643364679208,
+            "stop" : 1643364679256,
+            "duration" : 48
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "Click Menu > Log in",
+        "time" : {
+          "start" : 1643364679256,
+          "stop" : 1643364680483,
+          "duration" : 1227
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+          "time" : {
+            "start" : 1643364679556,
+            "stop" : 1643364679706,
+            "duration" : 150
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") scroll into view(true)",
+          "time" : {
+            "start" : 1643364680006,
+            "stop" : 1643364680042,
+            "duration" : 36
+          },
+          "status" : "passed",
+          "steps" : [ {
+            "name" : "$(\"[id='main-menu.log-in']\") get wrapped element()",
+            "time" : {
+              "start" : 1643364680006,
+              "stop" : 1643364680027,
+              "duration" : 21
+            },
+            "status" : "passed",
+            "steps" : [ ],
+            "attachments" : [ ],
+            "parameters" : [ ],
+            "stepsCount" : 0,
+            "attachmentsCount" : 0,
+            "shouldDisplayMessage" : false,
+            "hasContent" : false
+          } ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 1,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : true
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") click()",
+          "time" : {
+            "start" : 1643364680042,
+            "stop" : 1643364680183,
+            "duration" : 141
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 4,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643364680483,
+          "stop" : 1643364680572,
+          "duration" : 89
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='email'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643364680483,
+            "stop" : 1643364680566,
+            "duration" : 83
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") set value(nannie.lubowitz@omnis.velith)",
+        "time" : {
+          "start" : 1643364680572,
+          "stop" : 1643364680717,
+          "duration" : 145
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643364680717,
+          "stop" : 1643364680795,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='password'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643364680717,
+            "stop" : 1643364680790,
+            "duration" : 73
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") set value(rohy1reb3bl267)",
+        "time" : {
+          "start" : 1643364680795,
+          "stop" : 1643364680926,
+          "duration" : 131
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643364681134,
+          "stop" : 1643364681185,
+          "duration" : 51
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643364681135,
+            "stop" : 1643364681178,
+            "duration" : 43
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643364681185,
+          "stop" : 1643364681296,
+          "duration" : 111
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643364681296,
+          "stop" : 1643364683319,
+          "duration" : 2023
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "35c4ec87da007acb",
+        "name" : "Login_info",
+        "source" : "35c4ec87da007acb.png",
+        "type" : "image/png",
+        "size" : 30367
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 17,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643364683319,
+        "stop" : 1643364683896,
+        "duration" : 577
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643364683819,
+          "stop" : 1643364683896,
+          "duration" : 77
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Bookmarks",
+      "time" : {
+        "start" : 1643364683897,
+        "stop" : 1643364685122,
+        "duration" : 1225
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643364684197,
+          "stop" : 1643364684401,
+          "duration" : 204
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.bookmarks']\") scroll into view(true)",
+        "time" : {
+          "start" : 1643364684701,
+          "stop" : 1643364684727,
+          "duration" : 26
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.bookmarks']\") get wrapped element()",
+          "time" : {
+            "start" : 1643364684701,
+            "stop" : 1643364684718,
+            "duration" : 17
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.bookmarks']\") click()",
+        "time" : {
+          "start" : 1643364684727,
+          "stop" : 1643364684822,
+          "duration" : 95
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify online bookmarks",
+      "time" : {
+        "start" : 1643364685123,
+        "stop" : 1643364685503,
+        "duration" : 380
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-bookmarks-list-page/main\") should have(text 'JenineStaci HarveyVon')",
+        "time" : {
+          "start" : 1643364685123,
+          "stop" : 1643364685503,
+          "duration" : 380
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "masterName",
+        "value" : "JenineStaci HarveyVon"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Remove bookmark",
+      "time" : {
+        "start" : 1643364685503,
+        "stop" : 1643364685576,
+        "duration" : 73
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-saved-professional-toggle/ion-button\") click()",
+        "time" : {
+          "start" : 1643364685503,
+          "stop" : 1643364685576,
+          "duration" : 73
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify bookmark deletion",
+      "time" : {
+        "start" : 1643364685577,
+        "stop" : 1643364686214,
+        "duration" : 637
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-bookmarks-list-page/main\") should not have(text 'JenineStaci HarveyVon')",
+        "time" : {
+          "start" : 1643364685577,
+          "stop" : 1643364686214,
+          "duration" : 637
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "masterName",
+        "value" : "JenineStaci HarveyVon"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643364686461,
+        "stop" : 1643364686538,
+        "duration" : 77
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "346d71f1aa64824a",
+      "name" : "Last screenshot",
+      "source" : "346d71f1aa64824a.png",
+      "type" : "image/png",
+      "size" : 24580
+    }, {
+      "uid" : "bcd082fa3ce5a077",
+      "name" : "Page source",
+      "source" : "bcd082fa3ce5a077.html",
+      "type" : "text/plain",
+      "size" : 122140
+    }, {
+      "uid" : "c3a2c05946ec4d46",
+      "name" : "Browser console logs",
+      "source" : "c3a2c05946ec4d46.txt",
+      "type" : "text/plain",
+      "size" : 141
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 38,
+    "attachmentsCount" : 4,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00600()]"
+  }, {
+    "name" : "story",
+    "value" : "Remove master from favorites"
+  }, {
+    "name" : "feature",
+    "value" : "Favorites"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az206-122"
+  }, {
+    "name" : "thread",
+    "value" : "3384@fv-az206-122.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00600"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 9,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 3,
+        "unknown" : 0,
+        "total" : 12
+      },
+      "items" : [ {
+        "uid" : "a32a892b5e505b82",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/45//#testresult/a32a892b5e505b82",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643358781788,
+          "stop" : 1643358796673,
+          "duration" : 14885
+        }
+      }, {
+        "uid" : "dadb5a5edae97a5c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/44//#testresult/dadb5a5edae97a5c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643356102030,
+          "stop" : 1643356114768,
+          "duration" : 12738
+        }
+      }, {
+        "uid" : "ec607bedae1acef",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/43//#testresult/ec607bedae1acef",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'JanellaTashina KuhlmanReinger' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-bbr-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643355205982.18.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643355205982.18.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1643355182494,
+          "stop" : 1643355206675,
+          "duration" : 24181
+        }
+      }, {
+        "uid" : "5adedc44d4ade6c1",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/42//#testresult/5adedc44d4ade6c1",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'JaymieFreeman LakinLindgren' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-ogv-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643338002488.8.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643338002488.8.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1643337980182,
+          "stop" : 1643338003222,
+          "duration" : 23040
+        }
+      }, {
+        "uid" : "95aed464df2f8900",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/41//#testresult/95aed464df2f8900",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'ShanonElfreda SchulistOndricka' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-trh-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642999991760.8.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642999991760.8.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642999970120,
+          "stop" : 1642999992402,
+          "duration" : 22282
+        }
+      }, {
+        "uid" : "328245e9f00fd962",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/328245e9f00fd962",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'NoemiThaddeus EmmerichO'Reilly' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-msh-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642088126896.21.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642088126896.21.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642088103318,
+          "stop" : 1642088127606,
+          "duration" : 24288
+        }
+      }, {
+        "uid" : "6c6f766ae90a8d01",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/6c6f766ae90a8d01",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'DaneKeith ColeStreich' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-xxn-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642067776603.19.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642067776603.19.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642067754200,
+          "stop" : 1642067777342,
+          "duration" : 23142
+        }
+      }, {
+        "uid" : "1676e212fbcca7f5",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/1676e212fbcca7f5",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'BernieDick ReillyFeest' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-tfr-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642064102306.22.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642064102306.22.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642064079026,
+          "stop" : 1642064103002,
+          "duration" : 23976
+        }
+      }, {
+        "uid" : "d23ba262b6a66804",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/d23ba262b6a66804",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'RudolfLouis KossConnelly' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-tea-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642021486009.23.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642021486009.23.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642021464850,
+          "stop" : 1642021486577,
+          "duration" : 21727
+        }
+      }, {
+        "uid" : "1ffcc2bd1848a383",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/1ffcc2bd1848a383",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'EvanJanita GleichnerYost' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-ode-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642005288241.20.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642005288241.20.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642005265676,
+          "stop" : 1642005288946,
+          "duration" : 23270
+        }
+      }, {
+        "uid" : "63149acafc5f4e63",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/63149acafc5f4e63",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'ChristianEthan GleasonFerry' {app-bookmarks-list-page/main}\nElement: '<main _ngcontent-hup-c110 class=\"main\">Favorites\nThere is no favorites</main>'\nActual value: Favorites\nThere is no favorites\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642001881980.33.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642001881980.33.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642001859059,
+          "stop" : 1642001882579,
+          "duration" : 23520
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "ee9fe39c57e2be4d.json",
+  "parameterValues" : [ ]
+}
