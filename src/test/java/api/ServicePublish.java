@@ -9,6 +9,7 @@ import static helpers.CityIdByName.getCityId;
 import static helpers.CountryIdByName.getCountryId;
 import static helpers.SubcategoriesById.getSubcategory;
 import static io.restassured.RestAssured.given;
+import static specifications.Specifications.requestSpec;
 
 public class ServicePublish extends TestBase {
 
@@ -18,16 +19,12 @@ public class ServicePublish extends TestBase {
         data.put("account_type", "professional");
 
         given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .patch(urlBase + ":8000/en/api/accounts/profile/")
                 .then()
-                .log().all()
                 .statusCode(200);
     }
 
@@ -38,16 +35,12 @@ public class ServicePublish extends TestBase {
         data.put("name", specialization);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/professionals/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -61,16 +54,12 @@ public class ServicePublish extends TestBase {
         data.put("level", level);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/professionals/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -85,16 +74,12 @@ public class ServicePublish extends TestBase {
         data.put("level", level);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/professionals/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -122,16 +107,12 @@ public class ServicePublish extends TestBase {
         data.put("service", serviceId);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/service-prices/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -161,16 +142,12 @@ public class ServicePublish extends TestBase {
         data.put("service", serviceId);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/service-prices/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -208,16 +185,12 @@ public class ServicePublish extends TestBase {
             Map[] schedules = list.toArray(new HashMap[list.size()]);
 
             given()
-                    .filter(new AllureRestAssured())
-                    .log().all()
-                    .contentType("application/json")
-                    .accept("application/json, text/plain, */*")
+                    .spec(requestSpec)
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
                     .post(urlBase + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
-                    .log().all()
                     .statusCode(201);
         } else {
             System.out.println("There are only 7 days in the week, can not accept days: " + days);
@@ -271,16 +244,12 @@ public class ServicePublish extends TestBase {
             Map[] schedules = list.toArray(new HashMap[list.size()]);
 
             given()
-                    .filter(new AllureRestAssured())
-                    .log().all()
-                    .contentType("application/json")
-                    .accept("application/json, text/plain, */*")
+                    .spec(requestSpec)
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
                     .post(urlBase + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
-                    .log().all()
                     .statusCode(201);
         } else {
             System.out.println("There are only 7 days in the week, can not accept " + days + " days.");
@@ -298,16 +267,12 @@ public class ServicePublish extends TestBase {
         data.put("units", units);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/professional-locations/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -322,16 +287,12 @@ public class ServicePublish extends TestBase {
         data.put("units", 0);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/professional-locations/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -344,16 +305,12 @@ public class ServicePublish extends TestBase {
         data.put("location", serviceLocationId);
 
         given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/service-locations/")
                 .then()
-                .log().all()
                 .statusCode(201);
     }
 
@@ -365,16 +322,12 @@ public class ServicePublish extends TestBase {
         data.put("location", serviceLocationId);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/service-locations/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -407,16 +360,12 @@ public class ServicePublish extends TestBase {
         data.put("professional", professionalId);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/services/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }

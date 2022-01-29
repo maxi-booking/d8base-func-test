@@ -12,6 +12,7 @@ import static helpers.CountryIdByName.getCountryId;
 import static helpers.DateTimeFormatter.getDateTime;
 import static helpers.SubcategoriesById.getSubcategory;
 import static io.restassured.RestAssured.given;
+import static specifications.Specifications.requestSpec;
 
 public class ServiceBooking extends TestBase {
 
@@ -40,16 +41,12 @@ public class ServiceBooking extends TestBase {
         data.put("source", "manual");
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -79,16 +76,12 @@ public class ServiceBooking extends TestBase {
         data.put("source", "manual");
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -119,16 +112,12 @@ public class ServiceBooking extends TestBase {
         data.put("source", "online");
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }
@@ -159,16 +148,12 @@ public class ServiceBooking extends TestBase {
         data.put("source", "online");
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/orders/sent/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }

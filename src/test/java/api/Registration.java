@@ -9,6 +9,8 @@ import static helpers.CityIdByName.getCityId;
 import static helpers.CountryConverter.getCountryCode;
 import static helpers.CountryIdByName.getCountryId;
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.requestSpecification;
+import static specifications.Specifications.requestSpec;
 
 public class Registration extends TestBase {
 
@@ -35,15 +37,11 @@ public class Registration extends TestBase {
         data.put("password_confirm", password);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/register/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
     }
@@ -72,15 +70,11 @@ public class Registration extends TestBase {
         data.put("password_confirm", password);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/register/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
     }
@@ -110,15 +104,11 @@ public class Registration extends TestBase {
         data.put("phone", getCountryCode(country) + phone);
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/register/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
     }
@@ -130,16 +120,12 @@ public class Registration extends TestBase {
         data.put("city", getCityId(city, country));
 
         return given()
-                .filter(new AllureRestAssured())
-                .log().all()
-                .contentType("application/json")
-                .accept("application/json, text/plain, */*")
+                .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
                 .post(urlBase + ":8000/en/api/accounts/locations/")
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract().response().path("id");
     }

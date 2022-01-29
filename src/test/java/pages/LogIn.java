@@ -256,7 +256,7 @@ public class LogIn extends config.TestBase {
 
     public void checkForErrors() {
         String errorCheck = "No errors found.";
-        sleep(200);
+        sleep(1500);
         if ($("ion-toast").exists()) {
             errorCheck = "Error found: " + $(ByShadow.cssSelector("div", "ion-toast")).getText();
         }
