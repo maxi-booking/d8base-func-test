@@ -1,0 +1,824 @@
+{
+  "uid" : "385f8be9dab7052b",
+  "name" : "Phone number should be autofilled if user's location known",
+  "fullName" : "tests.regressionTests.RegistrationTests.t00002",
+  "historyId" : "ea08e470571b22fb21a62bdf27810991",
+  "time" : {
+    "start" : 1643431074466,
+    "stop" : 1643431089578,
+    "duration" : 15112
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643431075275,
+        "stop" : 1643431077630,
+        "duration" : 2355
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1643431075275,
+          "stop" : 1643431077630,
+          "duration" : 2355
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up select country: Russia; city: Moscow",
+      "time" : {
+        "start" : 1643431077630,
+        "stop" : 1643431085295,
+        "duration" : 7665
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Pop-up skip",
+        "time" : {
+          "start" : 1643431077630,
+          "stop" : 1643431079503,
+          "duration" : 1873
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+          "time" : {
+            "start" : 1643431077830,
+            "stop" : 1643431077907,
+            "duration" : 77
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"ion-alert\") press escape()",
+          "time" : {
+            "start" : 1643431078907,
+            "stop" : 1643431078973,
+            "duration" : 66
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+          "time" : {
+            "start" : 1643431078973,
+            "stop" : 1643431079303,
+            "duration" : 330
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 3,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "Change language to English",
+        "time" : {
+          "start" : 1643431079503,
+          "stop" : 1643431080089,
+          "duration" : 586
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+          "time" : {
+            "start" : 1643431080003,
+            "stop" : 1643431080089,
+            "duration" : 86
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"refresh\") ",
+        "time" : {
+          "start" : 1643431080089,
+          "stop" : 1643431080776,
+          "duration" : 687
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert/button[1]\") click()",
+        "time" : {
+          "start" : 1643431080776,
+          "stop" : 1643431081123,
+          "duration" : 347
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-on-map-popover/app-country-selector/ion-item\") click()",
+        "time" : {
+          "start" : 1643431081123,
+          "stop" : 1643431081788,
+          "duration" : 665
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") should be([empty: attribute value=\"\" and exact text '', 10 s.])",
+        "time" : {
+          "start" : 1643431081788,
+          "stop" : 1643431082028,
+          "duration" : 240
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") send keys(Russia)",
+        "time" : {
+          "start" : 1643431082528,
+          "stop" : 1643431082587,
+          "duration" : 59
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item[1]\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431082587,
+          "stop" : 1643431082959,
+          "duration" : 372
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431082959,
+          "stop" : 1643431082980,
+          "duration" : 21
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") click()",
+        "time" : {
+          "start" : 1643431082980,
+          "stop" : 1643431083040,
+          "duration" : 60
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431083040,
+          "stop" : 1643431083407,
+          "duration" : 367
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-on-map-popover/app-city-selector/ion-item\") click()",
+        "time" : {
+          "start" : 1643431083407,
+          "stop" : 1643431083481,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") should be([empty: attribute value=\"\" and exact text '', 10 s.])",
+        "time" : {
+          "start" : 1643431083481,
+          "stop" : 1643431083561,
+          "duration" : 80
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") send keys(Moscow)",
+        "time" : {
+          "start" : 1643431084061,
+          "stop" : 1643431084113,
+          "duration" : 52
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item[1]\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431084114,
+          "stop" : 1643431084122,
+          "duration" : 8
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431084122,
+          "stop" : 1643431084771,
+          "duration" : 649
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") click()",
+        "time" : {
+          "start" : 1643431084771,
+          "stop" : 1643431084832,
+          "duration" : 61
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643431084833,
+          "stop" : 1643431085221,
+          "duration" : 388
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-on-map-popover/ion-button\") click()",
+        "time" : {
+          "start" : 1643431085221,
+          "stop" : 1643431085295,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 23,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643431085295,
+        "stop" : 1643431085859,
+        "duration" : 564
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643431085796,
+          "stop" : 1643431085859,
+          "duration" : 63
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Sing up",
+      "time" : {
+        "start" : 1643431085859,
+        "stop" : 1643431087022,
+        "duration" : 1163
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643431086159,
+          "stop" : 1643431086294,
+          "duration" : 135
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") scroll into view(true)",
+        "time" : {
+          "start" : 1643431086594,
+          "stop" : 1643431086612,
+          "duration" : 18
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.sign-up']\") get wrapped element()",
+          "time" : {
+            "start" : 1643431086594,
+            "stop" : 1643431086606,
+            "duration" : 12
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") click()",
+        "time" : {
+          "start" : 1643431086612,
+          "stop" : 1643431086721,
+          "duration" : 109
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify phone country code - Russia",
+      "time" : {
+        "start" : 1643431087022,
+        "stop" : 1643431089290,
+        "duration" : 2268
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration app-phone-editor ionic-selectable\") get text()",
+        "time" : {
+          "start" : 1643431087022,
+          "stop" : 1643431087072,
+          "duration" : 50
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-registration-form/button[type='button']\") click()",
+        "time" : {
+          "start" : 1643431087072,
+          "stop" : 1643431087140,
+          "duration" : 68
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal/input\") send keys(Russia)",
+        "time" : {
+          "start" : 1643431088140,
+          "stop" : 1643431088188,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-virtual-scroll/ion-item\") should have(css class 'ionic-selectable-item-is-selected')",
+        "time" : {
+          "start" : 1643431088688,
+          "stop" : 1643431088720,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-virtual-scroll/ion-item\") press escape()",
+        "time" : {
+          "start" : 1643431089220,
+          "stop" : 1643431089290,
+          "duration" : 70
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userCountry",
+        "value" : "Russia"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643431089503,
+        "stop" : 1643431089578,
+        "duration" : 75
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "e00f61ed75fafa6d",
+      "name" : "Last screenshot",
+      "source" : "e00f61ed75fafa6d.png",
+      "type" : "image/png",
+      "size" : 47238
+    }, {
+      "uid" : "95a10ac298e81a98",
+      "name" : "Page source",
+      "source" : "95a10ac298e81a98.html",
+      "type" : "text/plain",
+      "size" : 130916
+    }, {
+      "uid" : "e541d2b3016b5641",
+      "name" : "Browser console logs",
+      "source" : "e541d2b3016b5641.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 40,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.regressionTests.RegistrationTests]/[method:t00002()]"
+  }, {
+    "name" : "story",
+    "value" : "https://redmine.maxi-booking.ru/issues/4873"
+  }, {
+    "name" : "feature",
+    "value" : "User Registration"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az183-194"
+  }, {
+    "name" : "thread",
+    "value" : "3297@fv-az183-194.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00002"
+  }, {
+    "name" : "suite",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 13,
+        "unknown" : 0,
+        "total" : 13
+      },
+      "items" : [ {
+        "uid" : "8fc44065d75bc2c0",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/47//#testresult/8fc44065d75bc2c0",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643428577068,
+          "stop" : 1643428593106,
+          "duration" : 16038
+        }
+      }, {
+        "uid" : "ebfb705a0e151921",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/46//#testresult/ebfb705a0e151921",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643365936042,
+          "stop" : 1643365952086,
+          "duration" : 16044
+        }
+      }, {
+        "uid" : "62c044946c2275b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/45//#testresult/62c044946c2275b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643360178525,
+          "stop" : 1643360198184,
+          "duration" : 19659
+        }
+      }, {
+        "uid" : "e39fb79bac96bdc5",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/44//#testresult/e39fb79bac96bdc5",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643357343285,
+          "stop" : 1643357359121,
+          "duration" : 15836
+        }
+      }, {
+        "uid" : "5706f97d6e2892b9",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/42//#testresult/5706f97d6e2892b9",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643339705753,
+          "stop" : 1643339722179,
+          "duration" : 16426
+        }
+      }, {
+        "uid" : "869c838f69eda93d",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/41//#testresult/869c838f69eda93d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643001275756,
+          "stop" : 1643001292020,
+          "duration" : 16264
+        }
+      }, {
+        "uid" : "95242e514b5ee89b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/95242e514b5ee89b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642086659878,
+          "stop" : 1642086678929,
+          "duration" : 19051
+        }
+      }, {
+        "uid" : "894ebbaeedb131ef",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/894ebbaeedb131ef",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642066455572,
+          "stop" : 1642066473129,
+          "duration" : 17557
+        }
+      }, {
+        "uid" : "e1bae922d59a180b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/e1bae922d59a180b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642062643748,
+          "stop" : 1642062662747,
+          "duration" : 18999
+        }
+      }, {
+        "uid" : "38fa293d532f53f7",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/38fa293d532f53f7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642020199587,
+          "stop" : 1642020215637,
+          "duration" : 16050
+        }
+      }, {
+        "uid" : "3cd85da2ce98cc3b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/3cd85da2ce98cc3b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642003215794,
+          "stop" : 1642003233866,
+          "duration" : 18072
+        }
+      }, {
+        "uid" : "df785843aba2453",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/df785843aba2453",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642000513675,
+          "stop" : 1642000532594,
+          "duration" : 18919
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "385f8be9dab7052b.json",
+  "parameterValues" : [ ]
+}
