@@ -96,8 +96,8 @@ public class Orders extends config.TestBase {
             String servicePrice,
             String serviceTotalDuration
     ) {
-        $("app-outbox-page app-professional-card").shouldHave(text(userFirstName));
-        $("app-outbox-page app-service-title").shouldHave(text(serviceName));
+        $("app-outbox-page main").shouldHave(text(userFirstName));
+        $("app-outbox-page main").shouldHave(text(serviceName));
 
         ServiceDuration duration = getDuration(serviceTotalDuration);
         if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
@@ -105,13 +105,13 @@ public class Orders extends config.TestBase {
             fail();
         }
         if (!duration.days.equals("0")) {
-            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.days));
+            $("app-outbox-page main").shouldHave(text(duration.days));
         }
         if (!duration.hours.equals("0")) {
-            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.hours));
+            $("app-outbox-page main").shouldHave(text(duration.hours));
         }
         if (!duration.minutes.equals("0")) {
-            $("app-outbox-page app-duration-viewer").shouldHave(text(duration.minutes));
+            $("app-outbox-page main").shouldHave(text(duration.minutes));
         }
 
         int cardNumber = 0;
