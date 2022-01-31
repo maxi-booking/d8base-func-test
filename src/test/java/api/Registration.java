@@ -1,7 +1,6 @@
 package api;
 
 import config.TestBase;
-import io.qameta.allure.restassured.AllureRestAssured;
 
 import java.util.*;
 
@@ -9,7 +8,6 @@ import static helpers.CityIdByName.getCityId;
 import static helpers.CountryConverter.getCountryCode;
 import static helpers.CountryIdByName.getCountryId;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 import static specifications.Specifications.requestSpec;
 
 public class Registration extends TestBase {

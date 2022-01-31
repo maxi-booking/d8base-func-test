@@ -3,6 +3,7 @@ package config;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import drivers.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -12,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.RegressionTestsHelpers.dateTimes;
 
 public class TestBase extends TestData {
 

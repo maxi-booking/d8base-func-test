@@ -1,4 +1,4 @@
-package config;
+package drivers;
 
 import com.codeborne.selenide.Browser;
 import org.aeonbits.owner.Config;
