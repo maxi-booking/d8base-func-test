@@ -218,18 +218,18 @@ public class TestData {
     public static class ServiceDurations {
         Faker generate = new Faker(new Locale("en-US"));
         String[] serviceDuration = {
-                String.valueOf(generate.number().numberBetween(15, 105)),
-                String.valueOf(generate.number().numberBetween(15, 105)),
-                String.valueOf(generate.number().numberBetween(15, 105)),
-                String.valueOf(generate.number().numberBetween(15, 105)),
+                String.valueOf(15*(generate.number().numberBetween(1, 5))),
+                String.valueOf(15*(generate.number().numberBetween(1, 5))),
+                String.valueOf(15*(generate.number().numberBetween(1, 5))),
+                String.valueOf(15*(generate.number().numberBetween(1, 5))),
                 "",
                 "",
-                String.valueOf(generate.number().numberBetween(15, 105)),
+                String.valueOf(15*(generate.number().numberBetween(1, 5))),
                 "",
                 "",
                 "",
                 "",
-                String.valueOf(generate.number().numberBetween(15, 165))
+                String.valueOf(15*(generate.number().numberBetween(1, 7))),
         };
 
         public String[] serviceDuration() {
@@ -773,7 +773,7 @@ public class TestData {
 
         serviceNameRandom = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
         serviceDescriptionRandom = generate.lorem().characters(20, 200);
-        serviceDurationRandom = String.valueOf(generate.number().numberBetween(15, 45));
+        serviceDurationRandom = new String[]{"15", "30", "45"}[(int) (Math.random() * 3)];
         servicePriceRandom = String.valueOf(generate.number().numberBetween(1, 500));
         servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
         servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));

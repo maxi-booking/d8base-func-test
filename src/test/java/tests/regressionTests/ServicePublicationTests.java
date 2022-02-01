@@ -291,4 +291,37 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.verifyPriceCurrency(servicePriceMin, servicePriceMax, currency);
         pbl.publishService();
     }
+
+    @Test
+    @Feature("Service Publication")
+    @Owner("Egor Khlebnikov")
+    @Story("https://redmine.maxi-booking.ru/issues/4621")
+    @Severity(SeverityLevel.MINOR)
+    @DisplayName("Service publish: can not publish service without any payment option")
+    void t00300() {
+        userReadyAPI();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(randomServiceCategory);
+        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceNames[0]);
+        pbl.enterServiceDescription(serviceDescriptions[0]);
+        pbl.setDuration(serviceDurations[0]);
+        pbl.setPriceFixed(servicePrices[0], randomCurrency);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(specializations[0]);
+        pbl.clickSixthStep();
+
+        pbl.fillScheduleLite();
+        pbl.instantBooking(on);
+        pbl.PaymentByCash(off);
+        pbl.OnlinePayment(off);
+        pbl.verifySeventhStepContinueIsNotClickable();
+    }
 }

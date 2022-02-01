@@ -56,7 +56,7 @@ public class BookingTests extends config.TestBase {
         bkn.acceptTimeSelection();
         bkn.acceptConfirmation();
         bkn.fillOrderForAPName(userFirstName);
-        bkn.fillOrderForAPSurname(userFirstName);
+        bkn.fillOrderForAPSurname(userLastName);
         bkn.fillOrderForAPEmail(userEmailRandom);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
@@ -71,18 +71,12 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: a service for another person")
     void t00002() {
-        serviceReadyAPI();
+        serviceRegisterAPI(userRegisterAPI());
 
         String service = serviceNameRandom;
-
-        log.forceLogOut();
-        closeWindow();
         setRandomData();
-        log.forceMainPage();
 
-        userRegisterUI();
-        log.forceMainPage();
-        log.forceEN();
+        userReadyAPI();
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -96,7 +90,7 @@ public class BookingTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.clickOrderForAnotherPerson();
         bkn.fillOrderForAPName(userFirstName);
-        bkn.fillOrderForAPSurname(userFirstName);
+        bkn.fillOrderForAPSurname(userLastName);
         bkn.fillOrderForAPEmail(userEmailRandom);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
