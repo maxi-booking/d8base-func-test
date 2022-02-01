@@ -640,7 +640,7 @@ public class PositiveTests extends config.TestBase {
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(firstNames[5], servicePrices[6], serviceDurations[6]);
-        ord.discardOrder();
+        ord.discardOrder("Appointment canceled");
         ord.checkDiscardOrderInbox(firstNames[5], servicePrices[6], serviceDurations[6]);
     }
 

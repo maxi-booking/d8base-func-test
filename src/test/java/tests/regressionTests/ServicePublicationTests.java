@@ -298,7 +298,7 @@ public class ServicePublicationTests extends config.TestBase {
     @Story("https://redmine.maxi-booking.ru/issues/4621")
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: can not publish service without any payment option")
-    void t00300() {
+    void t00400() {
         userReadyAPI();
         sideMenu.clickPublishNewService();
 

@@ -144,8 +144,15 @@ public class Orders extends config.TestBase {
     }
 
     @Step("Discard the order")
-    public void discardOrder() {
-        $("app-received-order-list-item ion-card ion-button", 1).click();
+    public void discardOrder(String discardComment) {
+        $("app-received-order-list-item ion-card ion-button").click();
+        sleep(200);
+        $("ion-popover app-cancel-confirmation-popover ion-item", 0).click();
+        sleep(200);
+        $("ion-action-sheet button", 1).click();
+        sleep(200);
+        $("ion-popover app-cancel-confirmation-popover").$("ion-item", 1).sendKeys(discardComment);
+        $("ion-popover app-cancel-confirmation-popover").$("ion-button").click();
         sleep(500);
     }
 
@@ -153,12 +160,12 @@ public class Orders extends config.TestBase {
     public void discardOrderClient(String discardComment) {
         $("app-sent-order-list-item ion-card ion-button", 1).click();
         sleep(200);
-        $("ion-popover").$("app-cancel-confirmation-popover").$("ion-item", 0).click();
+        $("ion-popover app-cancel-confirmation-popover ion-item", 0).click();
         sleep(200);
         $("ion-action-sheet button", 1).click();
         sleep(200);
-        $("ion-popover").$("app-cancel-confirmation-popover").$("ion-item", 1).sendKeys(discardComment);
-        $("ion-popover").$("app-cancel-confirmation-popover").$("ion-button").click();
+        $("ion-popover app-cancel-confirmation-popover").$("ion-item", 1).sendKeys(discardComment);
+        $("ion-popover app-cancel-confirmation-popover").$("ion-button").click();
         sleep(500);
     }
 
