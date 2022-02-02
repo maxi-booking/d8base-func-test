@@ -1,0 +1,2120 @@
+{
+  "uid" : "1aa14af42a74db06",
+  "name" : "Basic booking client's place",
+  "fullName" : "tests.smokeTests.PositiveTests.t00201",
+  "historyId" : "1796104534c664aa6f68b75732f99af2",
+  "time" : {
+    "start" : 1643779683938,
+    "stop" : 1643779715147,
+    "duration" : 31209
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643779684782,
+        "stop" : 1643779688450,
+        "duration" : 3668
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1643779684782,
+          "stop" : 1643779688450,
+          "duration" : 3668
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1643779688450,
+        "stop" : 1643779690355,
+        "duration" : 1905
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779688650,
+          "stop" : 1643779688721,
+          "duration" : 71
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1643779689722,
+          "stop" : 1643779689796,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779689797,
+          "stop" : 1643779690155,
+          "duration" : 358
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Log In with romeo.bode@aliquid.fugad : zr078f95t7p1",
+      "time" : {
+        "start" : 1643779690355,
+        "stop" : 1643779695277,
+        "duration" : 4922
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Change language to English",
+        "time" : {
+          "start" : 1643779690355,
+          "stop" : 1643779690900,
+          "duration" : 545
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+          "time" : {
+            "start" : 1643779690855,
+            "stop" : 1643779690900,
+            "duration" : 45
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "Click Menu > Log in",
+        "time" : {
+          "start" : 1643779690900,
+          "stop" : 1643779692148,
+          "duration" : 1248
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+          "time" : {
+            "start" : 1643779691201,
+            "stop" : 1643779691377,
+            "duration" : 176
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") scroll into view(true)",
+          "time" : {
+            "start" : 1643779691677,
+            "stop" : 1643779691699,
+            "duration" : 22
+          },
+          "status" : "passed",
+          "steps" : [ {
+            "name" : "$(\"[id='main-menu.log-in']\") get wrapped element()",
+            "time" : {
+              "start" : 1643779691677,
+              "stop" : 1643779691694,
+              "duration" : 17
+            },
+            "status" : "passed",
+            "steps" : [ ],
+            "attachments" : [ ],
+            "parameters" : [ ],
+            "stepsCount" : 0,
+            "attachmentsCount" : 0,
+            "shouldDisplayMessage" : false,
+            "hasContent" : false
+          } ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 1,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : true
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") click()",
+          "time" : {
+            "start" : 1643779691699,
+            "stop" : 1643779691848,
+            "duration" : 149
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 4,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779692148,
+          "stop" : 1643779692252,
+          "duration" : 104
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='email'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643779692148,
+            "stop" : 1643779692246,
+            "duration" : 98
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") set value(romeo.bode@aliquid.fugad)",
+        "time" : {
+          "start" : 1643779692252,
+          "stop" : 1643779692397,
+          "duration" : 145
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779692397,
+          "stop" : 1643779692429,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='password'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643779692397,
+            "stop" : 1643779692424,
+            "duration" : 27
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") set value(zr078f95t7p1)",
+        "time" : {
+          "start" : 1643779692429,
+          "stop" : 1643779692551,
+          "duration" : 122
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779692736,
+          "stop" : 1643779692780,
+          "duration" : 44
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643779692736,
+            "stop" : 1643779692775,
+            "duration" : 39
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"ion-button[type='submit'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643779692780,
+          "stop" : 1643779692866,
+          "duration" : 86
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779692866,
+          "stop" : 1643779695277,
+          "duration" : 2411
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "de190c44f15a405b",
+        "name" : "Login_info",
+        "source" : "de190c44f15a405b.png",
+        "type" : "image/png",
+        "size" : 30059
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 17,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643779695277,
+        "stop" : 1643779695845,
+        "duration" : 568
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643779695777,
+          "stop" : 1643779695845,
+          "duration" : 68
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Search",
+      "time" : {
+        "start" : 1643779695845,
+        "stop" : 1643779697167,
+        "duration" : 1322
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643779696145,
+          "stop" : 1643779696374,
+          "duration" : 229
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.search']\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779696675,
+          "stop" : 1643779696709,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.search']\") get wrapped element()",
+          "time" : {
+            "start" : 1643779696675,
+            "stop" : 1643779696687,
+            "duration" : 12
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.search']\") click()",
+        "time" : {
+          "start" : 1643779696709,
+          "stop" : 1643779696866,
+          "duration" : 157
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close default filters",
+      "time" : {
+        "start" : 1643779697167,
+        "stop" : 1643779698872,
+        "duration" : 1705
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-applied-filters ion-chip\") exists()",
+        "time" : {
+          "start" : 1643779698167,
+          "stop" : 1643779698183,
+          "duration" : 16
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-applied-filters ion-chip\") scroll into view(false)",
+        "time" : {
+          "start" : 1643779698183,
+          "stop" : 1643779698196,
+          "duration" : 13
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-applied-filters ion-chip\") get wrapped element()",
+          "time" : {
+            "start" : 1643779698183,
+            "stop" : 1643779698190,
+            "duration" : 7
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-applied-filters ion-chip\") click()",
+        "time" : {
+          "start" : 1643779698196,
+          "stop" : 1643779698360,
+          "duration" : 164
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-applied-filters ion-chip\") exists()",
+        "time" : {
+          "start" : 1643779698860,
+          "stop" : 1643779698872,
+          "duration" : 12
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Input search text and press Enter",
+      "time" : {
+        "start" : 1643779698872,
+        "stop" : 1643779701682,
+        "duration" : 2810
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search/form/input\") set value(\"Dynamic Accountability Orchestrator (e6cab408l4)\")",
+        "time" : {
+          "start" : 1643779699872,
+          "stop" : 1643779700112,
+          "duration" : 240
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search/form/input\") press enter()",
+        "time" : {
+          "start" : 1643779701113,
+          "stop" : 1643779701181,
+          "duration" : 68
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "searchQuery",
+        "value" : "Dynamic Accountability Orchestrator (e6cab408l4)"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the search result is correct",
+      "time" : {
+        "start" : 1643779701682,
+        "stop" : 1643779702355,
+        "duration" : 673
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result/ion-card-content/app-professional-card\") should have([text 'KalaSamual', text 'MarvinIIPhD'])",
+        "time" : {
+          "start" : 1643779701682,
+          "stop" : 1643779702268,
+          "duration" : 586
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-service-link\") should have(text 'Dynamic Accountability Orchestrator (e6cab408l4)')",
+        "time" : {
+          "start" : 1643779702268,
+          "stop" : 1643779702314,
+          "duration" : 46
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-search-result/ion-card-content/app-price\") get text()",
+        "time" : {
+          "start" : 1643779702314,
+          "stop" : 1643779702355,
+          "duration" : 41
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "KalaSamual"
+      }, {
+        "name" : "lastName",
+        "value" : "MarvinIIPhD"
+      }, {
+        "name" : "serviceName",
+        "value" : "Dynamic Accountability Orchestrator (e6cab408l4)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "252"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a service",
+      "time" : {
+        "start" : 1643779702356,
+        "stop" : 1643779702640,
+        "duration" : 284
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-search-result ion-card-content app-service-link a\") click()",
+        "time" : {
+          "start" : 1643779702547,
+          "stop" : 1643779702640,
+          "duration" : 93
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "5438ae2c926ec945",
+        "name" : "Screenshot",
+        "source" : "5438ae2c926ec945.png",
+        "type" : "image/png",
+        "size" : 97038
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that the service data is correct",
+      "time" : {
+        "start" : 1643779702640,
+        "stop" : 1643779704034,
+        "duration" : 1394
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-title\") should have(text 'Dynamic Accountability Orchestrator (e6cab408l4)')",
+        "time" : {
+          "start" : 1643779702640,
+          "stop" : 1643779703819,
+          "duration" : 1179
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-price\") get text()",
+        "time" : {
+          "start" : 1643779703819,
+          "stop" : 1643779703861,
+          "duration" : 42
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-duration-viewer\") should have(text '45')",
+        "time" : {
+          "start" : 1643779703861,
+          "stop" : 1643779703904,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget/app-professional-card\") should have([text 'KalaSamual', text 'MarvinIIPhD'])",
+        "time" : {
+          "start" : 1643779703904,
+          "stop" : 1643779703982,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-widget\") should have(text 'iklkrz5ei404xidagwxzeiemp72njm5av5eztwv5bjrd5upe96nxok1v0vkcifwhnd27onjtgsib8h3g6j2zl9rw435pdxz4ip5f8cgf5oon474xjwaft708ifnew8ygojncun2q1ev9nczcdcamhctv58nio023k3fe4niztuhh4owt88wgb95uzqhif5azawfhgavgt6kjvfk90g3plfcn5clevzuvov5khjyfkciuhlero3eoidfkyej63e7kogjt7vy3jssncjbbhmeqqaqds9qaz395mlzmyso9ljjyefalrocnl43s0t89v4aq8xeg2jbkn0tjl6sut1ijwl5nh5f0veovwicuks3kdka5rg79gvhad751tqtzs53tvg5y37ddaj4hjuymrr1vul9ndfcmcaqbc8di6g8rwwe4q6qizce32ehksthsd3xlsawb3kt3snw3i51g8bzitg7okbkqe5hzrta1e9vtp1x1hgjwibu83uufqm1kvt1aol7v5wabdi3k19j68de49wvhplsm91e1032vdpb3p94t8u')",
+        "time" : {
+          "start" : 1643779703983,
+          "stop" : 1643779704034,
+          "duration" : 51
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "serviceName",
+        "value" : "Dynamic Accountability Orchestrator (e6cab408l4)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "252"
+      }, {
+        "name" : "serviceDuration",
+        "value" : "45"
+      }, {
+        "name" : "firstName",
+        "value" : "KalaSamual"
+      }, {
+        "name" : "lastName",
+        "value" : "MarvinIIPhD"
+      }, {
+        "name" : "serviceDescription",
+        "value" : "iklkrz5ei404xidagwxzeiemp72njm5av5eztwv5bjrd5upe96nxok1v0vkcifwhnd27onjtgsib8h3g6j2zl9rw435pdxz4ip5f8cgf5oon474xjwaft708ifnew8ygojncun2q1ev9nczcdcamhctv58nio023k3fe4niztuhh4owt88wgb95uzqhif5azawfhgavgt6kjvfk90g3plfcn5clevzuvov5khjyfkciuhlero3eoidfkyej63e7kogjt7vy3jssncjbbhmeqqaqds9qaz395mlzmyso9ljjyefalrocnl43s0t89v4aq8xeg2jbkn0tjl6sut1ijwl5nh5f0veovwicuks3kdka5rg79gvhad751tqtzs53tvg5y37ddaj4hjuymrr1vul9ndfcmcaqbc8di6g8rwwe4q6qizce32ehksthsd3xlsawb3kt3snw3i51g8bzitg7okbkqe5hzrta1e9vtp1x1hgjwibu83uufqm1kvt1aol7v5wabdi3k19j68de49wvhplsm91e1032vdpb3p94t8u"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify service location",
+      "time" : {
+        "start" : 1643779704034,
+        "stop" : 1643779704076,
+        "duration" : 42
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-location\") should have(text 'Client's place')",
+        "time" : {
+          "start" : 1643779704034,
+          "stop" : 1643779704076,
+          "duration" : 42
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "ServiceLocation",
+        "value" : "Client's place"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify service country/city/address",
+      "time" : {
+        "start" : 1643779704076,
+        "stop" : 1643779704170,
+        "duration" : 94
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-service-location\") should have([text 'Russia', text 'Moscow', text 'Suite 917 5320 Dedra Parks, Lindsaymouth, AR 04233-3072'])",
+        "time" : {
+          "start" : 1643779704076,
+          "stop" : 1643779704170,
+          "duration" : 94
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "ServiceCountry",
+        "value" : "Russia"
+      }, {
+        "name" : "ServiceCity",
+        "value" : "Moscow"
+      }, {
+        "name" : "ServiceAddress",
+        "value" : "Suite 917 5320 Dedra Parks, Lindsaymouth, AR 04233-3072"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Check if payment by cash",
+      "time" : {
+        "start" : 1643779704171,
+        "stop" : 1643779704210,
+        "duration" : 39
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-payment-method-viewer\") should have(text 'Cash')",
+        "time" : {
+          "start" : 1643779704171,
+          "stop" : 1643779704210,
+          "duration" : 39
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Check if payment online",
+      "time" : {
+        "start" : 1643779704210,
+        "stop" : 1643779704639,
+        "duration" : 429
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget/app-payment-method-viewer\") should have(text 'Online payment')",
+        "time" : {
+          "start" : 1643779704611,
+          "stop" : 1643779704639,
+          "duration" : 28
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Check instant booking",
+      "time" : {
+        "start" : 1643779704639,
+        "stop" : 1643779704683,
+        "duration" : 44
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-widget\") should have(text 'Ordering of this service will be approved automatically')",
+        "time" : {
+          "start" : 1643779704639,
+          "stop" : 1643779704683,
+          "duration" : 44
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "value",
+        "value" : "true"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click the 'Order' button to book",
+      "time" : {
+        "start" : 1643779704683,
+        "stop" : 1643779705798,
+        "duration" : 1115
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"#pick-service\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779705183,
+          "stop" : 1643779705203,
+          "duration" : 20
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"#pick-service\") get wrapped element()",
+          "time" : {
+            "start" : 1643779705183,
+            "stop" : 1643779705195,
+            "duration" : 12
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"#pick-service\") click()",
+        "time" : {
+          "start" : 1643779705203,
+          "stop" : 1643779705297,
+          "duration" : 94
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pick the date from calendar - (3)",
+      "time" : {
+        "start" : 1643779705798,
+        "stop" : 1643779707470,
+        "duration" : 1672
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-book/div.calendar/with text: 3\") has(css class 'unavailable')",
+        "time" : {
+          "start" : 1643779705798,
+          "stop" : 1643779705824,
+          "duration" : 26
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-book/div.calendar[1]/with text: 3\") has(css class 'unavailable')",
+        "time" : {
+          "start" : 1643779705824,
+          "stop" : 1643779705841,
+          "duration" : 17
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-book/div.calendar/with text: 3\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779705841,
+          "stop" : 1643779706560,
+          "duration" : 719
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-book/div.calendar/with text: 3\") get wrapped element()",
+          "time" : {
+            "start" : 1643779705841,
+            "stop" : 1643779706554,
+            "duration" : 713
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-book/div.calendar/with text: 3\") click()",
+        "time" : {
+          "start" : 1643779706560,
+          "stop" : 1643779706639,
+          "duration" : 79
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-book/by text: Accept and continue\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779706839,
+          "stop" : 1643779706866,
+          "duration" : 27
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-book/by text: Accept and continue\") get wrapped element()",
+          "time" : {
+            "start" : 1643779706839,
+            "stop" : 1643779706860,
+            "duration" : 21
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-book/by text: Accept and continue\") click()",
+        "time" : {
+          "start" : 1643779706866,
+          "stop" : 1643779706970,
+          "duration" : 104
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "date",
+        "value" : "3"
+      } ],
+      "stepsCount" : 8,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pick booking time",
+      "time" : {
+        "start" : 1643779707470,
+        "stop" : 1643779708372,
+        "duration" : 902
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-time-step/main/with text: AM\") exists()",
+        "time" : {
+          "start" : 1643779707470,
+          "stop" : 1643779707515,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-time-step main div ion-button\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779707516,
+          "stop" : 1643779707543,
+          "duration" : 27
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-time-step/with text: 11:00\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779707543,
+          "stop" : 1643779708248,
+          "duration" : 705
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-time-step/with text: 11:00\") get wrapped element()",
+          "time" : {
+            "start" : 1643779707543,
+            "stop" : 1643779708242,
+            "duration" : 699
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-time-step/with text: 11:00\") click()",
+        "time" : {
+          "start" : 1643779708248,
+          "stop" : 1643779708372,
+          "duration" : 124
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "value",
+        "value" : "1100"
+      } ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click the 'Accept and continue' button",
+      "time" : {
+        "start" : 1643779708372,
+        "stop" : 1643779709046,
+        "duration" : 674
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-time-step div.footer ion-button\") should not have([css class 'button-disabled', 10 s.])",
+        "time" : {
+          "start" : 1643779708372,
+          "stop" : 1643779708404,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-time-step div.footer ion-button\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779708404,
+          "stop" : 1643779708445,
+          "duration" : 41
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-time-step div.footer ion-button\") get wrapped element()",
+          "time" : {
+            "start" : 1643779708404,
+            "stop" : 1643779708438,
+            "duration" : 34
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-time-step div.footer ion-button\") click()",
+        "time" : {
+          "start" : 1643779708445,
+          "stop" : 1643779708542,
+          "duration" : 97
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-time-step div.footer ion-button\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779708543,
+          "stop" : 1643779709046,
+          "duration" : 503
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click the 'Accept and continue' button",
+      "time" : {
+        "start" : 1643779709046,
+        "stop" : 1643779709649,
+        "duration" : 603
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-confirmation-step div.footer ion-button\") should not have([css class 'button-disabled', 10 s.])",
+        "time" : {
+          "start" : 1643779709046,
+          "stop" : 1643779709065,
+          "duration" : 19
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-confirmation-step div.footer ion-button\") scroll into view(true)",
+        "time" : {
+          "start" : 1643779709065,
+          "stop" : 1643779709079,
+          "duration" : 14
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-confirmation-step div.footer ion-button\") get wrapped element()",
+          "time" : {
+            "start" : 1643779709065,
+            "stop" : 1643779709074,
+            "duration" : 9
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-confirmation-step div.footer ion-button\") click()",
+        "time" : {
+          "start" : 1643779709079,
+          "stop" : 1643779709164,
+          "duration" : 85
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-confirmation-step div.footer ion-button\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779709164,
+          "stop" : 1643779709649,
+          "duration" : 485
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select address",
+      "time" : {
+        "start" : 1643779709650,
+        "stop" : 1643779710479,
+        "duration" : 829
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-client-details-step/ion-radio-group/ion-item\") click()",
+        "time" : {
+          "start" : 1643779709850,
+          "stop" : 1643779710478,
+          "duration" : 628
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Place the order",
+      "time" : {
+        "start" : 1643779710479,
+        "stop" : 1643779712285,
+        "duration" : 1806
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-client-details-step div.footer ion-button\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779710479,
+          "stop" : 1643779710506,
+          "duration" : 27
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-client-details-step div.footer ion-button\") click()",
+        "time" : {
+          "start" : 1643779710709,
+          "stop" : 1643779710769,
+          "duration" : 60
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-sent-order-page div.order-full-info\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779710769,
+          "stop" : 1643779712285,
+          "duration" : 1516
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "cdedd06665f3c7b",
+        "name" : "Screenshot",
+        "source" : "cdedd06665f3c7b.png",
+        "type" : "image/png",
+        "size" : 38106
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click to see order details",
+      "time" : {
+        "start" : 1643779712285,
+        "stop" : 1643779712364,
+        "duration" : 79
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"div.order-full-info a.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643779712285,
+          "stop" : 1643779712364,
+          "duration" : 79
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify the order details",
+      "time" : {
+        "start" : 1643779712364,
+        "stop" : 1643779712846,
+        "duration" : 482
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-sent-order-page section\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643779712365,
+          "stop" : 1643779712814,
+          "duration" : 449
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-sent-order-page section\") should have(text 'Dynamic Accountability Orchestrator (e6cab408l4)')",
+        "time" : {
+          "start" : 1643779712814,
+          "stop" : 1643779712846,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "ServiceName",
+        "value" : "Dynamic Accountability Orchestrator (e6cab408l4)"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Top Bar: click My Orders",
+      "time" : {
+        "start" : 1643779712846,
+        "stop" : 1643779713583,
+        "duration" : 737
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-item.my-orders.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643779713147,
+          "stop" : 1643779713383,
+          "duration" : 236
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Simple order check outbox",
+      "time" : {
+        "start" : 1643779713583,
+        "stop" : 1643779714830,
+        "duration" : 1247
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-outbox-page main\") should have(text 'KalaSamual')",
+        "time" : {
+          "start" : 1643779713583,
+          "stop" : 1643779714603,
+          "duration" : 1020
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page main\") should have(text 'Dynamic Accountability Orchestrator (e6cab408l4)')",
+        "time" : {
+          "start" : 1643779714603,
+          "stop" : 1643779714653,
+          "duration" : 50
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page main\") should have(text '45')",
+        "time" : {
+          "start" : 1643779714654,
+          "stop" : 1643779714711,
+          "duration" : 57
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page/app-price\") exists()",
+        "time" : {
+          "start" : 1643779714711,
+          "stop" : 1643779714733,
+          "duration" : 22
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page/app-price\") get text()",
+        "time" : {
+          "start" : 1643779714733,
+          "stop" : 1643779714765,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page/app-price[1]\") exists()",
+        "time" : {
+          "start" : 1643779714765,
+          "stop" : 1643779714783,
+          "duration" : 18
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page/app-price[1]\") get text()",
+        "time" : {
+          "start" : 1643779714783,
+          "stop" : 1643779714816,
+          "duration" : 33
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-outbox-page/app-price[2]\") exists()",
+        "time" : {
+          "start" : 1643779714816,
+          "stop" : 1643779714830,
+          "duration" : 14
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userFirstName",
+        "value" : "KalaSamual"
+      }, {
+        "name" : "serviceName",
+        "value" : "Dynamic Accountability Orchestrator (e6cab408l4)"
+      }, {
+        "name" : "servicePrice",
+        "value" : "252"
+      }, {
+        "name" : "serviceTotalDuration",
+        "value" : "45"
+      } ],
+      "stepsCount" : 8,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643779715072,
+        "stop" : 1643779715147,
+        "duration" : 75
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "5bafa5c76f188d1a",
+      "name" : "Last screenshot",
+      "source" : "5bafa5c76f188d1a.png",
+      "type" : "image/png",
+      "size" : 64589
+    }, {
+      "uid" : "e81dc38f40735b78",
+      "name" : "Page source",
+      "source" : "e81dc38f40735b78.html",
+      "type" : "text/plain",
+      "size" : 276641
+    }, {
+      "uid" : "c78a2938cf6e9914",
+      "name" : "Browser console logs",
+      "source" : "c78a2938cf6e9914.txt",
+      "type" : "text/plain",
+      "size" : 1274
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 116,
+    "attachmentsCount" : 6,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.smokeTests.PositiveTests]/[method:t00201()]"
+  }, {
+    "name" : "feature",
+    "value" : "Booking"
+  }, {
+    "name" : "story",
+    "value" : "Service booking"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az210-292"
+  }, {
+    "name" : "thread",
+    "value" : "3286@fv-az210-292.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00201"
+  }, {
+    "name" : "suite",
+    "value" : "tests.smokeTests.PositiveTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 9,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 11,
+        "unknown" : 0,
+        "total" : 20
+      },
+      "items" : [ {
+        "uid" : "875866daa8f338a3",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/53//#testresult/875866daa8f338a3",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643773921708,
+          "stop" : 1643773948688,
+          "duration" : 26980
+        }
+      }, {
+        "uid" : "236bf3c63cc8dce9",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/52//#testresult/236bf3c63cc8dce9",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643744636029,
+          "stop" : 1643744665098,
+          "duration" : 29069
+        }
+      }, {
+        "uid" : "26bf6a6064905814",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/51//#testresult/26bf6a6064905814",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643740002550,
+          "stop" : 1643740029349,
+          "duration" : 26799
+        }
+      }, {
+        "uid" : "d82851ab7dbbf529",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/50//#testresult/d82851ab7dbbf529",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643730676574,
+          "stop" : 1643730704929,
+          "duration" : 28355
+        }
+      }, {
+        "uid" : "748ef07150da601c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/49//#testresult/748ef07150da601c",
+        "status" : "failed",
+        "statusDetails" : "Element not found {app-search-result}\nExpected: exist\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643635019989.6.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643635019989.6.html\nTimeout: 10 s.\nCaused by: NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"app-search-result\"}",
+        "time" : {
+          "start" : 1643634994073,
+          "stop" : 1643635020654,
+          "duration" : 26581
+        }
+      }, {
+        "uid" : "dcc562c21f1e3b6f",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/48//#testresult/dcc562c21f1e3b6f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643429471114,
+          "stop" : 1643429498146,
+          "duration" : 27032
+        }
+      }, {
+        "uid" : "a3988f0808f87652",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/47//#testresult/a3988f0808f87652",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643426944722,
+          "stop" : 1643426973938,
+          "duration" : 29216
+        }
+      }, {
+        "uid" : "c995ed9b1953465f",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/46//#testresult/c995ed9b1953465f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643364327619,
+          "stop" : 1643364355758,
+          "duration" : 28139
+        }
+      }, {
+        "uid" : "abf03e36674ec1a5",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/45//#testresult/abf03e36674ec1a5",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643358391486,
+          "stop" : 1643358423080,
+          "duration" : 31594
+        }
+      }, {
+        "uid" : "a097b03344ebf188",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/44//#testresult/a097b03344ebf188",
+        "status" : "failed",
+        "statusDetails" : "Element not found {app-outbox-page app-client-widget}\nExpected: text 'DwightEllamae'\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643355753141.1.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643355753141.1.html\nTimeout: 10 s.\nCaused by: NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"app-outbox-page app-client-widget\"}",
+        "time" : {
+          "start" : 1643355717106,
+          "stop" : 1643355753841,
+          "duration" : 36735
+        }
+      }, {
+        "uid" : "5a2648e0bfbc2a87",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/43//#testresult/5a2648e0bfbc2a87",
+        "status" : "failed",
+        "statusDetails" : "Element not found {app-outbox-page app-client-widget}\nExpected: text 'NoelAdelaide'\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643354837560.1.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1643354837560.1.html\nTimeout: 10 s.\nCaused by: NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"app-outbox-page app-client-widget\"}",
+        "time" : {
+          "start" : 1643354797939,
+          "stop" : 1643354838384,
+          "duration" : 40445
+        }
+      }, {
+        "uid" : "da8ccfd547912858",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/42//#testresult/da8ccfd547912858",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643337610969,
+          "stop" : 1643337639969,
+          "duration" : 29000
+        }
+      }, {
+        "uid" : "f0c59af2d6b2e7ba",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/41//#testresult/f0c59af2d6b2e7ba",
+        "status" : "passed",
+        "time" : {
+          "start" : 1642999607568,
+          "stop" : 1642999635775,
+          "duration" : 28207
+        }
+      }, {
+        "uid" : "18e6f1d3ad4527a2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/40//#testresult/18e6f1d3ad4527a2",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'BillieRisa' {app-outbox-page}\nElement: '<app-outbox-page _nghost-mmq-c259 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642087722075.11.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642087722075.11.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642087681703,
+          "stop" : 1642087722912,
+          "duration" : 41209
+        }
+      }, {
+        "uid" : "a4ed4288283e98d4",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/39//#testresult/a4ed4288283e98d4",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'EunChang' {app-outbox-page}\nElement: '<app-outbox-page _nghost-yec-c257 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642067397955.9.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642067397955.9.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642067360070,
+          "stop" : 1642067398754,
+          "duration" : 38684
+        }
+      }, {
+        "uid" : "cf2e66d352c8d1e5",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/38//#testresult/cf2e66d352c8d1e5",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'FosterJamaal' {app-outbox-page}\nElement: '<app-outbox-page _nghost-knj-c271 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642063698230.12.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642063698230.12.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642063656839,
+          "stop" : 1642063699087,
+          "duration" : 42248
+        }
+      }, {
+        "uid" : "c6a66b8edb18e6f2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/37//#testresult/c6a66b8edb18e6f2",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'ShinDesire' {app-outbox-page}\nElement: '<app-outbox-page _nghost-qnt-c259 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642021134584.14.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642021134584.14.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642021098101,
+          "stop" : 1642021135254,
+          "duration" : 37153
+        }
+      }, {
+        "uid" : "84839e71225503be",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/36//#testresult/84839e71225503be",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'CordellShawn' {app-outbox-page}\nElement: '<app-outbox-page _nghost-dqk-c259 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642004892938.9.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642004892938.9.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642004853463,
+          "stop" : 1642004893737,
+          "duration" : 40274
+        }
+      }, {
+        "uid" : "1c8c9674c71b6d35",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/35//#testresult/1c8c9674c71b6d35",
+        "status" : "failed",
+        "statusDetails" : "Element should have text 'HilariaThomas' {app-outbox-page}\nElement: '<app-outbox-page _nghost-ilk-c272 class=\"ion-page can-go-back\">Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived</app-outbox-page>'\nActual value: Find professional\nList your business\nMy orders\nENG\nSent orders\nCurrent\nArchived\nScreenshot: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642001461521.20.png\nPage source: file:/home/runner/work/d8base-func-test/d8base-func-test/build/reports/tests/1642001461521.20.html\nTimeout: 10 s.",
+        "time" : {
+          "start" : 1642001420987,
+          "stop" : 1642001462224,
+          "duration" : 41237
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "1aa14af42a74db06.json",
+  "parameterValues" : [ ]
+}

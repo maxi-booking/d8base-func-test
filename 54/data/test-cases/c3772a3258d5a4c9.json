@@ -1,0 +1,2572 @@
+{
+  "uid" : "c3772a3258d5a4c9",
+  "name" : "Share order: client without account, online order",
+  "fullName" : "tests.ordersTests.OrderShareTests.t00006",
+  "historyId" : "91cb012fd63c08982dca181cd1278d68",
+  "time" : {
+    "start" : 1643782160839,
+    "stop" : 1643782217596,
+    "duration" : 56757
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1643782174441,
+        "stop" : 1643782178171,
+        "duration" : 3730
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1643782174441,
+          "stop" : 1643782178171,
+          "duration" : 3730
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1643782178171,
+        "stop" : 1643782180053,
+        "duration" : 1882
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782178371,
+          "stop" : 1643782178446,
+          "duration" : 75
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1643782179446,
+          "stop" : 1643782179526,
+          "duration" : 80
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782179526,
+          "stop" : 1643782179853,
+          "duration" : 327
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Log In with q5ojkm5cp@ea.pp : gdg3nc4uhvjsl4m",
+      "time" : {
+        "start" : 1643782180053,
+        "stop" : 1643782185138,
+        "duration" : 5085
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Change language to English",
+        "time" : {
+          "start" : 1643782180053,
+          "stop" : 1643782180602,
+          "duration" : 549
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+          "time" : {
+            "start" : 1643782180554,
+            "stop" : 1643782180602,
+            "duration" : 48
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "Click Menu > Log in",
+        "time" : {
+          "start" : 1643782180602,
+          "stop" : 1643782181790,
+          "duration" : 1188
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+          "time" : {
+            "start" : 1643782180902,
+            "stop" : 1643782181048,
+            "duration" : 146
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") scroll into view(true)",
+          "time" : {
+            "start" : 1643782181348,
+            "stop" : 1643782181386,
+            "duration" : 38
+          },
+          "status" : "passed",
+          "steps" : [ {
+            "name" : "$(\"[id='main-menu.log-in']\") get wrapped element()",
+            "time" : {
+              "start" : 1643782181348,
+              "stop" : 1643782181380,
+              "duration" : 32
+            },
+            "status" : "passed",
+            "steps" : [ ],
+            "attachments" : [ ],
+            "parameters" : [ ],
+            "stepsCount" : 0,
+            "attachmentsCount" : 0,
+            "shouldDisplayMessage" : false,
+            "hasContent" : false
+          } ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 1,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : true
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") click()",
+          "time" : {
+            "start" : 1643782181386,
+            "stop" : 1643782181490,
+            "duration" : 104
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 4,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-login/input\") set value(q5ojkm5cp@ea.pp)",
+        "time" : {
+          "start" : 1643782181790,
+          "stop" : 1643782182009,
+          "duration" : 219
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login/input[1]\") set value(gdg3nc4uhvjsl4m)",
+        "time" : {
+          "start" : 1643782182009,
+          "stop" : 1643782182239,
+          "duration" : 230
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login-form ion-button[type='submit']\") click()",
+        "time" : {
+          "start" : 1643782182434,
+          "stop" : 1643782182518,
+          "duration" : 84
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login-form ion-button[type='submit']\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782182518,
+          "stop" : 1643782185138,
+          "duration" : 2620
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "8627a235b716cf2b",
+        "name" : "Screenshot",
+        "source" : "8627a235b716cf2b.png",
+        "type" : "image/png",
+        "size" : 30010
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 11,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643782185138,
+        "stop" : 1643782187365,
+        "duration" : 2227
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643782185638,
+          "stop" : 1643782185703,
+          "duration" : 65
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782185703,
+          "stop" : 1643782185814,
+          "duration" : 111
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-flag-menu ion-select\") click()",
+        "time" : {
+          "start" : 1643782185814,
+          "stop" : 1643782186219,
+          "duration" : 405
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert button\") click()",
+        "time" : {
+          "start" : 1643782186219,
+          "stop" : 1643782186321,
+          "duration" : 102
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-button-group button[1]\") click()",
+        "time" : {
+          "start" : 1643782186321,
+          "stop" : 1643782186419,
+          "duration" : 98
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-radio-group\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782186419,
+          "stop" : 1643782186771,
+          "duration" : 352
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") exists()",
+        "time" : {
+          "start" : 1643782187271,
+          "stop" : 1643782187365,
+          "duration" : 94
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 7,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Top Bar: click My Orders",
+      "time" : {
+        "start" : 1643782187365,
+        "stop" : 1643782188621,
+        "duration" : 1256
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-item.my-orders.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782187665,
+          "stop" : 1643782188420,
+          "duration" : 755
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select current orders: Inbox",
+      "time" : {
+        "start" : 1643782188621,
+        "stop" : 1643782188823,
+        "duration" : 202
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-inbox-page/ion-segment-button[1]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782188621,
+          "stop" : 1643782188656,
+          "duration" : 35
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-inbox-page/ion-segment-button[1]\") get wrapped element()",
+          "time" : {
+            "start" : 1643782188621,
+            "stop" : 1643782188648,
+            "duration" : 27
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-inbox-page/ion-segment-button[1]\") click()",
+        "time" : {
+          "start" : 1643782188656,
+          "stop" : 1643782188823,
+          "duration" : 167
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click view details: Inbox",
+      "time" : {
+        "start" : 1643782188824,
+        "stop" : 1643782189603,
+        "duration" : 779
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-infinite-scroll-container ion-card ion-item a\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782188824,
+          "stop" : 1643782189512,
+          "duration" : 688
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-infinite-scroll-container ion-card ion-item a\") get wrapped element()",
+          "time" : {
+            "start" : 1643782188824,
+            "stop" : 1643782189498,
+            "duration" : 674
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-infinite-scroll-container ion-card ion-item a\") click()",
+        "time" : {
+          "start" : 1643782189512,
+          "stop" : 1643782189603,
+          "duration" : 91
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "index",
+        "value" : "1"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click share order button",
+      "time" : {
+        "start" : 1643782189603,
+        "stop" : 1643782190329,
+        "duration" : 726
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-received-order-page ion-button[slot='start']\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782189603,
+          "stop" : 1643782190262,
+          "duration" : 659
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"app-received-order-page ion-button[slot='start']\") get wrapped element()",
+          "time" : {
+            "start" : 1643782189603,
+            "stop" : 1643782190256,
+            "duration" : 653
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-received-order-page ion-button[slot='start']\") click()",
+        "time" : {
+          "start" : 1643782190262,
+          "stop" : 1643782190329,
+          "duration" : 67
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click copy button",
+      "time" : {
+        "start" : 1643782190329,
+        "stop" : 1643782191678,
+        "duration" : 1349
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-order-share-popover ion-button[slot='end']\") click()",
+        "time" : {
+          "start" : 1643782190329,
+          "stop" : 1643782191678,
+          "duration" : 1349
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Get share order link",
+      "time" : {
+        "start" : 1643782191678,
+        "stop" : 1643782191701,
+        "duration" : 23
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-order-share-popover input\") get value()",
+        "time" : {
+          "start" : 1643782191678,
+          "stop" : 1643782191701,
+          "duration" : 23
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Log out by URL",
+      "time" : {
+        "start" : 1643782191701,
+        "stop" : 1643782192359,
+        "duration" : 658
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Open URL: https://app.maxibooking.ru/auth/login?logout=",
+        "time" : {
+          "start" : 1643782191701,
+          "stop" : 1643782192359,
+          "duration" : 658
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"open\") https://app.maxibooking.ru/auth/login?logout=",
+          "time" : {
+            "start" : 1643782191701,
+            "stop" : 1643782192359,
+            "duration" : 658
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Open URL: https://app.maxibooking.ru/my-orders/share/3197/2--asYmUz6iocEu8OCbYcND6mKUpkwJd5dyskB40A5W25ZfLe8OwyP9cKO6wZUetRbuMICSCxfdiRTcM0ZHwsri9RijvM0B0VcFoBCy1WwtZ6QRGmVRqtTuicfL5YhunN0ZHNYC1LD-MDruFNDovtN4gUFa8qeS5TUJ5EqjnWY1GTzgr-CSfNQytWQAUGfLPh5_ULXfy",
+      "time" : {
+        "start" : 1643782192359,
+        "stop" : 1643782192842,
+        "duration" : 483
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru/my-orders/share/3197/2--asYmUz6iocEu8OCbYcND6mKUpkwJd5dyskB40A5W25ZfLe8OwyP9cKO6wZUetRbuMICSCxfdiRTcM0ZHwsri9RijvM0B0VcFoBCy1WwtZ6QRGmVRqtTuicfL5YhunN0ZHNYC1LD-MDruFNDovtN4gUFa8qeS5TUJ5EqjnWY1GTzgr-CSfNQytWQAUGfLPh5_ULXfy",
+        "time" : {
+          "start" : 1643782192360,
+          "stop" : 1643782192842,
+          "duration" : 482
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1643782192842,
+        "stop" : 1643782195160,
+        "duration" : 2318
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"#alert-1-sub-hdr\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782193042,
+          "stop" : 1643782193491,
+          "duration" : 449
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1643782194491,
+          "stop" : 1643782194569,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782194569,
+          "stop" : 1643782194960,
+          "duration" : 391
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643782195160,
+        "stop" : 1643782195704,
+        "duration" : 544
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643782195660,
+          "stop" : 1643782195704,
+          "duration" : 44
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that order ID is 3197",
+      "time" : {
+        "start" : 1643782195704,
+        "stop" : 1643782195751,
+        "duration" : 47
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-sent-order div h1.filter(visible)[0]\") should have(text '3197')",
+        "time" : {
+          "start" : 1643782195704,
+          "stop" : 1643782195751,
+          "duration" : 47
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click 'show order details'",
+      "time" : {
+        "start" : 1643782195751,
+        "stop" : 1643782195877,
+        "duration" : 126
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"div.order-full-info a.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782195751,
+          "stop" : 1643782195877,
+          "duration" : 126
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify order details. Service name: Product Applications Associate (aqvcnpb). Service duration: 45",
+      "time" : {
+        "start" : 1643782195877,
+        "stop" : 1643782196296,
+        "duration" : 419
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"section.filter(visible)[0]\") should have([text 'Product Applications Associate (aqvcnpb)', text '45'])",
+        "time" : {
+          "start" : 1643782195877,
+          "stop" : 1643782196254,
+          "duration" : 377
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"section.filter(visible)[0]\") should have(text 'Online')",
+        "time" : {
+          "start" : 1643782196254,
+          "stop" : 1643782196296,
+          "duration" : 42
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "User confirms shared order",
+      "time" : {
+        "start" : 1643782196296,
+        "stop" : 1643782196362,
+        "duration" : 66
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-order-share main ion-button\") click()",
+        "time" : {
+          "start" : 1643782196296,
+          "stop" : 1643782196362,
+          "duration" : 66
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select: I'm new user",
+      "time" : {
+        "start" : 1643782196362,
+        "stop" : 1643782196736,
+        "duration" : 374
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"ion-item ion-radio[1]\") click()",
+        "time" : {
+          "start" : 1643782196362,
+          "stop" : 1643782196736,
+          "duration" : 374
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "User confirms shared order",
+      "time" : {
+        "start" : 1643782196736,
+        "stop" : 1643782196859,
+        "duration" : 123
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-order-share main ion-button\") click()",
+        "time" : {
+          "start" : 1643782196736,
+          "stop" : 1643782196859,
+          "duration" : 123
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Fill the first name",
+      "time" : {
+        "start" : 1643782196859,
+        "stop" : 1643782197049,
+        "duration" : 190
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"input[name='name']\") set value(Mohamed)",
+        "time" : {
+          "start" : 1643782196859,
+          "stop" : 1643782197049,
+          "duration" : 190
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userFirstName",
+        "value" : "Mohamed"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Fill the last name",
+      "time" : {
+        "start" : 1643782197049,
+        "stop" : 1643782197227,
+        "duration" : 178
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"input[name='name'][1]\") set value(Moen)",
+        "time" : {
+          "start" : 1643782197049,
+          "stop" : 1643782197227,
+          "duration" : 178
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userLastName",
+        "value" : "Moen"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Fill an email",
+      "time" : {
+        "start" : 1643782197228,
+        "stop" : 1643782197393,
+        "duration" : 165
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782197228,
+          "stop" : 1643782197258,
+          "duration" : 30
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='email'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643782197228,
+            "stop" : 1643782197253,
+            "duration" : 25
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='email'].filter(visible)[0]\") set value(j7x6lrmt33e@natus.cl)",
+        "time" : {
+          "start" : 1643782197258,
+          "stop" : 1643782197393,
+          "duration" : 135
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userEmail",
+        "value" : "j7x6lrmt33e@natus.cl"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Choose a password",
+      "time" : {
+        "start" : 1643782197393,
+        "stop" : 1643782197737,
+        "duration" : 344
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782197393,
+          "stop" : 1643782197427,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='password'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643782197393,
+            "stop" : 1643782197420,
+            "duration" : 27
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='password'].filter(visible)[0]\") set value(x1txvd8uur8s4bc)",
+        "time" : {
+          "start" : 1643782197427,
+          "stop" : 1643782197568,
+          "duration" : 141
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"input[name='confirm'].filter(visible)[0]\") scroll into view(true)",
+        "time" : {
+          "start" : 1643782197568,
+          "stop" : 1643782197604,
+          "duration" : 36
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"input[name='confirm'].filter(visible)[0]\") get wrapped element()",
+          "time" : {
+            "start" : 1643782197568,
+            "stop" : 1643782197598,
+            "duration" : 30
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"input[name='confirm'].filter(visible)[0]\") set value(x1txvd8uur8s4bc)",
+        "time" : {
+          "start" : 1643782197604,
+          "stop" : 1643782197737,
+          "duration" : 133
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userPassword",
+        "value" : "x1txvd8uur8s4bc"
+      } ],
+      "stepsCount" : 6,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Fill a phone number : Russia - 9114175602",
+      "time" : {
+        "start" : 1643782197737,
+        "stop" : 1643782199580,
+        "duration" : 1843
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-phone-editor/input\") set value(9114175602)",
+        "time" : {
+          "start" : 1643782197737,
+          "stop" : 1643782197877,
+          "duration" : 140
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-registration-form/button[type='button']\") click()",
+        "time" : {
+          "start" : 1643782197877,
+          "stop" : 1643782197962,
+          "duration" : 85
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") should be([empty: attribute value=\"\" and exact text '', 10 s.])",
+        "time" : {
+          "start" : 1643782197962,
+          "stop" : 1643782198202,
+          "duration" : 240
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") send keys(Russia)",
+        "time" : {
+          "start" : 1643782198702,
+          "stop" : 1643782198764,
+          "duration" : 62
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item[8]\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782198764,
+          "stop" : 1643782199114,
+          "duration" : 350
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782199114,
+          "stop" : 1643782199140,
+          "duration" : 26
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") click()",
+        "time" : {
+          "start" : 1643782199140,
+          "stop" : 1643782199214,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782199214,
+          "stop" : 1643782199580,
+          "duration" : 366
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userPhoneNumber",
+        "value" : "9114175602"
+      }, {
+        "name" : "userCountry",
+        "value" : "Russia"
+      } ],
+      "stepsCount" : 8,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a country: Russia",
+      "time" : {
+        "start" : 1643782199580,
+        "stop" : 1643782201743,
+        "duration" : 2163
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration-form/app-country-selector/ion-item\") click()",
+        "time" : {
+          "start" : 1643782199580,
+          "stop" : 1643782199651,
+          "duration" : 71
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") should be([empty: attribute value=\"\" and exact text '', 10 s.])",
+        "time" : {
+          "start" : 1643782199651,
+          "stop" : 1643782199921,
+          "duration" : 270
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") send keys(Russia)",
+        "time" : {
+          "start" : 1643782200422,
+          "stop" : 1643782200487,
+          "duration" : 65
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item[8]\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782200487,
+          "stop" : 1643782200798,
+          "duration" : 311
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782200798,
+          "stop" : 1643782201198,
+          "duration" : 400
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") click()",
+        "time" : {
+          "start" : 1643782201198,
+          "stop" : 1643782201316,
+          "duration" : 118
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782201316,
+          "stop" : 1643782201743,
+          "duration" : 427
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userCountry",
+        "value" : "Russia"
+      } ],
+      "stepsCount" : 7,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Select a city: Moscow",
+      "time" : {
+        "start" : 1643782201744,
+        "stop" : 1643782205204,
+        "duration" : 3460
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration-form/app-city-selector/ion-item\") click()",
+        "time" : {
+          "start" : 1643782201744,
+          "stop" : 1643782201819,
+          "duration" : 75
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") should be([empty: attribute value=\"\" and exact text '', 10 s.])",
+        "time" : {
+          "start" : 1643782201819,
+          "stop" : 1643782202083,
+          "duration" : 264
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal input\") send keys(Moscow)",
+        "time" : {
+          "start" : 1643782202583,
+          "stop" : 1643782202653,
+          "duration" : 70
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item[8]\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782202653,
+          "stop" : 1643782203526,
+          "duration" : 873
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782203527,
+          "stop" : 1643782204813,
+          "duration" : 1286
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal ion-item\") click()",
+        "time" : {
+          "start" : 1643782204813,
+          "stop" : 1643782204870,
+          "duration" : 57
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ionic-selectable-modal\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782204871,
+          "stop" : 1643782205204,
+          "duration" : 333
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "userCity",
+        "value" : "Moscow"
+      } ],
+      "stepsCount" : 7,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Confirm",
+      "time" : {
+        "start" : 1643782205204,
+        "stop" : 1643782209024,
+        "duration" : 3820
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration ion-button[type='submit']\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782205204,
+          "stop" : 1643782205227,
+          "duration" : 23
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-registration ion-button[type='submit']\") click()",
+        "time" : {
+          "start" : 1643782205227,
+          "stop" : 1643782205288,
+          "duration" : 61
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-registration ion-button[type='submit']\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782205288,
+          "stop" : 1643782209024,
+          "duration" : 3736
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1643782209024,
+        "stop" : 1643782211364,
+        "duration" : 2340
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1643782209524,
+          "stop" : 1643782209564,
+          "duration" : 40
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782209564,
+          "stop" : 1643782209632,
+          "duration" : 68
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-flag-menu ion-select\") click()",
+        "time" : {
+          "start" : 1643782209632,
+          "stop" : 1643782210064,
+          "duration" : 432
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert button\") click()",
+        "time" : {
+          "start" : 1643782210064,
+          "stop" : 1643782210163,
+          "duration" : 99
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-button-group button[1]\") click()",
+        "time" : {
+          "start" : 1643782210164,
+          "stop" : 1643782210236,
+          "duration" : 72
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-radio-group\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1643782210236,
+          "stop" : 1643782210607,
+          "duration" : 371
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") exists()",
+        "time" : {
+          "start" : 1643782211107,
+          "stop" : 1643782211364,
+          "duration" : 257
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 7,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that order ID is 3197",
+      "time" : {
+        "start" : 1643782211364,
+        "stop" : 1643782212264,
+        "duration" : 900
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-sent-order div h1.filter(visible)[0]\") should have(text '3197')",
+        "time" : {
+          "start" : 1643782211364,
+          "stop" : 1643782212264,
+          "duration" : 900
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click 'show order details'",
+      "time" : {
+        "start" : 1643782212264,
+        "stop" : 1643782212356,
+        "duration" : 92
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"div.order-full-info a.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782212264,
+          "stop" : 1643782212356,
+          "duration" : 92
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify order details. Service name: Product Applications Associate (aqvcnpb). Service duration: 45",
+      "time" : {
+        "start" : 1643782212356,
+        "stop" : 1643782212905,
+        "duration" : 549
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"section.filter(visible)[0]\") should have([text 'Product Applications Associate (aqvcnpb)', text '45'])",
+        "time" : {
+          "start" : 1643782212356,
+          "stop" : 1643782212870,
+          "duration" : 514
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"section.filter(visible)[0]\") should have(text 'Online')",
+        "time" : {
+          "start" : 1643782212871,
+          "stop" : 1643782212905,
+          "duration" : 34
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "User confirms shared order",
+      "time" : {
+        "start" : 1643782212905,
+        "stop" : 1643782212962,
+        "duration" : 57
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-order-share main ion-button\") click()",
+        "time" : {
+          "start" : 1643782212905,
+          "stop" : 1643782212962,
+          "duration" : 57
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that order data is all correct.",
+      "time" : {
+        "start" : 1643782212962,
+        "stop" : 1643782215831,
+        "duration" : 2869
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-infinite-scroll-container app-order-status ion-badge[color='success'].filter(visible)[0]\") should be(visible)",
+        "time" : {
+          "start" : 1643782212962,
+          "stop" : 1643782214753,
+          "duration" : 1791
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-infinite-scroll-container app-professional-card .filter(visible)[0]\") should have([text 'Valentin Tremblay', text 'Chief Construction Designer Athena'])",
+        "time" : {
+          "start" : 1643782214753,
+          "stop" : 1643782215704,
+          "duration" : 951
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-infinite-scroll-container app-service-title.filter(visible)[0]\") should have(text 'Product Applications Associate (aqvcnpb)')",
+        "time" : {
+          "start" : 1643782215704,
+          "stop" : 1643782215747,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-infinite-scroll-container app-price.filter(visible)[0]\") should have(text '175')",
+        "time" : {
+          "start" : 1643782215747,
+          "stop" : 1643782215786,
+          "duration" : 39
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-infinite-scroll-container app-duration-viewer.filter(visible)[0]\") should have(text '45')",
+        "time" : {
+          "start" : 1643782215786,
+          "stop" : 1643782215831,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 5,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click 'View Details'",
+      "time" : {
+        "start" : 1643782215831,
+        "stop" : 1643782215917,
+        "duration" : 86
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-infinite-scroll-container ion-item a\") click()",
+        "time" : {
+          "start" : 1643782215831,
+          "stop" : 1643782215917,
+          "duration" : 86
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that order ID is 3197",
+      "time" : {
+        "start" : 1643782215917,
+        "stop" : 1643782216642,
+        "duration" : 725
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-sent-order div h1.filter(visible)[0]\") should have(text '3197')",
+        "time" : {
+          "start" : 1643782215917,
+          "stop" : 1643782216642,
+          "duration" : 725
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click 'show order details'",
+      "time" : {
+        "start" : 1643782216642,
+        "stop" : 1643782216709,
+        "duration" : 67
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"div.order-full-info a.filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1643782216642,
+          "stop" : 1643782216709,
+          "duration" : 67
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify order details. Service name: Product Applications Associate (aqvcnpb). Service duration: 45",
+      "time" : {
+        "start" : 1643782216709,
+        "stop" : 1643782217334,
+        "duration" : 625
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"section.filter(visible)[0]\") should have([text 'Product Applications Associate (aqvcnpb)', text '45'])",
+        "time" : {
+          "start" : 1643782216709,
+          "stop" : 1643782217287,
+          "duration" : 578
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"section.filter(visible)[0]\") should have(text 'Online')",
+        "time" : {
+          "start" : 1643782217287,
+          "stop" : 1643782217334,
+          "duration" : 47
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"webdriver\") close()",
+      "time" : {
+        "start" : 1643782217519,
+        "stop" : 1643782217595,
+        "duration" : 76
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "9b1f1c0b8b07c842",
+      "name" : "Request",
+      "source" : "9b1f1c0b8b07c842.html",
+      "type" : "text/html",
+      "size" : 2180
+    }, {
+      "uid" : "7cb71b959f23f144",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "7cb71b959f23f144.html",
+      "type" : "text/html",
+      "size" : 3314
+    }, {
+      "uid" : "2884b32819845172",
+      "name" : "Request",
+      "source" : "2884b32819845172.html",
+      "type" : "text/html",
+      "size" : 549
+    }, {
+      "uid" : "a3210472f9da0c8e",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "a3210472f9da0c8e.html",
+      "type" : "text/html",
+      "size" : 3860
+    }, {
+      "uid" : "e9ff2c5200b8115b",
+      "name" : "Request",
+      "source" : "e9ff2c5200b8115b.html",
+      "type" : "text/html",
+      "size" : 549
+    }, {
+      "uid" : "6262a5c6e5116f26",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "6262a5c6e5116f26.html",
+      "type" : "text/html",
+      "size" : 3860
+    }, {
+      "uid" : "a005e78f78f121d9",
+      "name" : "Request",
+      "source" : "a005e78f78f121d9.html",
+      "type" : "text/html",
+      "size" : 585
+    }, {
+      "uid" : "aa5dcd6bebd4009c",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "aa5dcd6bebd4009c.html",
+      "type" : "text/html",
+      "size" : 1788
+    }, {
+      "uid" : "5e78e49430d6d9d2",
+      "name" : "Request",
+      "source" : "5e78e49430d6d9d2.html",
+      "type" : "text/html",
+      "size" : 2127
+    }, {
+      "uid" : "5b0d5dee601245e4",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "5b0d5dee601245e4.html",
+      "type" : "text/html",
+      "size" : 3105
+    }, {
+      "uid" : "b1b4323eed37604f",
+      "name" : "Request",
+      "source" : "b1b4323eed37604f.html",
+      "type" : "text/html",
+      "size" : 2109
+    }, {
+      "uid" : "4038ea2c66be812b",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "4038ea2c66be812b.html",
+      "type" : "text/html",
+      "size" : 3163
+    }, {
+      "uid" : "5f94e666859f357c",
+      "name" : "Request",
+      "source" : "5f94e666859f357c.html",
+      "type" : "text/html",
+      "size" : 567
+    }, {
+      "uid" : "c55e97a29c72b6ff",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "c55e97a29c72b6ff.html",
+      "type" : "text/html",
+      "size" : 20163
+    }, {
+      "uid" : "23250ebc561f7627",
+      "name" : "Request",
+      "source" : "23250ebc561f7627.html",
+      "type" : "text/html",
+      "size" : 2193
+    }, {
+      "uid" : "7584b1376cf16f9f",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "7584b1376cf16f9f.html",
+      "type" : "text/html",
+      "size" : 2991
+    }, {
+      "uid" : "cf3bb4493313c1af",
+      "name" : "Request",
+      "source" : "cf3bb4493313c1af.html",
+      "type" : "text/html",
+      "size" : 2733
+    }, {
+      "uid" : "684303787a20f25b",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "684303787a20f25b.html",
+      "type" : "text/html",
+      "size" : 3288
+    }, {
+      "uid" : "3bebea865245f483",
+      "name" : "Request",
+      "source" : "3bebea865245f483.html",
+      "type" : "text/html",
+      "size" : 549
+    }, {
+      "uid" : "b82728c26304cea2",
+      "name" : "HTTP/1.1 200 OK",
+      "source" : "b82728c26304cea2.html",
+      "type" : "text/html",
+      "size" : 3860
+    }, {
+      "uid" : "bda46565fde66bad",
+      "name" : "Request",
+      "source" : "bda46565fde66bad.html",
+      "type" : "text/html",
+      "size" : 2383
+    }, {
+      "uid" : "cd302e8287c7f70e",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "cd302e8287c7f70e.html",
+      "type" : "text/html",
+      "size" : 3194
+    }, {
+      "uid" : "52c60ce184b53552",
+      "name" : "Request",
+      "source" : "52c60ce184b53552.html",
+      "type" : "text/html",
+      "size" : 4255
+    }, {
+      "uid" : "d341edd2ccd7523f",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "d341edd2ccd7523f.html",
+      "type" : "text/html",
+      "size" : 3771
+    }, {
+      "uid" : "7aa17d6c711adb8d",
+      "name" : "Request",
+      "source" : "7aa17d6c711adb8d.html",
+      "type" : "text/html",
+      "size" : 2375
+    }, {
+      "uid" : "f0f94f28b31403e",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "f0f94f28b31403e.html",
+      "type" : "text/html",
+      "size" : 3093
+    }, {
+      "uid" : "adb0786e5a479ee8",
+      "name" : "Request",
+      "source" : "adb0786e5a479ee8.html",
+      "type" : "text/html",
+      "size" : 2483
+    }, {
+      "uid" : "dfb950439ad6a959",
+      "name" : "HTTP/1.1 201 Created",
+      "source" : "dfb950439ad6a959.html",
+      "type" : "text/html",
+      "size" : 3276
+    }, {
+      "uid" : "aec502f1b0ded02",
+      "name" : "Last screenshot",
+      "source" : "aec502f1b0ded02.png",
+      "type" : "image/png",
+      "size" : 53283
+    }, {
+      "uid" : "6f57fb6d2562a1a7",
+      "name" : "Page source",
+      "source" : "6f57fb6d2562a1a7.html",
+      "type" : "text/plain",
+      "size" : 69251
+    }, {
+      "uid" : "be73c2178701b379",
+      "name" : "Browser console logs",
+      "source" : "be73c2178701b379.txt",
+      "type" : "text/plain",
+      "size" : 887
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 145,
+    "attachmentsCount" : 32,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.ordersTests.OrderShareTests]/[method:t00006()]"
+  }, {
+    "name" : "feature",
+    "value" : "Orders"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "story",
+    "value" : "Share order"
+  }, {
+    "name" : "host",
+    "value" : "fv-az210-292"
+  }, {
+    "name" : "thread",
+    "value" : "3286@fv-az210-292.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.ordersTests.OrderShareTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.ordersTests.OrderShareTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00006"
+  }, {
+    "name" : "suite",
+    "value" : "tests.ordersTests.OrderShareTests"
+  }, {
+    "name" : "severity",
+    "value" : "blocker"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "blocker",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 1,
+        "broken" : 1,
+        "skipped" : 0,
+        "passed" : 8,
+        "unknown" : 0,
+        "total" : 10
+      },
+      "items" : [ {
+        "uid" : "9f1ca93e7c461e88",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/53//#testresult/9f1ca93e7c461e88",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643776101748,
+          "stop" : 1643776148192,
+          "duration" : 46444
+        }
+      }, {
+        "uid" : "8ea017a3bd8edb30",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/52//#testresult/8ea017a3bd8edb30",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643746937051,
+          "stop" : 1643746987481,
+          "duration" : 50430
+        }
+      }, {
+        "uid" : "1a89406aa3e6a394",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/51//#testresult/1a89406aa3e6a394",
+        "status" : "broken",
+        "statusDetails" : "Connection refused (Connection refused)",
+        "time" : {
+          "start" : 1643741615311,
+          "stop" : 1643741616195,
+          "duration" : 884
+        }
+      }, {
+        "uid" : "21a5068220e24680",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/50//#testresult/21a5068220e24680",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643732938158,
+          "stop" : 1643732988139,
+          "duration" : 49981
+        }
+      }, {
+        "uid" : "6e50d5a54ecc8e39",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/49//#testresult/6e50d5a54ecc8e39",
+        "status" : "failed",
+        "statusDetails" : "1 expectation failed.\nExpected status code <201> but was <400>.\n",
+        "time" : {
+          "start" : 1643636885778,
+          "stop" : 1643636892525,
+          "duration" : 6747
+        }
+      }, {
+        "uid" : "48283c9ce54d847b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/48//#testresult/48283c9ce54d847b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643431684714,
+          "stop" : 1643431731710,
+          "duration" : 46996
+        }
+      }, {
+        "uid" : "175644dcab103bd7",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/47//#testresult/175644dcab103bd7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643429224363,
+          "stop" : 1643429273954,
+          "duration" : 49591
+        }
+      }, {
+        "uid" : "97c4f913e26e975a",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/46//#testresult/97c4f913e26e975a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643366564059,
+          "stop" : 1643366611405,
+          "duration" : 47346
+        }
+      }, {
+        "uid" : "6bdfc63a62028fe1",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/45//#testresult/6bdfc63a62028fe1",
+        "status" : "passed",
+        "time" : {
+          "start" : 1643360859450,
+          "stop" : 1643360917534,
+          "duration" : 58084
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "c3772a3258d5a4c9.json",
+  "parameterValues" : [ ]
+}
