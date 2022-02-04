@@ -175,8 +175,8 @@ public class Orders extends config.TestBase {
             String servicePrice,
             String serviceTotalDuration
     ) {
-        $("app-outbox-page app-client-widget").shouldNotHave(text(userFirstName));
-        $("app-outbox-page app-price").shouldNotHave(text(servicePrice));
+        $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(userFirstName));
+        $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(servicePrice));
 
         ServiceDuration duration = getDuration(serviceTotalDuration);
         if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
@@ -184,13 +184,13 @@ public class Orders extends config.TestBase {
             fail();
         }
         if (!duration.days.equals("0")) {
-            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.days));
+            $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(duration.days));
         }
         if (!duration.hours.equals("0")) {
-            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.hours));
+            $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(duration.hours));
         }
         if (!duration.minutes.equals("0")) {
-            $("app-inbox-page app-duration-viewer").shouldNotHave(text(duration.minutes));
+            $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(duration.minutes));
         }
     }
 

@@ -20,18 +20,18 @@ public class Booking {
     @Step("Input search text and press Enter")
     public void findService(String searchQuery) {
         sleep(1000);
-        $("app-search").$("form").$("input").setValue("\"" + searchQuery + "\"");
+        $("app-search form input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
-        $("app-search").$("form").$("input").pressEnter();
+        $("app-search form input").pressEnter();
         sleep(500);
     }
 
     @Step("Main page, input search text and press Enter")
     public void findServiceMainPage(String searchQuery) {
         sleep(1000);
-        $("ion-searchbar").$("input").setValue("\"" + searchQuery + "\"");
+        $("ion-searchbar input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
-        $("ion-searchbar").$("input").pressEnter();
+        $("ion-searchbar input").pressEnter();
         Attach.screenshotAs("Screenshot");
         sleep(500);
     }

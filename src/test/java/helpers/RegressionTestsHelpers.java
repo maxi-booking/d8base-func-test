@@ -4,6 +4,7 @@ import api.Registration;
 
 import static api.Registration.locations;
 import static api.Registration.registration;
+import static api.ServiceBooking.booking;
 import static api.ServicePublish.*;
 import static helpers.DateTimeFormatter.getDateTime;
 
@@ -66,6 +67,17 @@ public class RegressionTestsHelpers extends config.TestBase {
         servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
     }
 
+    public static void bookingCreateAPI() {
+        String accessToken = registration(userFirstName, userEmailRandom, userPasswordRandom);
+        int locationsId = locations(accessToken, userCountry, userCity);
+        changeAccountTypeToProfessional(accessToken);
+        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
+        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, online, instantBooking);
+        setSchedule(accessToken, professionalId, 7);
+        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
+        booking(accessToken, serviceId, locationsId, online, bookingDateTimeRandom);
+    }
+
     public static void userReadyAPI() {
         String accessToken = registration(userFirstName, userEmailRandom, userPasswordRandom);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -95,6 +107,23 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmailRandom, userPasswordRandom);
+        log.forceEN();
+    }
+
+    public static void masterBookingReadyAPI() {
+        bookingCreateAPI();
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(userEmailRandom, userPasswordRandom);
+        log.forceEN();
+    }
+
+    public static void clientBookingReadyAPI() {
+        bookingCreateAPI();
+        clientRegisterAPI();
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(clientEmailRandom, clientPasswordRandom);
         log.forceEN();
     }
 }
