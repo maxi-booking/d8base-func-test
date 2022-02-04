@@ -135,7 +135,7 @@ public class LogIn extends config.TestBase {
 
     public void forceRU() {
         step("Change language to Russian", () -> {
-            sleep(500);
+            sleep(1000);
             String desiredLanguage = Lang.RUSSIAN.getLangText();
             String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
             if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
@@ -144,7 +144,7 @@ public class LogIn extends config.TestBase {
                 $("ion-alert button", 1).click();
                 $("div.alert-button-group button", 1).click();
                 $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
-                sleep(500);
+                sleep(1500);
                 if ($("ion-alert").exists()) {
                     closeAlert();
                 }
@@ -154,7 +154,7 @@ public class LogIn extends config.TestBase {
 
     public void forceEN() {
         step("Change language to English", () -> {
-            sleep(500);
+            sleep(1000);
             String desiredLanguage = Lang.ENGLISH.getLangText();
             String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
             if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
@@ -163,7 +163,7 @@ public class LogIn extends config.TestBase {
                 $("ion-alert button", 0).click();
                 $("div.alert-button-group button", 1).click();
                 $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
-                sleep(500);
+                sleep(1500);
                 if ($("ion-alert").exists()) {
                     closeAlert();
                 }
