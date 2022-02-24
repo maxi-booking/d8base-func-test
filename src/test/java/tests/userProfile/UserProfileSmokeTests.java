@@ -3,11 +3,14 @@ package tests.userProfile;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static api.Registration.locations;
 import static api.Registration.registration;
 
-public class UserProfileTests extends config.TestBase {
+@Execution(value = ExecutionMode.SAME_THREAD)
+public class UserProfileSmokeTests extends config.TestBase {
 
     @Test
     @Feature("User Profile verification")

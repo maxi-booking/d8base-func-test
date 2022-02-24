@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import static api.Registration.locations;
 import static api.Registration.registration;
-import static api.ServiceBooking.booking;
+import static api.ServiceBooking.bookingProfessional;
 import static api.ServicePublish.*;
 import static api.ServicePublish.servicePrices;
-import static helpers.RegressionTestsHelpers.clientReadyAPI;
-import static helpers.RegressionTestsHelpers.clientRegisterAPI;
+import static helpers.RegressionTestsHelpers.*;
 
 public class OrderShareTests extends TestBase {
 
@@ -22,19 +21,19 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, online order")
     void t00000() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, online, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, online, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, online, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -46,16 +45,16 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        clientReadyAPI();
+        clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
     }
 
     @Test
@@ -65,20 +64,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, client's place order")
     void t00001() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, client, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationRandomDistance);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, client, bookingDateTimeRandom);
+        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationDistance);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, client, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -90,16 +89,16 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        clientReadyAPI();
+        clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
@@ -109,20 +108,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, professional's place order")
     void t00002() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, professional, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
         int serviceLocationId = serviceLocations(accessToken, serviceId, professionalLocationId);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, serviceLocationId, professional, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, serviceLocationId, professional, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -134,16 +133,16 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        clientReadyAPI();
+        clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
@@ -153,19 +152,19 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, online order")
     void t00003() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, online, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, online, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, online, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -177,27 +176,27 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        String clientAccessToken = clientRegisterAPI();
+        clientRegisterAPI(data);
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
-        log.logIn(clientEmailRandom, clientPasswordRandom);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
     }
 
     @Test
@@ -207,20 +206,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, client's place order")
     void t00004() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, client, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationRandomDistance);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, client, bookingDateTimeRandom);
+        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationDistance);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, client, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -232,28 +231,28 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        String clientAccessToken = clientRegisterAPI();
+        clientRegisterAPI(data);
         log.openUrl(onlineServiceShareLink);
         log.checkForErrors();
         log.popupSkip();
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
-        log.logIn(clientEmailRandom, clientPasswordRandom);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
@@ -263,20 +262,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, professional's place order")
     void t00005() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, professional, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
         int serviceLocationId = serviceLocations(accessToken, serviceId, professionalLocationId);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, serviceLocationId, professional, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, serviceLocationId, professional, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -288,27 +287,27 @@ public class OrderShareTests extends TestBase {
         String onlineServiceShareLink = ord.shareOrderGetId();
         log.forceLogOut();
 
-        String clientAccessToken = clientRegisterAPI();
+        clientRegisterAPI(data);
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
-        log.logIn(clientEmailRandom, clientPasswordRandom);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
@@ -318,19 +317,19 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, online order")
     void t00006() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, online, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, online, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, online, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -347,15 +346,15 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
         ord.shareOrderClickConfirm();
         reg.fillUserFirstName(clientFirstName);
         reg.fillUserLastName(clientLastName);
-        reg.fillEmail(clientEmailRandom);
-        reg.choosePassword(clientPasswordRandom);
+        reg.fillEmail(clientEmail);
+        reg.choosePassword(clientPassword);
         reg.fillPhoneNumber(clientPhoneNumber, clientCountry);
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
@@ -364,13 +363,13 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, online);
+        ord.verifyOrderDetails(serviceName, serviceDuration, online);
     }
 
     @Test
@@ -380,20 +379,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, client's place order")
     void t00007() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, client, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
-        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationRandomDistance);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, locationsId, client, bookingDateTimeRandom);
+        serviceLocations(accessToken, serviceId, professionalLocationId, serviceLocationDistance);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, locationsId, client, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -411,15 +410,15 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
         ord.shareOrderClickConfirm();
         reg.fillUserFirstName(clientFirstName);
         reg.fillUserLastName(clientLastName);
-        reg.fillEmail(clientEmailRandom);
-        reg.choosePassword(clientPasswordRandom);
+        reg.fillEmail(clientEmail);
+        reg.choosePassword(clientPassword);
         reg.fillPhoneNumber(clientPhoneNumber, clientCountry);
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
@@ -428,13 +427,13 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
@@ -444,20 +443,20 @@ public class OrderShareTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, professional's place order")
     void t00008() {
-        String accessToken = registration(userFirstName, userLastName, userEmailRandom, userPasswordRandom);
+        String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, randomServiceCategory, randomServiceSubcategory, serviceSpecializationRandom);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNameRandom, serviceDescriptionRandom, serviceDurationRandom, professional, instantBooking);
+        int professionalId = createProfessional(accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int serviceId = servicePublish(accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(accessToken, professionalId, 7);
         int serviceLocationId = serviceLocations(accessToken, serviceId, professionalLocationId);
-        servicePrices(accessToken, serviceId, servicePriceRandom, serviceCurrencyRandom, paymentCashOnline);
-        int orderId = booking(accessToken, serviceId, serviceLocationId, professional, bookingDateTimeRandom);
+        servicePrices(accessToken, serviceId, servicePrice, serviceCurrency, paymentCashOnline);
+        int orderId = bookingProfessional(accessToken, serviceId, serviceLocationId, professional, bookingDateTime);
 
         log.openMainPage();
         log.popupSkip();
-        log.logIn(userEmailRandom, userPasswordRandom);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
 
         topBar.clickMyOrders();
@@ -474,15 +473,15 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
         ord.shareOrderClickConfirm();
         reg.fillUserFirstName(clientFirstName);
         reg.fillUserLastName(clientLastName);
-        reg.fillEmail(clientEmailRandom);
-        reg.choosePassword(clientPasswordRandom);
+        reg.fillEmail(clientEmail);
+        reg.choosePassword(clientPassword);
         reg.fillPhoneNumber(clientPhoneNumber, clientCountry);
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
@@ -491,12 +490,12 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, serviceSpecializationRandom, serviceNameRandom, servicePriceRandom, serviceDurationRandom);
+        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceNameRandom, serviceDurationRandom, serviceAddress);
+        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
     }
 }

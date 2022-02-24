@@ -100,6 +100,28 @@ public class Booking {
         $("app-service-widget").$("app-service-location").shouldHave(text(ServiceLocation));
     }
 
+    @Step("Verify service location")
+    public void verifyServiceLocation(int ServiceLocation) {
+        String value;
+        switch (ServiceLocation) {
+            case 0:
+                value = "online";
+                break;
+            case 1:
+                value = "client";
+                break;
+            case 2:
+                value = "professional";
+                break;
+            default:
+                value = null;
+                System.out.println("Incorrect service location id: " + ServiceLocation);
+                fail();
+                break;
+        }
+        $("app-service-widget").$("app-service-location").shouldHave(text(value));
+    }
+
     @Step("Verify service country/city/address")
     public void verifyServiceGeo(String ServiceCountry, String ServiceCity, String ServiceAddress) {
         $("app-service-widget").$("app-service-location")

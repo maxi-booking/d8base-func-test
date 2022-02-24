@@ -3,11 +3,14 @@ package tests.professionalProfile;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static api.Registration.*;
 import static api.ServicePublish.*;
 
-public class ProfessionalProfileTests extends config.TestBase {
+@Execution(value = ExecutionMode.SAME_THREAD)
+public class ProfessionalProfileSmokeTests extends config.TestBase {
 
     @Test
     @Feature("Professional Profile verification")
@@ -24,7 +27,7 @@ public class ProfessionalProfileTests extends config.TestBase {
         int serviceLocationId = professionalLocations(accessToken, professionalId, service12Country, service12City, service12Address);
         serviceLocations(accessToken, serviceId, serviceLocationId);
         setSchedule(accessToken, professionalId, 7);
-        servicePrices(accessToken, serviceId, servicePrices[11], serviceCurrencyRandom, paymentCashOnline);
+        servicePrices(accessToken, serviceId, servicePrices[11], serviceCurrency, paymentCashOnline);
     }
 
     @Test

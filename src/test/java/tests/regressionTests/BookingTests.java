@@ -4,7 +4,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.*;
 import static helpers.RegressionTestsHelpers.*;
 
 public class BookingTests extends config.TestBase {
@@ -15,13 +14,13 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Booking: today's date")
     void t00000() {
-        serviceReadyAPI();
+        serviceReadyAPI(data);
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNameRandom);
+        bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -31,7 +30,7 @@ public class BookingTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNameRandom);
+        bkn.verifyOrderDetails(serviceName);
     }
 
     @Test
@@ -41,13 +40,13 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: your own service for another person")
     void t00001() {
-        serviceReadyAPI();
+        serviceReadyAPI(data);
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNameRandom);
+        bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -57,11 +56,11 @@ public class BookingTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userLastName);
-        bkn.fillOrderForAPEmail(userEmailRandom);
+        bkn.fillOrderForAPEmail(userEmail);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNameRandom);
+        bkn.verifyOrderDetails(serviceName);
     }
 
     @Test
@@ -71,12 +70,13 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Booking: a service for another person")
     void t00002() {
-        serviceRegisterAPI(userRegisterAPI());
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
 
-        String service = serviceNameRandom;
+        String service = serviceName;
         setRandomData();
 
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -91,7 +91,7 @@ public class BookingTests extends config.TestBase {
         bkn.clickOrderForAnotherPerson();
         bkn.fillOrderForAPName(userFirstName);
         bkn.fillOrderForAPSurname(userLastName);
-        bkn.fillOrderForAPEmail(userEmailRandom);
+        bkn.fillOrderForAPEmail(userEmail);
         bkn.fillOrderForAPPhoneNumber(userCountry, userPhoneNumber);
         bkn.placeOrder();
         bkn.showOrderDetails();
@@ -105,13 +105,13 @@ public class BookingTests extends config.TestBase {
     @Severity(SeverityLevel.TRIVIAL)
     @DisplayName("Booking: time step, can't navigate back in time via arrows")
     void t00100() {
-        serviceReadyAPI();
+        serviceReadyAPI(data);
         log.forceMainPage();
         log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNameRandom);
+        bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);

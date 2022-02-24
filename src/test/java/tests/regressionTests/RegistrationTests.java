@@ -73,7 +73,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirmAndWait();
@@ -82,21 +82,21 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailLowercase, userPasswordRandom);
+        log.logIn(userEmailLowercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailUppercase, userPasswordRandom);
+        log.logIn(userEmailUppercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailMixedCase, userPasswordRandom);
+        log.logIn(userEmailMixedCase, userPassword);
         log.verifySuccessfulLogIn();
     }
 
@@ -113,7 +113,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirmAndWait();
@@ -122,21 +122,21 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailLowercase, userPasswordRandom);
+        log.logIn(userEmailLowercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailUppercase, userPasswordRandom);
+        log.logIn(userEmailUppercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailMixedCase, userPasswordRandom);
+        log.logIn(userEmailMixedCase, userPassword);
         log.verifySuccessfulLogIn();
     }
 
@@ -153,7 +153,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirmAndWait();
@@ -162,21 +162,21 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailLowercase, userPasswordRandom);
+        log.logIn(userEmailLowercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailUppercase, userPasswordRandom);
+        log.logIn(userEmailUppercase, userPassword);
         log.verifySuccessfulLogIn();
 
         log.forceLogOut();
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.logIn(userEmailMixedCase, userPasswordRandom);
+        log.logIn(userEmailMixedCase, userPassword);
         log.verifySuccessfulLogIn();
     }
 
@@ -193,7 +193,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.confirm();
         log.noToast();
 
@@ -205,7 +205,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -219,7 +219,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -233,7 +233,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -253,7 +253,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.confirm();
         log.noToast();
 
@@ -265,7 +265,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -279,7 +279,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -293,7 +293,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -313,7 +313,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.confirm();
         log.noToast();
 
@@ -325,7 +325,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -339,7 +339,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();
@@ -353,7 +353,7 @@ public class RegistrationTests extends config.TestBase {
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
-        reg.choosePassword(userPasswordRandom);
+        reg.choosePassword(userPassword);
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
         reg.confirm();

@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 
 import java.io.File;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
@@ -300,31 +301,39 @@ public class ServicePublish extends config.TestBase {
         $("app-service-publish-step-seven").$("form").$("ion-input").$("input").scrollIntoView(false).setValue(serviceDistance);
     }
 
-    @Step("Select payment by cash")
-    public void PaymentByCash(Boolean value) {
-        if (value.equals(true)) {
-            $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(false).click();
-        }
-    }
-
-    @Step("Select online payment")
-    public void OnlinePayment(Boolean value) {
-            if (value.equals(true)) {
+    public void PaymentOptions(Boolean cash, Boolean online, Data data) {
+        step("Selected payment options: by cash - " + cash + ", online - " + online, () -> {
+            if (cash.equals(true)) {
+                $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 0).scrollIntoView(false).click();
+            }
+            if (online.equals(true)) {
                 $("app-service-publish-step-seven").$("form").$("ion-list").$("ion-item", 1).scrollIntoView(false).click();
             }
-        Attach.screenshotAs("Screenshot");
+
+            if (cash.equals(true)) {
+                if (online.equals(true)) {
+                    data.payment = paymentCashOnline;
+                } else {
+                    data.payment = paymentCash;
+                }
+            } else if (online.equals(true)) {
+                data.payment = paymentOnline;
+            }
+
+            Attach.screenshotAs("Screenshot");
+        });
     }
 
     public void clickSeventhStep() {
         step("Seventh step, click 'Continue'", () -> {
-        $("app-service-publish-step-seven ion-button[type='submit']").scrollIntoView(false).click();
+            $("app-service-publish-step-seven ion-button[type='submit']").scrollIntoView(false).click();
         });
     }
 
     public void verifySeventhStepContinueIsNotClickable() {
         step("Seventh step, 'Continue' should not be clickable", () -> {
-        $("app-service-publish-step-seven ion-button[type='submit']").shouldHave(cssClass("button-disabled"));
-        $("app-service-publish-step-seven ion-button[type='submit'][aria-disabled='true']").should(exist);
+            $("app-service-publish-step-seven ion-button[type='submit']").shouldHave(cssClass("button-disabled"));
+            $("app-service-publish-step-seven ion-button[type='submit'][aria-disabled='true']").should(exist);
         });
     }
 
@@ -479,8 +488,8 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Verify that subcategory list language is in English")
     public void verifySubcategoryListLanguageEng() {
-        $("ionic-selectable",1).shouldBe(visible, Duration.ofSeconds(10));
-        $("ionic-selectable",1).scrollIntoView(true).click();
+        $("ionic-selectable", 1).shouldBe(visible, Duration.ofSeconds(10));
+        $("ionic-selectable", 1).scrollIntoView(true).click();
         $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
@@ -507,7 +516,7 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Verify that subcategory list language is not in English")
     public void verifySubcategoryListLanguageNotEng() {
-        $("ionic-selectable",1).shouldBe(visible, Duration.ofSeconds(10));
+        $("ionic-selectable", 1).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable", 1).scrollIntoView(true).click();
         $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();

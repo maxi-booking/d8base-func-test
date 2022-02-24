@@ -16,30 +16,29 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Service publish: city is selectable - client's place")
     void t00000() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
-        pbl.setPriceFixed(servicePriceRandom, randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(client);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecializationRandom);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
         pbl.fillServiceDistance(serviceDistance);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
         pbl.publishService();
@@ -52,29 +51,28 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Service publish: city is selectable - professional's place")
     void t00001() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
-        pbl.setPriceFixed(servicePriceRandom, randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecializationRandom);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
         pbl.publishService();
@@ -87,16 +85,16 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select fixed price with the value: 0")
     void t00100() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
-        pbl.setPriceFixed("0", randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed("0", serviceCurrencyId);
         pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
         pbl.fieldIsRequiredPresent();
@@ -110,15 +108,15 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select price range with min value: 0")
     void t00101() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
         pbl.setPriceRange("0", "100", rub);
         pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
@@ -133,15 +131,15 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Service publish: user can not select price range with max value: 0")
     void t00102() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
         pbl.setPriceRange("0", "0", rub);
         pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
@@ -265,27 +263,26 @@ public class ServicePublicationTests extends config.TestBase {
             "3, USD"
     })
     void t00300(int currency, String currencyName) {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNameRandom);
-        pbl.setDuration(serviceDurationRandom);
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
         pbl.setPriceRange(servicePriceMin, servicePriceMax, currency);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(serviceSpecializationRandom);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
         pbl.verifyPriceCurrency(servicePriceMin, servicePriceMax, currency);
@@ -299,17 +296,17 @@ public class ServicePublicationTests extends config.TestBase {
     @Severity(SeverityLevel.MINOR)
     @DisplayName("Service publish: can not publish service without any payment option")
     void t00400() {
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(serviceNames[0]);
         pbl.enterServiceDescription(serviceDescriptions[0]);
         pbl.setDuration(serviceDurations[0]);
-        pbl.setPriceFixed(servicePrices[0], randomCurrency);
+        pbl.setPriceFixed(servicePrices[0], serviceCurrencyId);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
@@ -320,8 +317,7 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
-        pbl.PaymentByCash(off);
-        pbl.OnlinePayment(off);
+        pbl.PaymentOptions(false, false, data);
         pbl.verifySeventhStepContinueIsNotClickable();
     }
 }

@@ -1,7 +1,6 @@
 package api;
 
 import config.TestBase;
-import io.qameta.allure.restassured.AllureRestAssured;
 
 import java.util.*;
 

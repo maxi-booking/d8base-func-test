@@ -133,13 +133,13 @@ public class Reviews {
 
     @Step("Post master's comment")
     public void postMasterComment(String masterComment) {
-        $("app-reviews-list").$("app-review-card").$("ion-button").scrollIntoView(true);
+        $("app-reviews-list").$("app-review-card").$("ion-button").scrollIntoView(false);
         $("app-reviews-list").$("app-review-card").$("ion-button").click();
         sleep(500);
-        $("app-edit-review-comment").$("textarea").scrollIntoView(true);
+        $("app-edit-review-comment").$("textarea").scrollIntoView(false);
         $("app-edit-review-comment").$("textarea").sendKeys(masterComment);
         sleep(500);
-        $("#send-btn").scrollIntoView(true);
+        $("#send-btn").scrollIntoView(false);
         $("#send-btn").click();
         sleep(2000);
     }

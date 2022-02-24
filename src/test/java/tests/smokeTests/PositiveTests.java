@@ -3,7 +3,10 @@ package tests.smokeTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+import static helpers.RegressionTestsHelpers.*;
 import static java.lang.String.valueOf;
 
 public class PositiveTests extends config.TestBase {
@@ -11,26 +14,49 @@ public class PositiveTests extends config.TestBase {
     @Test
     @Feature("User Registration")
     @Owner("Egor Khlebnikov")
+    @Story("Minimal registration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Basic Positive User Registration")
+    void t00000() {
+        log.openMainPage();
+        log.popupSelect(userCountry, userCity);
+        log.forceEN();
+        sideMenu.clickSignUp();
+        reg.fillUserFirstName(userFirstName);
+        reg.fillEmail(userEmail);
+        reg.choosePassword(userPassword);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
+        reg.confirmAndWait();
+        reg.completeTutorSlidesToPublish();
+        log.forceEN();
+        sideMenu.clickProfile();
+        reg.verifyRegistrationDataBasic(userFirstName, userEmail, userCountry, userCity);
+    }
+
+    @Test
+    @Feature("User Registration")
+    @Owner("Egor Khlebnikov")
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration - in order")
-    void t00000() {
+    void t00001() {
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserFirstName(firstNames[0]);
-        reg.fillUserLastName(lastNames[0]);
-        reg.fillEmail(emails[0]);
-        reg.choosePassword(passwords[0]);
-        reg.fillPhoneNumber(phoneNumbers[0], countries[0]);
-        reg.selectCountry(countries[0]);
-        reg.selectCity(cities[0]);
+        reg.fillUserFirstName(userFirstName);
+        reg.fillUserLastName(userLastName);
+        reg.fillEmail(userEmail);
+        reg.choosePassword(userPassword);
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
         log.forceEN();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[0], lastNames[0], emails[0], phoneNumbers[0], countries[0], cities[0]);
+        reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userEmail, userCountry, userCity);
     }
 
     @Test
@@ -39,23 +65,23 @@ public class PositiveTests extends config.TestBase {
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration - reverse order")
-    void t00001() {
+    void t00002() {
         log.openMainPage();
-        log.popupSelect(countries[1], cities[1]);
+        log.popupSelect(userCountry, userCity);
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.selectCountry(countries[1]);
-        reg.selectCity(cities[1]);
-        reg.fillPhoneNumber(phoneNumbers[1], countries[1]);
-        reg.choosePassword(passwords[1]);
-        reg.fillEmail(emails[1]);
-        reg.fillUserLastName(lastNames[1]);
-        reg.fillUserFirstName(firstNames[1]);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
+        reg.choosePassword(userPassword);
+        reg.fillEmail(userEmail);
+        reg.fillUserLastName(userLastName);
+        reg.fillUserFirstName(userFirstName);
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
         log.forceEN();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[1], lastNames[1], emails[1], phoneNumbers[1], countries[1], cities[1]);
+        reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
     @Test
@@ -64,46 +90,23 @@ public class PositiveTests extends config.TestBase {
     @Story("Full registration")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Full Positive User Registration - mixed order 1")
-    void t00002() {
+    void t00003() {
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillPhoneNumber(phoneNumbers[2], countries[2]);
-        reg.choosePassword(passwords[2]);
-        reg.fillUserFirstName(firstNames[2]);
-        reg.fillEmail(emails[2]);
-        reg.fillUserLastName(lastNames[2]);
-        reg.selectCountry(countries[2]);
-        reg.selectCity(cities[2]);
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
+        reg.choosePassword(userPassword);
+        reg.fillUserFirstName(userFirstName);
+        reg.fillEmail(userEmail);
+        reg.fillUserLastName(userLastName);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
         log.forceEN();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[2], lastNames[2], emails[2], phoneNumbers[2], countries[2], cities[2]);
-    }
-
-    @Test
-    @Feature("User Registration")
-    @Owner("Egor Khlebnikov")
-    @Story("Minimal registration")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Basic Positive User Registration")
-    void t00003() {
-        log.openMainPage();
-        log.popupSelect(countries[4], cities[4]);
-        log.forceEN();
-        sideMenu.clickSignUp();
-        reg.fillUserFirstName(firstNames[4]);
-        reg.fillEmail(emails[4]);
-        reg.choosePassword(passwords[4]);
-        reg.selectCountry(countries[4]);
-        reg.selectCity(cities[4]);
-        reg.confirmAndWait();
-        reg.completeTutorSlidesToPublish();
-        log.forceEN();
-        sideMenu.clickProfile();
-        reg.verifyRegistrationDataBasic(firstNames[4], emails[4], countries[4], cities[4]);
+        reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
     @Test
@@ -117,17 +120,17 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillEmail(emails[5]);
-        reg.choosePassword(passwords[5]);
-        reg.fillPhoneNumber(phoneNumbers[5], countries[5]);
-        reg.selectCountry(countries[5]);
-        reg.selectCity(cities[5]);
-        reg.fillUserFirstName(firstNames[5]);
-        reg.fillUserLastName(lastNames[5]);
+        reg.fillEmail(userEmail);
+        reg.choosePassword(userPassword);
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
+        reg.fillUserFirstName(userFirstName);
+        reg.fillUserLastName(userLastName);
         reg.confirmAndWait();
         log.forceEN();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[5], lastNames[5], emails[5], phoneNumbers[5], countries[5], cities[5]);
+        reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
     @Test
@@ -138,20 +141,20 @@ public class PositiveTests extends config.TestBase {
     @DisplayName("Full Positive User Registration - mixed order 3")
     void t00005() {
         log.openMainPage();
-        log.popupSelect(countries[6], cities[6]);
+        log.popupSelect(userCountry, userCity);
         log.forceEN();
         sideMenu.clickSignUp();
-        reg.fillUserLastName(lastNames[6]);
-        reg.fillUserFirstName(firstNames[6]);
-        reg.choosePassword(passwords[6]);
-        reg.fillEmail(emails[6]);
-        reg.selectCountry(countries[6]);
-        reg.selectCity(cities[6]);
-        reg.fillPhoneNumber(phoneNumbers[6], countries[6]);
+        reg.fillUserLastName(userLastName);
+        reg.fillUserFirstName(userFirstName);
+        reg.choosePassword(userPassword);
+        reg.fillEmail(userEmail);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
+        reg.fillPhoneNumber(userPhoneNumber, userCountry);
         reg.confirmAndWait();
         log.forceEN();
         sideMenu.clickProfile();
-        reg.verifyRegistrationDataFull(firstNames[6], lastNames[6], emails[6], phoneNumbers[6], countries[6], cities[6]);
+        reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
     @Test
@@ -161,36 +164,32 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Online")
     void t00100() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(0);
-        log.forceEN();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNames[0]);
-        pbl.enterServiceDescription(serviceDescriptions[0]);
-        pbl.setDuration(serviceDurations[0]);
-        pbl.setPriceFixed(servicePrices[0], randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(specializations[0]);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(serviceNames[0], serviceDurations[0], serviceDescriptions[0]);
-        pbl.checkPrice(servicePrices[0]);
+        pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
+        pbl.checkPrice(servicePrice);
         pbl.publishService();
     }
 
@@ -201,38 +200,34 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Client's place")
     void t00101() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(1);
-        log.forceEN();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNames[1]);
-        pbl.enterServiceDescription(serviceDescriptions[1]);
-        pbl.setDuration(serviceDurations[1]);
-        pbl.setPriceFixed(servicePrices[1], randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(client);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(specializations[1]);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
-        pbl.fillServiceGeo(service2Country, service2City, service2Address);
-        pbl.fillServiceDistance(service2Distance);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.fillServiceDistance(serviceDistance);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormWithAddress(serviceNames[1], serviceDurations[1], serviceDescriptions[1], service2Country, service2City, service2Address);
-        pbl.checkPrice(servicePrices[1]);
+        pbl.checkPublishFormWithAddress(serviceName, serviceDuration, serviceDescription, userCountry, userCity, serviceAddress);
+        pbl.checkPrice(servicePrice);
         pbl.publishService();
     }
 
@@ -243,37 +238,33 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic positive service publishing, service location: Professional's place")
     void t00102() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(2);
-        log.forceEN();
+        userReadyAPI(data);
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNames[2]);
-        pbl.enterServiceDescription(serviceDescriptions[2]);
-        pbl.setDuration(serviceDurations[2]);
-        pbl.setPriceFixed(servicePrices[2], randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(professional);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(specializations[2]);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
-        pbl.fillServiceGeo(service3Country, service3City, service3Address);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormWithAddress(serviceNames[2], serviceDurations[2], serviceDescriptions[2], service3Country, service3City, service3Address);
-        pbl.checkPrice(servicePrices[2]);
+        pbl.checkPublishFormWithAddress(serviceName, serviceDuration, serviceDescription, userCountry, userCity, serviceAddress);
+        pbl.checkPrice(servicePrice);
         pbl.publishService();
     }
 
@@ -289,76 +280,35 @@ public class PositiveTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNames[3]);
-        pbl.enterServiceDescription(serviceDescriptions[3]);
-        pbl.setDuration(serviceDurations[3]);
-        pbl.setPriceFixed(servicePrices[3], randomCurrency);
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillEmail(emails[3]);
-        pbl.fillUserInfo(firstNames[3], lastNames[3], passwords[3], countries[3], cities[3]);
+        pbl.fillEmail(userEmail);
+        pbl.fillUserInfo(userFirstName, userLastName, userPassword, userCountry, userCity);
         pbl.clickFourthStep();
 
         pbl.clickFifthStep();
 
-        pbl.fillSpecialization(specializations[3]);
+        pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
+        pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(serviceNames[3], serviceDurations[3], serviceDescriptions[3]);
-        pbl.checkPrice(servicePrices[3]);
-        pbl.publishService();
-    }
-
-    @Test
-    @Feature("Service Publish")
-    @Owner("Egor Khlebnikov")
-    @Story("Minimal service publication")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Basic positive service publishing, service location: Online (2)")
-    void t00104() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(6);
-        log.forceEN();
-        sideMenu.clickPublishNewService();
-
-        pbl.chooseCategory(randomServiceCategory);
-        pbl.chooseSubcategory(randomServiceSubcategory);
-        pbl.clickFirstStep();
-
-        pbl.enterServiceName(serviceNames[6]);
-        pbl.enterServiceDescription(serviceDescriptions[6]);
-        pbl.setDuration(serviceDurations[6]);
-        pbl.setPriceFixed(servicePrices[6], randomCurrency);
-        pbl.selectServiceLocation(online);
-        pbl.clickSecondStep();
-
-        pbl.clickThirdStep();
-
-        pbl.fillSpecialization(specializations[6]);
-        pbl.clickSixthStep();
-
-        pbl.fillScheduleLite();
-        pbl.instantBooking(on);
-        pbl.PaymentByCash(on);
-        pbl.OnlinePayment(on);
-        pbl.clickSeventhStep();
-
-        pbl.checkPublishFormOnline(serviceNames[6], serviceDurations[6], serviceDescriptions[6]);
-        pbl.checkPrice(servicePrices[6]);
+        pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
+        pbl.checkPrice(servicePrice);
         pbl.publishService();
     }
 
@@ -369,18 +319,20 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic booking online")
     void t00200() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        data.sType = online;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNames[0]);
-        bkn.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[0], servicePrices[0], serviceDurations[0], firstNames[0], lastNames[0], serviceDescriptions[0]);
-        bkn.verifyServiceLocation("Online");
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
+        bkn.verifyServiceLocation(online);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking(on);
@@ -392,9 +344,9 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[0]);
+        bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[0], serviceNames[0], servicePrices[0], serviceDurations[0]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
     }
 
     @Test
@@ -404,19 +356,21 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic booking client's place")
     void t00201() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        data.sType = client;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNames[1]);
-        bkn.verifyServiceSearch(firstNames[1], lastNames[1], serviceNames[1], servicePrices[1]);
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[1], servicePrices[1], serviceDurations[1], firstNames[1], lastNames[1], serviceDescriptions[1]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
         bkn.verifyServiceLocation("Client's place");
-        bkn.verifyServiceGeo(service2Country, service2City, service2Address);
+        bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking(on);
@@ -428,9 +382,9 @@ public class PositiveTests extends config.TestBase {
         bkn.selectAddress();
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[1]);
+        bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[1], serviceNames[1], servicePrices[1], serviceDurations[1]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
     }
 
     @Test
@@ -440,19 +394,21 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic booking master's place")
     void t00202() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        data.sType = professional;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceNames[2]);
-        bkn.verifyServiceSearch(firstNames[2], lastNames[2], serviceNames[2], servicePrices[2]);
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[2], servicePrices[2], serviceDurations[2], firstNames[2], lastNames[2], serviceDescriptions[2]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
         bkn.verifyServiceLocation("Professional's place");
-        bkn.verifyServiceGeo(service3Country, service3City, service3Address);
+        bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking(on);
@@ -465,80 +421,10 @@ public class PositiveTests extends config.TestBase {
         bkn.selectAddress();
         bkn.placeOrder();
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[2]);
+        bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[2], serviceNames[2], servicePrices[2], serviceDurations[2]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
     }
-
-    @Test
-    @Feature("Booking")
-    @Owner("Egor Khlebnikov")
-    @Story("Service booking")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Basic booking online (2)")
-    void t00203() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(5);
-        log.forceEN();
-        sideMenu.clickSearch();
-
-        search.closeAllChips();
-        bkn.findService(serviceNames[6]);
-        bkn.verifyServiceSearch(firstNames[6], lastNames[6], serviceNames[6], servicePrices[6]);
-        bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[6], servicePrices[6], serviceDurations[6], firstNames[6], lastNames[6], serviceDescriptions[6]);
-        bkn.verifyServiceLocation("Online");
-        bkn.verifyServicePaymentCash();
-        bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking(on);
-        bkn.clickOrder();
-        bkn.pickTheDate(tomorrow);
-        bkn.clickNextDay();
-        bkn.bookTime(1100);
-        bkn.acceptTimeSelection();
-        bkn.acceptConfirmation();
-        bkn.placeOrder();
-        bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[6]);
-        topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[6], serviceNames[6], servicePrices[6], serviceDurations[6]);
-    }
-
-    @Test
-    @Feature("Booking")
-    @Owner("Egor Khlebnikov")
-    @Story("Service booking")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Basic booking online (3)")
-    void t00204() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(5);
-        log.forceEN();
-        sideMenu.clickSearch();
-
-        search.closeAllChips();
-        bkn.findService(serviceNames[3]);
-        bkn.verifyServiceSearch(firstNames[3], lastNames[3], serviceNames[3], servicePrices[3]);
-        bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[3], servicePrices[3], serviceDurations[3], firstNames[3], lastNames[3], serviceDescriptions[3]);
-        bkn.verifyServiceLocation("Online");
-        bkn.verifyServicePaymentCash();
-        bkn.verifyServicePaymentOnline();
-        bkn.verifyInstantBooking(on);
-        bkn.clickOrder();
-        bkn.pickTheDate(tomorrow);
-        bkn.bookTime(1100);
-        bkn.acceptTimeSelection();
-        bkn.acceptConfirmation();
-        bkn.placeOrder();
-        bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[3]);
-        topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[3], serviceNames[3], servicePrices[3], serviceDurations[3]);
-    }
-
 
     @Test
     @Feature("Orders")
@@ -547,15 +433,53 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Check orders from user side")
     void t00300() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
-        topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[0], serviceNames[0], servicePrices[0], serviceDurations[0]);
-        ord.checkOrderOutbox(firstNames[1], serviceNames[1], servicePrices[1], serviceDurations[1]);
-        ord.checkOrderOutbox(firstNames[2], serviceNames[2], servicePrices[2], serviceDurations[2]);
+        data.sType = online;
+        data.dateTime = dateTime[0];
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+        String accessToken = data.accessToken[1];
+        int locationsId = data.locationsId[1];
+        String email = data.email[1];
+        String password = data.password[1];
+        clientBookService(data);
+        String professionalFirstName1 = data.firstName[0];
+        String serviceName1 = data.name;
+        String servicePrice1 = data.price;
+        String serviceDuration1 = data.duration;
 
+        setRandomData();
+        data.sType = professional;
+        data.accessToken[1] = accessToken;
+        data.locationsId[1] = locationsId;
+        data.dateTime = dateTime[1];
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientBookService(data);
+        String professionalFirstName2 = data.firstName[0];
+        String serviceName2 = data.name;
+        String servicePrice2 = data.price;
+        String serviceDuration2 = data.duration;
+
+        setRandomData();
+        data.sType = client;
+        data.accessToken[1] = accessToken;
+        data.locationsId[1] = locationsId;
+        data.dateTime = dateTime[2];
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientBookService(data);
+        String professionalFirstName3 = data.firstName[0];
+        String serviceName3 = data.name;
+        String servicePrice3 = data.price;
+        String serviceDuration3 = data.duration;
+
+        topBar.clickMyOrders();
+        ord.checkOrderOutbox(professionalFirstName1, serviceName1, servicePrice1, serviceDuration1);
+        ord.checkOrderOutbox(professionalFirstName2, serviceName2, servicePrice2, serviceDuration2);
+        ord.checkOrderOutbox(professionalFirstName3, serviceName3, servicePrice3, serviceDuration3);
     }
 
     @Test
@@ -565,13 +489,18 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Master completes order: online")
     void t00301() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(0);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
-        ord.checkOrderInbox(firstNames[4], servicePrices[0], serviceDurations[0]);
+        ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
         ord.completeOrder();
     }
 
@@ -582,13 +511,18 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Master completes order: client's place")
     void t00302() {
+        data.sType = client;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(1);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
-        ord.checkOrderInbox(firstNames[4], servicePrices[1], serviceDurations[1]);
+        ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
         ord.completeOrder();
     }
 
@@ -599,13 +533,18 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Master completes order: master's place")
     void t00303() {
+        data.sType = professional;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(2);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
-        ord.checkOrderInbox(firstNames[4], servicePrices[2], serviceDurations[2]);
+        ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
         ord.completeOrder();
     }
 
@@ -616,14 +555,19 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Client side order cancel")
     void t00304() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(5);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[3], serviceNames[3], servicePrices[3], serviceDurations[3]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
         ord.discardOrderClient("I don't like the service");
-        ord.checkDiscardOrderOutbox(firstNames[3], serviceNames[3]);
+        ord.verifyNoOrdersInOrderInbox();
     }
 
     @Test
@@ -633,15 +577,20 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Master side order cancel")
     void t00305() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(6);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
-        ord.checkOrderInbox(firstNames[5], servicePrices[6], serviceDurations[6]);
+        ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
         ord.discardOrder("Appointment canceled");
-        ord.checkDiscardOrderInbox(firstNames[5], servicePrices[6], serviceDurations[6]);
+        ord.verifyNoOrdersInOrderInbox();
     }
 
     @Test
@@ -651,9 +600,15 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Post and check review with 10 words")
     void t00400() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        completeOrder(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
@@ -663,7 +618,7 @@ public class PositiveTests extends config.TestBase {
         rev.choseRating(randomRating);
         rev.sendReviewText(reviewText1);
         rev.pressSend();
-        rev.verifyReview(firstNames[2] + " " + lastNames[2], firstNames[4], reviewText1);
+        rev.verifyReview(userFirstName + " " + userLastName, clientFirstName, reviewText1);
     }
 
     @Test
@@ -673,19 +628,25 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Post and check review with a lot of characters")
     void t00401() {
+        data.sType = client;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        completeOrder(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
-        rev.choseMaster(2);
+        rev.choseMaster(1);
         rev.clickReviewTab();
         rev.clickSendReviewLink();
         rev.choseRating(randomRating);
         rev.sendReviewText(reviewText2);
         rev.pressSend();
-        rev.verifyReview(firstNames[1] + " " + lastNames[1], firstNames[4], reviewText2);
+        rev.verifyReview(userFirstName + " " + userLastName, clientFirstName, reviewText2);
     }
 
     @Test
@@ -695,13 +656,19 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Post and check review add to favorites in the process")
     void t00402() {
+        data.sType = professional;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        completeOrder(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
-        rev.choseMaster(3);
+        rev.choseMaster(1);
         rev.clickReviewTab();
         rev.clickSendReviewLink();
         rev.addToFavorite();
@@ -709,11 +676,11 @@ public class PositiveTests extends config.TestBase {
         String rating = valueOf(randomRating);
         rev.sendReviewText(reviewText3 + " " + reviewText4);
         rev.pressSend();
-        rev.verifyReview(firstNames[0] + " " + lastNames[0], firstNames[4], reviewText3 + " " + reviewText4);
+        rev.verifyReview(userFirstName + " " + userLastName, clientFirstName, reviewText3 + " " + reviewText4);
 
         rev.clickMenuMain();
         rev.openBookmarksMenu();
-        rev.verifyBookmark(firstNames[0] + " " + lastNames[0], rating);
+        rev.verifyBookmark(userFirstName + " " + userLastName, rating);
     }
 
     @Test
@@ -723,9 +690,15 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Review answer")
     void t00403() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        completeOrder(data);
+        addReview(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(1);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         sideMenu.clickProfessionalProfile();
         rev.clickMasterReviews();
@@ -738,11 +711,16 @@ public class PositiveTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("2 users chatting tests")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Conversation test: step 1 out of 3")
+    @DisplayName("Chat test")
     void t00500() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        completeOrder(data);
         log.openMainPage();
         log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         sideMenu.clickSentOrders();
         ord.tabArchivedOrdersOutbox();
@@ -750,40 +728,22 @@ public class PositiveTests extends config.TestBase {
         pp.clickChat();
         msg.sendMessage(testMessage1);
         msg.checkMessage(testMessage1);
-    }
+        log.forceLogOut();
 
-    @Test
-    @Feature("Messages")
-    @Owner("Egor Khlebnikov")
-    @Story("2 users chatting tests")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Conversation test: step 2 out of 3")
-    void t00501() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(2);
+        log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickChat();
-        msg.findUserChat(firstNames[4]);
+        msg.findUserChat(userFirstName);
         msg.selectUser();
         msg.checkMessage(testMessage1);
         msg.sendMessage(testMessage2);
         msg.checkMessage(testMessage2);
-    }
+        log.forceLogOut();
 
-    @Test
-    @Feature("Messages")
-    @Owner("Egor Khlebnikov")
-    @Story("2 users chatting tests")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Conversation test: step 3 out of 3")
-    void t00502() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
         topBar.clickChat();
-        msg.findUserChat(firstNames[2]);
+        msg.findUserChat(userFirstName);
         msg.selectUser();
         msg.checkMessage(testMessage1);
         msg.checkMessage(testMessage2);
@@ -796,16 +756,20 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Remove master from favorites")
     void t00600() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        addToFavorite(data);
+
         log.openMainPage();
         log.popupSkip();
-        log.account(4);
+        log.logIn(clientEmail, clientPassword);
         log.forceEN();
 
         sideMenu.clickBookmarks();
-        fav.verifyBookmarkOnline(firstNames[0] + " " + lastNames[0]);
-
+        fav.verifyBookmarkOnline(userFirstName + " " + userLastName);
         fav.removeBookmark();
-        fav.verifyDelBookmark(firstNames[0] + " " + lastNames[0]);
+        fav.verifyDelBookmark(userFirstName + " " + userLastName);
     }
 
     @Test
@@ -815,17 +779,17 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Add master to favorite from search results")
     void t00601() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceNames[0]);
-        fav.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        search.search(serviceName);
+        fav.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         fav.clickFavSearch();
         sideMenu.clickBookmarks();
-        fav.verifyBookmarkOnline(firstNames[0] + " " + lastNames[0]);
+        fav.verifyBookmarkOnline(userFirstName + " " + userLastName);
     }
 
     @Test
@@ -835,20 +799,18 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Add master to favorite from master's profile")
     void t00602() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
 
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceNames[1]);
-        fav.verifyServiceSearch(firstNames[1], lastNames[1], serviceNames[1], servicePrices[1]);
+        search.search(serviceName);
+        fav.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         fav.selectMasterSearch();
         fav.clickFavMasterProfile();
         sideMenu.clickBookmarks();
-        fav.verifyBookmark(firstNames[1] + " " + lastNames[1], cities[1]);
-        fav.verifyBookmarkOnline(firstNames[0] + " " + lastNames[0]);
+        fav.verifyBookmark(userFirstName + " " + userLastName, userCity);
     }
 
     @Test
@@ -858,20 +820,18 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Add master to favorite from the service info")
     void t00603() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(4);
-        log.forceEN();
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceNames[2]);
-        fav.verifyServiceSearch(firstNames[2], lastNames[2], serviceNames[2], servicePrices[2]);
+        search.search(serviceName);
+        fav.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         fav.selectServiceSearch();
         fav.clickFavServiceInfo();
         sideMenu.clickBookmarks();
-        fav.verifyBookmark(firstNames[2] + " " + lastNames[2], cities[2]);
-        fav.verifyBookmark(firstNames[1] + " " + lastNames[1], cities[1]);
-        fav.verifyBookmark(firstNames[0] + " " + lastNames[0], cities[0]);
+        fav.verifyBookmark(userFirstName + " " + userLastName, userCity);
     }
 
     @Test
@@ -885,10 +845,10 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         log.forceEN();
 
-        bkn.findServiceMainPage(serviceNames[0]);
-        bkn.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        bkn.findServiceMainPage(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[0], servicePrices[0], serviceDurations[0], firstNames[0], lastNames[0], serviceDescriptions[0]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
@@ -902,21 +862,21 @@ public class PositiveTests extends config.TestBase {
         bkn.selectNewUser();
         bkn.acceptConfirmation();
 
-        reg.fillUserFirstName(firstNames[7]);
-        reg.fillUserLastName(lastNames[7]);
-        reg.fillEmail(emails[7]);
-        reg.choosePassword(passwords[7]);
+        reg.fillUserFirstName(userFirstName);
+        reg.fillUserLastName(userLastName);
+        reg.fillEmail(userEmail);
+        reg.choosePassword(userPassword);
 
-        reg.selectCountry(countries[7]);
-        reg.selectCity(cities[7]);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
         reg.confirmAndWait();
 
         bkn.placeOrder();
 
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[0]);
+        bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[0], serviceNames[0], servicePrices[0], serviceDurations[0]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
     }
 
     @Test
@@ -931,10 +891,10 @@ public class PositiveTests extends config.TestBase {
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.findService(serviceNames[0]);
-        bkn.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[0], servicePrices[0], serviceDurations[0], firstNames[0], lastNames[0], serviceDescriptions[0]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
         bkn.verifyServiceLocation("Online");
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
@@ -948,21 +908,21 @@ public class PositiveTests extends config.TestBase {
         bkn.selectNewUser();
         bkn.acceptConfirmation();
 
-        reg.fillUserFirstName(firstNames[8]);
-        reg.fillUserLastName(lastNames[8]);
-        reg.fillEmail(emails[8]);
-        reg.choosePassword(passwords[8]);
+        reg.fillUserFirstName(userFirstName);
+        reg.fillUserLastName(userLastName);
+        reg.fillEmail(userEmail);
+        reg.choosePassword(userPassword);
 
-        reg.selectCountry(countries[8]);
-        reg.selectCity(cities[8]);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
         reg.confirmAndWait();
 
         bkn.placeOrder();
 
         bkn.showOrderDetails();
-        bkn.verifyOrderDetails(serviceNames[0]);
+        bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
-        ord.checkOrderOutbox(firstNames[0], serviceNames[0], servicePrices[0], serviceDurations[0]);
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
     }
 
     @Test
@@ -972,14 +932,16 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Main page search: professional name")
     void t00800() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
 
-        search.searchMainNoQuotes(firstNames[0] + " " + lastNames[0]);
-        bkn.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        search.searchMainNoQuotes(userFirstName + " " + userLastName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[0], servicePrices[0], serviceDurations[0], firstNames[0], lastNames[0], serviceDescriptions[0]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 
     @Test
@@ -989,14 +951,16 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Main page search: service name")
     void t00801() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
 
-        bkn.findServiceMainPage(serviceNames[1]);
-        bkn.verifyServiceSearch(firstNames[1], lastNames[1], serviceNames[1], servicePrices[1]);
+        bkn.findServiceMainPage(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[1], servicePrices[1], serviceDurations[1], firstNames[1], lastNames[1], serviceDescriptions[1]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 
     @Test
@@ -1006,14 +970,16 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Main page search: speciality")
     void t00802() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
 
-        bkn.findServiceMainPage(specializations[2]);
-        bkn.verifyServiceSearch(firstNames[2], lastNames[2], serviceNames[2], servicePrices[2]);
+        bkn.findServiceMainPage(userSpecialization);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[2], servicePrices[2], serviceDurations[2], firstNames[2], lastNames[2], serviceDescriptions[2]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 
     @Test
@@ -1023,15 +989,17 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Search page search: professional name")
     void t00803() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSearch();
 
-        search.searchNoQuotes(firstNames[0] + " " + lastNames[0]);
-        bkn.verifyServiceSearch(firstNames[0], lastNames[0], serviceNames[0], servicePrices[0]);
+        search.searchNoQuotes(userFirstName + " " + userLastName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[0], servicePrices[0], serviceDurations[0], firstNames[0], lastNames[0], serviceDescriptions[0]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 
     @Test
@@ -1041,15 +1009,17 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Search page search: service name")
     void t00804() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.findService(serviceNames[1]);
-        bkn.verifyServiceSearch(firstNames[1], lastNames[1], serviceNames[1], servicePrices[1]);
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[1], servicePrices[1], serviceDurations[1], firstNames[1], lastNames[1], serviceDescriptions[1]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 
     @Test
@@ -1059,14 +1029,16 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Search page search: speciality")
     void t00805() {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
         sideMenu.clickSearch();
 
-        bkn.findService(specializations[2]);
-        bkn.verifyServiceSearch(firstNames[2], lastNames[2], serviceNames[2], servicePrices[2]);
+        bkn.findService(userSpecialization);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
-        bkn.verifyServiceBase(serviceNames[2], servicePrices[2], serviceDurations[2], firstNames[2], lastNames[2], serviceDescriptions[2]);
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
     }
 }

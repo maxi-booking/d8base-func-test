@@ -16,12 +16,12 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will not show if professional doesn't have any")
     void t00000() {
         //setup
-        serviceReadyAPI();
+        serviceReadyAPI(data);
 
         //search and check
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceNameRandom);
+        search.search(serviceName);
         search.verifyBestWorksNotExists();
     }
 
@@ -33,14 +33,14 @@ public class SearchTests extends TestBase {
     @DisplayName("'Best works' will show if filled")
     void t00001() {
         //setup
-        serviceReadyAPI();
+        serviceReadyAPI(data);
         pp.openMyProfessionalProfileLink();
         pp.uploadBestWorks(randomFile);
 
         //search and check
         sideMenu.clickSearch();
         search.closeAllChips();
-        search.search(serviceNameRandom);
+        search.search(serviceName);
         search.verifyBestWorksExists();
     }
 }

@@ -47,6 +47,8 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
+    minHeapSize = "512m"
+    maxHeapSize = "2048m"
     systemProperties(System.getProperties())
     useJUnitPlatform()
 

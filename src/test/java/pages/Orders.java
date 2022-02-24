@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.selector.ByShadow;
 import helpers.Attach;
@@ -8,8 +9,7 @@ import io.qameta.allure.Step;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.*;
@@ -192,6 +192,11 @@ public class Orders extends config.TestBase {
         if (!duration.minutes.equals("0")) {
             $("app-inbox-page app-infinite-scroll-container").shouldNotHave(text(duration.minutes));
         }
+    }
+
+    @Step("Orders Inbox should be empty")
+    public void verifyNoOrdersInOrderInbox() {
+        $$("app-inbox-page ion-card").shouldBe(CollectionCondition.size(0));
     }
 
     @Step("Simple order check outbox")

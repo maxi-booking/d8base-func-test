@@ -16,7 +16,7 @@ public class UserProfileTests extends config.TestBase {
     void t00000() {
         String address1 = "Street 1";
         String address2 = "Street 2";
-        userReadyAPI();
+        userReadyAPI(data);
         sideMenu.clickProfile();
 
         up.clickAddNewAddress();
