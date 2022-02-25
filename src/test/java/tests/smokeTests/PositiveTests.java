@@ -369,7 +369,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
-        bkn.verifyServiceLocation("Client's place");
+        bkn.verifyServiceLocation(clientLocation);
         bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
@@ -407,7 +407,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
-        bkn.verifyServiceLocation("Professional's place");
+        bkn.verifyServiceLocation(professionalLocation);
         bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
@@ -841,6 +841,9 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic booking from the main page: guest")
     void t00700() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
@@ -849,7 +852,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
-        bkn.verifyServiceLocation("Online");
+        bkn.verifyServiceLocation(onlineLocation);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking(on);
@@ -862,16 +865,17 @@ public class PositiveTests extends config.TestBase {
         bkn.selectNewUser();
         bkn.acceptConfirmation();
 
-        reg.fillUserFirstName(userFirstName);
-        reg.fillUserLastName(userLastName);
-        reg.fillEmail(userEmail);
-        reg.choosePassword(userPassword);
+        reg.fillUserFirstName(clientFirstName);
+        reg.fillUserLastName(clientLastName);
+        reg.fillEmail(clientEmail);
+        reg.choosePassword(clientPassword);
 
-        reg.selectCountry(userCountry);
-        reg.selectCity(userCity);
+        reg.selectCountry(clientCountry);
+        reg.selectCity(clientCity);
         reg.confirmAndWait();
 
         bkn.placeOrder();
+        log.forceEN();
 
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(serviceName);
@@ -886,6 +890,9 @@ public class PositiveTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Basic booking: guest")
     void t00701() {
+        data.sType = online;
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
         log.forceEN();
@@ -895,7 +902,7 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
-        bkn.verifyServiceLocation("Online");
+        bkn.verifyServiceLocation(onlineLocation);
         bkn.verifyServicePaymentCash();
         bkn.verifyServicePaymentOnline();
         bkn.verifyInstantBooking(on);
@@ -908,16 +915,17 @@ public class PositiveTests extends config.TestBase {
         bkn.selectNewUser();
         bkn.acceptConfirmation();
 
-        reg.fillUserFirstName(userFirstName);
-        reg.fillUserLastName(userLastName);
-        reg.fillEmail(userEmail);
-        reg.choosePassword(userPassword);
+        reg.fillUserFirstName(clientFirstName);
+        reg.fillUserLastName(clientLastName);
+        reg.fillEmail(clientEmail);
+        reg.choosePassword(clientPassword);
 
-        reg.selectCountry(userCountry);
-        reg.selectCity(userCity);
+        reg.selectCountry(clientCountry);
+        reg.selectCity(clientCity);
         reg.confirmAndWait();
 
         bkn.placeOrder();
+        log.forceEN();
 
         bkn.showOrderDetails();
         bkn.verifyOrderDetails(serviceName);

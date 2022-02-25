@@ -97,6 +97,7 @@ public class Booking {
 
     @Step("Verify service location")
     public void verifyServiceLocation(String ServiceLocation) {
+
         $("app-service-widget").$("app-service-location").shouldHave(text(ServiceLocation));
     }
 
