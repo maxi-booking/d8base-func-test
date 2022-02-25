@@ -117,7 +117,7 @@ public class ProfessionalProfile extends TestBase {
             String masterExperience,
             String masterLevel
     ) {
-        $("app-professional-page app-professional-card-large").scrollIntoView(true);
+        $("app-professional-page app-professional-card-large").scrollIntoView(false);
         $("app-professional-page app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         if ($("app-professional-page app-shorten span.ext").exists()) {
             $("app-professional-page app-shorten span.ext").click();
