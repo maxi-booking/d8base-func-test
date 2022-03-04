@@ -19,6 +19,7 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
     void t00000() {
+        log.openMainPage();
         String accessToken = registration(firstNames[11], lastNames[11], emails[11], passwords[11], countries[11], phoneNumbers[11]);
         int locationsId = locations(accessToken, countries[11], cities[11]);
         changeAccountTypeToProfessional(accessToken);

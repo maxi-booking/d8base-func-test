@@ -464,7 +464,7 @@ public class TestData {
             paymentCash = {"cash"},
             paymentOnline = {"online"};
 
-    public static void setTestData() {
+    public static final void setTestData() {
         //currency
         cad = 0;
         eur = 1;
