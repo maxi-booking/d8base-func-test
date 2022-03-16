@@ -29,12 +29,12 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.forceEN();
         sideMenu.clickPublishNewService();
 
-        pbl.chooseCategory(data.category);
-        pbl.chooseSubcategory(data.subcategory);
+        pbl.chooseCategory(data.category[0]);
+        pbl.chooseSubcategory(data.subcategory[0]);
         pbl.clickFirstStep();
 
         pbl.enterServiceName(data.name);
-        pbl.enterServiceDescription(data.description);
+        pbl.enterServiceDescription(data.description[0]);
         pbl.setDuration(data.duration);
         pbl.setPriceFixed(data.price, data.currencyId);
         pbl.selectServiceLocation(data.sType);
@@ -42,7 +42,7 @@ public class RegressionTestsHelpers extends config.TestBase {
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(data.specialization);
+        pbl.fillSpecialization(data.specialization[0]);
         pbl.clickSixthStep();
 
         pbl.fillScheduleLite();
@@ -60,10 +60,14 @@ public class RegressionTestsHelpers extends config.TestBase {
 
     public static void serviceRegisterAPI(Data data) {
         changeAccountTypeToProfessional(data.accessToken[0]);
-        data.professionalId = createProfessional(data.accessToken[0], data.category, data.subcategory, data.specialization);
-        data.serviceId = servicePublish(data.accessToken[0], data.professionalId, data.name, data.description, data.duration, data.sType, data.iBooking);
+        data.professionalId = createProfessional(data.accessToken[0], data.category[0], data.subcategory[0], data.specialization[0], data.level[0], data.description[0]);
+        data.serviceId = servicePublish(data.accessToken[0], data.professionalId, data.name, data.description[0], data.duration, data.sType, data.iBooking);
         data.professionalLocationId = professionalLocations(data.accessToken[0], data.professionalId, data.country[0], data.city[0], data.address, data.units);
-        setSchedule(data.accessToken[0], data.professionalId, 7);
+        if (Integer.parseInt(data.duration) >= 1440) {
+            data.startTime = "00:00";
+            data.endTime = "23:59";
+        }
+        setSchedule(data.accessToken[0], data.professionalId, 7, data.startTime, data.endTime);
         if (data.sType == online) {
             data.serviceLocationId = data.locationsId[0];
         } else if (data.sType == client) {
@@ -108,7 +112,7 @@ public class RegressionTestsHelpers extends config.TestBase {
     }
 
     public static void userReadyAPI(Data data) {
-        data.accessToken[0] = registration(data.firstName[0], data.lastName[0], data.email[0], data.password[0]);
+        data.accessToken[0] = registration(data.firstName[0], data.lastName[0], data.email[0], data.password[0], data.country[0], data.phoneNumber[0]);
         data.locationsId[0] = locations(data.accessToken[0], data.country[0], data.city[0]);
         log.openMainPage();
         log.popupSkip();

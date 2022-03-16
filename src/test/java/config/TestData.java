@@ -464,7 +464,7 @@ public class TestData {
             paymentCash = {"cash"},
             paymentOnline = {"online"};
 
-    public static final void setTestData() {
+    public static void setTestData() {
         //currency
         cad = 0;
         eur = 1;
@@ -663,12 +663,14 @@ public class TestData {
     }
 
     public String
+            randomSpaces,
             randomFile,
             reviewText,
             userCountry,
             userCity,
             userFirstName,
             userLastName,
+            userPatronymic,
             userEmail,
             userEmailUppercase,
             userEmailLowercase,
@@ -679,27 +681,91 @@ public class TestData {
             clientCity,
             clientFirstName,
             clientLastName,
+            clientPatronymic,
             clientEmail,
             clientPassword,
             clientPhoneNumber,
             serviceName,
             serviceDescription,
+            serviceDescriptionAlt,
             serviceDuration,
+            serviceDurationLong,
+            masterLevel,
+            masterLevelAlt,
+            masterQualificationDate,
+            masterQualificationDateAlt,
+            masterQualificationJobTitle,
+            masterQualificationJobTitleAlt,
+            masterQualificationCompany,
+            masterQualificationCompanyAlt,
+            masterQualificationFromMonth,
+            masterQualificationFromMonthAlt,
+            masterQualificationFromYear,
+            masterQualificationFromYearAlt,
+            masterQualificationToMonth,
+            masterQualificationToMonthAlt,
+            masterQualificationToYear,
+            masterQualificationToYearAlt,
+            masterQualificationDescription,
+            masterQualificationDescriptionAlt,
+            masterEducationUniversity,
+            masterEducationUniversityAlt,
+            masterEducationDegree,
+            masterEducationDegreeAlt,
+            masterEducationAcademicField,
+            masterEducationAcademicFieldAlt,
+            masterEducationFromMonth,
+            masterEducationFromMonthAlt,
+            masterEducationFromYear,
+            masterEducationFromYearAlt,
+            masterEducationToMonth,
+            masterEducationToMonthAlt,
+            masterEducationToYear,
+            masterEducationToYearAlt,
+            masterEducationDate,
+            masterEducationDateAlt,
+            masterEducationDescription,
+            masterEducationDescriptionAlt,
+            masterExperience,
+            masterExperienceAlt,
+            masterCertificateName,
+            masterCertificateNameAlt,
+            masterCertificateOrganization,
+            masterCertificateOrganizationAlt,
+            masterCertificateDateDay,
+            masterCertificateDateDayAlt,
+            masterCertificateDateMonth,
+            masterCertificateDateMonthAlt,
+            masterCertificateDateYear,
+            masterCertificateDateYearAlt,
+            masterCertificateDate,
+            masterCertificateDateAlt,
+            masterCertificateID,
+            masterCertificateIDAlt,
+            masterCertificateLink,
+            masterCertificateLinkAlt,
+            masterCertificatePhoto,
+            masterCertificatePhotoAlt,
+            masterCompany,
+            masterCompanyAlt,
             servicePrice,
             servicePriceMin,
             servicePriceMax,
             serviceCurrency,
             userSpecialization,
+            userSpecializationAlt,
             serviceAddress,
             serviceDistance,
-            bookingDateTime,
-            masterEducationUniversity;
+            bookingDateTime;
 
     public int
+            randomNumber,
             serviceLocationDistance,
             distanceUnits,
             serviceCategory,
+            serviceCategoryAlt,
             serviceSubcategory,
+            serviceSubcategoryAlt,
             randomRating,
             serviceCurrencyId;
 
@@ -708,11 +774,32 @@ public class TestData {
     public void setRandomData() {
         Random r = new Random();
         char c = (char) (r.nextInt(26) + 'a');
+        LocalDate currentDate = LocalDate.now();
+        int day = currentDate.getDayOfMonth();
+        int year = currentDate.getYear();
 
         Faker generate = new Faker(new Locale("en-US"));
 
+        randomNumber = generate.number().numberBetween(1, 7);
+        for (int i = 0; i < randomNumber; i++) {
+            if (randomSpaces != null) {
+                randomSpaces = " " + randomSpaces;
+            } else {
+                randomSpaces = " ";
+            }
+        }
+
         serviceCategory = generate.number().numberBetween(0, 9);
+        serviceCategoryAlt = generate.number().numberBetween(0, 9);
+        while (true) {
+            if (serviceCategoryAlt != serviceCategory) {
+                break;
+            } else {
+                serviceCategoryAlt = generate.number().numberBetween(0, 9);
+            }
+        }
         serviceSubcategory = getRandomSubcategoryFromCategoryValue(serviceCategory);
+        serviceSubcategoryAlt = getRandomSubcategoryFromCategoryValue(serviceCategoryAlt);
         randomFile = "src/test/resources/img/" + generate.number().numberBetween(1, 12) + ".png";
         randomRating = generate.number().numberBetween(1, 6);
         reviewText = generate.rickAndMorty().quote() + " " + generate.chuckNorris().fact();
@@ -721,6 +808,7 @@ public class TestData {
         userCity = "Moscow";
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
+        userPatronymic = generate.name().nameWithMiddle();
         userEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".pp";
         userPassword = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
@@ -729,19 +817,56 @@ public class TestData {
         clientCity = "Moscow";
         clientFirstName = generate.name().firstName();
         clientLastName = generate.name().lastName();
+        clientPatronymic = generate.name().nameWithMiddle();
         clientEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".cl";
         clientPassword = generate.internet().password();
         clientPhoneNumber = "911" + generate.number().digits(7);
 
         serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
-        serviceDescription = generate.lorem().characters(20, 200);
+        serviceDescription = generate.rickAndMorty().quote() + " " + generate.hobbit().quote();
+        serviceDescriptionAlt = generate.rickAndMorty().quote() + " " + generate.hobbit().quote();
+        while (true) {
+            if (!serviceDescriptionAlt.equals(serviceDescription)) {
+                break;
+            } else {
+                serviceDescriptionAlt = generate.rickAndMorty().quote();
+            }
+        }
         serviceDuration = new String[]{"15", "30", "45"}[(int) (Math.random() * 3)];
+        serviceDurationLong = String.valueOf(generate.number().numberBetween(96, 250) * 15); // 1440 minutes (day) / 3750 minutes (2,6 days)
+        masterLevel = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
+        masterLevelAlt = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
+        while (true) {
+            if (!masterLevelAlt.equals(masterLevel)) {
+                break;
+            } else {
+                masterLevelAlt = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
+            }
+        }
+
+        masterCompany = generate.app().author() + " " + generate.ancient().titan();
+        masterCompanyAlt = generate.app().author() + " " + generate.ancient().titan();
+        while (true) {
+            if (!masterCompanyAlt.equals(masterCompany)) {
+                break;
+            } else {
+                masterCompanyAlt = generate.app().author() + " " + generate.ancient().titan();
+            }
+        }
         servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
         servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
         servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
         serviceCurrencyId = generate.number().numberBetween(0, 4);
         serviceCurrency = getCurrencyById(serviceCurrencyId);
         userSpecialization = generate.job().title() + " " + generate.ancient().god();
+        userSpecializationAlt = generate.job().title() + " " + generate.ancient().god();
+        while (true) {
+            if (!userSpecializationAlt.equals(userSpecialization)) {
+                break;
+            } else {
+                userSpecializationAlt = generate.job().title() + " " + generate.ancient().god();
+            }
+        }
         serviceAddress = generate.address().fullAddress();
         serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));
         serviceLocationDistance = generate.number().numberBetween(1, 9999);
@@ -749,11 +874,124 @@ public class TestData {
 
         bookingDateTime = getDateTime();
 
-        masterEducationUniversity = generate.university().name();
-
         userEmailMixedCase = (generate.lorem().characters(2, 4)).toUpperCase() + (generate.lorem().characters(2, 4)).toLowerCase() + (generate.lorem().characters(2, 4)).toUpperCase() + "@" + (generate.lorem().characters(1, 2)).toUpperCase() + (generate.lorem().characters(1, 2)).toLowerCase() + "." + Character.toUpperCase(c) + Character.toLowerCase(c);
         userEmailUppercase = userEmailMixedCase.toUpperCase();
         userEmailLowercase = userEmailMixedCase.toLowerCase();
+
+        //Professional's profile qualification tab
+
+        masterQualificationJobTitle = generate.job().title();
+        masterQualificationJobTitleAlt = generate.job().title();
+        while (true) {
+            if (!masterQualificationJobTitleAlt.equals(masterQualificationJobTitle)) {
+                break;
+            } else {
+                masterQualificationJobTitleAlt = generate.job().title();
+            }
+        }
+        masterQualificationCompany = generate.company().name();
+        masterQualificationCompanyAlt = generate.company().name();
+        while (true) {
+            if (!masterQualificationCompanyAlt.equals(masterQualificationCompany)) {
+                break;
+            } else {
+                masterQualificationCompanyAlt = generate.company().name();
+            }
+        }
+        masterQualificationFromMonth = generateMonth();
+        masterQualificationFromMonthAlt = generateMonth();
+        masterQualificationFromYear = String.valueOf(generate.number().numberBetween(1950, 2016));
+        masterQualificationFromYearAlt = String.valueOf(generate.number().numberBetween(1950, 2016));
+        while (true) {
+            if (!masterQualificationFromYearAlt.equals(masterQualificationFromYear)) {
+                break;
+            } else {
+                masterQualificationFromYearAlt = String.valueOf(generate.number().numberBetween(1950, 2016));
+            }
+        }
+        masterQualificationToMonth = generateMonth();
+        masterQualificationToMonthAlt = generateMonth();
+        while (true) {
+            if (!masterQualificationToMonthAlt.equals(masterQualificationToMonth)) {
+                break;
+            } else {
+                masterQualificationToMonthAlt = generateMonth();
+            }
+        }
+        masterQualificationToYear = String.valueOf(generate.number().numberBetween(2017, 2020));
+        masterQualificationToYearAlt = String.valueOf(generate.number().numberBetween(2017, 2020));
+        while (true) {
+            if (!masterQualificationToYearAlt.equals(masterQualificationToYear)) {
+                break;
+            } else {
+                masterQualificationToYearAlt = String.valueOf(generate.number().numberBetween(2017, 2020));
+            }
+        }
+        masterQualificationDescription = generate.shakespeare().asYouLikeItQuote();
+        masterQualificationDescriptionAlt = generate.shakespeare().asYouLikeItQuote();
+        while (true) {
+            if (!masterQualificationDescriptionAlt.equals(masterQualificationDescription)) {
+                break;
+            } else {
+                masterQualificationDescriptionAlt = generate.shakespeare().asYouLikeItQuote();
+            }
+        }
+        masterQualificationDate = masterQualificationFromYear + "-" + monthConvertToNumber(masterQualificationFromMonth) + "-" + "01" + " - " + masterQualificationToYear + "-" + monthConvertToNumber(masterQualificationToMonth) + "-" + "01";
+        masterQualificationDateAlt = masterQualificationFromYearAlt + "-" + monthConvertToNumber(masterQualificationFromMonthAlt) + "-" + "01" + " - ";
+
+        masterExperience = Integer.toString(year - Integer.parseInt(masterQualificationFromYear));
+        masterExperienceAlt = Integer.toString(year - Integer.parseInt(masterQualificationFromYearAlt));
+        while (true) {
+            if (!masterExperienceAlt.equals(masterExperience)) {
+                break;
+            } else {
+                masterExperienceAlt = Integer.toString(year - Integer.parseInt(masterQualificationDateAlt));
+            }
+        }
+
+        //Professional's profile education tab
+
+        masterEducationUniversity = generate.university().name();
+        masterEducationUniversityAlt = generate.educator().university();
+        masterEducationDegree = generate.educator().course();
+        masterEducationDegreeAlt = generate.educator().campus();
+        masterEducationAcademicField = generate.job().field();
+        masterEducationAcademicFieldAlt = generate.job().field();
+        masterEducationFromMonth = generateMonth();
+        masterEducationFromMonthAlt = generateMonth();
+        masterEducationFromYear = String.valueOf(generate.number().numberBetween(1995, 2000));
+        masterEducationFromYearAlt = String.valueOf(generate.number().numberBetween(2006, 2012));
+        masterEducationToMonth = generateMonth();
+        masterEducationToMonthAlt = generateMonth();
+        masterEducationToYear = String.valueOf(generate.number().numberBetween(2001, 2005));
+        masterEducationToYearAlt = String.valueOf(generate.number().numberBetween(2013, 2018));
+        masterEducationDate = masterEducationFromYear + "-" + monthConvertToNumber(masterEducationFromMonth) + "-01 - " + masterEducationToYear + "-" + monthConvertToNumber(masterEducationToMonth) + "-01";
+        masterEducationDateAlt = masterEducationFromYearAlt + "-" + monthConvertToNumber(masterEducationFromMonthAlt) + "-01 - ";
+        masterEducationDescription = generate.job().keySkills();
+        masterEducationDescriptionAlt = generate.job().seniority();
+
+        //Professional's profile certificates tab
+
+        masterCertificateName = generate.name().title();
+        masterCertificateNameAlt = generate.app().name();
+        masterCertificateOrganization = generate.address().state();
+        masterCertificateOrganizationAlt = generate.company().name();
+        masterCertificateDateDay = String.valueOf(generate.number().numberBetween(10, 28));
+        masterCertificateDateDayAlt = String.valueOf(generate.number().numberBetween(10, 28));
+        masterCertificateDateMonth = generateMonth();
+        masterCertificateDateMonthAlt = generateMonth();
+        masterCertificateDateYear = String.valueOf(generate.number().numberBetween(1980, 2020));
+        masterCertificateDateYearAlt = String.valueOf(generate.number().numberBetween(1980, 2020));
+        masterCertificateDate = masterCertificateDateYear + "-" + monthConvertToNumber(masterCertificateDateMonth) + "-" + masterCertificateDateDay;
+        masterCertificateDateAlt = masterCertificateDateYearAlt + "-" + monthConvertToNumber(masterCertificateDateMonthAlt) + "-" + masterCertificateDateDayAlt;
+        masterCertificateID = String.valueOf(generate.number().numberBetween(100000000, 600000000));
+        masterCertificateIDAlt = String.valueOf(generate.number().numberBetween(500000001, 999999999));
+        masterCertificateLink = "https://" + "www." + generate.color().name() + "." + c + c + "/".replaceAll("\\s+", "").toLowerCase();
+        masterCertificateLink = masterCertificateLink.replaceAll("\\s+", "").toLowerCase();
+        masterCertificateLinkAlt = "https://" + "www." + generate.app().name() + "." + c + c + "/";
+        masterCertificateLinkAlt = masterCertificateLinkAlt.replaceAll("\\s+", "").toLowerCase();
+        masterCertificatePhoto = "src/test/resources/img/" + generate.number().numberBetween(1, 6) + ".png";
+        masterCertificatePhotoAlt = "src/test/resources/img/" + generate.number().numberBetween(7, 12) + ".png";
 
         data = new Data();
     }
@@ -768,17 +1006,48 @@ public class TestData {
      * [1] - client
      */
     public class Data {
-        public String[] firstName = new String[] {userFirstName, clientFirstName};
-        public String[] lastName = new String[] {userLastName, clientLastName};
-        public String[] email = new String[] {userEmail, clientEmail};
-        public String[] password = new String[] {userPassword, clientPassword};
-        public String[] phoneNumber = new String[] {userPhoneNumber, clientPhoneNumber};
-        public String[] country = new String[] {userCountry, clientCountry};
-        public String[] city = new String[] {userCity, clientCity};
-        public String specialization = userSpecialization;
+        public String[] firstName = new String[]{userFirstName, clientFirstName};
+        public String[] lastName = new String[]{userLastName, clientLastName};
+        public String[] patronymic = new String[]{userPatronymic, clientPatronymic};
+        public String[] email = new String[]{userEmail, clientEmail};
+        public String[] password = new String[]{userPassword, clientPassword};
+        public String[] phoneNumber = new String[]{userPhoneNumber, clientPhoneNumber};
+        public String[] country = new String[]{userCountry, clientCountry};
+        public String[] city = new String[]{userCity, clientCity};
+        public String[] specialization = new String[]{userSpecialization, userSpecializationAlt};
         public String name = serviceName;
-        public String description = serviceDescription;
+        public String[] description = new String[]{serviceDescription, serviceDescriptionAlt};
         public String duration = serviceDuration;
+        public String durationLong = serviceDurationLong;
+        public String[] level = new String[]{masterLevel, masterLevelAlt};
+        public String[] experience = new String[]{masterExperience, masterExperienceAlt};
+        public String[] company = new String[]{masterCompany, masterCompanyAlt};
+        public String[] qualificationDate = new String[]{masterQualificationDate, masterQualificationDateAlt};
+        public String[] qualificationJobTitle = new String[]{masterQualificationJobTitle, masterQualificationJobTitleAlt};
+        public String[] qualificationCompany = new String[]{masterQualificationCompany, masterQualificationCompanyAlt};
+        public String[] qualificationFromMonth = new String[]{masterQualificationFromMonth, masterQualificationFromMonthAlt};
+        public String[] qualificationFromYear = new String[]{masterQualificationFromYear, masterQualificationFromYearAlt};
+        public String[] qualificationToMonth = new String[]{masterQualificationToMonth, masterQualificationToMonthAlt};
+        public String[] qualificationToYear = new String[]{masterQualificationToYear, masterQualificationToYearAlt};
+        public String[] qualificationDescription = new String[]{masterQualificationDescription, masterQualificationDescriptionAlt};
+        public String[] educationUniversity = new String[]{masterEducationUniversity, masterEducationUniversityAlt};
+        public String[] educationDegree = new String[]{masterEducationDegree, masterEducationDegreeAlt};
+        public String[] educationAcademicField = new String[]{masterEducationAcademicField, masterEducationAcademicFieldAlt};
+        public String[] educationFromMonth = new String[]{masterEducationFromMonth, masterEducationFromMonthAlt};
+        public String[] educationFromYear = new String[]{masterEducationFromYear, masterEducationFromYearAlt};
+        public String[] educationToMonth = new String[]{masterEducationToMonth, masterEducationToMonthAlt};
+        public String[] educationToYear = new String[]{masterEducationToYear, masterEducationToYearAlt};
+        public String[] educationDate = new String[]{masterEducationDate, masterEducationDateAlt};
+        public String[] educationDescription = new String[]{masterEducationDescription, masterEducationDescriptionAlt};
+        public String[] certificateName = new String[]{masterCertificateName, masterCertificateNameAlt};
+        public String[] certificateOrganization = new String[]{masterCertificateOrganization, masterCertificateOrganizationAlt};
+        public String[] certificateDateDay = new String[]{masterCertificateDateDay, masterCertificateDateDayAlt};
+        public String[] certificateDateMonth = new String[]{masterCertificateDateMonth, masterCertificateDateMonthAlt};
+        public String[] certificateDateYear = new String[]{masterCertificateDateYear, masterCertificateDateYearAlt};
+        public String[] certificateDate = new String[]{masterCertificateDate, masterCertificateDateAlt};
+        public String[] certificateID = new String[]{masterCertificateID, masterCertificateIDAlt};
+        public String[] certificateLink = new String[]{masterCertificateLink, masterCertificateLinkAlt};
+        public String[] certificatePhoto = new String[]{masterCertificatePhoto, masterCertificatePhotoAlt};
         public String price = servicePrice;
         public String priceMin = servicePriceMin;
         public String priceMax = servicePriceMax;
@@ -787,20 +1056,22 @@ public class TestData {
         public String distance = serviceDistance;
         public int locationDistance = serviceLocationDistance;
         public String dateTime = bookingDateTime;
-        public int category = serviceCategory;
-        public int subcategory = serviceSubcategory;
+        public int[] category = new int[]{serviceCategory, serviceCategoryAlt};
+        public int[] subcategory = new int[]{serviceSubcategory, serviceSubcategoryAlt};
         public String review = reviewText;
         public int rating = randomRating;
         public int currencyId = serviceCurrencyId;
         public int units = distanceUnits; // random units km/mil
         public String file = randomFile;
 
+        public String startTime = "09:00";
+        public String endTime = "17:00";
         public int sType = online; // service type - online / client / master
         public boolean iBooking = on; // instant booking on/off (true/false)
         public String[] payment = paymentCashOnline; // payment options: cash / online / cashOnline
 
-        public String[] accessToken =  new String[] {null, null};
-        public int[] locationsId =  new int[] {0, 0};
+        public String[] accessToken = new String[]{null, null};
+        public int[] locationsId = new int[]{0, 0};
         public int professionalId;
         public int serviceId;
         public int professionalLocationId;

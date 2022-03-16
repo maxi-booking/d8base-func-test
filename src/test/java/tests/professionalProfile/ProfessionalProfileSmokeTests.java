@@ -8,28 +8,10 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static api.Registration.*;
 import static api.ServicePublish.*;
+import static com.codeborne.selenide.Selenide.sleep;
+import static helpers.RegressionTestsHelpers.serviceReadyAPI;
 
-@Execution(value = ExecutionMode.SAME_THREAD)
 public class ProfessionalProfileSmokeTests extends config.TestBase {
-
-    @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Professional profile (preparations): account creation (Full Registration + Full Service Publication)")
-    void t00000() {
-        log.openMainPage();
-        String accessToken = registration(firstNames[11], lastNames[11], emails[11], passwords[11], countries[11], phoneNumbers[11]);
-        int locationsId = locations(accessToken, countries[11], cities[11]);
-        changeAccountTypeToProfessional(accessToken);
-        int professionalId = createProfessional(accessToken, master12MainCategory, master12MainSubcategory, specializations[11], master12MainLevel, master12MainDescription);
-        int serviceId = servicePublish(accessToken, professionalId, serviceNames[11], serviceDescriptions[11], serviceDurations[11], professional, instantBooking);
-        int serviceLocationId = professionalLocations(accessToken, professionalId, service12Country, service12City, service12Address);
-        serviceLocations(accessToken, serviceId, serviceLocationId);
-        setSchedule(accessToken, professionalId, 7);
-        servicePrices(accessToken, serviceId, servicePrices[11], serviceCurrency, paymentCashOnline);
-    }
 
     @Test
     @Feature("Professional Profile verification")
@@ -37,27 +19,22 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: info verification")
-    void t00001() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileInfoVerification() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(firstNames[11], lastNames[11], countries[11], cities[11], user12Address, master12MainDescription, master12MainLevel);
+        pp.verifyProfessionalProfileBasic(data.firstName[0], data.lastName[0], data.country[0], data.city[0], data.address, data.description[0], data.level[0]);
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
         pp.mainClickBack();
         pp.qualificationVerificationEmpty();
         pp.educationVerificationEmpty();
         pp.certificatesVerificationEmpty();
         pp.clickEditMain();
-        pp.editExperience(master12MainExperience);
+        pp.editExperience(data.experience[0]);
         pp.mainClickSave();
-        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
+        pp.verifyProfessionalProfileMain(data.country[0], data.city[0], data.address, data.description[0], data.experience[0], data.level[0]);
     }
 
     @Test
@@ -66,13 +43,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: functionality verification")
-    void t00002() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileFunctionalityVerification() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
@@ -106,48 +78,43 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: main - change all the info and verify")
-    void t00004() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileInfoChangeTest() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
         pp.mainClickBack();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
-        pp.editSpecialization(master12MainSpecializationNew);
-        pp.editDescription(master12MainDescriptionNew);
-        pp.editCompany(master12MainCompanyNew);
-        pp.editExperience(master12MainExperienceNew);
-        pp.editExpertiseLevel(master12MainLevelNew);
-        pp.editCategory(master12MainCategoryNew);
-        pp.editSubcategory(master12MainSubcategoryNew);
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
+        pp.editSpecialization(data.specialization[1]);
+        pp.editDescription(data.description[1]);
+        pp.editCompany(data.company[0]);
+        pp.editExperience(data.experience[1]);
+        pp.editExpertiseLevel(data.level[1]);
+        pp.editCategory(data.category[1]);
+        pp.editSubcategory(data.subcategory[1]);
         pp.mainClickBack();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
-        pp.editSpecialization(master12MainSpecializationNew);
-        pp.editDescription(master12MainDescriptionNew);
-        pp.editCompany(master12MainCompanyNew);
-        pp.editExperience(master12MainExperienceNew);
-        pp.editExpertiseLevel(master12MainLevelNew);
-        pp.editCategory(master12MainCategoryNew);
-        pp.editSubcategory(master12MainSubcategoryNew);
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
+        pp.editSpecialization(data.specialization[1]);
+        pp.editDescription(data.description[1]);
+        pp.editCompany(data.company[0]);
+        pp.editExperience(data.experience[1]);
+        pp.editExpertiseLevel(data.level[1]);
+        pp.editCategory(data.category[1]);
+        pp.editSubcategory(data.subcategory[1]);
         pp.mainClickSave();
-        pp.verifyProfessionalExp(master12MainExperienceNew);
+        pp.verifyProfessionalExp(data.experience[1]);
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
+        pp.mainVerify(data.description[1], data.level[1], data.category[1], data.subcategory[1]);
         pp.mainClickBack();
 
-        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescriptionNew, master12MainExperienceNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileMain(data.country[0], data.city[0], data.address, data.description[1], data.experience[1], data.level[1]);
     }
 
     @Test
@@ -156,58 +123,53 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: qualification - change all the info and verify")
-    void t00006() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileQualificationChangeTest() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.qualificationVerificationEmpty();
         pp.clickAddNewQualification();
-        pp.qualificationEditJobTitle(master12QualificationJobTitle);
-        pp.qualificationEditCompany(master12QualificationCompany);
-        pp.qualificationEditFrom(master12QualificationFromMonth, master12QualificationFromYear);
-        pp.qualificationEditTo(master12QualificationToMonth, master12QualificationToYear);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[0]);
+        pp.qualificationEditCompany(data.qualificationCompany[0]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[0], data.qualificationFromYear[0]);
+        pp.qualificationEditTo(data.qualificationToMonth[0], data.qualificationToYear[0]);
         pp.qualificationOngoingNo();
-        pp.qualificationEditDescription(master12QualificationDescription);
+        pp.qualificationEditDescription(data.qualificationDescription[0]);
         pp.qualificationClickBack();
         pp.qualificationVerificationEmpty();
 
         pp.clickAddNewQualification();
-        pp.qualificationEditJobTitle(master12QualificationJobTitle);
-        pp.qualificationEditCompany(master12QualificationCompany);
-        pp.qualificationEditFrom(master12QualificationFromMonth, master12QualificationFromYear);
-        pp.qualificationEditTo(master12QualificationToMonth, master12QualificationToYear);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[0]);
+        pp.qualificationEditCompany(data.qualificationCompany[0]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[0], data.qualificationFromYear[0]);
+        pp.qualificationEditTo(data.qualificationToMonth[0], data.qualificationToYear[0]);
         pp.qualificationOngoingNo();
-        pp.qualificationEditDescription(master12QualificationDescription);
+        pp.qualificationEditDescription(data.qualificationDescription[0]);
         pp.qualificationClickSave();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
         pp.qualificationClickBack();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
-        pp.qualificationEditJobTitle(master12QualificationJobTitleNew);
-        pp.qualificationEditCompany(master12QualificationCompanyNew);
-        pp.qualificationEditFrom(master12QualificationFromMonthNew, master12QualificationFromYearNew);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
+        pp.qualificationEditCompany(data.qualificationCompany[1]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[1], data.qualificationFromYear[1]);
         pp.qualificationOngoingYes();
-        pp.qualificationEditDescription(master12QualificationDescriptionNew);
+        pp.qualificationEditDescription(data.qualificationDescription[1]);
         pp.qualificationClickBack();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
-        pp.qualificationEditJobTitle(master12QualificationJobTitleNew);
-        pp.qualificationEditCompany(master12QualificationCompanyNew);
-        pp.qualificationEditFrom(master12QualificationFromMonthNew, master12QualificationFromYearNew);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
+        pp.qualificationEditCompany(data.qualificationCompany[1]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[1], data.qualificationFromYear[1]);
         pp.qualificationOngoingYes();
-        pp.qualificationEditDescription(master12QualificationDescriptionNew);
+        pp.qualificationEditDescription(data.qualificationDescription[1]);
         pp.qualificationClickSave();
-        pp.qualificationVerificationFull(0, master12QualificationDateNew, master12QualificationJobTitleNew, master12QualificationCompanyNew, master12QualificationDescriptionNew);
+        pp.qualificationVerificationFull(0, data.qualificationDate[1], data.qualificationJobTitle[1], data.qualificationCompany[1], data.qualificationDescription[1]);
 
         pp.clickEditQualification(0);
         pp.qualificationClickRemove();
@@ -220,63 +182,58 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: education - change all the info and verify")
-    void t00007() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileEducationChangeTest() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
         pp.educationVerificationEmpty();
         pp.clickAddNewEducation();
-        pp.educationUniversity(master12EducationUniversity);
-        pp.educationDegree(master12EducationDegree);
-        pp.educationAcademicField(master12EducationAcademicField);
-        pp.educationEditFrom(master12EducationFromMonth, master12EducationFromYear);
-        pp.educationEditTo(master12EducationToMonth, master12EducationToYear);
+        pp.educationUniversity(data.educationUniversity[0]);
+        pp.educationDegree(data.educationDegree[0]);
+        pp.educationAcademicField(data.educationAcademicField[0]);
+        pp.educationEditFrom(data.educationFromMonth[0], data.educationFromYear[0]);
+        pp.educationEditTo(data.educationToMonth[0], data.educationToYear[0]);
         pp.educationOngoingNo();
-        pp.educationEditDescription(master12EducationDescription);
+        pp.educationEditDescription(data.educationDescription[0]);
         pp.educationClickBack();
         pp.educationVerificationEmpty();
 
         pp.educationVerificationEmpty();
         pp.clickAddNewEducation();
-        pp.educationUniversity(master12EducationUniversity);
-        pp.educationDegree(master12EducationDegree);
-        pp.educationAcademicField(master12EducationAcademicField);
-        pp.educationEditFrom(master12EducationFromMonth, master12EducationFromYear);
-        pp.educationEditTo(master12EducationToMonth, master12EducationToYear);
+        pp.educationUniversity(data.educationUniversity[0]);
+        pp.educationDegree(data.educationDegree[0]);
+        pp.educationAcademicField(data.educationAcademicField[0]);
+        pp.educationEditFrom(data.educationFromMonth[0], data.educationFromYear[0]);
+        pp.educationEditTo(data.educationToMonth[0], data.educationToYear[0]);
         pp.educationOngoingNo();
-        pp.educationEditDescription(master12EducationDescription);
+        pp.educationEditDescription(data.educationDescription[0]);
         pp.educationClickSave();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
         pp.educationClickBack();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
-        pp.educationUniversity(master12EducationUniversityNew);
-        pp.educationDegree(master12EducationDegreeNew);
-        pp.educationAcademicField(master12EducationAcademicFieldNew);
-        pp.educationEditFrom(master12EducationFromMonthNew, master12EducationFromYearNew);
+        pp.educationUniversity(data.educationUniversity[1]);
+        pp.educationDegree(data.educationDegree[1]);
+        pp.educationAcademicField(data.educationAcademicField[1]);
+        pp.educationEditFrom(data.educationFromMonth[1], data.educationFromYear[1]);
         pp.educationOngoingYes();
-        pp.educationEditDescription(master12EducationDescriptionNew);
+        pp.educationEditDescription(data.educationDescription[1]);
         pp.educationClickBack();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
-        pp.educationUniversity(master12EducationUniversityNew);
-        pp.educationDegree(master12EducationDegreeNew);
-        pp.educationAcademicField(master12EducationAcademicFieldNew);
-        pp.educationEditFrom(master12EducationFromMonthNew, master12EducationFromYearNew);
+        pp.educationUniversity(data.educationUniversity[1]);
+        pp.educationDegree(data.educationDegree[1]);
+        pp.educationAcademicField(data.educationAcademicField[1]);
+        pp.educationEditFrom(data.educationFromMonth[1], data.educationFromYear[1]);
         pp.educationOngoingYes();
-        pp.educationEditDescription(master12EducationDescriptionNew);
+        pp.educationEditDescription(data.educationDescription[1]);
         pp.educationClickSave();
-        pp.educationVerificationFull(0, master12EducationDateNew, master12EducationUniversityNew, master12EducationDegreeNew, master12EducationDescriptionNew);
+        pp.educationVerificationFull(0, data.educationDate[1], data.educationUniversity[1], data.educationDegree[1], data.educationDescription[1]);
 
         pp.clickEditEducation(0);
         pp.educationClickRemove();
@@ -289,13 +246,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: certificates - change all the info and verify")
-    void t00008() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileCertificateChangeTest() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
 
@@ -305,44 +257,44 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.certificatesVerificationEmpty();
 
         pp.clickAddNewCertificate();
-        pp.certificatesEditName(master12CertificateName);
-        pp.certificatesEditOrganization(master12CertificateOrganization);
-        pp.certificatesEditDate(master12CertificateDateDay, master12CertificateDateMonth, master12CertificateDateYear);
-        pp.certificatesEditID(master12CertificateID);
-        pp.certificatesEditLink(master12CertificateLink);
-        pp.certificatesUploadPic(master12CertificatePhoto);
+        pp.certificatesEditName(data.certificateName[0]);
+        pp.certificatesEditOrganization(data.certificateOrganization[0]);
+        pp.certificatesEditDate(data.certificateDateDay[0], data.certificateDateMonth[0], data.certificateDateYear[0]);
+        pp.certificatesEditID(data.certificateID[0]);
+        pp.certificatesEditLink(data.certificateLink[0]);
+        pp.certificatesUploadPic(data.certificatePhoto[0]);
         pp.certificatesClickBack();
         pp.certificatesVerificationEmpty();
 
         pp.clickAddNewCertificate();
-        pp.certificatesEditName(master12CertificateName);
-        pp.certificatesEditOrganization(master12CertificateOrganization);
-        pp.certificatesEditDate(master12CertificateDateDay, master12CertificateDateMonth, master12CertificateDateYear);
-        pp.certificatesEditID(master12CertificateID);
-        pp.certificatesEditLink(master12CertificateLink);
-        pp.certificatesUploadPic(master12CertificatePhoto);
+        pp.certificatesEditName(data.certificateName[0]);
+        pp.certificatesEditOrganization(data.certificateOrganization[0]);
+        pp.certificatesEditDate(data.certificateDateDay[0], data.certificateDateMonth[0], data.certificateDateYear[0]);
+        pp.certificatesEditID(data.certificateID[0]);
+        pp.certificatesEditLink(data.certificateLink[0]);
+        pp.certificatesUploadPic(data.certificatePhoto[0]);
         pp.certificatesClickSave();
-        pp.certificatesVerificationFull(0, master12CertificateName, master12CertificateDate, master12CertificateID, master12CertificateLink);
+        pp.certificatesVerificationFull(0, data.certificateName[0], data.certificateDate[0], data.certificateID[0], data.certificateLink[0]);
 
         pp.clickEditCertificate(0);
-        pp.certificatesEditName(master12CertificateNameNew);
-        pp.certificatesEditOrganization(master12CertificateOrganizationNew);
-        pp.certificatesEditDate(master12CertificateDateDayNew, master12CertificateDateMonthNew, master12CertificateDateYearNew);
-        pp.certificatesEditID(master12CertificateIDNew);
-        pp.certificatesEditLink(master12CertificateLinkNew);
-        pp.certificatesUploadPic(master12CertificatePhotoNew);
+        pp.certificatesEditName(data.certificateName[1]);
+        pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
+        pp.certificatesEditID(data.certificateID[1]);
+        pp.certificatesEditLink(data.certificateLink[1]);
+        pp.certificatesUploadPic(data.certificatePhoto[1]);
         pp.certificatesClickBack();
-        pp.certificatesVerificationFull(0, master12CertificateName, master12CertificateDate, master12CertificateID, master12CertificateLink);
+        pp.certificatesVerificationFull(0, data.certificateName[0], data.certificateDate[0], data.certificateID[0], data.certificateLink[0]);
 
         pp.clickEditCertificate(0);
-        pp.certificatesEditName(master12CertificateNameNew);
-        pp.certificatesEditOrganization(master12CertificateOrganizationNew);
-        pp.certificatesEditDate(master12CertificateDateDayNew, master12CertificateDateMonthNew, master12CertificateDateYearNew);
-        pp.certificatesEditID(master12CertificateIDNew);
-        pp.certificatesEditLink(master12CertificateLinkNew);
-        pp.certificatesUploadPic(master12CertificatePhotoNew);
+        pp.certificatesEditName(data.certificateName[1]);
+        pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
+        pp.certificatesEditID(data.certificateID[1]);
+        pp.certificatesEditLink(data.certificateLink[1]);
+        pp.certificatesUploadPic(data.certificatePhoto[1]);
         pp.certificatesClickSave();
-        pp.certificatesVerificationFull(0, master12CertificateNameNew, master12CertificateDateNew, master12CertificateIDNew, master12CertificateLinkNew);
+        pp.certificatesVerificationFull(0, data.certificateName[1], data.certificateDate[1], data.certificateID[1], data.certificateLink[1]);
 
         pp.clickEditCertificate(0);
         pp.certificatesClickRemove();
@@ -355,16 +307,52 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     @Story("Professional Profile")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: full test")
-    void t00100() {
-        log.openMainPage();
-        log.popupSkip();
-        log.account(11);
-        log.forceEN();
-        log.openMainPage();
-
+    void masterProfileFullTest() {
+        serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
-        pp.verifyProfessionalProfileBasic(firstNames[11], lastNames[11], countries[11], cities[11], user12Address, master12MainDescriptionNew, master12MainLevelNew);
+        pp.verifyProfessionalProfileBasic(data.firstName[0], data.lastName[0], data.country[0], data.city[0], data.address, data.description[0], data.level[0]);
+
+        pp.clickEditMain();
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
+        pp.editSpecialization(data.specialization[1]);
+        pp.editDescription(data.description[1]);
+        pp.editCompany(data.company[0]);
+        pp.editExperience(data.experience[1]);
+        pp.editExpertiseLevel(data.level[1]);
+        pp.editCategory(data.category[1]);
+        pp.editSubcategory(data.subcategory[1]);
+        pp.mainClickSave();
+        pp.verifyProfessionalExp(data.experience[1]);
+
+        pp.clickAddNewQualification();
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
+        pp.qualificationEditCompany(data.qualificationCompany[1]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[1], data.qualificationFromYear[1]);
+        pp.qualificationOngoingYes();
+        pp.qualificationEditDescription(data.qualificationDescription[1]);
+        pp.qualificationClickSave();
+        pp.qualificationVerificationFull(0, data.qualificationDate[1], data.qualificationJobTitle[1], data.qualificationCompany[1], data.qualificationDescription[1]);
+
+        pp.clickAddNewEducation();
+        pp.educationUniversity(data.educationUniversity[1]);
+        pp.educationDegree(data.educationDegree[1]);
+        pp.educationAcademicField(data.educationAcademicField[1]);
+        pp.educationEditFrom(data.educationFromMonth[1], data.educationFromYear[1]);
+        pp.educationOngoingYes();
+        pp.educationEditDescription(data.educationDescription[1]);
+        pp.educationClickSave();
+        pp.educationVerificationFull(0, data.educationDate[1], data.educationUniversity[1], data.educationDegree[1], data.educationDescription[1]);
+
+        pp.clickAddNewCertificate();
+        pp.certificatesEditName(data.certificateName[1]);
+        pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
+        pp.certificatesEditID(data.certificateID[1]);
+        pp.certificatesEditLink(data.certificateLink[1]);
+        pp.certificatesUploadPic(data.certificatePhoto[1]);
+        pp.certificatesClickSave();
+        pp.certificatesVerificationFull(0, data.certificateName[1], data.certificateDate[1], data.certificateID[1], data.certificateLink[1]);
 
         pp.editProfessionalAddress();
         pp.addressClickBack();
@@ -373,34 +361,34 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.addressClickBack();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
+        pp.mainVerify(data.description[1], data.level[1], data.category[1], data.subcategory[1]);
         pp.mainClickBack();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
-        pp.editSpecialization(specializations[11]);
-        pp.editDescription(master12MainDescription);
-        pp.editCompany(master12MainCompany);
-        pp.editExperience(master12MainExperience);
-        pp.editExpertiseLevel(master12MainLevel);
-        pp.editCategory(master12MainCategory);
-        pp.editSubcategory(master12MainSubcategory);
+        pp.mainVerify(data.description[1], data.level[1], data.category[1], data.subcategory[1]);
+        pp.editSpecialization(data.specialization[0]);
+        pp.editDescription(data.description[0]);
+        pp.editCompany(data.company[0]);
+        pp.editExperience(data.experience[0]);
+        pp.editExpertiseLevel(data.level[0]);
+        pp.editCategory(data.category[0]);
+        pp.editSubcategory(data.subcategory[0]);
         pp.mainClickBack();
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescriptionNew, master12MainLevelNew, master12MainCategoryNew, master12MainSubcategoryNew);
-        pp.editSpecialization(specializations[11]);
-        pp.editDescription(master12MainDescription);
-        pp.editCompany(master12MainCompany);
-        pp.editExperience(master12MainExperience);
-        pp.editExpertiseLevel(master12MainLevel);
-        pp.editCategory(master12MainCategory);
-        pp.editSubcategory(master12MainSubcategory);
+        pp.mainVerify(data.description[1], data.level[1], data.category[1], data.subcategory[1]);
+        pp.editSpecialization(data.specialization[0]);
+        pp.editDescription(data.description[0]);
+        pp.editCompany(data.company[0]);
+        pp.editExperience(data.experience[0]);
+        pp.editExpertiseLevel(data.level[0]);
+        pp.editCategory(data.category[0]);
+        pp.editSubcategory(data.subcategory[0]);
         pp.mainClickSave();
-        pp.verifyProfessionalExp(master12MainExperience);
+        pp.verifyProfessionalExp(data.experience[0]);
 
         pp.clickEditMain();
-        pp.mainVerify(master12MainDescription, master12MainLevel, master12MainCategory, master12MainSubcategory);
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
         pp.mainClickBack();
 
         pp.clickEditAbout();
@@ -408,46 +396,46 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
 
         pp.qualificationVerificationEmpty();
         pp.clickAddNewQualification();
-        pp.qualificationEditJobTitle(master12QualificationJobTitle);
-        pp.qualificationEditCompany(master12QualificationCompany);
-        pp.qualificationEditFrom(master12QualificationFromMonth, master12QualificationFromYear);
-        pp.qualificationEditTo(master12QualificationToMonth, master12QualificationToYear);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[0]);
+        pp.qualificationEditCompany(data.qualificationCompany[0]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[0], data.qualificationFromYear[0]);
+        pp.qualificationEditTo(data.qualificationToMonth[0], data.qualificationToYear[0]);
         pp.qualificationOngoingNo();
-        pp.qualificationEditDescription(master12QualificationDescription);
+        pp.qualificationEditDescription(data.qualificationDescription[0]);
         pp.qualificationClickBack();
         pp.qualificationVerificationEmpty();
 
         pp.clickAddNewQualification();
-        pp.qualificationEditJobTitle(master12QualificationJobTitle);
-        pp.qualificationEditCompany(master12QualificationCompany);
-        pp.qualificationEditFrom(master12QualificationFromMonth, master12QualificationFromYear);
-        pp.qualificationEditTo(master12QualificationToMonth, master12QualificationToYear);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[0]);
+        pp.qualificationEditCompany(data.qualificationCompany[0]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[0], data.qualificationFromYear[0]);
+        pp.qualificationEditTo(data.qualificationToMonth[0], data.qualificationToYear[0]);
         pp.qualificationOngoingNo();
-        pp.qualificationEditDescription(master12QualificationDescription);
+        pp.qualificationEditDescription(data.qualificationDescription[0]);
         pp.qualificationClickSave();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
         pp.qualificationClickBack();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
-        pp.qualificationEditJobTitle(master12QualificationJobTitleNew);
-        pp.qualificationEditCompany(master12QualificationCompanyNew);
-        pp.qualificationEditFrom(master12QualificationFromMonthNew, master12QualificationFromYearNew);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
+        pp.qualificationEditCompany(data.qualificationCompany[1]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[1], data.qualificationFromYear[1]);
         pp.qualificationOngoingYes();
-        pp.qualificationEditDescription(master12QualificationDescriptionNew);
+        pp.qualificationEditDescription(data.qualificationDescription[1]);
         pp.qualificationClickBack();
-        pp.qualificationVerificationFull(0, master12QualificationDate, master12QualificationJobTitle, master12QualificationCompany, master12QualificationDescription);
+        pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
 
         pp.clickEditQualification(0);
-        pp.qualificationEditJobTitle(master12QualificationJobTitleNew);
-        pp.qualificationEditCompany(master12QualificationCompanyNew);
-        pp.qualificationEditFrom(master12QualificationFromMonthNew, master12QualificationFromYearNew);
+        pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
+        pp.qualificationEditCompany(data.qualificationCompany[1]);
+        pp.qualificationEditFrom(data.qualificationFromMonth[1], data.qualificationFromYear[1]);
         pp.qualificationOngoingYes();
-        pp.qualificationEditDescription(master12QualificationDescriptionNew);
+        pp.qualificationEditDescription(data.qualificationDescription[1]);
         pp.qualificationClickSave();
-        pp.qualificationVerificationFull(0, master12QualificationDateNew, master12QualificationJobTitleNew, master12QualificationCompanyNew, master12QualificationDescriptionNew);
+        pp.qualificationVerificationFull(0, data.qualificationDate[1], data.qualificationJobTitle[1], data.qualificationCompany[1], data.qualificationDescription[1]);
 
         pp.clickEditQualification(0);
         pp.qualificationClickRemove();
@@ -455,51 +443,51 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
 
         pp.educationVerificationEmpty();
         pp.clickAddNewEducation();
-        pp.educationUniversity(master12EducationUniversity);
-        pp.educationDegree(master12EducationDegree);
-        pp.educationAcademicField(master12EducationAcademicField);
-        pp.educationEditFrom(master12EducationFromMonth, master12EducationFromYear);
-        pp.educationEditTo(master12EducationToMonth, master12EducationToYear);
+        pp.educationUniversity(data.educationUniversity[0]);
+        pp.educationDegree(data.educationDegree[0]);
+        pp.educationAcademicField(data.educationAcademicField[0]);
+        pp.educationEditFrom(data.educationFromMonth[0], data.educationFromYear[0]);
+        pp.educationEditTo(data.educationToMonth[0], data.educationToYear[0]);
         pp.educationOngoingNo();
-        pp.educationEditDescription(master12EducationDescription);
+        pp.educationEditDescription(data.educationDescription[0]);
         pp.educationClickBack();
         pp.educationVerificationEmpty();
 
         pp.educationVerificationEmpty();
         pp.clickAddNewEducation();
-        pp.educationUniversity(master12EducationUniversity);
-        pp.educationDegree(master12EducationDegree);
-        pp.educationAcademicField(master12EducationAcademicField);
-        pp.educationEditFrom(master12EducationFromMonth, master12EducationFromYear);
-        pp.educationEditTo(master12EducationToMonth, master12EducationToYear);
+        pp.educationUniversity(data.educationUniversity[0]);
+        pp.educationDegree(data.educationDegree[0]);
+        pp.educationAcademicField(data.educationAcademicField[0]);
+        pp.educationEditFrom(data.educationFromMonth[0], data.educationFromYear[0]);
+        pp.educationEditTo(data.educationToMonth[0], data.educationToYear[0]);
         pp.educationOngoingNo();
-        pp.educationEditDescription(master12EducationDescription);
+        pp.educationEditDescription(data.educationDescription[0]);
         pp.educationClickSave();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
         pp.educationClickBack();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
-        pp.educationUniversity(master12EducationUniversityNew);
-        pp.educationDegree(master12EducationDegreeNew);
-        pp.educationAcademicField(master12EducationAcademicFieldNew);
-        pp.educationEditFrom(master12EducationFromMonthNew, master12EducationFromYearNew);
+        pp.educationUniversity(data.educationUniversity[1]);
+        pp.educationDegree(data.educationDegree[1]);
+        pp.educationAcademicField(data.educationAcademicField[1]);
+        pp.educationEditFrom(data.educationFromMonth[1], data.educationFromYear[1]);
         pp.educationOngoingYes();
-        pp.educationEditDescription(master12EducationDescriptionNew);
+        pp.educationEditDescription(data.educationDescription[1]);
         pp.educationClickBack();
-        pp.educationVerificationFull(0, master12EducationDate, master12EducationUniversity, master12EducationDegree, master12EducationDescription);
+        pp.educationVerificationFull(0, data.educationDate[0], data.educationUniversity[0], data.educationDegree[0], data.educationDescription[0]);
 
         pp.clickEditEducation(0);
-        pp.educationUniversity(master12EducationUniversityNew);
-        pp.educationDegree(master12EducationDegreeNew);
-        pp.educationAcademicField(master12EducationAcademicFieldNew);
-        pp.educationEditFrom(master12EducationFromMonthNew, master12EducationFromYearNew);
+        pp.educationUniversity(data.educationUniversity[1]);
+        pp.educationDegree(data.educationDegree[1]);
+        pp.educationAcademicField(data.educationAcademicField[1]);
+        pp.educationEditFrom(data.educationFromMonth[1], data.educationFromYear[1]);
         pp.educationOngoingYes();
-        pp.educationEditDescription(master12EducationDescriptionNew);
+        pp.educationEditDescription(data.educationDescription[1]);
         pp.educationClickSave();
-        pp.educationVerificationFull(0, master12EducationDateNew, master12EducationUniversityNew, master12EducationDegreeNew, master12EducationDescriptionNew);
+        pp.educationVerificationFull(0, data.educationDate[1], data.educationUniversity[1], data.educationDegree[1], data.educationDescription[1]);
 
         pp.clickEditEducation(0);
         pp.educationClickRemove();
@@ -511,49 +499,49 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.certificatesVerificationEmpty();
 
         pp.clickAddNewCertificate();
-        pp.certificatesEditName(master12CertificateName);
-        pp.certificatesEditOrganization(master12CertificateOrganization);
-        pp.certificatesEditDate(master12CertificateDateDay, master12CertificateDateMonth, master12CertificateDateYear);
-        pp.certificatesEditID(master12CertificateID);
-        pp.certificatesEditLink(master12CertificateLink);
-        pp.certificatesUploadPic(master12CertificatePhoto);
+        pp.certificatesEditName(data.certificateName[0]);
+        pp.certificatesEditOrganization(data.certificateOrganization[0]);
+        pp.certificatesEditDate(data.certificateDateDay[0], data.certificateDateMonth[0], data.certificateDateYear[0]);
+        pp.certificatesEditID(data.certificateID[0]);
+        pp.certificatesEditLink(data.certificateLink[0]);
+        pp.certificatesUploadPic(data.certificatePhoto[0]);
         pp.certificatesClickBack();
         pp.certificatesVerificationEmpty();
 
         pp.clickAddNewCertificate();
-        pp.certificatesEditName(master12CertificateName);
-        pp.certificatesEditOrganization(master12CertificateOrganization);
-        pp.certificatesEditDate(master12CertificateDateDay, master12CertificateDateMonth, master12CertificateDateYear);
-        pp.certificatesEditID(master12CertificateID);
-        pp.certificatesEditLink(master12CertificateLink);
-        pp.certificatesUploadPic(master12CertificatePhoto);
+        pp.certificatesEditName(data.certificateName[0]);
+        pp.certificatesEditOrganization(data.certificateOrganization[0]);
+        pp.certificatesEditDate(data.certificateDateDay[0], data.certificateDateMonth[0], data.certificateDateYear[0]);
+        pp.certificatesEditID(data.certificateID[0]);
+        pp.certificatesEditLink(data.certificateLink[0]);
+        pp.certificatesUploadPic(data.certificatePhoto[0]);
         pp.certificatesClickSave();
-        pp.certificatesVerificationFull(0, master12CertificateName, master12CertificateDate, master12CertificateID, master12CertificateLink);
+        pp.certificatesVerificationFull(0, data.certificateName[0], data.certificateDate[0], data.certificateID[0], data.certificateLink[0]);
 
         pp.clickEditCertificate(0);
-        pp.certificatesEditName(master12CertificateNameNew);
-        pp.certificatesEditOrganization(master12CertificateOrganizationNew);
-        pp.certificatesEditDate(master12CertificateDateDayNew, master12CertificateDateMonthNew, master12CertificateDateYearNew);
-        pp.certificatesEditID(master12CertificateIDNew);
-        pp.certificatesEditLink(master12CertificateLinkNew);
-        pp.certificatesUploadPic(master12CertificatePhotoNew);
+        pp.certificatesEditName(data.certificateName[1]);
+        pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
+        pp.certificatesEditID(data.certificateID[1]);
+        pp.certificatesEditLink(data.certificateLink[1]);
+        pp.certificatesUploadPic(data.certificatePhoto[1]);
         pp.certificatesClickBack();
-        pp.certificatesVerificationFull(0, master12CertificateName, master12CertificateDate, master12CertificateID, master12CertificateLink);
+        pp.certificatesVerificationFull(0, data.certificateName[0], data.certificateDate[0], data.certificateID[0], data.certificateLink[0]);
 
         pp.clickEditCertificate(0);
-        pp.certificatesEditName(master12CertificateNameNew);
-        pp.certificatesEditOrganization(master12CertificateOrganizationNew);
-        pp.certificatesEditDate(master12CertificateDateDayNew, master12CertificateDateMonthNew, master12CertificateDateYearNew);
-        pp.certificatesEditID(master12CertificateIDNew);
-        pp.certificatesEditLink(master12CertificateLinkNew);
-        pp.certificatesUploadPic(master12CertificatePhotoNew);
+        pp.certificatesEditName(data.certificateName[1]);
+        pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
+        pp.certificatesEditID(data.certificateID[1]);
+        pp.certificatesEditLink(data.certificateLink[1]);
+        pp.certificatesUploadPic(data.certificatePhoto[1]);
         pp.certificatesClickSave();
-        pp.certificatesVerificationFull(0, master12CertificateNameNew, master12CertificateDateNew, master12CertificateIDNew, master12CertificateLinkNew);
+        pp.certificatesVerificationFull(0, data.certificateName[1], data.certificateDate[1], data.certificateID[1], data.certificateLink[1]);
 
         pp.clickEditCertificate(0);
         pp.certificatesClickRemove();
         pp.certificatesVerificationEmpty();
 
-        pp.verifyProfessionalProfileMain(countries[11], cities[11], user12Address, master12MainDescription, master12MainExperience, master12MainLevel);
+        pp.verifyProfessionalProfileMain(data.country[0], data.city[0], data.address, data.description[0], data.experience[0], data.level[0]);
     }
 }

@@ -12,7 +12,7 @@ public class UserProfileTests extends config.TestBase {
     @Owner("Egor Khlebnikov")
     @Story("https://redmine.maxi-booking.ru/issues/4844")
     @Severity(SeverityLevel.CRITICAL)
-    @DisplayName("Profile: delete address that was default")
+    @DisplayName("Profile: user can delete default address")
     void t00000() {
         String address1 = "Street 1";
         String address2 = "Street 2";

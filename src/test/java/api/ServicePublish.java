@@ -173,7 +173,7 @@ public class ServicePublish extends TestBase {
 
                 schedule.put("day_of_week", days - 1);
                 schedule.put("start_time", "09:00");
-                schedule.put("end_time", "18:00");
+                schedule.put("end_time", "17:00");
                 schedule.put("is_enabled", true);
                 schedule.put("professional", professionalId);
 

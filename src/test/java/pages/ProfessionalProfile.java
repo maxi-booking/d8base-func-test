@@ -85,13 +85,15 @@ public class ProfessionalProfile extends TestBase {
             String masterAbout,
             String masterLevel
     ) {
-        $("app-professional-page app-professional-card-large").scrollIntoView(true).shouldHave(text(firstName + " " + lastName));
-        $("app-professional-page app-location-viewer").scrollIntoView(false).shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
-        if ($("app-professional-page").$("app-shorten").$("span.ext").exists()) {
-            $("app-professional-page").$("app-shorten").$("span.ext").click();
+        $("app-professional-page app-location-viewer").scrollIntoView(true);
+        $("app-professional-page app-professional-card-large").shouldHave(text(firstName + " " + lastName));
+        $("app-professional-page app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
+        String descriptionValue = $("app-professional-page app-shorten div").getText();
+        if ($("app-professional-page app-shorten div.ext").exists() && !descriptionValue.equals(masterAbout)) {
+            $("app-professional-page app-shorten div.ext").click();
         }
-        $("app-professional-page").$("app-shorten").scrollIntoView(false).shouldHave(text(masterAbout));
-        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterLevel));
+        $("app-professional-page app-shorten").shouldHave(text(masterAbout));
+        $("app-professional-page main").shouldHave(text(masterLevel));
     }
 
     @Step("Professional Profile: verify professional experience {value}")
@@ -117,18 +119,19 @@ public class ProfessionalProfile extends TestBase {
             String masterExperience,
             String masterLevel
     ) {
-        $("app-professional-page app-professional-card-large").scrollIntoView(false);
+        $("app-professional-page app-location-viewer").scrollIntoView(true);
         $("app-professional-page app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
-        if ($("app-professional-page app-shorten span.ext").exists()) {
-            $("app-professional-page app-shorten span.ext").click();
+        String descriptionValue = $("app-professional-page app-shorten div").getText();
+        if ($("app-professional-page app-shorten div.ext").exists() && !descriptionValue.equals(masterAbout)) {
+            $("app-professional-page app-shorten div.ext").click();
         }
-        $("app-professional-page app-shorten").scrollIntoView(true).shouldHave(text(masterAbout));
+        $("app-professional-page app-shorten div").shouldHave(text(masterAbout));
 
         String masterExperienceX = String.valueOf(Long.parseLong(masterExperience) + 1);
-        if ($("app-professional-page main").scrollIntoView(true).has(text(masterExperience))) {
-            $("app-professional-page main").scrollIntoView(true).shouldHave(text(masterExperience));
-        } else if ($("app-professional-page main").scrollIntoView(true).has(text(masterExperienceX))) {
-            $("app-professional-page main").scrollIntoView(true).shouldHave(text(masterExperienceX));
+        if ($("app-professional-page main").has(text(masterExperience))) {
+            $("app-professional-page main").shouldHave(text(masterExperience));
+        } else if ($("app-professional-page main").has(text(masterExperienceX))) {
+            $("app-professional-page main").shouldHave(text(masterExperienceX));
         } else {
             fail();
         }
@@ -180,7 +183,8 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: edit description - value: {value}")
     public void editDescription(String value) {
-        $("app-master-edit-page").$("app-master-edit").$("textarea").sendKeys(value);
+        $("app-master-edit-page app-master-edit textarea").clear();
+        $("app-master-edit-page app-master-edit textarea").sendKeys(value);
     }
 
     @Step("Main: edit company - value: {value}")
@@ -607,6 +611,7 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Certificates: edit date - value: {day} {month} {year}")
     public void certificatesEditDate(String day, String month, String year) {
+        $("app-certificate-edit input[type='date']").clear();
         $("app-certificate-edit input[type='date']").sendKeys("22113333");
         String value = $("app-certificate-edit input[type='date']").getValue();
         value = value.substring(0, 1);

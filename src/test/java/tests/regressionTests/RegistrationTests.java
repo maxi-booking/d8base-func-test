@@ -375,4 +375,26 @@ public class RegistrationTests extends config.TestBase {
         reg.verifyPhoneNumber(userPhoneNumber);
         reg.verifyPhoneCountryCode(userCountry);
     }
+
+    @Test
+    @Feature("User Registration")
+    @Owner("Egor Khlebnikov")
+    @Story("https://github.com/maxi-booking/d8base-frontend/pull/516")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Email will be automatically trimmed")
+    void trimEmail() {
+        String emailWithSpaces = randomSpaces + userEmail + randomSpaces;
+        log.openMainPage();
+        log.popupSelect(userCountry, userCity);
+        log.forceEN();
+        sideMenu.clickSignUp();
+        reg.fillUserFirstName(userFirstName);
+        reg.fillEmail(emailWithSpaces);
+        reg.choosePassword(userPassword);
+        reg.selectCountry(userCountry);
+        reg.selectCity(userCity);
+        reg.confirmAndWait();
+        log.forceLogOut();
+        log.logIn(userEmail, userPassword);
+    }
 }

@@ -313,6 +313,120 @@ public class PositiveTests extends config.TestBase {
     }
 
     @Test
+    @Feature("Service Publish")
+    @Owner("Egor Khlebnikov")
+    @Story("Service publication with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Service publishing >24h duration, service location: Online")
+    void servicePublishing24hOnline() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDurationLong);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.verifyNoScheduleEditButton();
+        pbl.verifyScheduleInfiniteTime();
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.checkPublishFormOnline(serviceName, serviceDurationLong, serviceDescription);
+        pbl.checkPrice(servicePrice);
+        pbl.publishService();
+    }
+
+    @Test
+    @Feature("Service Publish")
+    @Owner("Egor Khlebnikov")
+    @Story("Service publication with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Service publishing >24h duration, service location: Client's place")
+    void servicePublishing24hClient() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDurationLong);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(client);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.verifyNoScheduleEditButton();
+        pbl.verifyScheduleInfiniteTime();
+        pbl.instantBooking(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.fillServiceDistance(serviceDistance);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.checkPublishFormWithAddress(serviceName, serviceDurationLong, serviceDescription, userCountry, userCity, serviceAddress);
+        pbl.checkPrice(servicePrice);
+        pbl.publishService();
+    }
+
+    @Test
+    @Feature("Service Publish")
+    @Owner("Egor Khlebnikov")
+    @Story("Service publication with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Service publishing >24h duration, service location: Professional's place")
+    void servicePublishing24hMaster() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDurationLong);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(professional);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.verifyNoScheduleEditButton();
+        pbl.verifyScheduleInfiniteTime();
+        pbl.instantBooking(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.checkPublishFormWithAddress(serviceName, serviceDurationLong, serviceDescription, userCountry, userCity, serviceAddress);
+        pbl.checkPrice(servicePrice);
+        pbl.publishService();
+    }
+
+    @Test
     @Feature("Booking")
     @Owner("Egor Khlebnikov")
     @Story("Service booking")
@@ -424,6 +538,115 @@ public class PositiveTests extends config.TestBase {
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
+    }
+
+    @Test
+    @Feature("Booking")
+    @Owner("Egor Khlebnikov")
+    @Story("Service booking with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Booking a service with >24h duration - online")
+    void booking24hOnline() {
+        data.sType = online;
+        data.duration = data.durationLong;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
+        sideMenu.clickSearch();
+
+        search.closeAllChips();
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
+        bkn.chooseService();
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
+        bkn.verifyServiceLocation(online);
+        bkn.verifyServicePaymentCash();
+        bkn.verifyServicePaymentOnline();
+        bkn.verifyInstantBooking(on);
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
+        bkn.acceptConfirmation();
+        bkn.placeOrder();
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(serviceName);
+        topBar.clickMyOrders();
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
+    }
+
+    @Test
+    @Feature("Booking")
+    @Owner("Egor Khlebnikov")
+    @Story("Service booking with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Booking a service with >24h duration - client's place")
+    void booking24hClient() {
+        data.sType = client;
+        data.duration = data.durationLong;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
+        sideMenu.clickSearch();
+
+        search.closeAllChips();
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
+        bkn.chooseService();
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
+        bkn.verifyServiceLocation(clientLocation);
+        bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
+        bkn.verifyServicePaymentCash();
+        bkn.verifyServicePaymentOnline();
+        bkn.verifyInstantBooking(on);
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
+        bkn.acceptConfirmation();
+        bkn.selectAddress();
+        bkn.placeOrder();
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(serviceName);
+        topBar.clickMyOrders();
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
+    }
+
+    @Test
+    @Feature("Booking")
+    @Owner("Egor Khlebnikov")
+    @Story("Service booking with >=24h duration")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Booking a service with >24h duration - professional's place")
+    void booking24hMaster() {
+        data.sType = professional;
+        data.duration = data.durationLong;
+
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientReadyAPI(data);
+
+        sideMenu.clickSearch();
+
+        search.closeAllChips();
+        bkn.findService(serviceName);
+        bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
+        bkn.chooseService();
+        bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
+        bkn.verifyServiceLocation(professionalLocation);
+        bkn.verifyServiceGeo(userCountry, userCity, serviceAddress);
+        bkn.verifyServicePaymentCash();
+        bkn.verifyServicePaymentOnline();
+        bkn.verifyInstantBooking(on);
+        bkn.clickOrder();
+        bkn.pickTheDate(tomorrow);
+        bkn.acceptConfirmation();
+        bkn.selectAddress();
+        bkn.placeOrder();
+        bkn.showOrderDetails();
+        bkn.verifyOrderDetails(serviceName);
+        topBar.clickMyOrders();
+        ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
     }
 
     @Test

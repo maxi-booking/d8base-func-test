@@ -32,4 +32,23 @@ public final class ServiceDuration {
             return new ServiceDuration(days, hours, minutes);
         }
     }
+
+    public static ServiceDuration getDuration(int value) {
+        if (value < 0) {
+            System.out.println("Wrong service duration value, can not be below 0, value: " + value);
+            throw new IllegalArgumentException();
+        } else {
+            int
+                    daysInt = value / 24 / 60,
+                    hoursInt = value / 60 % 24,
+                    minutesInt = value % 60;
+            String
+                    days = valueOf(daysInt),
+                    hours = valueOf(hoursInt),
+                    minutes = valueOf(minutesInt);
+
+            System.out.println("days: " + days + "\nhours: " + hours + "\nminutes: " + minutes);
+            return new ServiceDuration(days, hours, minutes);
+        }
+    }
 }

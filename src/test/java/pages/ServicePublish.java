@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.selector.ByShadow;
 import com.github.javafaker.Faker;
 import helpers.Attach;
 import helpers.PriceFormatter;
@@ -68,6 +69,15 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Enter a service duration")
     public void setDuration(String serviceDurationTotal) {
+        ServiceDuration duration = getDuration(serviceDurationTotal);
+        $("app-duration-editor").$("input").scrollIntoView(true).setValue(duration.days);
+        $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(duration.hours);
+        $("app-duration-editor").$("input", 2).scrollIntoView(true).setValue(duration.minutes);
+        Attach.screenshotAs("Service duration");
+    }
+
+    @Step("Enter a service duration")
+    public void setDuration(int serviceDurationTotal) {
         ServiceDuration duration = getDuration(serviceDurationTotal);
         $("app-duration-editor").$("input").scrollIntoView(true).setValue(duration.days);
         $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(duration.hours);
@@ -263,6 +273,24 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Set a schedule")
     public void fillScheduleLite() {
+        $("app-service-publish-step-seven ion-item[routerlink='timetable']").scrollIntoView(true).click();
+        $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-timetable app-column-header ion-buttons ion-button", 1).click();
+        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(true).click();
+        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-timetable app-column-header ion-buttons ion-button", 1).click();
+        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
+        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+        Attach.screenshotAs("Schedule");
+        $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
+        $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
+    }
+
+    /* old method
+    @Step("Set a schedule")
+    public void fillScheduleLite() {
         sleep(300);
         $("app-service-publish-step-seven").$("form").$("ion-icon").scrollIntoView(true).click();
         $("app-timetable app-add-button ion-item").shouldBe(visible, Duration.ofSeconds(10));
@@ -277,6 +305,21 @@ public class ServicePublish extends config.TestBase {
         Attach.screenshotAs("Schedule");
         $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
         $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
+    }
+     */
+
+    @Step("Verify that schedule can not be edited")
+    public void verifyNoScheduleEditButton() {
+        $("app-service-publish-step-seven form ion-item[routerlink='timetable'] ion-icon").shouldNotBe(visible);
+    }
+
+    @Step("Verify that schedule can not be edited")
+    public void verifyScheduleInfiniteTime() {
+        int i = 0;
+        while ($("app-service-publish-step-seven app-schedule-viewer ion-text", i).exists()) {
+            $("app-service-publish-step-seven app-schedule-viewer ion-text", i).shouldHave(text("00:00"), text("23:59"));
+            i++;
+        }
     }
 
     @Step("Confirm Instant Booking")

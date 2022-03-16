@@ -5,7 +5,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.WebDriverConfig;
 import helpers.Attach;
-import helpers.RegressionTestsHelpers;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
