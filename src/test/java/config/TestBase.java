@@ -45,6 +45,7 @@ public class TestBase extends TestData {
     public static LogIn log = new LogIn();
     public static UserProfile up = new UserProfile();
     public static ProfessionalProfile pp = new ProfessionalProfile();
+    public static Schedule sch = new Schedule();
     public static Footer ftr = new Footer();
 
     public static UserEmails getEmail = new UserEmails();

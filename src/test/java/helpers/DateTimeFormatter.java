@@ -243,4 +243,26 @@ public class DateTimeFormatter extends TestBase {
         }
         return month;
     }
+
+    public static int scheduleMinutesConvertToId(int minutes) {
+                switch (minutes) {
+        case 0:
+            minutes = 0;
+            break;
+        case 15:
+            minutes = 1;
+            break;
+        case 30:
+            minutes = 2;
+            break;
+        case 45:
+            minutes = 3;
+            break;
+        default:
+            fail();
+            break;
+    }
+        return minutes;
+}
+
 }

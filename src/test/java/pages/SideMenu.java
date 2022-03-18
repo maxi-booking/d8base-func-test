@@ -7,6 +7,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class SideMenu {
@@ -49,6 +50,15 @@ public class SideMenu {
         openMenu();
         $("[id='main-menu.professional-profile']").scrollIntoView(true).click();
         sleep(300);
+    }
+
+
+    public void clickSchedule() {
+        step("Click Menu > Schedule", () -> {
+        openMenu();
+        $("[id='main-menu.professional-schedule']").scrollIntoView(true).click();
+        sleep(300);
+    });
     }
 
     @Step("Click Menu > Search")

@@ -234,6 +234,15 @@ public class Orders extends config.TestBase {
         $("ion-card", value).shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
+    @Step("Verify that the order can't be completed")
+    public void canNotCompleteOrder() {
+        int value = 0;
+        while ($("ion-card", value).exists()) {
+            $("app-received-order-list-item ion-card ion-button.button-disabled", value).shouldBe(visible);
+            value++;
+        }
+    }
+
     @Step("Click 'show more'")
     public void clickShowMore() {
         $("app-more-info").$("ion-note").click();

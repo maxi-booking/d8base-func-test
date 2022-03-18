@@ -709,9 +709,9 @@ public class PositiveTests extends config.TestBase {
     @Feature("Orders")
     @Owner("Egor Khlebnikov")
     @Story("Order check")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Master completes order: online")
-    void t00301() {
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Master can't complete order too early: online")
+    void orderButtonBlockedFreshOrderOnline() {
         data.sType = online;
         userRegisterAPI(data);
         serviceRegisterAPI(data);
@@ -724,16 +724,16 @@ public class PositiveTests extends config.TestBase {
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
-        ord.completeOrder();
+        ord.canNotCompleteOrder();
     }
 
     @Test
     @Feature("Orders")
     @Owner("Egor Khlebnikov")
     @Story("Order check")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Master completes order: client's place")
-    void t00302() {
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Master can't complete order too early: client's place")
+    void orderButtonBlockedFreshOrderClient() {
         data.sType = client;
         userRegisterAPI(data);
         serviceRegisterAPI(data);
@@ -746,16 +746,16 @@ public class PositiveTests extends config.TestBase {
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
-        ord.completeOrder();
+        ord.canNotCompleteOrder();
     }
 
     @Test
     @Feature("Orders")
     @Owner("Egor Khlebnikov")
     @Story("Order check")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Master completes order: master's place")
-    void t00303() {
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Master can't complete order too early: master's place")
+    void orderButtonBlockedFreshOrderMaster() {
         data.sType = professional;
         userRegisterAPI(data);
         serviceRegisterAPI(data);
@@ -768,7 +768,7 @@ public class PositiveTests extends config.TestBase {
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
-        ord.completeOrder();
+        ord.canNotCompleteOrder();
     }
 
     @Test

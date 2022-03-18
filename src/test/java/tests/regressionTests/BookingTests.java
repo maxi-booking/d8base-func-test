@@ -104,10 +104,8 @@ public class BookingTests extends config.TestBase {
     @Story("https://redmine.maxi-booking.ru/issues/4929")
     @Severity(SeverityLevel.TRIVIAL)
     @DisplayName("Booking: time step, can't navigate back in time via arrows")
-    void t00100() {
+    void bookingCanNotSelectWrongDayViaBackArrows() {
         serviceReadyAPI(data);
-        log.forceMainPage();
-        log.forceEN();
         sideMenu.clickSearch();
 
         search.closeAllChips();
