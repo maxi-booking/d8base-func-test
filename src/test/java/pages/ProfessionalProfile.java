@@ -121,7 +121,7 @@ public class ProfessionalProfile extends TestBase {
             String masterExperience,
             String masterLevel
     ) {
-        $("app-professional-page app-location-viewer").scrollIntoView(true);
+        $("#bookbtn").scrollIntoView(true);
         $("app-professional-page app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         String descriptionValue = $("app-professional-page app-shorten div").getText();
         if ($("app-professional-page app-shorten div.ext").exists() && !descriptionValue.equals(masterAbout)) {
@@ -155,7 +155,7 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Address: click back")
     public void addressClickBack() {
-        $("app-master-location-edit").$("main").$("ion-button").click();
+        $("app-master-location-edit main ion-button").click();
         sleep(500);
     }
 
@@ -163,7 +163,7 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: click edit data")
     public void clickEditMain() {
-        $("app-professional-page").$("ion-item[routerlink='edit']").scrollIntoView(true).click();
+        $("app-professional-page ion-item[routerlink='edit']").scrollIntoView(false).click();
     }
 
     @Step("Main: click back")
@@ -191,19 +191,19 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: edit company - value: {value}")
     public void editCompany(String value) {
-        $("app-master-edit-page").$("app-master-edit").$("input", 1).setValue(value);
+        $("app-master-edit-page app-master-edit input", 1).setValue(value);
     }
 
     @Step("Main: edit experience - value: {value}")
     public void editExperience(String value) {
         Attach.screenshotAs("Screenshot");
-        $("app-master-edit-page").$("app-master-edit").$("input", 2).setValue(value);
+        $("app-master-edit-page app-master-edit input", 2).setValue(value);
         Attach.screenshotAs("Screenshot");
     }
 
     @Step("Main: edit expertise level - value: {value}")
     public void editExpertiseLevel(String value) {
-        $("app-master-edit-page ion-select[aria-label=' Senior ,  Expertise level ']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-master-edit-page ion-select[interface='popover']").shouldBe(visible, Duration.ofSeconds(10));
         $("app-master-edit-page app-master-edit ion-select").click();
         $("ion-popover ion-radio-group[role='radiogroup']").shouldBe(visible, Duration.ofSeconds(10));
         switch (value) {
@@ -225,7 +225,8 @@ public class ProfessionalProfile extends TestBase {
                 fail();
                 break;
         }
-        sleep(500);
+        $("ion-popover ion-radio-group[role='radiogroup']").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-master-edit-page ion-select[interface='popover']").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     public void mainClickExpertiseLevel() {

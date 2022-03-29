@@ -326,7 +326,7 @@ public class Booking {
     @Step("Click to see sent order details")
     public void showSentOrderDetails() {
         $("app-sent-order-page app-sent-order div.order-full-info__more-info a").shouldBe(visible, Duration.ofSeconds(10));
-        $$("div.order-full-info a").filter(visible).get(0).click();
+        $("div.order-full-info__more-info a").click();
     }
 
     @Step("Verify the order details")

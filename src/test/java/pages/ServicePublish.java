@@ -292,14 +292,13 @@ public class ServicePublish extends config.TestBase {
             $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
             $("app-timetable app-column-header ion-buttons ion-button", 1).click();
             $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
-            $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(true).click();
+            $("app-timetable-add-time-popover ion-label", 5).click();
             $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
             $("app-timetable app-column-header ion-buttons ion-button", 1).click();
             $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
-            $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
+            $("app-timetable-add-time-popover ion-label", 6).click();
             $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
-            Attach.screenshotAs("Schedule");
-            $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
+            $("app-timetable ion-button[type='submit']").click();
             $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
         });
     }
