@@ -14,7 +14,7 @@
 
 ###Запуск с параметрами, пример:
 
-`./gradlew clean test -DbaseUrl=https://app.maxibooking.ru/ -DbrowserName=chrome`
+`./gradlew clean test -frontendUrl=http://localhost:4200 -DbrowserName=chrome`
 
 
 ###Доступные параметры: 
@@ -29,9 +29,9 @@
 
 * `timeout` - максимальная задержка до падения теста, default: `10000` ms
 
-* `frontendUrl` - основной url тестируемого сайта (клиентская часть), default: `https://app.maxibooking.ru/`
+* `frontendUrl` - основной url тестируемого сайта (клиентская часть), default: `https://app.maxibooking.ru`
 
-* `backendUrl` - основной url тестируемого сайта (серверная часть), default: `https://app.maxibooking.ru/`
+* `backendUrl` - основной url тестируемого сайта (серверная часть), default: `https://app.maxibooking.ru`
 
 * `remote` - адрес удаленного сервера Selenide; игнорируется, если оставить пустым
 
