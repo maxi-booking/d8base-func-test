@@ -3,8 +3,6 @@ package tests.smokeTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
 import static helpers.RegressionTestsHelpers.*;
 import static java.lang.String.valueOf;
@@ -30,7 +28,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataBasic(userFirstName, userEmail, userCountry, userCity);
     }
 
@@ -55,7 +53,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userEmail, userCountry, userCity);
     }
 
@@ -80,7 +78,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
@@ -105,7 +103,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
@@ -129,7 +127,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillUserLastName(userLastName);
         reg.confirmAndWait();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
@@ -153,7 +151,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillPhoneNumber(userPhoneNumber, userCountry);
         reg.confirmAndWait();
         log.forceEN();
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
 
@@ -457,7 +455,7 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptTimeSelection();
         bkn.acceptConfirmation();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
@@ -495,7 +493,7 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
@@ -534,7 +532,7 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
@@ -569,7 +567,7 @@ public class PositiveTests extends config.TestBase {
         bkn.pickTheDate(tomorrow);
         bkn.acceptConfirmation();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
@@ -606,7 +604,7 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
@@ -643,7 +641,7 @@ public class PositiveTests extends config.TestBase {
         bkn.acceptConfirmation();
         bkn.selectAddress();
         bkn.placeOrder();
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDurationLong);
@@ -935,7 +933,7 @@ public class PositiveTests extends config.TestBase {
     @Story("2 users chatting tests")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Chat test")
-    void t00500() {
+    void chat3MessagesTest() {
         userRegisterAPI(data);
         serviceRegisterAPI(data);
         clientRegisterAPI(data);
@@ -949,8 +947,8 @@ public class PositiveTests extends config.TestBase {
         ord.tabArchivedOrdersOutbox();
         ord.clickProfessionalsName();
         pp.clickChat();
-        msg.sendMessage(testMessage1);
-        msg.checkMessage(testMessage1);
+        msg.sendMessage(data.message[0]);
+        msg.checkMessage(data.message[0]);
         log.forceLogOut();
 
         log.logIn(userEmail, userPassword);
@@ -958,9 +956,9 @@ public class PositiveTests extends config.TestBase {
         topBar.clickChat();
         msg.findUserChat(userFirstName);
         msg.selectUser();
-        msg.checkMessage(testMessage1);
-        msg.sendMessage(testMessage2);
-        msg.checkMessage(testMessage2);
+        msg.checkMessage(data.message[0]);
+        msg.sendMessage(data.message[1]);
+        msg.checkMessage(data.message[1]);
         log.forceLogOut();
 
         log.logIn(clientEmail, clientPassword);
@@ -968,8 +966,8 @@ public class PositiveTests extends config.TestBase {
         topBar.clickChat();
         msg.findUserChat(userFirstName);
         msg.selectUser();
-        msg.checkMessage(testMessage1);
-        msg.checkMessage(testMessage2);
+        msg.checkMessage(data.message[0]);
+        msg.checkMessage(data.message[1]);
     }
 
     @Test
@@ -1100,7 +1098,7 @@ public class PositiveTests extends config.TestBase {
         bkn.placeOrder();
         log.forceEN();
 
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
@@ -1150,7 +1148,7 @@ public class PositiveTests extends config.TestBase {
         bkn.placeOrder();
         log.forceEN();
 
-        bkn.showOrderDetails();
+        bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);

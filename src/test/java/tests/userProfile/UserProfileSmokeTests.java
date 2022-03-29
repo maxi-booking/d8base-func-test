@@ -3,36 +3,29 @@ package tests.userProfile;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
-import static api.Registration.locations;
 import static api.Registration.registration;
 import static helpers.RegressionTestsHelpers.userReadyAPI;
 
+@Feature("User Profile")
+@Owner("Egor Khlebnikov")
 public class UserProfileSmokeTests extends config.TestBase {
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
+    @DisplayName("User Registration via API and verify the data")
     @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("User Registration via API, verify data")
     void userProfileInfoVerification() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         reg.verifyRegistrationDataFull(data.firstName[0], data.lastName[0], data.email[0], data.phoneNumber[0], data.country[0], data.city[0]);
     }
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: functionality verification")
+    @Severity(SeverityLevel.CRITICAL)
     void userProfileFunctionalityVerification() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
 
         up.verifyProfile(data.firstName[0], data.lastName[0], data.email[0], data.country[0], data.city[0]);
         up.openUserProfileMain();
@@ -51,14 +44,11 @@ public class UserProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: main - change all the info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void userProfileMainChangeTest() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
 
         up.openUserProfileMain();
         up.inputFirstName(data.firstName[1]);
@@ -76,14 +66,11 @@ public class UserProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: contacts - change info, add new and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void userProfileContactsChangeTest() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
 
         up.clickEditContacts(0);
         up.verifySelectContactDefault();
@@ -121,14 +108,11 @@ public class UserProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: address - change info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void userProfileAddressChangeTest() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         up.verifyProfileAddressExists(data.country[0], data.city[0]);
         up.openUserProfileLocationEdit(0);
         up.verifyProfileAddress(data.country[0], data.city[0]);
@@ -192,14 +176,11 @@ public class UserProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("User Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("User Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Profile: about - change info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void t00005() {
         userReadyAPI(data);
-        sideMenu.clickProfile();
+        sideMenu.openProfile();
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.clickBackAbout();
@@ -207,15 +188,15 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.openUserProfileAbout();
         up.selectDateBirth(user10dateDD, user10dateMM, user10dateYYYY);
         up.selectNationality(user10Nationality);
-        up.selectLanguage(user10Language1);
+        up.selectLanguages(user10Language1);
         up.clickBackAbout();
 
         up.openUserProfileAbout();
         up.verifyAboutDefault();
         up.selectDateBirth(user10dateDD, user10dateMM, user10dateYYYY);
         up.selectNationality(user10Nationality);
-        up.selectLanguage(user10Language1);
-        up.selectLanguage(user10Language2);
+        up.selectLanguages(user10Language1);
+        up.selectLanguages(user10Language2);
         up.clickSaveAbout();
         up.verifyAbout(user10Nationality, user10Language1, user10dateDD, user10dateMM, user10dateYYYY);
         up.verifyAboutExtraLanguage(user10Language2);

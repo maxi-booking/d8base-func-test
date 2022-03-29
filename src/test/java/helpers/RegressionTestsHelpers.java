@@ -8,6 +8,7 @@ import static api.ServicePublish.*;
 import static api.Orders.*;
 import static api.Accounts.*;
 import static helpers.DateTimeFormatter.getDateTime;
+import static helpers.RegressionTestsHelpers.clientBookService;
 
 public class RegressionTestsHelpers extends config.TestBase {
 
@@ -67,7 +68,7 @@ public class RegressionTestsHelpers extends config.TestBase {
             data.startTime = "00:00";
             data.endTime = "23:59";
         }
-        setSchedule(data.accessToken[0], data.professionalId, 7, data.startTime, data.endTime);
+        setSchedule(data.accessToken[0], data.professionalId, data.days, data.startTime, data.endTime);
         if (data.sType == online) {
             data.serviceLocationId = data.locationsId[0];
         } else if (data.sType == client) {
@@ -82,7 +83,7 @@ public class RegressionTestsHelpers extends config.TestBase {
     public static void bookingCreateAPI(Data data) {
         userRegisterAPI(data);
         serviceRegisterAPI(data);
-        bookingProfessional(data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
+        data.orderId = bookingProfessional(data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
     }
 
     public static void userBookService(Data data) {
@@ -154,6 +155,28 @@ public class RegressionTestsHelpers extends config.TestBase {
     public static void clientBookingReadyAPI(Data data) {
         bookingCreateAPI(data);
         clientRegisterAPI(data);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(data.email[1], data.password[1]);
+        log.forceEN();
+    }
+
+    public static void masterOrderReadyAPI(Data data) {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(data.email[0], data.password[0]);
+        log.forceEN();
+    }
+
+    public static void clientOrderReadyAPI(Data data) {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        clientRegisterAPI(data);
+        clientBookService(data);
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);

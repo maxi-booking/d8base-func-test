@@ -39,7 +39,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .post(urlBackend + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -74,7 +74,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .post(urlBackend + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -109,7 +109,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .post(urlBackend + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -145,7 +145,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .post(urlBackend + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -181,7 +181,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/orders/sent/")
+                .post(urlBackend + ":8000/en/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

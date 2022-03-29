@@ -12,14 +12,14 @@ import static api.ServicePublish.*;
 import static api.ServicePublish.servicePrices;
 import static helpers.RegressionTestsHelpers.*;
 
+@Feature("Orders")
+@Story("Orders Share")
+@Owner("Egor Khlebnikov")
 public class OrderShareTests extends TestBase {
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, online order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00000() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -48,21 +48,18 @@ public class OrderShareTests extends TestBase {
         clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, client's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00001() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -92,21 +89,18 @@ public class OrderShareTests extends TestBase {
         clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client logged in, professional's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00002() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -136,21 +130,18 @@ public class OrderShareTests extends TestBase {
         clientReadyAPI(data);
         log.openUrl(onlineServiceShareLink);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, online order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00003() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -182,29 +173,26 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, client's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00004() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -238,29 +226,26 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without login, professional's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00005() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -293,29 +278,26 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
         log.forceEN();
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, online order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00006() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -346,7 +328,7 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
@@ -363,21 +345,18 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, online);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, client's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00007() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -410,7 +389,7 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
@@ -427,21 +406,18 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 
     @Test
-    @Feature("Orders")
-    @Owner("Egor Khlebnikov")
-    @Story("Share order")
-    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Share order: client without account, professional's place order")
+    @Severity(SeverityLevel.BLOCKER)
     void t00008() {
         String accessToken = registration(userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(accessToken, userCountry, userCity);
@@ -473,7 +449,7 @@ public class OrderShareTests extends TestBase {
         log.forceEN();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
 
         ord.shareOrderNewUser();
@@ -490,12 +466,12 @@ public class OrderShareTests extends TestBase {
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.shareOrderClickConfirm();
-        ord.verifyOrderData(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
+        ord.verifyOrderDataOutbox(userFirstName, userLastName, userSpecialization, serviceName, servicePrice, serviceDuration);
         ord.clickViewDetails();
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
-        ord.verifyOrderDetails(serviceName, serviceDuration, serviceAddress);
+        ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
     }
 }

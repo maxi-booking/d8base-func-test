@@ -8,11 +8,13 @@ import io.qameta.allure.Step;
 import java.io.File;
 import java.time.Duration;
 import java.util.Locale;
+import java.util.Objects;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.DateTimeFormatter.monthConvertToNumber;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ProfessionalProfile extends TestBase {
@@ -201,29 +203,37 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: edit expertise level - value: {value}")
     public void editExpertiseLevel(String value) {
-        sleep(200);
-        $("app-master-edit-page").$("app-master-edit").$("ion-select").click();
-        sleep(200);
+        $("app-master-edit-page ion-select[aria-label=' Senior ,  Expertise level ']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-master-edit-page app-master-edit ion-select").click();
+        $("ion-popover ion-radio-group[role='radiogroup']").shouldBe(visible, Duration.ofSeconds(10));
         switch (value) {
             case "random":
                 Faker generate = new Faker(new Locale("en-US"));
                 Integer level = generate.number().numberBetween(0, 2);
-                $("ion-popover").$("ion-select-popover").$("ion-item", level).click();
+                $("ion-popover ion-select-popover ion-item", level).click();
                 break;
             case "junior":
-                $("ion-popover").$("ion-select-popover").$("ion-item", 0).click();
+                $("ion-popover ion-select-popover ion-item", 0).click();
                 break;
             case "middle":
-                $("ion-popover").$("ion-select-popover").$("ion-item", 1).click();
+                $("ion-popover ion-select-popover ion-item", 1).click();
                 break;
             case "senior":
-                $("ion-popover").$("ion-select-popover").$("ion-item", 2).click();
+                $("ion-popover ion-select-popover ion-item", 2).click();
                 break;
             default:
                 fail();
                 break;
         }
         sleep(500);
+    }
+
+    public void mainClickExpertiseLevel() {
+        step("Click to show expertise level selection", () -> {
+            $("app-master-edit-page ion-select[interface='popover']").shouldBe(visible, Duration.ofSeconds(10));
+            $("app-master-edit-page app-master-edit ion-select").click();
+            $("ion-popover ion-radio-group[role='radiogroup']").shouldBe(visible, Duration.ofSeconds(10));
+        });
     }
 
     @Step("Main: edit category - value: {value}")
@@ -601,7 +611,9 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Certificates: edit name - value: {value}")
     public void certificatesEditName(String value) {
-        $("app-master-certificate-edit").$("app-certificate-edit").$("input[name='name']").setValue(value);
+        $("app-professional-page").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-master-certificate-edit app-certificate-edit input[name='name']").setValue(value);
+        String actualValue = $("app-master-certificate-edit app-certificate-edit input[name='name']").getText();
     }
 
     @Step("Certificates: edit organization - value: {value}")

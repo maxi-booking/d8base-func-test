@@ -13,6 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.Currency.getCurrencySignById;
 import static helpers.ServiceDuration.getDuration;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -123,7 +124,8 @@ public class Orders extends config.TestBase {
             ++cardNumber;
         }
         if (!servicePriceActualString.contains(servicePrice)) {
-            fail();
+            System.out.println("Service with incorrect price.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -245,7 +247,7 @@ public class Orders extends config.TestBase {
 
     @Step("Click 'show more'")
     public void clickShowMore() {
-        $("app-more-info").$("ion-note").click();
+        $("app-more-info ion-label").click();
     }
 
     @Step("Select master in Outbox")
@@ -254,8 +256,11 @@ public class Orders extends config.TestBase {
     }
 
     // Share Order
+
     public void clickShareOrder() {
         step("Click share order button", () -> {
+            $("app-infinite-scroll-container").shouldNotBe(visible, Duration.ofSeconds(10));
+            $("app-received-order-page").shouldBe(visible, Duration.ofSeconds(10));
             $("app-received-order-page ion-button[slot='start']").scrollIntoView(true).click();
         });
     }
@@ -321,10 +326,36 @@ public class Orders extends config.TestBase {
         });
     }
 
-    public void verifyOrderData(String firstName, String lastName, String specialization, String serviceName, String servicePrice, String serviceDuration) {
+    public void verifyOrderExists(int id) {
+        step("Verify successful order exists.", () -> {
+            $$("app-infinite-scroll-container app-order-status ion-badge[color='success']").filter(visible).get(id).shouldBe(visible);
+        });
+    }
+
+    public void verifyOrderDataOutbox(String firstName, String lastName, String specialization, String serviceName, String servicePrice, String serviceDuration) {
         step("Verify that order data is all correct.", () -> {
             $$("app-infinite-scroll-container app-order-status ion-badge[color='success']").filter(visible).get(0).shouldBe(visible);
-            $$("app-infinite-scroll-container app-professional-card ").filter(visible).get(0).shouldHave(text(firstName + " " + lastName), text(specialization));
+            $$("app-infinite-scroll-container app-professional-card").filter(visible).get(0).shouldHave(text(firstName + " " + lastName), text(specialization));
+            $$("app-infinite-scroll-container app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
+            $$("app-infinite-scroll-container app-price").filter(visible).get(0).shouldHave(text(servicePrice));
+            $$("app-infinite-scroll-container app-duration-viewer").filter(visible).get(0).shouldHave(text(serviceDuration));
+        });
+    }
+
+    public void verifyOrderDataInbox(String firstName, String lastName, String serviceName, String servicePrice, String serviceDuration) {
+        step("Verify that order data is all correct.", () -> {
+            $$("app-infinite-scroll-container app-order-status ion-badge[color='success']").filter(visible).get(0).shouldBe(visible);
+            $$("app-infinite-scroll-container app-client-widget").filter(visible).get(0).shouldHave(text(firstName + " " + lastName));
+            $$("app-infinite-scroll-container app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
+            $$("app-infinite-scroll-container app-price").filter(visible).get(0).shouldHave(text(servicePrice));
+            $$("app-infinite-scroll-container app-duration-viewer").filter(visible).get(0).shouldHave(text(serviceDuration));
+        });
+    }
+
+    public void verifyOrderDataInbox(String firstName, String serviceName, String servicePrice, String serviceDuration) {
+        step("Verify that order data is all correct.", () -> {
+            $$("app-infinite-scroll-container app-order-status ion-badge[color='success']").filter(visible).get(0).shouldBe(visible);
+            $$("app-infinite-scroll-container app-client-widget").filter(visible).get(0).shouldHave(text(firstName));
             $$("app-infinite-scroll-container app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
             $$("app-infinite-scroll-container app-price").filter(visible).get(0).shouldHave(text(servicePrice));
             $$("app-infinite-scroll-container app-duration-viewer").filter(visible).get(0).shouldHave(text(serviceDuration));
@@ -337,7 +368,7 @@ public class Orders extends config.TestBase {
         });
     }
 
-    public void verifyOrderDetails(String serviceName, String serviceDuration, int serviceLocation) {
+    public void verifyOrderDetailsOutbox(String serviceName, String serviceDuration, int serviceLocation) {
         step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration, () -> {
             $$("section").filter(visible).get(0).shouldHave(text(serviceName), text(serviceDuration));
             if (serviceLocation == 0) {
@@ -353,9 +384,182 @@ public class Orders extends config.TestBase {
         });
     }
 
-    public void verifyOrderDetails(String serviceName, String serviceDuration, String serviceAddress) {
+    public void verifyOrderDetailsOutbox(String serviceName, String serviceDuration, String serviceAddress) {
         step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration + ". Service duration: " + serviceAddress, () -> {
             $$("section").filter(visible).get(0).shouldHave(text(serviceName), text(serviceDuration), text(serviceAddress));
+        });
+    }
+
+    public void verifyOrderDetailsInbox(String userFirstName,
+                                        String userLastName,
+                                        int serviceId,
+                                        String serviceName,
+                                        String servicePrice,
+                                        int serviceCurrencyId,
+                                        String serviceTotalDuration,
+                                        String serviceDescription,
+                                        int serviceLocation,
+                                        String[] paymentOptions,
+                                        Boolean instantBooking) {
+        step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration, () -> {
+            $$("app-client-widget").filter(visible).get(0).shouldHave(text(userFirstName + " " + userLastName));
+            $$("app-received-order").filter(visible).get(0).shouldHave(text(String.valueOf(serviceId)));
+            $$("app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
+
+            $$("app-price").filter(visible).get(0).shouldHave(text(servicePrice + " " + getCurrencySignById(serviceCurrencyId)));
+
+            ServiceDuration duration = getDuration(serviceTotalDuration);
+            if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+                System.out.println("Duration can not be 0");
+                throw new IllegalArgumentException();
+            }
+            if (!duration.days.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.days));
+            }
+            if (!duration.hours.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.hours));
+            }
+            if (!duration.minutes.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.minutes));
+            }
+
+            $$("app-more-info ion-item").filter(visible).get(0).shouldHave(text(serviceDescription));
+
+            if (serviceLocation == 0) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(onlineLocation));
+            } else if (serviceLocation == 1) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(clientLocation));
+            } else if (serviceLocation == 2) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(professionalLocation));
+            } else {
+                System.out.println("Impossible service location. Should be online/client/professional.");
+                throw new IllegalArgumentException();
+            }
+
+            if (serviceLocation == 0) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(onlineLocation));
+            } else if (serviceLocation == 1) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(clientLocation));
+            } else if (serviceLocation == 2) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(professionalLocation));
+            } else {
+                System.out.println("Impossible service location. Should be online/client/professional.");
+                throw new IllegalArgumentException();
+            }
+
+            if (paymentOptions == paymentCashOnline) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCashOnline[0]), text(paymentCashOnline[1]));
+            } else if (paymentOptions == paymentCash) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCash[0]));
+            } else if (paymentOptions == paymentOnline) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentOnline[0]));
+            } else {
+                System.out.println("Unknown payment options.");
+                throw new IllegalArgumentException();
+            }
+
+            if (instantBooking == on) {
+                $("ion-icon[name='checkbox-outline']").shouldBe(visible);
+            } else if (instantBooking == off) {
+                $("ion-icon[name='checkbox-outline']").shouldNotBe(visible);
+            } else {
+                System.out.println("Instant Booking error, value not found.");
+                throw new IllegalArgumentException();
+            }
+
+            $$("ion-badge[color='success']").filter(visible).get(0).should(exist);
+
+            //todo add bottom part
+        });
+    }
+
+    public void verifyOrderDetailsInbox(String userFirstName,
+                                        int orderId,
+                                        String serviceName,
+                                        String servicePrice,
+                                        int serviceCurrencyId,
+                                        String serviceTotalDuration,
+                                        String serviceDescription,
+                                        int serviceLocation,
+                                        String[] paymentOptions,
+                                        Boolean instantBooking) {
+        step("Verify order details. Service name: " + serviceName + ". Service duration: " + serviceDuration, () -> {
+            $$("app-client-widget").filter(visible).get(0).shouldHave(text(userFirstName));
+            $$("app-received-order").filter(visible).get(0).shouldHave(text(String.valueOf(orderId)));
+            $$("app-service-title").filter(visible).get(0).shouldHave(text(serviceName));
+
+            $$("app-price").filter(visible).get(0).shouldHave(text(servicePrice + " " + getCurrencySignById(serviceCurrencyId)));
+
+            ServiceDuration duration = getDuration(serviceTotalDuration);
+            if (duration.days.equals("0") && duration.hours.equals("0") && duration.minutes.equals("0")) {
+                System.out.println("Duration can not be 0");
+                throw new IllegalArgumentException();
+            }
+            if (!duration.days.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.days));
+            }
+            if (!duration.hours.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.hours));
+            }
+            if (!duration.minutes.equals("0")) {
+                $$("app-duration-viewer").filter(visible).get(0).shouldHave(text(duration.minutes));
+            }
+
+            $$("app-more-info ion-item").filter(visible).get(0).shouldHave(text(serviceDescription));
+
+            if (serviceLocation == 0) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(onlineLocation));
+            } else if (serviceLocation == 1) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(clientLocation));
+            } else if (serviceLocation == 2) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(professionalLocation));
+            } else {
+                System.out.println("Impossible service location. Should be online/client/professional.");
+                throw new IllegalArgumentException();
+            }
+
+            if (serviceLocation == 0) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(onlineLocation));
+            } else if (serviceLocation == 1) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(clientLocation));
+            } else if (serviceLocation == 2) {
+                $$("app-service-location").filter(visible).get(0).shouldHave(text(professionalLocation));
+            } else {
+                System.out.println("Impossible service location. Should be online/client/professional.");
+                throw new IllegalArgumentException();
+            }
+
+            if (paymentOptions == paymentCashOnline) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCashOnline[0]), text(paymentCashOnline[1]));
+            } else if (paymentOptions == paymentCash) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCash[0]));
+            } else if (paymentOptions == paymentOnline) {
+                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentOnline[0]));
+            } else {
+                System.out.println("Unknown payment options.");
+                throw new IllegalArgumentException();
+            }
+
+            if (instantBooking == on) {
+                $("ion-icon[name='checkbox-outline']").shouldBe(visible);
+            } else if (instantBooking == off) {
+                $("ion-icon[name='checkbox-outline']").shouldNotBe(visible);
+            } else {
+                System.out.println("Instant Booking error, value not found.");
+                throw new IllegalArgumentException();
+            }
+
+            $$("ion-badge[color='success']").filter(visible).get(0).should(exist);
+
+            //todo add bottom part
+        });
+    }
+
+    public void checkOrderCardDisplayedWithLanguage(String language) {
+        step("Check order card is displayed for " + language, () -> {
+            log.changeLanguageTo(language);
+            ord.tabCurrentOrdersInbox();
+            ord.verifyOrderExists(0);
         });
     }
 }

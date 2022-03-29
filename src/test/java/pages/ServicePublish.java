@@ -152,8 +152,16 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickFourthStep() {
-        $("app-service-publish-step-four").$("ion-button[type='submit']").scrollIntoView(true).click();
-        sleep(3000);
+        step("Confirm fourth step", () -> {
+            $("app-service-publish-step-four").$("ion-button[type='submit']").scrollIntoView(true).click();
+            $("ion-loading ion-spinner[role='progressbar']").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
+    }
+
+    public void clickFourthStepNoDelay() {
+        step("Confirm fourth step", () -> {
+            $("app-service-publish-step-four").$("ion-button[type='submit']").scrollIntoView(true).click();
+        });
     }
 
     @Step("Enter first name: {firstName}")
@@ -251,6 +259,13 @@ public class ServicePublish extends config.TestBase {
         sleep(500);
     }
 
+    public void step7ClickEditSchedule() {
+        step("Step seven: edit schedule click", () -> {
+            $("app-service-publish-step-seven ion-item[routerlink='timetable']").scrollIntoView(true).click();
+            $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
+        });
+    }
+
     @Step("Set a schedule")
     public void fillSchedule() {
         $("app-service-publish-step-seven").$("form").$("ion-icon").scrollIntoView(true).click();
@@ -271,21 +286,22 @@ public class ServicePublish extends config.TestBase {
         $("app-timetable").$("app-content-wrapper").$("ion-button[type='submit']").scrollIntoView(true).click();
     }
 
-    @Step("Set a schedule")
     public void fillScheduleLite() {
-        $("app-service-publish-step-seven ion-item[routerlink='timetable']").scrollIntoView(true).click();
-        $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-timetable app-column-header ion-buttons ion-button", 1).click();
-        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(true).click();
-        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
-        $("app-timetable app-column-header ion-buttons ion-button", 1).click();
-        $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
-        $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
-        Attach.screenshotAs("Schedule");
-        $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
-        $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
+        step("Set a schedule", () -> {
+            $("app-service-publish-step-seven ion-item[routerlink='timetable']").scrollIntoView(true).click();
+            $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
+            $("app-timetable app-column-header ion-buttons ion-button", 1).click();
+            $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+            $("app-timetable-add-time-popover").$("ion-label", 5).scrollIntoView(true).click();
+            $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+            $("app-timetable app-column-header ion-buttons ion-button", 1).click();
+            $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+            $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
+            $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
+            Attach.screenshotAs("Schedule");
+            $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
+            $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
     }
 
     /* old method
@@ -471,6 +487,12 @@ public class ServicePublish extends config.TestBase {
         }
     }
 
+    public void stepFinalClickBack() {
+        step("Final step: click back", () -> {
+            $("app-service-publish-final-step ion-grid ion-button[color='light']").click();
+        });
+    }
+
     @Step("Publish a service")
     public void publishService() {
         $("app-service-publish-final-step ion-content ion-button", 1).scrollIntoView(true).click();
@@ -565,7 +587,8 @@ public class ServicePublish extends config.TestBase {
         String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
         Attach.screenshotAs("Screenshot");
         if (value.equals("English language")) {
-            fail();
+            System.out.println("Language should not be English.");
+            throw new IllegalArgumentException();
         }
         $("ionic-selectable-modal").$("ion-content").$("ion-item", 0).scrollIntoView(true).click();
         $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
@@ -592,6 +615,12 @@ public class ServicePublish extends config.TestBase {
             $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " — " + maxPrice + " $"));
             return;
         }
-        fail();
+        System.out.println("Unknown currency.");
+        throw new IllegalArgumentException();
+    }
+
+    public void verifySpinnerWorks() {
+        $("ion-loading ion-spinner[role='progressbar']").shouldBe(visible);
+        $("ion-loading ion-spinner[role='progressbar']").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 }

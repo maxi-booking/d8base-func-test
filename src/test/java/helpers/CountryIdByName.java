@@ -25,12 +25,12 @@ public class CountryIdByName extends TestBase {
     public static Response countryIdByName(String country) {
 
         return given()
-                .filter(new AllureRestAssured())
+//                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBase + ":8000/swagger/")
+                .header("Referer", urlBackend + ":8000/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBase + ":8000/en/api/location/countries/?search=" + country)
+                .get(urlBackend + ":8000/en/api/location/countries/?search=" + country)
                 .then()
                 .statusCode(200)
                 .extract().response();

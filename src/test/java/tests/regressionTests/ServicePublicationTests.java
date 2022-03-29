@@ -6,15 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.RegressionTestsHelpers.userReadyAPI;
 
+@Feature("Service Publication")
+@Owner("Egor Khlebnikov")
 public class ServicePublicationTests extends config.TestBase {
+
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4887")
-    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4887")
     @DisplayName("Service publish: city is selectable - client's place")
+    @Severity(SeverityLevel.CRITICAL)
     void t00000() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -45,11 +47,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4887")
-    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4887")
     @DisplayName("Service publish: city is selectable - professional's place")
+    @Severity(SeverityLevel.CRITICAL)
     void t00001() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -79,11 +79,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4237")
-    @Severity(SeverityLevel.NORMAL)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4237")
     @DisplayName("Service publish: user can not select fixed price with the value: 0")
+    @Severity(SeverityLevel.NORMAL)
     void t00100() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -102,11 +100,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4237")
-    @Severity(SeverityLevel.NORMAL)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4237")
     @DisplayName("Service publish: user can not select price range with min value: 0")
+    @Severity(SeverityLevel.NORMAL)
     void t00101() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -125,11 +121,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4237")
-    @Severity(SeverityLevel.NORMAL)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4237")
     @DisplayName("Service publish: user can not select price range with max value: 0")
+    @Severity(SeverityLevel.NORMAL)
     void t00102() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -148,11 +142,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4256")
-    @Severity(SeverityLevel.MINOR)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4256")
     @DisplayName("Service publish: element language retention start with English - check titles")
+    @Severity(SeverityLevel.MINOR)
     void t00200() {
         log.openMainPage();
         log.popupSkip();
@@ -170,11 +162,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4256")
-    @Severity(SeverityLevel.MINOR)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4256")
     @DisplayName("Service publish: element language retention start with Russian - check titles")
+    @Severity(SeverityLevel.MINOR)
     void t00201() {
         log.openMainPage();
         log.popupSkip();
@@ -192,11 +182,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4256")
-    @Severity(SeverityLevel.MINOR)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4256")
     @DisplayName("Service publish: element language retention start with English - check lists")
+    @Severity(SeverityLevel.MINOR)
     void t00202() {
         log.openMainPage();
         log.popupSkip();
@@ -222,11 +210,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4256")
-    @Severity(SeverityLevel.MINOR)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4256")
     @DisplayName("Service publish: element language retention start with Russian - check lists")
+    @Severity(SeverityLevel.MINOR)
     void t00203() {
         log.openMainPage();
         log.popupSkip();
@@ -252,9 +238,7 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @ParameterizedTest(name = "Service publish: verify that with price range {1} currency stays the same")
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4900")
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4900")
     @Severity(SeverityLevel.CRITICAL)
     @CsvSource({
             "0, CAD",
@@ -290,11 +274,9 @@ public class ServicePublicationTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Service Publication")
-    @Owner("Egor Khlebnikov")
-    @Story("https://redmine.maxi-booking.ru/issues/4621")
-    @Severity(SeverityLevel.MINOR)
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4621")
     @DisplayName("Service publish: can not publish service without any payment option")
+    @Severity(SeverityLevel.MINOR)
     void t00400() {
         userReadyAPI(data);
         sideMenu.clickPublishNewService();
@@ -319,5 +301,73 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.instantBooking(on);
         pbl.PaymentOptions(false, false, data);
         pbl.verifySeventhStepContinueIsNotClickable();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5077")
+    @DisplayName("Service publish: schedule can be edited after backing")
+    @Severity(SeverityLevel.MINOR)
+    void publishScheduleEditAfterBack() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.fillScheduleLite();
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
+        pbl.checkPrice(servicePrice);
+        pbl.stepFinalClickBack();
+        sleep(3000);
+        pbl.step7ClickEditSchedule();
+        sch.clickBack();
+        pbl.clickSeventhStep();
+        pbl.publishService();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5084")
+    @DisplayName("Service publish: 4th step should be blocked by spinner after confirmation")
+    @Severity(SeverityLevel.NORMAL)
+    void publish4StepSpinnerWorks() {
+        log.openMainPage();
+        log.popupSkip();
+        log.forceEN();
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillEmail(userEmail);
+        pbl.fillUserInfo(userFirstName, userLastName, userPassword, userCountry, userCity);
+        pbl.clickFourthStepNoDelay();
+        pbl.verifySpinnerWorks();
     }
 }

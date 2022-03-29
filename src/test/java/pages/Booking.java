@@ -323,8 +323,9 @@ public class Booking {
         $("app-sent-order-page div.order-full-info").shouldBe(visible, Duration.ofSeconds(10));
     }
 
-    @Step("Click to see order details")
-    public void showOrderDetails() {
+    @Step("Click to see sent order details")
+    public void showSentOrderDetails() {
+        $("app-sent-order-page app-sent-order div.order-full-info__more-info a").shouldBe(visible, Duration.ofSeconds(10));
         $$("div.order-full-info a").filter(visible).get(0).click();
     }
 

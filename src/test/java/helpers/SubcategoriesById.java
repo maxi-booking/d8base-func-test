@@ -39,12 +39,12 @@ public class SubcategoriesById extends TestBase {
     public static Response subcategories() {
 
         return given()
-                .filter(new AllureRestAssured())
+//                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBase + ":8000/swagger/")
+                .header("Referer", urlBackend + ":8000/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBase + ":8000/en/api/professionals/subcategories/?page_size=900")
+                .get(urlBackend + ":8000/en/api/professionals/subcategories/?page_size=900")
                 .then()
                 .statusCode(200)
                 .extract().response();

@@ -31,11 +31,20 @@ public class SideMenu {
         sleep(300);
     }
 
-    @Step("Click Menu > Profile")
+    public void openProfile() {
+        step("Navigate to profile page", () -> {
+            if (!$("app-profile").isDisplayed()) {
+                clickProfile();
+            }
+        });
+    }
+
     public void clickProfile() {
+        step("Click Menu > Profile", () -> {
         openMenu();
         $("[id='main-menu.my-account']").scrollIntoView(true).click();
         sleep(300);
+        });
     }
 
     @Step("Click Menu > Sing up")
@@ -49,7 +58,7 @@ public class SideMenu {
     public void clickProfessionalProfile() {
         openMenu();
         $("[id='main-menu.professional-profile']").scrollIntoView(true).click();
-        sleep(300);
+        sleep(500);
     }
 
 
@@ -57,7 +66,7 @@ public class SideMenu {
         step("Click Menu > Schedule", () -> {
         openMenu();
         $("[id='main-menu.professional-schedule']").scrollIntoView(true).click();
-        sleep(300);
+        sleep(500);
     });
     }
 

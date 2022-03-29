@@ -1,6 +1,7 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.WebDriverConfig;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class TestBase extends TestData {
 
@@ -20,17 +22,18 @@ public class TestBase extends TestData {
             ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
     public static String
-            urlBase = config.getBaseUrl(),
-            urlLogin = urlBase + "/auth/login",
-            urlLogOut = urlBase + "/auth/login?logout=",
-            urlServicePublish = urlBase + "/service/publish",
-            urlOrders = urlBase + "/my-orders/inbox",
-            urlUserRegistration = urlBase + "/auth/registration",
-            urlProfile = urlBase + "/profile",
+            urlFrontend = config.getFrontendUrl(),
+            urlBackend = config.getBackendUrl(),
+            urlLogin = urlFrontend + "/auth/login",
+            urlLogOut = urlFrontend + "/auth/login?logout=",
+            urlServicePublish = urlFrontend + "/service/publish",
+            urlOrders = urlFrontend + "/my-orders/inbox",
+            urlUserRegistration = urlFrontend + "/auth/registration",
+            urlProfile = urlFrontend + "/profile",
             urlClientDetails = "/client-details",
-            urlProfessionalProfile = urlBase + "/professional",
-            urlMyProfessionalProfile = urlBase + "/professional/my-profile",
-            urlForPerformers = urlBase + "/for-performers";
+            urlProfessionalProfile = urlFrontend + "/professional",
+            urlMyProfessionalProfile = urlFrontend + "/professional/my-profile",
+            urlForPerformers = urlFrontend + "/for-performers";
 
     public static SideMenu sideMenu = new SideMenu();
     public static TopBar topBar = new TopBar();
@@ -117,7 +120,7 @@ public class TestBase extends TestData {
             Attach.pageSource();
             Attach.browserConsoleLogs();
 //            Attach.addVideo(); //todo
-            closeWebDriver();
+            step("Close web driver", Selenide::closeWebDriver);
         }
     }
 }

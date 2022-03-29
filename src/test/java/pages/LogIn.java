@@ -9,12 +9,15 @@ import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import java.time.LocalDate;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.LanguageConverter.getLanguageId;
+import static helpers.LanguageConverter.getLanguageString;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -30,19 +33,21 @@ public class LogIn extends config.TestBase {
     }
 
     public void openMainPage() {
-        openUrl(urlBase);
+        openUrl(urlFrontend);
     }
 
     public void forceMainPage() {
-        if (!$("body").exists()) {
-            openUrl(urlBase);
-            return;
-        }
-        sleep(500);
-        String currentUrl = WebDriverRunner.url();
-        if (!currentUrl.equals(urlBase)) {
-            openUrl(urlBase);
-        }
+        step("Open main page", () -> {
+            if (!$("body").exists()) {
+                openUrl(urlFrontend);
+                return;
+            }
+            sleep(500);
+            String currentUrl = WebDriverRunner.url();
+            if (!currentUrl.equals(urlFrontend)) {
+                openUrl(urlFrontend);
+            }
+        });
     }
 
     public void openUrl(String url) {
@@ -66,11 +71,9 @@ public class LogIn extends config.TestBase {
 
     public void logIn(String login, String password) {
         step("Log In with " + login + " : " + password, () -> {
-            forceEN();
             sideMenu.clickLogIn();
-            $("app-login").$("input", 0).setValue(login);
-            $("app-login").$("input", 1).setValue(password);
-            Attach.screenshotAs("Screenshot");
+            $("app-login input", 0).setValue(login);
+            $("app-login input", 1).setValue(password);
             $("app-login-form ion-button[type='submit']").click();
             $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
         });
@@ -87,7 +90,6 @@ public class LogIn extends config.TestBase {
     }
 
     public void logTempAcc() {
-        forceEN();
         $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
         sleep(500);
         $("app-main-menu").$(byText("Log in")).click();
@@ -97,37 +99,13 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    public void presetAcc1User() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$("[id='main-menu.log-in']").click();
-        $("app-login").$("input", 0).setValue("SeleTest7@gg.gg");
-        $("app-login").$("input", 1).setValue("qazxcdew");
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
-    public void presetAcc2Master() {
-        forceEN();
-        $("ion-buttons").$("ion-menu-toggle").$("ion-button").click();
-        sleep(500);
-        $("app-main-menu").$(byText("Log in")).click();
-        $("app-login").$("input", 0).setValue("SeleTest6@gg.gg");
-        $("app-login").$("input", 1).setValue("qazxcdew");
-        $("app-login-form").$("ion-button[type='submit']").click();
-        sleep(1000);
-    }
-
     public void account(int value) {
         step("Log In with " + emails[value] + " : " + passwords[value], () -> {
-            forceEN();
             String login = emails[value];
             String password = passwords[value];
             sideMenu.clickLogIn();
             $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(login);
             $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
-            Attach.screenshotAs("Login_info");
             $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
             $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
         });
@@ -167,6 +145,30 @@ public class LogIn extends config.TestBase {
                 if ($("ion-alert").exists()) {
                     closeAlert();
                 }
+            }
+        });
+    }
+
+    public void changeLanguageTo(String language) {
+        step("Change language to " + language.substring(0, 1).toUpperCase() + language.substring(1).toLowerCase(), () -> {
+            sleep(1000);
+            String desiredLanguage = getLanguageString(language);
+            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                $$("[menu='flag-menu']").filter(visible).get(0).click();
+                $("app-flag-menu ion-select").click();
+                $("ion-alert button", getLanguageId(language)).click();
+                $("div.alert-button-group button", 1).click();
+                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
+                sleep(1500);
+                if ($("ion-alert").exists()) {
+                    closeAlert();
+                }
+            }
+            currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
+            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
+                System.out.println("Language ID is broken. Different order in the menu than expected, fix needed. \n Method: LanguageConverter.getLanguageId(~);");
+                fail();
             }
         });
     }
@@ -262,8 +264,21 @@ public class LogIn extends config.TestBase {
         }
         step("Check for errors. " + errorCheck, () -> {
             if ($("ion-toast").exists()) {
+                Attach.screenshotAs("Error");
                 fail();
             }
+        });
+    }
+
+    public void shouldHaveTitle(String value) {
+        step("Page title should be: " + value, () -> {
+            $("title").shouldHave(attribute("text", value));
+        });
+    }
+
+    public void shouldNotHaveTitle(String value) {
+        step("Page title should be: " + value, () -> {
+            $("title").shouldNotHave(attribute("text", value));
         });
     }
 }

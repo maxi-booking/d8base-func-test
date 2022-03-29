@@ -11,14 +11,13 @@ import static api.ServicePublish.*;
 import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.RegressionTestsHelpers.serviceReadyAPI;
 
+@Feature("Professional Profile")
+@Owner("Egor Khlebnikov")
 public class ProfessionalProfileSmokeTests extends config.TestBase {
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: info verification")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileInfoVerification() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -38,11 +37,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: functionality verification")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileFunctionalityVerification() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -73,11 +69,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: main - change all the info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileInfoChangeTest() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -118,11 +111,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: qualification - change all the info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileQualificationChangeTest() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -177,11 +167,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: education - change all the info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileEducationChangeTest() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -241,11 +228,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: certificates - change all the info and verify")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileCertificateChangeTest() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();
@@ -302,11 +286,8 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
     }
 
     @Test
-    @Feature("Professional Profile verification")
-    @Owner("Egor Khlebnikov")
-    @Story("Professional Profile")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Professional profile: full test")
+    @Severity(SeverityLevel.CRITICAL)
     void masterProfileFullTest() {
         serviceReadyAPI(data);
         sideMenu.clickProfessionalProfile();

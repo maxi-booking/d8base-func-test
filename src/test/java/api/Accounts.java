@@ -21,7 +21,7 @@ public class Accounts extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/ru/api/accounts/saved-professionals/")
+                .post(urlBackend + ":8000/ru/api/accounts/saved-professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

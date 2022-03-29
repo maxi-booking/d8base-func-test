@@ -22,7 +22,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .patch(urlBase + ":8000/en/api/accounts/profile/")
+                .patch(urlBackend + ":8000/en/api/accounts/profile/")
                 .then()
                 .statusCode(200);
     }
@@ -38,7 +38,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/professionals/")
+                .post(urlBackend + ":8000/en/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -57,7 +57,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/professionals/")
+                .post(urlBackend + ":8000/en/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -77,7 +77,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/professionals/")
+                .post(urlBackend + ":8000/en/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -110,7 +110,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/service-prices/")
+                .post(urlBackend + ":8000/en/api/accounts/service-prices/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -145,7 +145,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/service-prices/")
+                .post(urlBackend + ":8000/en/api/accounts/service-prices/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -188,7 +188,7 @@ public class ServicePublish extends TestBase {
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
-                    .post(urlBase + ":8000/en/api/accounts/professional-schedule/set/")
+                    .post(urlBackend + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
                     .statusCode(201);
         } else {
@@ -247,7 +247,7 @@ public class ServicePublish extends TestBase {
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
-                    .post(urlBase + ":8000/en/api/accounts/professional-schedule/set/")
+                    .post(urlBackend + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
                     .statusCode(201);
         } else {
@@ -270,7 +270,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/professional-locations/")
+                .post(urlBackend + ":8000/en/api/accounts/professional-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -290,7 +290,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/professional-locations/")
+                .post(urlBackend + ":8000/en/api/accounts/professional-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -308,7 +308,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/service-locations/")
+                .post(urlBackend + ":8000/en/api/accounts/service-locations/")
                 .then()
                 .statusCode(201);
     }
@@ -325,7 +325,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/service-locations/")
+                .post(urlBackend + ":8000/en/api/accounts/service-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -363,7 +363,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBase + ":8000/en/api/accounts/services/")
+                .post(urlBackend + ":8000/en/api/accounts/services/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

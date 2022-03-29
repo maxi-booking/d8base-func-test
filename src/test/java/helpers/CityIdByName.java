@@ -29,12 +29,12 @@ public class CityIdByName extends TestBase {
     public static Response cityIdByName(String city, String country) {
 
         return given()
-                .filter(new AllureRestAssured())
+//                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBase + ":8000/swagger/")
+                .header("Referer", urlBackend + ":8000/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBase + ":8000/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(country))
+                .get(urlBackend + ":8000/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(country))
                 .then()
                 .statusCode(200)
                 .extract().response();

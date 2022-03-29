@@ -29,7 +29,9 @@
 
 * `timeout` - максимальная задержка до падения теста, default: `10000` ms
 
-* `baseUrl` - основной url тестируемого сайта, default: `https://app.maxibooking.ru/`
+* `frontendUrl` - основной url тестируемого сайта (клиентская часть), default: `https://app.maxibooking.ru/`
+
+* `backendUrl` - основной url тестируемого сайта (серверная часть), default: `https://app.maxibooking.ru/`
 
 * `remote` - адрес удаленного сервера Selenide; игнорируется, если оставить пустым
 

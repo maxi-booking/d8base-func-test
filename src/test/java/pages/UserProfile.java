@@ -1,15 +1,16 @@
 package pages;
 
 import config.Lang;
+import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
+import java.util.Arrays;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -250,7 +251,7 @@ public class UserProfile {
 
     @Step("Profile address: click Save")
     public void addressClickSave() {
-            $("app-user-location-edit app-location-editor ion-button[id='save-btn']").click();
+        $("app-user-location-edit app-location-editor ion-button[id='save-btn']").click();
     }
 
     @Step("Profile address: click Remove")
@@ -286,7 +287,7 @@ public class UserProfile {
 
     public void selectAddress(int value) {
         step("Profile: select address, index: " + value, () -> {
-            $("app-profile main ion-item-group ion-button" , value).click();
+            $("app-profile main ion-item-group ion-button", value).click();
             $("app-user-location-edit app-location-editor ion-button").shouldBe(visible, Duration.ofSeconds(10));
         });
     }
@@ -444,16 +445,36 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile: About - select languages")
-    public void selectLanguage(String value) {
-        sleep(500);
-        $("app-about-edit").$("form").$("button", 1).click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(value);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-label", 0).click();
-        $("ionic-selectable-modal").$("ion-footer").$("ion-button", 1).click();
-        sleep(500);
+    public void selectLanguages(String... values) {
+        step("Profile: About - select languages: " + Arrays.toString(values), () -> {
+            for (String value : values) {
+                $("app-about-edit form button", 1).shouldBe(visible, Duration.ofSeconds(10));
+                $("app-about-edit form button", 1).click();
+                $("ionic-selectable-modal input").shouldBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal input").sendKeys(value);
+                $("ionic-selectable-modal ion-label", 1).shouldNotBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal ion-icon[aria-label='radio button off']", 0).shouldBe(visible);
+                $("ionic-selectable-modal ion-label", 0).click();
+                $("ionic-selectable-modal ion-footer ion-button", 1).click();
+                $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
+            }
+        });
+    }
+
+    public void removeLanguages(String... values) {
+        step("Profile: About - remove languages: " + Arrays.toString(values), () -> {
+            for (String value : values) {
+                $("app-about-edit form button", 1).shouldBe(visible, Duration.ofSeconds(10));
+                $("app-about-edit form button", 1).click();
+                $("ionic-selectable-modal input").shouldBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal input").sendKeys(value);
+                $("ionic-selectable-modal ion-label", 1).shouldNotBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal ion-icon[aria-label='checkmark circle']", 0).shouldBe(visible);
+                $("ionic-selectable-modal ion-label", 0).click();
+                $("ionic-selectable-modal ion-footer ion-button", 1).click();
+                $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
+            }
+        });
     }
 
     @Step("Profile: About - click 'save'")
@@ -462,4 +483,68 @@ public class UserProfile {
         sleep(2000);
     }
 
+    public void verifyLanguagesWithStrictOrder(String... values) {
+        step("Selected languages: " + Arrays.toString(values), () -> {
+            int i = 0;
+            $("app-profile ion-button[routerlink='about/']").scrollIntoView(true);
+            for (String value : values) {
+                $$("app-profile app-language").filter(visible).get(i).shouldHave(text(value));
+                i++;
+            }
+        });
+    }
+
+    public void verifyLanguages(String... values) {
+        step("Selected languages: " + Arrays.toString(values), () -> {
+            int i = 0;
+            String languageCollection = " ";
+            String collectionOutput = ""; // for a clean output, cosmetic only
+            $("app-profile ion-button[routerlink='about/']").scrollIntoView(true);
+            while ($("app-profile app-language", i).exists()) {
+                String text = $$("app-profile app-language").filter(visible).get(i).getText();
+                languageCollection = languageCollection + text + " ";
+                collectionOutput = collectionOutput + text + ", ";
+                i++;
+            }
+            if (!collectionOutput.equals("")) {
+                collectionOutput = collectionOutput.substring(0, collectionOutput.length() - 2);
+            }
+            for (String value : values) {
+                if (!languageCollection.contains(" " + value + " ")) {
+                    System.out.println("Can't find " + value + " language in the collection.\nCollection: " + collectionOutput + ".");
+                    $("app-profile app-language").shouldHave(text(value));
+                }
+            }
+        });
+    }
+
+    public void verifyNoLanguages() {
+        step("No languages are selected", () -> {
+            $("app-profile app-language").shouldNot(exist);
+        });
+    }
+
+    public void verifyNoLanguages(String... values) {
+        step("Languages shouldn't be selected: " + Arrays.toString(values), () -> {
+            int i = 0;
+            String languageCollection = " ";
+            String collectionOutput = ""; // for a clean output, cosmetic only
+            $("app-profile ion-button[routerlink='about/']").scrollIntoView(true);
+            while ($("app-profile app-language", i).exists()) {
+                String text = $$("app-profile app-language").filter(visible).get(i).getText();
+                languageCollection = languageCollection + text + " ";
+                collectionOutput = collectionOutput + text + ", ";
+                i++;
+            }
+            if (!collectionOutput.equals("")) {
+                collectionOutput = collectionOutput.substring(0, collectionOutput.length() - 2);
+            }
+            for (String value : values) {
+                if (languageCollection.contains(" " + value + " ")) {
+                    System.out.println("Can't find " + value + " language in the collection.\nCollection: " + collectionOutput + ".");
+                    throw new IllegalArgumentException();
+                }
+            }
+        });
+    }
 }

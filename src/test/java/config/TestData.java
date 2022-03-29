@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
 
-import static helpers.CurrencyById.getCurrencyById;
+import static helpers.Currency.getCurrencyById;
 import static helpers.DateTimeFormatter.*;
 import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
 
@@ -337,82 +337,6 @@ public class TestData {
             reviewText3,
             reviewText4,
             masterComment,
-            testMessage1,
-            testMessage2,
-            user12Patronymic,
-            user12Region,
-            user12Subregion,
-            user12District,
-            user12ZipCode,
-            user12Address,
-            user12dateDD,
-            user12dateMM,
-            user12dateYYYY,
-            user12Nationality,
-            user12Language,
-            master12MainDescription,
-            master12MainDescriptionNew,
-            master12MainSpecializationNew,
-            master12MainCompany,
-            master12MainCompanyNew,
-            master12MainExperience,
-            master12MainExperienceNew,
-            master12MainLevel,
-            master12MainLevelNew,
-            service12Country,
-            service12City,
-            service12Address,
-            service12Distance,
-            userFirstName11,
-            userLastName11,
-            master12QualificationJobTitle,
-            master12QualificationCompany,
-            master12QualificationFromMonth,
-            master12QualificationFromYear,
-            master12QualificationToMonth,
-            master12QualificationToYear,
-            master12QualificationDate,
-            master12QualificationDescription,
-            master12QualificationJobTitleNew,
-            master12QualificationCompanyNew,
-            master12QualificationFromMonthNew,
-            master12QualificationFromYearNew,
-            master12QualificationDateNew,
-            master12QualificationDescriptionNew,
-            master12EducationUniversity,
-            master12EducationDegree,
-            master12EducationAcademicField,
-            master12EducationFromMonth,
-            master12EducationFromYear,
-            master12EducationToMonth,
-            master12EducationToYear,
-            master12EducationDate,
-            master12EducationDescription,
-            master12EducationUniversityNew,
-            master12EducationDegreeNew,
-            master12EducationAcademicFieldNew,
-            master12EducationFromMonthNew,
-            master12EducationFromYearNew,
-            master12EducationDateNew,
-            master12EducationDescriptionNew,
-            master12CertificateName,
-            master12CertificateOrganization,
-            master12CertificateDate,
-            master12CertificateDateDay,
-            master12CertificateDateMonth,
-            master12CertificateDateYear,
-            master12CertificateID,
-            master12CertificateLink,
-            master12CertificatePhoto,
-            master12CertificateNameNew,
-            master12CertificateOrganizationNew,
-            master12CertificateDateNew,
-            master12CertificateDateDayNew,
-            master12CertificateDateMonthNew,
-            master12CertificateDateYearNew,
-            master12CertificateIDNew,
-            master12CertificateLinkNew,
-            master12CertificatePhotoNew,
             emptySpace,
             today,
             tomorrow,
@@ -441,12 +365,32 @@ public class TestData {
             online,
             client,
             professional,
-            master12MainCategory,
-            master12MainSubcategory,
-            master12MainCategoryNew,
-            master12MainSubcategoryNew,
             unitsKilometers,
-            unitsMiles;
+            unitsMiles,
+            monday,
+            tuesday,
+            wednesday,
+            thursday,
+            friday,
+            saturday,
+            sunday;
+
+    public static final Integer
+
+            // days of the week ID's
+            dayOfTheWeek = dayStringToId(LocalDate.now().getDayOfWeek().name()),
+            dayIdNext1Day = getNextDayId(dayOfTheWeek),
+            dayIdNext2Days = getNextDayId(dayIdNext1Day),
+            dayUdNext3Days = getNextDayId(dayIdNext2Days);
+
+    public static final String
+
+            // languages
+            english = "English",
+            russian = "Russian",
+            german = "German",
+            french = "French",
+            hispanic = "Hispanic";
 
     public static Object
             emptyNull;
@@ -503,6 +447,15 @@ public class TestData {
         //random confirmation
         random = "random";
 
+        //days of the week
+        monday = 0;
+        tuesday = 1;
+        wednesday = 2;
+        thursday = 3;
+        friday = 4;
+        saturday = 5;
+        sunday = 6;
+
         on = true;
         off = false;
         instantBooking = true;
@@ -528,9 +481,6 @@ public class TestData {
         reviewText3 = generate.rickAndMorty().quote();
         reviewText4 = generate.chuckNorris().fact();
         masterComment = generate.backToTheFuture().quote();
-
-        testMessage1 = generate.dragonBall().character() + " > " + generate.dragonBall().character();
-        testMessage2 = generate.friends().quote() + " (c) " + generate.dragonBall().character();
 
         testUser10New = generate.name().username() + "@new.kk";
         testPassword10New = generate.internet().password() + "New";
@@ -562,104 +512,6 @@ public class TestData {
         user10Nationality = "Iceland";
         user10Language1 = "Arabic";
         user10Language2 = "Irish";
-
-        Random r = new Random();
-        char c = (char) (r.nextInt(26) + 'a');
-        user12Patronymic = generate.aviation().aircraft();
-        user12Region = "Moscow";
-        user12Subregion = "Yugo-Vostochnyy Administrativnyy Okrug";
-        user12District = "Lefortovo";
-        user12ZipCode = "111033";
-        user12Address = "Shosse Entuziastov, 3к1";
-        user12dateDD = Long.toString(generate.number().numberBetween(01, 28));
-        user12dateMM = Long.toString(generate.number().numberBetween(01, 12));
-        user12dateYYYY = Long.toString(generate.number().numberBetween(1950, 2005));
-        user12Nationality = "Russia";
-        user12Language = "Russian";
-        master12MainCategory = generate.number().numberBetween(0, 8);
-        master12MainSubcategory = getRandomSubcategoryFromCategoryValue(master12MainCategory);
-        master12MainCategoryNew = generate.number().numberBetween(0, 8);
-        master12MainSubcategoryNew = getRandomSubcategoryFromCategoryValue(master12MainCategoryNew);
-        master12MainDescription = generate.rickAndMorty().quote() + " " + generate.twinPeaks().quote();
-        master12MainDescriptionNew = generate.aquaTeenHungerForce().character() + " " + generate.princessBride().quote();
-        master12MainSpecializationNew = generate.job().title() + " " + generate.app().name();
-        master12MainCompany = generate.app().author() + " " + generate.ancient().titan();
-        master12MainCompanyNew = generate.app().author() + " " + generate.ancient().god();
-        master12MainLevel = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
-        master12MainLevelNew = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
-        while (true) {
-            if (!master12MainLevelNew.equals(master12MainLevel)) {
-                break;
-            } else {
-                master12MainLevelNew = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
-            }
-        }
-        service12Country = "Russia";
-        service12City = "Moscow";
-        service12Address = "Shosse Entuziastov, 3к1";
-        service12Distance = "3000";
-        master12QualificationJobTitle = generate.job().title();
-        master12QualificationCompany = generate.company().name();
-        master12QualificationFromMonth = generateMonth();
-        master12QualificationFromYear = String.valueOf(generate.number().numberBetween(1950, 2016));
-        master12QualificationToMonth = generateMonth();
-        master12QualificationToYear = String.valueOf(generate.number().numberBetween(2017, 2020));
-        master12QualificationDescription = generate.shakespeare().asYouLikeItQuote();
-        master12QualificationJobTitleNew = generate.job().position();
-        master12QualificationCompanyNew = generate.company().profession();
-        master12QualificationFromMonthNew = generateMonth();
-        master12QualificationFromYearNew = String.valueOf(generate.number().numberBetween(1970, 2020));
-        master12QualificationDescriptionNew = generate.shakespeare().hamletQuote();
-
-
-        master12MainExperience = Integer.toString(year - Integer.parseInt(master12QualificationFromYear));
-        master12MainExperienceNew = Integer.toString(year - Integer.parseInt(master12QualificationFromYearNew));
-
-        master12QualificationDate = master12QualificationFromYear + "-" + monthConvertToNumber(master12QualificationFromMonth) + "-" + "01" + " - " + master12QualificationToYear + "-" + monthConvertToNumber(master12QualificationToMonth) + "-" + "01";
-        master12QualificationDateNew = master12QualificationFromYearNew + "-" + monthConvertToNumber(master12QualificationFromMonthNew) + "-" + "01" + " - ";
-
-        master12EducationUniversity = generate.university().name();
-        master12EducationDegree = generate.educator().course();
-        master12EducationAcademicField = generate.job().field();
-        master12EducationFromMonth = generateMonth();
-        master12EducationFromYear = String.valueOf(generate.number().numberBetween(1995, 2000));
-        master12EducationToMonth = generateMonth();
-        master12EducationToYear = String.valueOf(generate.number().numberBetween(2001, 2005));
-        master12EducationDate = master12EducationFromYear + "-" + monthConvertToNumber(master12EducationFromMonth) + "-01 - " + master12EducationToYear + "-" + monthConvertToNumber(master12EducationToMonth) + "-01";
-        master12EducationDescription = generate.job().keySkills();
-
-        master12EducationUniversityNew = generate.educator().university();
-        master12EducationDegreeNew = generate.educator().campus();
-        master12EducationAcademicFieldNew = generate.job().field();
-        master12EducationFromMonthNew = generateMonth();
-        master12EducationFromYearNew = String.valueOf(generate.number().numberBetween(2006, 2012));
-        master12EducationDateNew = master12EducationFromYearNew + "-" + monthConvertToNumber(master12EducationFromMonthNew) + "-01 - ";
-        master12EducationDescriptionNew = generate.job().seniority();
-
-        master12CertificateName = generate.name().title();
-        master12CertificateOrganization = generate.address().state();
-        master12CertificateDateDay = String.valueOf(generate.number().numberBetween(10, 28));
-        master12CertificateDateMonth = generateMonth();
-        master12CertificateDateYear = String.valueOf(generate.number().numberBetween(1980, 2020));
-        master12CertificateDate = master12CertificateDateYear + "-" + monthConvertToNumber(master12CertificateDateMonth) + "-" + master12CertificateDateDay;
-        master12CertificateID = String.valueOf(generate.number().numberBetween(100000000, 600000000));
-        master12CertificateLink = "https://" + "www." + generate.color().name() + "." + c + c + "/".replaceAll("\\s+", "").toLowerCase();
-        master12CertificateLink = master12CertificateLink.replaceAll("\\s+", "").toLowerCase();
-        master12CertificatePhoto = "src/test/resources/img/" + generate.number().numberBetween(1, 6) + ".png";
-
-        master12CertificateNameNew = generate.app().name();
-        master12CertificateOrganizationNew = generate.company().name();
-        master12CertificateDateDayNew = String.valueOf(generate.number().numberBetween(10, 28));
-        master12CertificateDateMonthNew = generateMonth();
-        master12CertificateDateYearNew = String.valueOf(generate.number().numberBetween(1980, 2020));
-        master12CertificateDateNew = master12CertificateDateYearNew + "-" + monthConvertToNumber(master12CertificateDateMonthNew) + "-" + master12CertificateDateDayNew;
-        master12CertificateIDNew = String.valueOf(generate.number().numberBetween(500000001, 999999999));
-        master12CertificateLinkNew = "https://" + "www." + generate.app().name() + "." + c + c + "/";
-        master12CertificateLinkNew = master12CertificateLinkNew.replaceAll("\\s+", "").toLowerCase();
-        master12CertificatePhotoNew = "src/test/resources/img/" + generate.number().numberBetween(7, 12) + ".png";
-
-        userFirstName11 = generate.funnyName().name() + " 1";
-        userLastName11 = generate.animal().name() + " 1";
     }
 
     public String
@@ -756,7 +608,9 @@ public class TestData {
             userSpecializationAlt,
             serviceAddress,
             serviceDistance,
-            bookingDateTime;
+            bookingDateTime,
+            userChatMessage,
+            clientChatMessage;
 
     public int
             randomNumber,
@@ -767,7 +621,9 @@ public class TestData {
             serviceSubcategory,
             serviceSubcategoryAlt,
             randomRating,
-            serviceCurrencyId;
+            serviceCurrencyId,
+            randomStartTime,
+            randomEndTime;
 
     public Data data;
 
@@ -789,6 +645,41 @@ public class TestData {
             }
         }
 
+        // generate schedule for a service
+        randomStartTime = generate.number().numberBetween(0, 24) * 100 + generate.number().numberBetween(0, 4) * 15;
+        while (true) {
+            if (randomStartTime < 2345 && randomStartTime / 100 != 9) {
+                break;
+            } else {
+                randomStartTime = generate.number().numberBetween(0, 24) * 100 + generate.number().numberBetween(0, 4) * 15;
+            }
+        }
+        if (randomStartTime % 100 == 45) {
+            randomEndTime = (randomStartTime / 100 + generate.number().numberBetween(0, (23 - randomStartTime / 100)) + 1) * 100;
+            while (true) {
+                if (randomEndTime / 100 != 17) {
+                    break;
+                } else {
+                    randomEndTime = (randomStartTime / 100 + generate.number().numberBetween(0, (23 - randomStartTime / 100)) + 1) * 100;
+                }
+            }
+        } else {
+            randomEndTime = (randomStartTime / 100 + generate.number().numberBetween(0, (24 - randomStartTime / 100))) * 100;
+            while (true) {
+                if (randomEndTime / 100 != 17) {
+                    break;
+                } else {
+                    randomEndTime = (randomStartTime / 100 + generate.number().numberBetween(0, (24 - randomStartTime / 100))) * 100;
+                }
+            }
+        }
+        if (randomEndTime / 100 == randomStartTime / 100) {
+            randomEndTime = randomEndTime + (((randomStartTime % 100) / 15) + generate.number().numberBetween(0, 4 - ((randomStartTime % 100) / 15)) * 15);
+        } else {
+            randomEndTime = randomEndTime + generate.number().numberBetween(0, 4) * 15;
+        }
+
+
         serviceCategory = generate.number().numberBetween(0, 9);
         serviceCategoryAlt = generate.number().numberBetween(0, 9);
         while (true) {
@@ -809,7 +700,7 @@ public class TestData {
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
         userPatronymic = generate.name().nameWithMiddle();
-        userEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".pp";
+        userEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".us" + c;
         userPassword = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
 
@@ -818,7 +709,7 @@ public class TestData {
         clientFirstName = generate.name().firstName();
         clientLastName = generate.name().lastName();
         clientPatronymic = generate.name().nameWithMiddle();
-        clientEmail = generate.lorem().characters(8, 12) + "@" + generate.lorem().word() + ".cl";
+        clientEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".cl" + c;
         clientPassword = generate.internet().password();
         clientPhoneNumber = "911" + generate.number().digits(7);
 
@@ -993,6 +884,9 @@ public class TestData {
         masterCertificatePhoto = "src/test/resources/img/" + generate.number().numberBetween(1, 6) + ".png";
         masterCertificatePhotoAlt = "src/test/resources/img/" + generate.number().numberBetween(7, 12) + ".png";
 
+        userChatMessage = generate.dragonBall().character() + " > " + generate.dragonBall().character();
+        clientChatMessage = generate.friends().quote() + " (c) " + generate.dragonBall().character();
+
         data = new Data();
     }
 
@@ -1063,7 +957,9 @@ public class TestData {
         public int currencyId = serviceCurrencyId;
         public int units = distanceUnits; // random units km/mil
         public String file = randomFile;
+        public String[] message = new String[]{userChatMessage, clientChatMessage};
 
+        public int days = 7;
         public String startTime = "09:00";
         public String endTime = "17:00";
         public int sType = online; // service type - online / client / master

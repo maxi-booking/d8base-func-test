@@ -8,8 +8,7 @@ import static io.restassured.RestAssured.with;
 
 public class Specifications extends TestBase {
     public static RequestSpecification requestSpec = with()
-            .filter(withCustomTemplates())
+//            .filter(withCustomTemplates())
             .contentType("application/json")
-            .accept("application/json, text/plain, */*")
-            .log().body();
+            .accept("application/json, text/plain, */*");
 }
