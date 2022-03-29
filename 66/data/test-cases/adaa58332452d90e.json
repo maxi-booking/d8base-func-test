@@ -1,0 +1,378 @@
+{
+  "uid" : "adaa58332452d90e",
+  "name" : "Phone number should not be autofilled if user's location unknown",
+  "fullName" : "tests.regressionTests.RegistrationTests.t00001",
+  "historyId" : "ac53e37afd04ebf208605d9f6beda9f4",
+  "time" : {
+    "start" : 1648557677500,
+    "stop" : 1648557685253,
+    "duration" : 7753
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1648557678285,
+        "stop" : 1648557680774,
+        "duration" : 2489
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1648557678285,
+          "stop" : 1648557680774,
+          "duration" : 2489
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648557680774,
+        "stop" : 1648557682645,
+        "duration" : 1871
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648557680975,
+          "stop" : 1648557681049,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648557682049,
+          "stop" : 1648557682128,
+          "duration" : 79
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648557682128,
+          "stop" : 1648557682445,
+          "duration" : 317
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1648557682645,
+        "stop" : 1648557683691,
+        "duration" : 1046
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648557683646,
+          "stop" : 1648557683691,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Sing up",
+      "time" : {
+        "start" : 1648557683691,
+        "stop" : 1648557684924,
+        "duration" : 1233
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648557683991,
+          "stop" : 1648557684137,
+          "duration" : 146
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") scroll into view(true)",
+        "time" : {
+          "start" : 1648557684438,
+          "stop" : 1648557684469,
+          "duration" : 31
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.sign-up']\") get wrapped element()",
+          "time" : {
+            "start" : 1648557684438,
+            "stop" : 1648557684458,
+            "duration" : 20
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") click()",
+        "time" : {
+          "start" : 1648557684469,
+          "stop" : 1648557684623,
+          "duration" : 154
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that there is no phone country code autofilled",
+      "time" : {
+        "start" : 1648557684924,
+        "stop" : 1648557684967,
+        "duration" : 43
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration app-phone-editor ionic-selectable span\") get text()",
+        "time" : {
+          "start" : 1648557684924,
+          "stop" : 1648557684967,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close web driver",
+      "time" : {
+        "start" : 1648557685178,
+        "stop" : 1648557685253,
+        "duration" : 75
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"webdriver\") close()",
+        "time" : {
+          "start" : 1648557685178,
+          "stop" : 1648557685253,
+          "duration" : 75
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "e990d072c4d5429c",
+      "name" : "Last screenshot",
+      "source" : "e990d072c4d5429c.png",
+      "type" : "image/png",
+      "size" : 42480
+    }, {
+      "uid" : "2868dade85575e02",
+      "name" : "Page source",
+      "source" : "2868dade85575e02.html",
+      "type" : "text/plain",
+      "size" : 114409
+    }, {
+      "uid" : "b4f53cd9d7eab075",
+      "name" : "Browser console logs",
+      "source" : "b4f53cd9d7eab075.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 17,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.regressionTests.RegistrationTests]/[method:t00001()]"
+  }, {
+    "name" : "feature",
+    "value" : "User Registration"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az167-310"
+  }, {
+    "name" : "thread",
+    "value" : "2712@fv-az167-310.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00001"
+  }, {
+    "name" : "suite",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "Issue link",
+    "url" : "https://redmine.maxi-booking.ru/issues/4873",
+    "type" : "custom"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "7a3bf9a0f110c71c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/64//#testresult/7a3bf9a0f110c71c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648525281383,
+          "stop" : 1648525288634,
+          "duration" : 7251
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "adaa58332452d90e.json",
+  "parameterValues" : [ ]
+}

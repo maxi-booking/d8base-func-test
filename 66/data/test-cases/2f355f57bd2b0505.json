@@ -1,0 +1,837 @@
+{
+  "uid" : "2f355f57bd2b0505",
+  "name" : "Service publish: element language retention start with English - check titles",
+  "fullName" : "tests.regressionTests.ServicePublicationTests.t00200",
+  "historyId" : "8badf3d78fa1cde06557ae1244ced454",
+  "time" : {
+    "start" : 1648558408999,
+    "stop" : 1648558427356,
+    "duration" : 18357
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1648558409789,
+        "stop" : 1648558412393,
+        "duration" : 2604
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1648558409789,
+          "stop" : 1648558412393,
+          "duration" : 2604
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648558412393,
+        "stop" : 1648558414319,
+        "duration" : 1926
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558412593,
+          "stop" : 1648558412668,
+          "duration" : 75
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648558413668,
+          "stop" : 1648558413798,
+          "duration" : 130
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558413798,
+          "stop" : 1648558414119,
+          "duration" : 321
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1648558414319,
+        "stop" : 1648558415372,
+        "duration" : 1053
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648558415320,
+          "stop" : 1648558415372,
+          "duration" : 52
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Publish new service",
+      "time" : {
+        "start" : 1648558415372,
+        "stop" : 1648558416534,
+        "duration" : 1162
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648558415672,
+          "stop" : 1648558415821,
+          "duration" : 149
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.become-professional']\") scroll into view(true)",
+        "time" : {
+          "start" : 1648558416121,
+          "stop" : 1648558416147,
+          "duration" : 26
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.become-professional']\") get wrapped element()",
+          "time" : {
+            "start" : 1648558416121,
+            "stop" : 1648558416142,
+            "duration" : 21
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.become-professional']\") click()",
+        "time" : {
+          "start" : 1648558416147,
+          "stop" : 1648558416234,
+          "duration" : 87
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that category/subcategory title language is in English",
+      "time" : {
+        "start" : 1648558416535,
+        "stop" : 1648558416856,
+        "duration" : 321
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-publish-step-one/app-category-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558416535,
+          "stop" : 1648558416612,
+          "duration" : 77
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-publish-step-one/app-subcategory-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558416612,
+          "stop" : 1648558416660,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "cc4de0216688ffd8",
+        "name" : "Screenshot",
+        "source" : "cc4de0216688ffd8.png",
+        "type" : "image/png",
+        "size" : 46822
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"refresh\") ",
+      "time" : {
+        "start" : 1648558416856,
+        "stop" : 1648558417410,
+        "duration" : 554
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648558417410,
+        "stop" : 1648558419431,
+        "duration" : 2021
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558417610,
+          "stop" : 1648558417845,
+          "duration" : 235
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648558418846,
+          "stop" : 1648558418916,
+          "duration" : 70
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558418916,
+          "stop" : 1648558419231,
+          "duration" : 315
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that category/subcategory title language is in English",
+      "time" : {
+        "start" : 1648558419432,
+        "stop" : 1648558419720,
+        "duration" : 288
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-publish-step-one/app-category-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558419432,
+          "stop" : 1648558419480,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-publish-step-one/app-subcategory-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558419480,
+          "stop" : 1648558419535,
+          "duration" : 55
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "135f5bf61307e244",
+        "name" : "Screenshot",
+        "source" : "135f5bf61307e244.png",
+        "type" : "image/png",
+        "size" : 46822
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to Russian",
+      "time" : {
+        "start" : 1648558419721,
+        "stop" : 1648558424071,
+        "duration" : 4350
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648558420721,
+          "stop" : 1648558420803,
+          "duration" : 82
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648558420803,
+          "stop" : 1648558420900,
+          "duration" : 97
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-flag-menu ion-select\") click()",
+        "time" : {
+          "start" : 1648558420900,
+          "stop" : 1648558421320,
+          "duration" : 420
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert button[1]\") click()",
+        "time" : {
+          "start" : 1648558421320,
+          "stop" : 1648558421413,
+          "duration" : 93
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-button-group button[1]\") click()",
+        "time" : {
+          "start" : 1648558421413,
+          "stop" : 1648558421527,
+          "duration" : 114
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-radio-group\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558421527,
+          "stop" : 1648558422492,
+          "duration" : 965
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") exists()",
+        "time" : {
+          "start" : 1648558423992,
+          "stop" : 1648558424001,
+          "duration" : 9
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648558424001,
+          "stop" : 1648558424071,
+          "duration" : 70
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 8,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that category/subcategory title language is not in English",
+      "time" : {
+        "start" : 1648558424071,
+        "stop" : 1648558424349,
+        "duration" : 278
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-publish-step-one/app-category-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558424071,
+          "stop" : 1648558424116,
+          "duration" : 45
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-publish-step-one/app-subcategory-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558424116,
+          "stop" : 1648558424159,
+          "duration" : 43
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "3f7097c4e371425e",
+        "name" : "Screenshot",
+        "source" : "3f7097c4e371425e.png",
+        "type" : "image/png",
+        "size" : 54976
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "$(\"refresh\") ",
+      "time" : {
+        "start" : 1648558424349,
+        "stop" : 1648558424744,
+        "duration" : 395
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648558424744,
+        "stop" : 1648558426817,
+        "duration" : 2073
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558424944,
+          "stop" : 1648558425183,
+          "duration" : 239
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648558426183,
+          "stop" : 1648558426257,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648558426257,
+          "stop" : 1648558426617,
+          "duration" : 360
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that category/subcategory title language is not in English",
+      "time" : {
+        "start" : 1648558426817,
+        "stop" : 1648558427083,
+        "duration" : 266
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-service-publish-step-one/app-category-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558426817,
+          "stop" : 1648558426865,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-service-publish-step-one/app-subcategory-selector/ion-label\") get text()",
+        "time" : {
+          "start" : 1648558426865,
+          "stop" : 1648558426911,
+          "duration" : 46
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ {
+        "uid" : "c74f2604846a4479",
+        "name" : "Screenshot",
+        "source" : "c74f2604846a4479.png",
+        "type" : "image/png",
+        "size" : 49985
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close web driver",
+      "time" : {
+        "start" : 1648558427281,
+        "stop" : 1648558427355,
+        "duration" : 74
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"webdriver\") close()",
+        "time" : {
+          "start" : 1648558427281,
+          "stop" : 1648558427355,
+          "duration" : 74
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "dff50841bb1318d2",
+      "name" : "Last screenshot",
+      "source" : "dff50841bb1318d2.png",
+      "type" : "image/png",
+      "size" : 49985
+    }, {
+      "uid" : "24d9c19621783f6c",
+      "name" : "Page source",
+      "source" : "24d9c19621783f6c.html",
+      "type" : "text/plain",
+      "size" : 67072
+    }, {
+      "uid" : "1a733e3507c1100b",
+      "name" : "Browser console logs",
+      "source" : "1a733e3507c1100b.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 46,
+    "attachmentsCount" : 7,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.regressionTests.ServicePublicationTests]/[method:t00200()]"
+  }, {
+    "name" : "feature",
+    "value" : "Service Publication"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az167-310"
+  }, {
+    "name" : "thread",
+    "value" : "2712@fv-az167-310.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.regressionTests.ServicePublicationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.regressionTests.ServicePublicationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00200"
+  }, {
+    "name" : "suite",
+    "value" : "tests.regressionTests.ServicePublicationTests"
+  }, {
+    "name" : "severity",
+    "value" : "minor"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "Issue link",
+    "url" : "https://redmine.maxi-booking.ru/issues/4256",
+    "type" : "custom"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "minor",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "f9ac82da9c1dc5df",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/64//#testresult/f9ac82da9c1dc5df",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648525984464,
+          "stop" : 1648526001685,
+          "duration" : 17221
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "2f355f57bd2b0505.json",
+  "parameterValues" : [ ]
+}
