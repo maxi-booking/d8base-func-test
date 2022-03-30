@@ -32,7 +32,6 @@ public class Booking {
         $("ion-searchbar input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("ion-searchbar input").pressEnter();
-        Attach.screenshotAs("Screenshot");
         sleep(500);
     }
 
@@ -55,7 +54,6 @@ public class Booking {
 
     @Step("Select a service")
     public void chooseService() {
-        Attach.screenshotAs("Screenshot");
         $("app-search-result ion-card-content app-service-link a").click();
     }
 
@@ -322,7 +320,6 @@ public class Booking {
     @Step("Place the order")
     public void placeOrder() {
         $("app-client-details-step div.footer ion-button").shouldBe(visible, Duration.ofSeconds(10));
-        Attach.screenshotAs("Screenshot");
         $("app-client-details-step div.footer ion-button").click();
         $("app-sent-order-page div.order-full-info").shouldBe(visible, Duration.ofSeconds(10));
     }

@@ -27,7 +27,6 @@ public class Reviews {
             fail();
         }
         order--;
-        Attach.screenshotAs("Screenshot");
         $("app-outbox").$("app-professional-card", order).$("a").click();
     }
 

@@ -102,8 +102,7 @@ public class ProfessionalProfile extends TestBase {
     public void verifyProfessionalExp(
             String value
     ) {
-        Attach.screenshotAs("Screenshot");
-        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(value));
+        $("app-professional-page main").scrollIntoView(true).shouldHave(text(value));
     }
 
     @Step("Professional Profile: verify professional name ({firstName} {lastName})")
@@ -196,9 +195,7 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: edit experience - value: {value}")
     public void editExperience(String value) {
-        Attach.screenshotAs("Screenshot");
         $("app-master-edit-page app-master-edit input", 2).setValue(value);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Main: edit expertise level - value: {value}")
@@ -261,7 +258,6 @@ public class ProfessionalProfile extends TestBase {
         sleep(500);
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).scrollIntoView(true).click();
         sleep(500);
-        Attach.screenshotAs("Screenshot");
 
     }
 
@@ -273,7 +269,6 @@ public class ProfessionalProfile extends TestBase {
         sleep(500);
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).click();
         sleep(500);
-        Attach.screenshotAs("Screenshot");
 
     }
 
@@ -321,7 +316,6 @@ public class ProfessionalProfile extends TestBase {
         $("ionic-selectable-modal").$("ion-content").$("ion-item", subcategoryNumber).shouldHave(cssClass("ionic-selectable-item-is-selected"));
         $("ion-modal").pressEscape();
         sleep(500);
-        Attach.screenshotAs("Screenshot");
     }
 
     //about
@@ -360,7 +354,6 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Qualification: click save")
     public void qualificationClickSave() {
-        Attach.screenshotAs("Screenshot");
         if ($("app-master-experience-edit").$("form").$("ion-button", 1).exists()) {
             $("app-master-experience-edit").$("form").$("ion-button", 1).click();
         } else {
@@ -396,7 +389,6 @@ public class ProfessionalProfile extends TestBase {
         $("app-master-experience-edit").$("app-experience-edit").$("input[type='month']", 0).setValue(monthConvertToNumber(month));
         sleep(200);
         $("app-master-experience-edit").$("app-experience-edit").$("input[type='month']", 0).pressTab().setValue(year);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Qualification: edit 'to' - {month} {year}")
@@ -405,7 +397,6 @@ public class ProfessionalProfile extends TestBase {
         $("app-master-experience-edit").$("app-experience-edit").$("input[type='month']", 1).setValue(monthConvertToNumber(month));
         sleep(200);
         $("app-master-experience-edit").$("app-experience-edit").$("input[type='month']", 1).pressTab().setValue(year);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Qualification: ongoing checkbox - checked")
@@ -471,7 +462,6 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Education: click save")
     public void educationClickSave() {
-        Attach.screenshotAs("Screenshot");
         if ($("app-master-education-edit").$("form").$("ion-button", 1).exists()) {
             $("app-master-education-edit").$("form").$("ion-button", 1).click();
         } else {
@@ -512,7 +502,6 @@ public class ProfessionalProfile extends TestBase {
         $("app-master-education-edit").$("app-education-edit").$("input[type='month']", 0).setValue(monthConvertToNumber(month));
         sleep(200);
         $("app-master-education-edit").$("app-education-edit").$("input[type='month']", 0).pressTab().setValue(year);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Education: edit 'to' - {month} {year}")
@@ -521,7 +510,6 @@ public class ProfessionalProfile extends TestBase {
         $("app-master-education-edit").$("app-education-edit").$("input[type='month']", 1).setValue(monthConvertToNumber(month));
         sleep(200);
         $("app-master-education-edit").$("app-education-edit").$("input[type='month']", 1).pressTab().setValue(year);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Education: ongoing checkbox - checked")
@@ -586,17 +574,13 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Certificates: click save")
     public void certificatesClickSave() {
-        Attach.screenshotAs("Screenshot");
         sleep(500);
-        Attach.screenshotAs("Screenshot");
         if ($("app-master-certificate-edit").$("app-certificate-edit").$("ion-button", 3).exists()) {
             $("app-master-certificate-edit").$("app-certificate-edit").$("ion-button", 3).click();
         } else {
             $("app-master-certificate-edit").$("app-certificate-edit").$("ion-button", 2).click();
         }
-        Attach.screenshotAs("Screenshot");
         sleep(500);
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Certificates: click remove")

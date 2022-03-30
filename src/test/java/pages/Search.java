@@ -15,7 +15,6 @@ public class Search {
         $("app-search form input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("app-search form input").pressEnter();
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Search page: Search without quotes {searchQuery}")
@@ -23,7 +22,6 @@ public class Search {
         $("app-search form input").setValue(searchQuery);
         sleep(1000);
         $("app-search form input").pressEnter();
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Main page: Search {searchQuery}")
@@ -31,7 +29,6 @@ public class Search {
         $("ion-searchbar input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("ion-searchbar input").pressEnter();
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Main page: Search without quotes {searchQuery}")

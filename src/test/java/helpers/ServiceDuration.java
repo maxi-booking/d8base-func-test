@@ -28,7 +28,6 @@ public final class ServiceDuration {
                     hours = valueOf(hoursInt),
                     minutes = valueOf(minutesInt);
 
-            System.out.println("days: " + days + "\nhours: " + hours + "\nminutes: " + minutes);
             return new ServiceDuration(days, hours, minutes);
         }
     }
@@ -47,7 +46,6 @@ public final class ServiceDuration {
                     hours = valueOf(hoursInt),
                     minutes = valueOf(minutesInt);
 
-            System.out.println("days: " + days + "\nhours: " + hours + "\nminutes: " + minutes);
             return new ServiceDuration(days, hours, minutes);
         }
     }

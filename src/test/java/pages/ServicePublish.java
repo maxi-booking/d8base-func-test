@@ -36,7 +36,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", value).click();
         $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Choose a subcategory: {value}")
@@ -47,7 +46,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(true).click();
         $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
-        Attach.screenshotAs("Screenshot");
     }
 
     public void clickFirstStep() {
@@ -73,7 +71,6 @@ public class ServicePublish extends config.TestBase {
         $("app-duration-editor").$("input").scrollIntoView(true).setValue(duration.days);
         $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(duration.hours);
         $("app-duration-editor").$("input", 2).scrollIntoView(true).setValue(duration.minutes);
-        Attach.screenshotAs("Service duration");
     }
 
     @Step("Enter a service duration")
@@ -82,7 +79,6 @@ public class ServicePublish extends config.TestBase {
         $("app-duration-editor").$("input").scrollIntoView(true).setValue(duration.days);
         $("app-duration-editor").$("input", 1).scrollIntoView(true).setValue(duration.hours);
         $("app-duration-editor").$("input", 2).scrollIntoView(true).setValue(duration.minutes);
-        Attach.screenshotAs("Service duration");
     }
 
     @Step("Enter a fixed price")
@@ -292,10 +288,12 @@ public class ServicePublish extends config.TestBase {
             $("app-timetable app-schedule-editor ion-checkbox").shouldBe(visible, Duration.ofSeconds(10));
             $("app-timetable app-column-header ion-buttons ion-button", 1).click();
             $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+            sleep(200);
             $("app-timetable-add-time-popover ion-label", 5).click();
             $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
             $("app-timetable app-column-header ion-buttons ion-button", 1).click();
             $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
+            sleep(200);
             $("app-timetable-add-time-popover ion-label", 6).click();
             $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
             $("app-timetable ion-button[type='submit']").click();
@@ -317,7 +315,6 @@ public class ServicePublish extends config.TestBase {
         $("app-timetable-add-time-popover").shouldBe(visible, Duration.ofSeconds(10));
         $("app-timetable-add-time-popover").$("ion-label", 6).scrollIntoView(true).click();
         $("app-timetable-add-time-popover").shouldNotBe(visible, Duration.ofSeconds(10));
-        Attach.screenshotAs("Schedule");
         $("app-timetable ion-button[type='submit']").scrollIntoView(true).click();
         $("app-timetable").shouldNotBe(visible, Duration.ofSeconds(10));
     }
@@ -342,7 +339,6 @@ public class ServicePublish extends config.TestBase {
         if (value.equals(true)) {
             $("app-service-publish-step-seven form ion-item.item-label").scrollIntoView(false).click();
         }
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Fill service geography")
@@ -377,8 +373,6 @@ public class ServicePublish extends config.TestBase {
             } else if (online.equals(true)) {
                 data.payment = paymentOnline;
             }
-
-            Attach.screenshotAs("Screenshot");
         });
     }
 
@@ -440,11 +434,6 @@ public class ServicePublish extends config.TestBase {
                 serviceDurationHours = Long.toString(serviceDurationHoursLong),
                 serviceDurationMinutes = Long.toString(serviceDurationMinutesLong);
 
-        System.out.println(serviceTotalDuration + " total");
-        System.out.println(serviceDurationDays + " days");
-        System.out.println(serviceDurationHours + " hours");
-        System.out.println(serviceDurationMinutes + " minutes");
-
         if (serviceTotalDurationLong >= 1440) {
             $("app-duration-viewer").shouldHave(text(serviceDurationDays));
             if (serviceDurationHoursLong > 0) {
@@ -494,6 +483,7 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Publish a service")
     public void publishService() {
+        $("app-service-publish-final-step ion-content ion-button", 1).shouldBe(visible, Duration.ofSeconds(10));
         $("app-service-publish-final-step ion-content ion-button", 1).click();
         $("app-service-publish-final-step").shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
@@ -514,7 +504,6 @@ public class ServicePublish extends config.TestBase {
     public void verifyCategorySubcategoryTitleLanguageEng() {
         String category = $("app-service-publish-step-one").$("app-category-selector").$("ion-label").getText();
         String subcategory = $("app-service-publish-step-one").$("app-subcategory-selector").$("ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (!category.equals("Select category")) {
             fail();
         }
@@ -527,7 +516,6 @@ public class ServicePublish extends config.TestBase {
     public void verifyCategorySubcategoryTitleLanguageNotEng() {
         String category = $("app-service-publish-step-one").$("app-category-selector").$("ion-label").getText();
         String subcategory = $("app-service-publish-step-one").$("app-subcategory-selector").$("ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (category.equals("Select category")) {
             fail();
         }
@@ -542,7 +530,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable").click();
         $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (!value.equals("Tutors")) {
             fail();
         }
@@ -556,7 +543,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable", 1).scrollIntoView(true).click();
         $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (!value.equals("English language")) {
             fail();
         }
@@ -570,7 +556,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable").click();
         $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (value.equals("Tutors")) {
             fail();
         }
@@ -584,7 +569,6 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable", 1).scrollIntoView(true).click();
         $("ionic-selectable-modal ion-content ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
         String value = $("ionic-selectable-modal ion-content ion-item ion-label").getText();
-        Attach.screenshotAs("Screenshot");
         if (value.equals("English language")) {
             System.out.println("Language should not be English.");
             throw new IllegalArgumentException();

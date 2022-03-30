@@ -57,7 +57,6 @@ public class Orders extends config.TestBase {
             String serviceTotalDuration
     ) {
         sleep(400);
-        Attach.screenshotAs("Screenshot");
         $("app-inbox-page app-client-widget").shouldHave(
                 text(userFirstName)
         );
