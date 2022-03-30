@@ -159,43 +159,47 @@ public class Booking {
 
     @Step("Pick the date from calendar - ({date})")
     public void pickTheDate(String date) {
-        if ($("app-book").$("div.calendar").$(withText(date)).has(cssClass("unavailable"))) {
-            $("app-book").$("div.calendar", 1).$(withText(date)).scrollIntoView(true).click();
-        } else if ($("app-book").$("div.calendar", 1).$(withText(date)).has(cssClass("unavailable"))) {
-            $("app-book").$("div.calendar", 2).$(withText(date)).scrollIntoView(true).click();
+        if ($("app-book div.calendar", 0).$(withText(date)).has(cssClass("cursor-pointer"))) {
+            $("app-book div.calendar", 0).$(withText(date)).scrollIntoView(true).click();
+            $("app-book div.calendar", 0).$(withText(date)).shouldHave(cssClass("selected"), Duration.ofSeconds(10));
+        } else if ($("app-book div.calendar", 1).$(withText(date)).has(cssClass("cursor-pointer"))) {
+            $("app-book div.calendar", 1).$(withText(date)).scrollIntoView(true).click();
+            $("app-book div.calendar", 1).$(withText(date)).shouldHave(cssClass("selected"), Duration.ofSeconds(10));
         } else {
-            $("app-book").$("div.calendar").$(withText(date)).scrollIntoView(true).click();
+            $("app-book div.calendar", 2).$(withText(date)).scrollIntoView(true).click();
+            $("app-book div.calendar", 2).$(withText(date)).shouldHave(cssClass("selected"), Duration.ofSeconds(10));
         }
-        sleep(200);
-        $("app-book").$(byText("Accept and continue")).scrollIntoView(true).click();
-        sleep(500);
+        $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
+        $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).click();
+        $("app-date-step").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-time-step").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Select previous day")
     public void clickPreviousDay() {
         sleep(200);
-        $("app-time-step").$("app-calendar-component").$("ion-button",0).click();
+        $("app-time-step").$("app-calendar-component").$("ion-button", 0).click();
         sleep(200);
     }
 
     @Step("Select next day")
     public void clickNextDay() {
         sleep(200);
-        $("app-time-step").$("app-calendar-component").$("ion-button",1).click();
+        $("app-time-step").$("app-calendar-component").$("ion-button", 1).click();
         sleep(200);
     }
 
     @Step("Verify previous day button inactive")
     public void verifyPreviousDayInactive() {
         sleep(200);
-        $("app-time-step").$("app-calendar-component").$("ion-button",0).shouldHave(cssClass("button-disabled"));
+        $("app-time-step").$("app-calendar-component").$("ion-button", 0).shouldHave(cssClass("button-disabled"));
         sleep(200);
     }
 
     @Step("Verify previous day button active")
     public void verifyPreviousDayActive() {
         sleep(200);
-        $("app-time-step").$("app-calendar-component").$("ion-button",0).shouldNotHave(cssClass("button-disabled"));
+        $("app-time-step").$("app-calendar-component").$("ion-button", 0).shouldNotHave(cssClass("button-disabled"));
         sleep(200);
     }
 
@@ -248,12 +252,12 @@ public class Booking {
 
     @Step("Order for another person: name - {value}")
     public void fillOrderForAPName(String value) {
-        $("app-client-details-step").$("form").$("section").$("input[type='text']",0).scrollIntoView(true).setValue(value);
+        $("app-client-details-step").$("form").$("section").$("input[type='text']", 0).scrollIntoView(true).setValue(value);
     }
 
     @Step("Order for another person: surname - {value}")
     public void fillOrderForAPSurname(String value) {
-        $("app-client-details-step").$("form").$("section").$("input[type='text']",1).scrollIntoView(true).setValue(value);
+        $("app-client-details-step").$("form").$("section").$("input[type='text']", 1).scrollIntoView(true).setValue(value);
     }
 
     @Step("Order for another person: email - {value}")

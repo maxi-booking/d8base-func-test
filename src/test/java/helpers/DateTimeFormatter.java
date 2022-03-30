@@ -5,7 +5,10 @@ import config.TestBase;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -300,7 +303,8 @@ public class DateTimeFormatter extends TestBase {
 
     public static int dayStringToId(String value) {
         int day = 0;
-        value = value.toLowerCase();;
+        value = value.toLowerCase();
+        ;
         switch (value) {
             case "monday":
                 day = 0;
@@ -361,5 +365,16 @@ public class DateTimeFormatter extends TestBase {
                 break;
         }
         return day;
+    }
+
+    public static String autoTimeZone(int time) {
+        int hours = time / 100;
+        int minutes = time % 100;
+        TimeZone tz = TimeZone.getDefault();
+        Calendar cal = GregorianCalendar.getInstance(tz);
+        int offsetInMillis = tz.getOffset(cal.getTimeInMillis());
+        int offset = Math.abs(offsetInMillis / 3600000) - 3;
+        hours = hours + offset;
+        return hours + ":" + minutes;
     }
 }

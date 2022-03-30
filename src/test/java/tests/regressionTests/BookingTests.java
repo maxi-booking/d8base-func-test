@@ -1,12 +1,12 @@
 package tests.regressionTests;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static helpers.DateTimeFormatter.*;
 import static helpers.RegressionTestsHelpers.*;
 import static io.qameta.allure.Allure.step;
 
@@ -124,8 +124,8 @@ public class BookingTests extends config.TestBase {
     @DisplayName("Booking: 12 PM schedule shouldn't produce an extra time block")
     @Severity(SeverityLevel.TRIVIAL)
     void bookingSchedule12PMNoExtraBlock() {
-        data.startTime = "12:00";
-        data.endTime = "18:00";
+        data.startTime = autoTimeZone(1200);
+        data.endTime = autoTimeZone(1800);
         serviceReadyAPI(data);
 
         sideMenu.clickSearch();
@@ -148,8 +148,8 @@ public class BookingTests extends config.TestBase {
     @DisplayName("Booking: next day with 00:00 schedule shouldn't produce an extra time block for a previous day")
     @Severity(SeverityLevel.TRIVIAL)
     void bookingScheduleWithMidnightTomorrowNoExtraBlock() {
-        data.startTime = "12:00";
-        data.endTime = "18:00";
+        data.startTime = autoTimeZone(1200);
+        data.endTime = autoTimeZone(1800);
         serviceReadyAPI(data);
 
         sideMenu.clickSchedule();
