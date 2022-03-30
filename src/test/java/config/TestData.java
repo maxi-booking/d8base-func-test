@@ -326,9 +326,6 @@ public class TestData {
             user10District2,
             user10ZipCode2,
             user10Address2,
-            user10dateDD,
-            user10dateMM,
-            user10dateYYYY,
             user10Nationality,
             user10Language1,
             user10Language2,
@@ -506,9 +503,6 @@ public class TestData {
         user10ZipCode2 = "M9A";
         user10Address2 = "8 Orkney Crescent";
 
-        user10dateDD = Long.toString(generate.number().numberBetween(10, 28));
-        user10dateMM = Long.toString(generate.number().numberBetween(10, 12));
-        user10dateYYYY = Long.toString(generate.number().numberBetween(1950, 2005));
         user10Nationality = "Iceland";
         user10Language1 = "Arabic";
         user10Language2 = "Irish";
@@ -529,6 +523,9 @@ public class TestData {
             userEmailMixedCase,
             userPassword,
             userPhoneNumber,
+            userBirthDay,
+            userBirthMonth,
+            userBirthYear,
             clientCountry,
             clientCity,
             clientFirstName,
@@ -703,6 +700,10 @@ public class TestData {
         userEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".us" + c;
         userPassword = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
+        userBirthDay = Integer.toString(generate.number().numberBetween(10, 28));
+        userBirthMonth = Integer.toString(generate.number().numberBetween(10, 12));
+        userBirthYear = Integer.toString(generate.number().numberBetween(1950, 2005));
+
 
         clientCountry = "Russia";
         clientCity = "Moscow";
@@ -908,6 +909,9 @@ public class TestData {
         public String[] phoneNumber = new String[]{userPhoneNumber, clientPhoneNumber};
         public String[] country = new String[]{userCountry, clientCountry};
         public String[] city = new String[]{userCity, clientCity};
+        public String[] birthDay = new String[] {userBirthDay};
+        public String[] birthMonth = new String[] {userBirthMonth};
+        public String[] birthYear = new String[] {userBirthYear};
         public String[] specialization = new String[]{userSpecialization, userSpecializationAlt};
         public String name = serviceName;
         public String[] description = new String[]{serviceDescription, serviceDescriptionAlt};

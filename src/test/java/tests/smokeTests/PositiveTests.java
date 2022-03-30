@@ -933,7 +933,7 @@ public class PositiveTests extends config.TestBase {
     @Story("2 users chatting tests")
     @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Chat test")
-    void chat3MessagesTest() {
+    void chatMessagesTest() {
         userRegisterAPI(data);
         serviceRegisterAPI(data);
         clientRegisterAPI(data);
@@ -954,7 +954,7 @@ public class PositiveTests extends config.TestBase {
         log.logIn(userEmail, userPassword);
         log.forceEN();
         topBar.clickChat();
-        msg.findUserChat(userFirstName);
+        msg.findUserChat(clientFirstName + " " + clientLastName);
         msg.selectUser();
         msg.checkMessage(data.message[0]);
         msg.sendMessage(data.message[1]);
@@ -964,7 +964,7 @@ public class PositiveTests extends config.TestBase {
         log.logIn(clientEmail, clientPassword);
         log.forceEN();
         topBar.clickChat();
-        msg.findUserChat(userFirstName);
+        msg.findUserChat(userFirstName + " " + userLastName);
         msg.selectUser();
         msg.checkMessage(data.message[0]);
         msg.checkMessage(data.message[1]);

@@ -44,7 +44,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4909")
     @DisplayName("Professional Profile: social share button should be clickable (another person)")
     @Severity(SeverityLevel.NORMAL)
-    void t00001() {
+    void masterProfileSocialShareClickableForAnotherPerson() {
         serviceReadyAPI(data);
         log.openMainPage();
         log.forceEN();

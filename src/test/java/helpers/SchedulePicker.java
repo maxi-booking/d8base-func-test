@@ -19,10 +19,10 @@ public class SchedulePicker extends TestBase {
         int currentPicker = Integer.parseInt($("ion-picker div.picker-opts button.picker-opt-selected").getText());
         while (true) {
             if (hours < currentPicker && !$("ion-picker div.picker-opts", 0).$("button[opt-index='" + hours + "']").isDisplayed()) {
-                currentPicker -= 2;
+                currentPicker -= 1;
                 $("ion-picker div.picker-opts", 0).$("button[opt-index='" + currentPicker + "']").click();
             } else if (hours > currentPicker && !$("ion-picker div.picker-opts", 0).$("button[opt-index='" + hours + "']").isDisplayed()) {
-                currentPicker += 2;
+                currentPicker += 1;
                 $("ion-picker div.picker-opts", 0).$("button[opt-index='" + currentPicker + "']").click();
             } else {
                 $("ion-picker div.picker-opts", 0).$("button[opt-index='" + hours + "']").click();

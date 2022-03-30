@@ -186,19 +186,19 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.clickBackAbout();
 
         up.openUserProfileAbout();
-        up.selectDateBirth(user10dateDD, user10dateMM, user10dateYYYY);
+        up.selectDateBirth(data.birthDay[0], data.birthMonth[0], data.birthYear[0]);
         up.selectNationality(user10Nationality);
         up.selectLanguages(user10Language1);
         up.clickBackAbout();
 
         up.openUserProfileAbout();
         up.verifyAboutDefault();
-        up.selectDateBirth(user10dateDD, user10dateMM, user10dateYYYY);
+        up.selectDateBirth(data.birthDay[0], data.birthMonth[0], data.birthYear[0]);
         up.selectNationality(user10Nationality);
         up.selectLanguages(user10Language1);
         up.selectLanguages(user10Language2);
         up.clickSaveAbout();
-        up.verifyAbout(user10Nationality, user10Language1, user10dateDD, user10dateMM, user10dateYYYY);
+        up.verifyAbout(user10Nationality, user10Language1, data.birthDay[0], data.birthMonth[0], data.birthYear[0]);
         up.verifyAboutExtraLanguage(user10Language2);
     }
 }

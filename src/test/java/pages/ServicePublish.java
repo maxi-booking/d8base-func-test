@@ -494,7 +494,7 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Publish a service")
     public void publishService() {
-        $("app-service-publish-final-step ion-content ion-button", 1).scrollIntoView(true).click();
+        $("app-service-publish-final-step ion-content ion-button", 1).click();
         $("app-service-publish-final-step").shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(5000);

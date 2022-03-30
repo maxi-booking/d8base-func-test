@@ -39,7 +39,6 @@ public class Search {
         $("ion-searchbar input").setValue(searchQuery);
         sleep(1000);
         $("ion-searchbar input").pressEnter();
-        Attach.screenshotAs("Screenshot");
     }
 
     @Step("Close default filters")
@@ -53,8 +52,8 @@ public class Search {
 
     @Step("Click on the first name in search results")
     public void clickProfessionalsName() {
-        $("app-search-result app-professional-card a").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-search-result app-professional-card a").click();
+        $("app-search-result app-professional-card div.title a").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-search-result app-professional-card div.title a").click();
         $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
     }
 

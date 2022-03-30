@@ -179,14 +179,14 @@ public class LogIn extends config.TestBase {
             forceEN();
             refreshPage();
 
-            $("ion-alert").$("button", 1).click();
+            $("ion-alert button", 1).click();
 
-            $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
+            $("app-on-map-popover app-country-selector ion-item").click();
             selectModal(country);
 
-            $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
+            $("app-on-map-popover app-city-selector ion-item").click();
             selectModal(city);
-            $("app-on-map-popover").$("ion-button").click();
+            $("app-on-map-popover ion-button").click();
         });
     }
 

@@ -9,7 +9,7 @@ repositories {
 }
 
 def allureVersion = '2.15.0',
-    selenideVersion = '5.25.0',
+    selenideVersion = '6.3.5',
     junitVersion = "5.8.2"
 
 allure {
@@ -33,6 +33,7 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "com.github.javafaker:javafaker:1.0.2",
             "org.aeonbits.owner:owner:1.0.12",
+            "org.junit.platform:junit-platform-engine:1.8.2",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly(
@@ -43,12 +44,10 @@ dependencies {
 test {
     retry {
         failOnPassedAfterRetry = true
-        maxFailures = 999
-        maxRetries = 2
+        maxFailures = 20
+        maxRetries = 1
     }
 }
-
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     sourceCompatibility = 11

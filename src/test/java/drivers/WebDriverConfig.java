@@ -10,6 +10,10 @@ import org.aeonbits.owner.Config;
 })
 public interface WebDriverConfig extends Config {
 
+    @Config.Key("threads")
+    @Config.DefaultValue("4")
+    int getThreads();
+
     @Config.Key("browserName")
     @Config.DefaultValue("chrome")
     String getBrowserName();
