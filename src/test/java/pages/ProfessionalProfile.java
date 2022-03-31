@@ -134,6 +134,7 @@ public class ProfessionalProfile extends TestBase {
         } else if ($("app-professional-page main").has(text(masterExperienceX))) {
             $("app-professional-page main").shouldHave(text(masterExperienceX));
         } else {
+            System.out.println("Master exp: " + masterExperience);
             fail();
         }
 
@@ -173,8 +174,9 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: click save")
     public void mainClickSave() {
-        $("app-master-edit-page").$("app-master-edit").$("ion-button").click();
-        sleep(500);
+        $("app-master-edit-page app-master-edit ion-button").shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
+        $("app-master-edit-page app-master-edit ion-button").click();
+        $("app-master-edit-page app-master-edit ion-button").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Main: edit specialization - value: {value}")

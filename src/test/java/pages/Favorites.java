@@ -2,10 +2,12 @@ package pages;
 
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Favorites {
@@ -71,7 +73,10 @@ public class Favorites {
 
     @Step("Click on master's name in the search results")
     public void selectMasterSearch() {
-        $("app-search").$("app-search-result").$("app-professional-card").$("a").click();
+        $("app-search-result ion-thumbnail.avatar",1).shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-search-result ion-thumbnail.avatar",0).shouldBe(visible, Duration.ofSeconds(10));
+        $$("app-search-result ion-thumbnail.avatar").filter(visible).get(0).click();
+        $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Click on service name in the search results")

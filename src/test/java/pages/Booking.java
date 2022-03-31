@@ -157,6 +157,8 @@ public class Booking {
 
     @Step("Pick the date from calendar - ({date})")
     public void pickTheDate(String date) {
+        $("app-book div.calendar div.day-first").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(200);
         if ($("app-book div.calendar", 0).$(withText(date)).has(cssClass("cursor-pointer"))) {
             $("app-book div.calendar", 0).$(withText(date)).scrollIntoView(true).click();
             $("app-book div.calendar", 0).$(withText(date)).shouldHave(cssClass("selected"), Duration.ofSeconds(10));
@@ -169,8 +171,7 @@ public class Booking {
         }
         $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
         $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).click();
-        $("app-date-step").shouldNotBe(visible, Duration.ofSeconds(10));
-        $("app-time-step").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(200);
     }
 
     @Step("Select previous day")
