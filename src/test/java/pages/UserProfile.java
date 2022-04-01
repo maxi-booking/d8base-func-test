@@ -2,6 +2,7 @@ package pages;
 
 import config.Lang;
 import helpers.Attach;
+import helpers.SelectableModal;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -451,10 +452,12 @@ public class UserProfile {
                 $("app-about-edit form button", 1).shouldBe(visible, Duration.ofSeconds(10));
                 $("app-about-edit form button", 1).click();
                 $("ionic-selectable-modal input").shouldBe(visible, Duration.ofSeconds(10));
+                sleep(500);
                 $("ionic-selectable-modal input").sendKeys(value);
-                $("ionic-selectable-modal ion-label", 1).shouldNotBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal ion-item", 8).shouldNotBe(visible, Duration.ofSeconds(10));
+                $("ionic-selectable-modal ion-item", 0).shouldBe(visible, Duration.ofSeconds(10));
                 $("ionic-selectable-modal ion-icon[aria-label='radio button off']", 0).shouldBe(visible);
-                $("ionic-selectable-modal ion-label", 0).click();
+                $("ionic-selectable-modal ion-item", 0).click();
                 $("ionic-selectable-modal ion-footer ion-button", 1).click();
                 $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
             }

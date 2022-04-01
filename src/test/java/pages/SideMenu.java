@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class SideMenu {
     public void openMenu() {
-        sleep(300);
+        sleep(500);
         $$("[menu='main-menu']").filter(visible).get(0).click();
         sleep(300);
     }
@@ -66,6 +66,8 @@ public class SideMenu {
         step("Click Menu > Schedule", () -> {
         openMenu();
         $("[id='main-menu.professional-schedule']").scrollIntoView(true).click();
+        $("[id='main-menu.professional-schedule']").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-professional-schedule-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(500);
     });
     }

@@ -21,6 +21,7 @@ public class Search {
         $("app-search form input").setValue(searchQuery);
         sleep(1000);
         $("app-search form input").pressEnter();
+        sleep(500);
     }
 
     @Step("Main page: Search {searchQuery}")

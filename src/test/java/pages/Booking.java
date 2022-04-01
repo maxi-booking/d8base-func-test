@@ -42,10 +42,10 @@ public class Booking {
             String lastName,
             String serviceName,
             String servicePrice) {
-        $("app-search-result").$("ion-card-content").$("app-professional-card")
+        $("app-search-result ion-card-content app-professional-card")
                 .shouldHave(text(firstName), text(lastName));
-        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
-        String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
+        $("app-search-result ion-card-content app-service-link").shouldHave(text(serviceName));
+        String servicePriceActual = $("app-search-result ion-card-content app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(servicePrice)) {
             fail();

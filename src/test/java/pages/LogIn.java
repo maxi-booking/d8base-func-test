@@ -62,6 +62,7 @@ public class LogIn extends config.TestBase {
     @Step("Log out by URL")
     public void forceLogOut() {
         openUrl(urlLogOut);
+        sleep(2000);
     }
 
     public void logoClick() {
