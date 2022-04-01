@@ -128,7 +128,7 @@ public class ProfessionalProfile extends TestBase {
         }
         $("app-professional-page app-shorten div").shouldHave(text(masterAbout));
 
-        String masterExperienceX = String.valueOf(Long.parseLong(masterExperience) + 1);
+        String masterExperienceX = String.valueOf(Integer.parseInt(masterExperience) + 1);
         if ($("app-professional-page main").has(text(masterExperience))) {
             $("app-professional-page main").shouldHave(text(masterExperience));
         } else if ($("app-professional-page main").has(text(masterExperienceX))) {
@@ -197,7 +197,8 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: edit experience - value: {value}")
     public void editExperience(String value) {
-        $("app-master-edit-page app-master-edit input", 2).setValue(value);
+        sleep(500);
+        $("app-master-edit-page app-master-edit input[type='number']").val(value);
     }
 
     @Step("Main: edit expertise level - value: {value}")

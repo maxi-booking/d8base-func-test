@@ -81,7 +81,8 @@ public class Favorites {
 
     @Step("Click on service name in the search results")
     public void selectServiceSearch() {
-        $("app-search").$("app-search-result").$("app-service-link").$("a").click();
+        sleep(200);
+        $("app-search app-search-result app-service-link a").click();
     }
 
     @Step("Add master to favorites from master's profile page")

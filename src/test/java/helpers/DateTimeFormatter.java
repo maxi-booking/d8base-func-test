@@ -367,7 +367,13 @@ public class DateTimeFormatter extends TestBase {
         return day;
     }
 
-    public static String autoTimeZone(int time) {
+    /**
+     * Timezone time offset for a host
+     * <br>
+     * Input 1830 for 18:30
+     */
+
+    public static String timeZoneString(int time) {
         int hours = time / 100;
         int minutes = time % 100;
         TimeZone tz = TimeZone.getDefault();
@@ -376,5 +382,22 @@ public class DateTimeFormatter extends TestBase {
         int offset = Math.abs(offsetInMillis / 3600000) - 3;
         hours = hours + offset;
         return hours + ":" + minutes;
+    }
+
+    /**
+     * Timezone time offset for a host
+     * <br>
+     * Input 1830 for 18:30
+     */
+
+    public static int timeZoneInt(int time) {
+        int hours = time / 100;
+        int minutes = time % 100;
+        TimeZone tz = TimeZone.getDefault();
+        Calendar cal = GregorianCalendar.getInstance(tz);
+        int offsetInMillis = tz.getOffset(cal.getTimeInMillis());
+        int offset = Math.abs(offsetInMillis / 3600000) - 3;
+        hours = hours + offset;
+        return hours*100 + minutes;
     }
 }

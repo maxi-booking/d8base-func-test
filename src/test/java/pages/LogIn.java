@@ -11,8 +11,7 @@ import io.qameta.allure.Step;
 import java.time.Duration;
 import java.time.LocalDate;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
@@ -70,10 +69,12 @@ public class LogIn extends config.TestBase {
     }
 
     public void logIn(String login, String password) {
-        step("Log In with " + login + " : " + password, () -> {
+        step("Log In with:\n" + login + "\n" + password, () -> {
             sideMenu.clickLogIn();
-            $("app-login input", 0).setValue(login);
-            $("app-login input", 1).setValue(password);
+            $("app-login input[name='email']").setValue(login);
+            $("app-login input[name='password']").setValue(password);
+            $("app-login ion-input[name='email']").shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
+            $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
             $("app-login-form ion-button[type='submit']").click();
             $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
         });

@@ -697,6 +697,9 @@ public class TestData {
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
         userPatronymic = generate.name().nameWithMiddle();
+        if (userPatronymic.length() > 30) {
+            userPatronymic = userPatronymic.substring(0, 30);
+        }
         userEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".us" + c;
         userPassword = generate.internet().password();
         userPhoneNumber = "911" + generate.number().digits(7);
@@ -710,6 +713,9 @@ public class TestData {
         clientFirstName = generate.name().firstName();
         clientLastName = generate.name().lastName();
         clientPatronymic = generate.name().nameWithMiddle();
+        if (clientPatronymic.length() > 30) {
+            clientPatronymic = clientPatronymic.substring(0, 30);
+        }
         clientEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".cl" + c;
         clientPassword = generate.internet().password();
         clientPhoneNumber = "911" + generate.number().digits(7);
