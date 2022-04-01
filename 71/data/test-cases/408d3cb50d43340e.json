@@ -1,0 +1,429 @@
+{
+  "uid" : "408d3cb50d43340e",
+  "name" : "Phone number should not be autofilled if user's location unknown",
+  "fullName" : "tests.regressionTests.RegistrationTests.t00001",
+  "historyId" : "ac53e37afd04ebf208605d9f6beda9f4",
+  "time" : {
+    "start" : 1648789613709,
+    "stop" : 1648789621524,
+    "duration" : 7815
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1648789614394,
+        "stop" : 1648789617015,
+        "duration" : 2621
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1648789614394,
+          "stop" : 1648789617015,
+          "duration" : 2621
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"webdriver\") create()",
+          "time" : {
+            "start" : 1648789614394,
+            "stop" : 1648789614646,
+            "duration" : 252
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648789617015,
+        "stop" : 1648789618980,
+        "duration" : 1965
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648789617216,
+          "stop" : 1648789617450,
+          "duration" : 234
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648789618450,
+          "stop" : 1648789618515,
+          "duration" : 65
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648789618516,
+          "stop" : 1648789618780,
+          "duration" : 264
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1648789618981,
+        "stop" : 1648789620018,
+        "duration" : 1037
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648789619981,
+          "stop" : 1648789620018,
+          "duration" : 37
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Sing up",
+      "time" : {
+        "start" : 1648789620018,
+        "stop" : 1648789621205,
+        "duration" : 1187
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648789620318,
+          "stop" : 1648789620433,
+          "duration" : 115
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") scroll into view(true)",
+        "time" : {
+          "start" : 1648789620734,
+          "stop" : 1648789620762,
+          "duration" : 28
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.sign-up']\") get wrapped element()",
+          "time" : {
+            "start" : 1648789620734,
+            "stop" : 1648789620754,
+            "duration" : 20
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") click()",
+        "time" : {
+          "start" : 1648789620762,
+          "stop" : 1648789620905,
+          "duration" : 143
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that there is no phone country code autofilled",
+      "time" : {
+        "start" : 1648789621205,
+        "stop" : 1648789621238,
+        "duration" : 33
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration app-phone-editor ionic-selectable span\") get text()",
+        "time" : {
+          "start" : 1648789621205,
+          "stop" : 1648789621238,
+          "duration" : 33
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close web driver",
+      "time" : {
+        "start" : 1648789621414,
+        "stop" : 1648789621524,
+        "duration" : 110
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"webdriver\") close()",
+        "time" : {
+          "start" : 1648789621414,
+          "stop" : 1648789621524,
+          "duration" : 110
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "a76503fd7938f322",
+      "name" : "Last screenshot",
+      "source" : "a76503fd7938f322.png",
+      "type" : "image/png",
+      "size" : 42480
+    }, {
+      "uid" : "bde439fb7e8073c9",
+      "name" : "Page source",
+      "source" : "bde439fb7e8073c9.html",
+      "type" : "text/plain",
+      "size" : 114407
+    }, {
+      "uid" : "4dc6bb288d6d74a4",
+      "name" : "Browser console logs",
+      "source" : "4dc6bb288d6d74a4.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 18,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.regressionTests.RegistrationTests]/[method:t00001()]"
+  }, {
+    "name" : "feature",
+    "value" : "User Registration"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az186-3"
+  }, {
+    "name" : "thread",
+    "value" : "2865@fv-az186-3.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00001"
+  }, {
+    "name" : "suite",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "Issue link",
+    "url" : "https://redmine.maxi-booking.ru/issues/4873",
+    "type" : "custom"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 6,
+        "unknown" : 0,
+        "total" : 6
+      },
+      "items" : [ {
+        "uid" : "9800afad0e73ba2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/70//#testresult/9800afad0e73ba2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648706827039,
+          "stop" : 1648706834590,
+          "duration" : 7551
+        }
+      }, {
+        "uid" : "bce5effed252efca",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/69//#testresult/bce5effed252efca",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648616377562,
+          "stop" : 1648616385276,
+          "duration" : 7714
+        }
+      }, {
+        "uid" : "1a9d81b529dbb6f",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/67//#testresult/1a9d81b529dbb6f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648613375952,
+          "stop" : 1648613383988,
+          "duration" : 8036
+        }
+      }, {
+        "uid" : "adaa58332452d90e",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/66//#testresult/adaa58332452d90e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648557677500,
+          "stop" : 1648557685253,
+          "duration" : 7753
+        }
+      }, {
+        "uid" : "7a3bf9a0f110c71c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/64//#testresult/7a3bf9a0f110c71c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648525281383,
+          "stop" : 1648525288634,
+          "duration" : 7251
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "408d3cb50d43340e.json",
+  "parameterValues" : [ ]
+}
