@@ -88,7 +88,7 @@ public class LogIn extends config.TestBase {
 
     @Step("EToast message visible")
     public void toastVisible() {
-        $("ion-toast").shouldBe(visible, Duration.ofSeconds(1));
+        $("ion-toast").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     public void logTempAcc() {

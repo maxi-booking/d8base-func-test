@@ -379,7 +379,7 @@ public class DateTimeFormatter extends TestBase {
         TimeZone tz = TimeZone.getDefault();
         Calendar cal = GregorianCalendar.getInstance(tz);
         int offsetInMillis = tz.getOffset(cal.getTimeInMillis());
-        int offset = Math.abs(offsetInMillis / 3600000) - 3;
+        int offset = Math.abs(offsetInMillis / 3600000) + 3;
         hours = hours + offset;
         return hours + ":" + minutes;
     }

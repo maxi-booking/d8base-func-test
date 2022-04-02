@@ -308,14 +308,14 @@ public class ProfessionalProfile extends TestBase {
                 break;
         }
 
-        $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='category']").click();
-        sleep(200);
-        $("ionic-selectable-modal").$("ion-virtual-scroll").$("ion-item", categoryNumber).shouldHave(cssClass("ionic-selectable-item-is-selected"));
+        $("app-master-edit-page app-master-edit ionic-selectable[title='category']").click();
+        sleep(500);
+        $("ionic-selectable-modal ion-virtual-scroll ion-item", categoryNumber).shouldHave(cssClass("ionic-selectable-item-is-selected"));
         $("ion-modal").pressEscape();
         sleep(500);
 
         $("app-master-edit-page").$("app-master-edit").$("ionic-selectable[title='subcategory']").click();
-        sleep(200);
+        sleep(500);
         $("ionic-selectable-modal").$("ion-content").$("ion-item", subcategoryNumber).shouldHave(cssClass("ionic-selectable-item-is-selected"));
         $("ion-modal").pressEscape();
         sleep(500);
