@@ -1,0 +1,1211 @@
+{
+  "uid" : "6add9253f29753b8",
+  "name" : "Profile: functionality verification",
+  "fullName" : "tests.userProfile.UserProfileSmokeTests.userProfileFunctionalityVerification",
+  "historyId" : "2816225c74277fd4b34c4a81e832b19d",
+  "time" : {
+    "start" : 1648965416570,
+    "stop" : 1648965444731,
+    "duration" : 28161
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1648965422362,
+        "stop" : 1648965426633,
+        "duration" : 4271
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1648965422362,
+          "stop" : 1648965426633,
+          "duration" : 4271
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"webdriver\") create()",
+          "time" : {
+            "start" : 1648965422362,
+            "stop" : 1648965422665,
+            "duration" : 303
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648965426633,
+        "stop" : 1648965428410,
+        "duration" : 1777
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648965426834,
+          "stop" : 1648965426859,
+          "duration" : 25
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648965427860,
+          "stop" : 1648965427931,
+          "duration" : 71
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648965427931,
+          "stop" : 1648965428210,
+          "duration" : 279
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Log In with:\n0hhwv0r1kz2vcl@magni.usl\nejai7bjr",
+      "time" : {
+        "start" : 1648965428410,
+        "stop" : 1648965433281,
+        "duration" : 4871
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Click Menu > Log in",
+        "time" : {
+          "start" : 1648965428410,
+          "stop" : 1648965429771,
+          "duration" : 1361
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+          "time" : {
+            "start" : 1648965428910,
+            "stop" : 1648965429055,
+            "duration" : 145
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") scroll into view(true)",
+          "time" : {
+            "start" : 1648965429355,
+            "stop" : 1648965429373,
+            "duration" : 18
+          },
+          "status" : "passed",
+          "steps" : [ {
+            "name" : "$(\"[id='main-menu.log-in']\") get wrapped element()",
+            "time" : {
+              "start" : 1648965429355,
+              "stop" : 1648965429368,
+              "duration" : 13
+            },
+            "status" : "passed",
+            "steps" : [ ],
+            "attachments" : [ ],
+            "parameters" : [ ],
+            "stepsCount" : 0,
+            "attachmentsCount" : 0,
+            "shouldDisplayMessage" : false,
+            "hasContent" : false
+          } ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 1,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : true
+        }, {
+          "name" : "$(\"[id='main-menu.log-in']\") click()",
+          "time" : {
+            "start" : 1648965429373,
+            "stop" : 1648965429471,
+            "duration" : 98
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 4,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"app-login input[name='email']\") set value(0hhwv0r1kz2vcl@magni.usl)",
+        "time" : {
+          "start" : 1648965429771,
+          "stop" : 1648965429977,
+          "duration" : 206
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login input[name='password']\") set value(ejai7bjr)",
+        "time" : {
+          "start" : 1648965429977,
+          "stop" : 1648965430084,
+          "duration" : 107
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login ion-input[name='email']\") should have([css class \"ion-valid\", 10 s.])",
+        "time" : {
+          "start" : 1648965430084,
+          "stop" : 1648965430113,
+          "duration" : 29
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login ion-input[name='password']\") should have([css class \"ion-valid\", 10 s.])",
+        "time" : {
+          "start" : 1648965430113,
+          "stop" : 1648965430138,
+          "duration" : 25
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login-form ion-button[type='submit']\") click()",
+        "time" : {
+          "start" : 1648965430339,
+          "stop" : 1648965430398,
+          "duration" : 59
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-login-form ion-button[type='submit']\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648965430398,
+          "stop" : 1648965433281,
+          "duration" : 2883
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 11,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1648965433281,
+        "stop" : 1648965436994,
+        "duration" : 3713
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648965434281,
+          "stop" : 1648965434342,
+          "duration" : 61
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648965434342,
+          "stop" : 1648965434426,
+          "duration" : 84
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-flag-menu ion-select\") click()",
+        "time" : {
+          "start" : 1648965434426,
+          "stop" : 1648965434784,
+          "duration" : 358
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert button\") click()",
+        "time" : {
+          "start" : 1648965434784,
+          "stop" : 1648965435054,
+          "duration" : 270
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-button-group button[1]\") click()",
+        "time" : {
+          "start" : 1648965435054,
+          "stop" : 1648965435136,
+          "duration" : 82
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"div.alert-radio-group\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648965435136,
+          "stop" : 1648965435434,
+          "duration" : 298
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") exists()",
+        "time" : {
+          "start" : 1648965436934,
+          "stop" : 1648965436994,
+          "duration" : 60
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 7,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Navigate to profile page",
+      "time" : {
+        "start" : 1648965436994,
+        "stop" : 1648965437042,
+        "duration" : 48
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile\") is displayed()",
+        "time" : {
+          "start" : 1648965436994,
+          "stop" : 1648965437042,
+          "duration" : 48
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify profile data",
+      "time" : {
+        "start" : 1648965437042,
+        "stop" : 1648965437768,
+        "duration" : 726
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile\") should have([text \"Johnie\", text \"White\", text \"0hhwv0r1kz2vcl@magni.usl\", text \"Russia\", text \"Moscow\"])",
+        "time" : {
+          "start" : 1648965437342,
+          "stop" : 1648965437768,
+          "duration" : 426
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "Johnie"
+      }, {
+        "name" : "lastName",
+        "value" : "White"
+      }, {
+        "name" : "email",
+        "value" : "0hhwv0r1kz2vcl@magni.usl"
+      }, {
+        "name" : "country",
+        "value" : "Russia"
+      }, {
+        "name" : "city",
+        "value" : "Moscow"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Open Profile: Main",
+      "time" : {
+        "start" : 1648965437768,
+        "stop" : 1648965438399,
+        "duration" : 631
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile/ion-button[routerlink='edit/']\") click()",
+        "time" : {
+          "start" : 1648965437768,
+          "stop" : 1648965437898,
+          "duration" : 130
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify Profile: Main - minimal",
+      "time" : {
+        "start" : 1648965438399,
+        "stop" : 1648965438784,
+        "duration" : 385
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-edit/input[name='first_name']\") should have(value=\"Johnie\")",
+        "time" : {
+          "start" : 1648965438699,
+          "stop" : 1648965438731,
+          "duration" : 32
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-user-edit/input[name='last_name']\") should have(value=\"White\")",
+        "time" : {
+          "start" : 1648965438731,
+          "stop" : 1648965438757,
+          "duration" : 26
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-user-edit/input[name='email']\") should have(value=\"0hhwv0r1kz2vcl@magni.usl\")",
+        "time" : {
+          "start" : 1648965438757,
+          "stop" : 1648965438784,
+          "duration" : 27
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "Johnie"
+      }, {
+        "name" : "lastName",
+        "value" : "White"
+      }, {
+        "name" : "email",
+        "value" : "0hhwv0r1kz2vcl@magni.usl"
+      } ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Back: Main",
+      "time" : {
+        "start" : 1648965438784,
+        "stop" : 1648965439380,
+        "duration" : 596
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-edit/app-column-header/ion-button\") click()",
+        "time" : {
+          "start" : 1648965438784,
+          "stop" : 1648965438880,
+          "duration" : 96
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Profile: Contacts - click edit",
+      "time" : {
+        "start" : 1648965439380,
+        "stop" : 1648965439995,
+        "duration" : 615
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile/app-contacts-edit/ion-icon\") click()",
+        "time" : {
+          "start" : 1648965439380,
+          "stop" : 1648965439495,
+          "duration" : 115
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "value",
+        "value" : "0"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify contact default",
+      "time" : {
+        "start" : 1648965439995,
+        "stop" : 1648965440034,
+        "duration" : 39
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-contact-edit/app-contact-edit/ion-input[class='ion-pristine']\") exists()",
+        "time" : {
+          "start" : 1648965439996,
+          "stop" : 1648965440034,
+          "duration" : 38
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Profile: Contacts - click back",
+      "time" : {
+        "start" : 1648965440034,
+        "stop" : 1648965440644,
+        "duration" : 610
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-contact-edit/main/ion-button\") click()",
+        "time" : {
+          "start" : 1648965440034,
+          "stop" : 1648965440144,
+          "duration" : 110
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Open Profile: Address",
+      "time" : {
+        "start" : 1648965440644,
+        "stop" : 1648965441288,
+        "duration" : 644
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile/ion-item-group/ion-button\") click()",
+        "time" : {
+          "start" : 1648965440644,
+          "stop" : 1648965440788,
+          "duration" : 144
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "value",
+        "value" : "0"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify Profile: Address",
+      "time" : {
+        "start" : 1648965441288,
+        "stop" : 1648965441691,
+        "duration" : 403
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-location-edit/app-location-editor/app-country-selector\") should have(text \"Russia\")",
+        "time" : {
+          "start" : 1648965441588,
+          "stop" : 1648965441642,
+          "duration" : 54
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-user-location-edit/app-location-editor/app-city-selector\") should have(text \"Moscow\")",
+        "time" : {
+          "start" : 1648965441642,
+          "stop" : 1648965441691,
+          "duration" : 49
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "country",
+        "value" : "Russia"
+      }, {
+        "name" : "city",
+        "value" : "Moscow"
+      } ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Profile address: click Back",
+      "time" : {
+        "start" : 1648965441691,
+        "stop" : 1648965441828,
+        "duration" : 137
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-user-location-edit/app-column-header/ion-button\") click()",
+        "time" : {
+          "start" : 1648965441691,
+          "stop" : 1648965441828,
+          "duration" : 137
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Open Profile: About",
+      "time" : {
+        "start" : 1648965441828,
+        "stop" : 1648965442661,
+        "duration" : 833
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile ion-button[routerlink='about/']\") click()",
+        "time" : {
+          "start" : 1648965441829,
+          "stop" : 1648965442161,
+          "duration" : 332
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify 'About' default",
+      "time" : {
+        "start" : 1648965442661,
+        "stop" : 1648965443197,
+        "duration" : 536
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-about-edit form ion-input[class='ng-pristine']\") exists()",
+        "time" : {
+          "start" : 1648965443162,
+          "stop" : 1648965443176,
+          "duration" : 14
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-about-edit form ionic-selectable[class='ion-untouched']\") exists()",
+        "time" : {
+          "start" : 1648965443176,
+          "stop" : 1648965443188,
+          "duration" : 12
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"app-about-edit form ionic-selectable[class='ion-untouched'][1]\") exists()",
+        "time" : {
+          "start" : 1648965443188,
+          "stop" : 1648965443197,
+          "duration" : 9
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Profile: About - click 'back'",
+      "time" : {
+        "start" : 1648965443197,
+        "stop" : 1648965443776,
+        "duration" : 579
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-about-edit app-column-header ion-button\") click()",
+        "time" : {
+          "start" : 1648965443197,
+          "stop" : 1648965443276,
+          "duration" : 79
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify profile data",
+      "time" : {
+        "start" : 1648965443776,
+        "stop" : 1648965444442,
+        "duration" : 666
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-profile\") should have([text \"Johnie\", text \"White\", text \"0hhwv0r1kz2vcl@magni.usl\", text \"Russia\", text \"Moscow\"])",
+        "time" : {
+          "start" : 1648965444076,
+          "stop" : 1648965444442,
+          "duration" : 366
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "firstName",
+        "value" : "Johnie"
+      }, {
+        "name" : "lastName",
+        "value" : "White"
+      }, {
+        "name" : "email",
+        "value" : "0hhwv0r1kz2vcl@magni.usl"
+      }, {
+        "name" : "country",
+        "value" : "Russia"
+      }, {
+        "name" : "city",
+        "value" : "Moscow"
+      } ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close web driver",
+      "time" : {
+        "start" : 1648965444630,
+        "stop" : 1648965444731,
+        "duration" : 101
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"webdriver\") close()",
+        "time" : {
+          "start" : 1648965444630,
+          "stop" : 1648965444731,
+          "duration" : 101
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "573776f3aac683a9",
+      "name" : "Last screenshot",
+      "source" : "573776f3aac683a9.png",
+      "type" : "image/png",
+      "size" : 64484
+    }, {
+      "uid" : "7c8670315854b9fd",
+      "name" : "Page source",
+      "source" : "7c8670315854b9fd.html",
+      "type" : "text/plain",
+      "size" : 64525
+    }, {
+      "uid" : "b8a6fb68d4057a39",
+      "name" : "Browser console logs",
+      "source" : "b8a6fb68d4057a39.txt",
+      "type" : "text/plain",
+      "size" : 283
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 64,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.userProfile.UserProfileSmokeTests]/[method:userProfileFunctionalityVerification()]"
+  }, {
+    "name" : "feature",
+    "value" : "User Profile"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az318-893"
+  }, {
+    "name" : "thread",
+    "value" : "2798@fv-az318-893.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.userProfile.UserProfileSmokeTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.userProfile.UserProfileSmokeTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "userProfileFunctionalityVerification"
+  }, {
+    "name" : "suite",
+    "value" : "tests.userProfile.UserProfileSmokeTests"
+  }, {
+    "name" : "severity",
+    "value" : "critical"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "critical",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 11,
+        "unknown" : 0,
+        "total" : 11
+      },
+      "items" : [ {
+        "uid" : "5df20d7b78885e93",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/74//#testresult/5df20d7b78885e93",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648958309401,
+          "stop" : 1648958332851,
+          "duration" : 23450
+        }
+      }, {
+        "uid" : "77c5f87ad025a624",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/73//#testresult/77c5f87ad025a624",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648868862742,
+          "stop" : 1648868886181,
+          "duration" : 23439
+        }
+      }, {
+        "uid" : "3eca387ed07b92ee",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/72//#testresult/3eca387ed07b92ee",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648860317013,
+          "stop" : 1648860343961,
+          "duration" : 26948
+        }
+      }, {
+        "uid" : "ebde1f8fc15d9467",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/71//#testresult/ebde1f8fc15d9467",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648790156274,
+          "stop" : 1648790179722,
+          "duration" : 23448
+        }
+      }, {
+        "uid" : "1f7328b220190bac",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/70//#testresult/1f7328b220190bac",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648706178050,
+          "stop" : 1648706201351,
+          "duration" : 23301
+        }
+      }, {
+        "uid" : "7931c244f1d16559",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/69//#testresult/7931c244f1d16559",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648615720561,
+          "stop" : 1648615744380,
+          "duration" : 23819
+        }
+      }, {
+        "uid" : "615ad604ca8fd427",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/68//#testresult/615ad604ca8fd427",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648614999884,
+          "stop" : 1648615026805,
+          "duration" : 26921
+        }
+      }, {
+        "uid" : "f137eb236d7bccc4",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/67//#testresult/f137eb236d7bccc4",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648612704111,
+          "stop" : 1648612728714,
+          "duration" : 24603
+        }
+      }, {
+        "uid" : "357f6f0ebe32589b",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/66//#testresult/357f6f0ebe32589b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648557012704,
+          "stop" : 1648557037230,
+          "duration" : 24526
+        }
+      }, {
+        "uid" : "78c085a3dc1c3919",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/64//#testresult/78c085a3dc1c3919",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648524634358,
+          "stop" : 1648524657789,
+          "duration" : 23431
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "6add9253f29753b8.json",
+  "parameterValues" : [ ]
+}

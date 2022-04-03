@@ -1,0 +1,465 @@
+{
+  "uid" : "2c325066b522a732",
+  "name" : "Phone number should not be autofilled if user's location unknown",
+  "fullName" : "tests.regressionTests.RegistrationTests.t00001",
+  "historyId" : "ac53e37afd04ebf208605d9f6beda9f4",
+  "time" : {
+    "start" : 1648964705040,
+    "stop" : 1648964714352,
+    "duration" : 9312
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Open URL: https://app.maxibooking.ru",
+      "time" : {
+        "start" : 1648964705822,
+        "stop" : 1648964709551,
+        "duration" : 3729
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"open\") https://app.maxibooking.ru",
+        "time" : {
+          "start" : 1648964705822,
+          "stop" : 1648964709551,
+          "duration" : 3729
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"webdriver\") create()",
+          "time" : {
+            "start" : 1648964705822,
+            "stop" : 1648964706093,
+            "duration" : 271
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Pop-up skip",
+      "time" : {
+        "start" : 1648964709551,
+        "stop" : 1648964711557,
+        "duration" : 2006
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"h2.alert-sub-title\") should be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648964709751,
+          "stop" : 1648964709994,
+          "duration" : 243
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") press escape()",
+        "time" : {
+          "start" : 1648964710994,
+          "stop" : 1648964711072,
+          "duration" : 78
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"ion-alert\") should not be([visible, 10 s.])",
+        "time" : {
+          "start" : 1648964711072,
+          "stop" : 1648964711356,
+          "duration" : 284
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 3,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Change language to English",
+      "time" : {
+        "start" : 1648964711557,
+        "stop" : 1648964712607,
+        "duration" : 1050
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='flag-menu'].filter(visible)[0]\") get text()",
+        "time" : {
+          "start" : 1648964712557,
+          "stop" : 1648964712607,
+          "duration" : 50
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Click Menu > Sing up",
+      "time" : {
+        "start" : 1648964712607,
+        "stop" : 1648964714013,
+        "duration" : 1406
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"[menu='main-menu'].filter(visible)[0]\") click()",
+        "time" : {
+          "start" : 1648964713107,
+          "stop" : 1648964713251,
+          "duration" : 144
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") scroll into view(true)",
+        "time" : {
+          "start" : 1648964713551,
+          "stop" : 1648964713574,
+          "duration" : 23
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "$(\"[id='main-menu.sign-up']\") get wrapped element()",
+          "time" : {
+            "start" : 1648964713551,
+            "stop" : 1648964713563,
+            "duration" : 12
+          },
+          "status" : "passed",
+          "steps" : [ ],
+          "attachments" : [ ],
+          "parameters" : [ ],
+          "stepsCount" : 0,
+          "attachmentsCount" : 0,
+          "shouldDisplayMessage" : false,
+          "hasContent" : false
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 1,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : true
+      }, {
+        "name" : "$(\"[id='main-menu.sign-up']\") click()",
+        "time" : {
+          "start" : 1648964713574,
+          "stop" : 1648964713713,
+          "duration" : 139
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 4,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Verify that there is no phone country code autofilled",
+      "time" : {
+        "start" : 1648964714013,
+        "stop" : 1648964714055,
+        "duration" : 42
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"app-registration app-phone-editor ionic-selectable span\") get text()",
+        "time" : {
+          "start" : 1648964714013,
+          "stop" : 1648964714055,
+          "duration" : 42
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    }, {
+      "name" : "Close web driver",
+      "time" : {
+        "start" : 1648964714250,
+        "stop" : 1648964714352,
+        "duration" : 102
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "$(\"webdriver\") close()",
+        "time" : {
+          "start" : 1648964714250,
+          "stop" : 1648964714352,
+          "duration" : 102
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false,
+        "hasContent" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 1,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true
+    } ],
+    "attachments" : [ {
+      "uid" : "55b9ce9d4a9bd1b7",
+      "name" : "Last screenshot",
+      "source" : "55b9ce9d4a9bd1b7.png",
+      "type" : "image/png",
+      "size" : 42480
+    }, {
+      "uid" : "83550c5a86a5f005",
+      "name" : "Page source",
+      "source" : "83550c5a86a5f005.html",
+      "type" : "text/plain",
+      "size" : 114407
+    }, {
+      "uid" : "2b417fb7e65d4aeb",
+      "name" : "Browser console logs",
+      "source" : "2b417fb7e65d4aeb.bin",
+      "type" : "text/plain",
+      "size" : 0
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 18,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:tests.regressionTests.RegistrationTests]/[method:t00001()]"
+  }, {
+    "name" : "feature",
+    "value" : "User Registration"
+  }, {
+    "name" : "owner",
+    "value" : "Egor Khlebnikov"
+  }, {
+    "name" : "host",
+    "value" : "fv-az318-893"
+  }, {
+    "name" : "thread",
+    "value" : "2798@fv-az318-893.Test worker(11)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "t00001"
+  }, {
+    "name" : "suite",
+    "value" : "tests.regressionTests.RegistrationTests"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ {
+    "name" : "Issue link",
+    "url" : "https://redmine.maxi-booking.ru/issues/4873",
+    "type" : "custom"
+  } ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "owner" : "Egor Khlebnikov",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 10,
+        "unknown" : 0,
+        "total" : 10
+      },
+      "items" : [ {
+        "uid" : "1aad65760dd15f5c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/74//#testresult/1aad65760dd15f5c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648957712539,
+          "stop" : 1648957720305,
+          "duration" : 7766
+        }
+      }, {
+        "uid" : "96be4960e9e4efa5",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/73//#testresult/96be4960e9e4efa5",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648868260851,
+          "stop" : 1648868268893,
+          "duration" : 8042
+        }
+      }, {
+        "uid" : "d63095afb45a7ab",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/72//#testresult/d63095afb45a7ab",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648859715478,
+          "stop" : 1648859724916,
+          "duration" : 9438
+        }
+      }, {
+        "uid" : "408d3cb50d43340e",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/71//#testresult/408d3cb50d43340e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648789613709,
+          "stop" : 1648789621524,
+          "duration" : 7815
+        }
+      }, {
+        "uid" : "9800afad0e73ba2",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/70//#testresult/9800afad0e73ba2",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648706827039,
+          "stop" : 1648706834590,
+          "duration" : 7551
+        }
+      }, {
+        "uid" : "bce5effed252efca",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/69//#testresult/bce5effed252efca",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648616377562,
+          "stop" : 1648616385276,
+          "duration" : 7714
+        }
+      }, {
+        "uid" : "1a9d81b529dbb6f",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/67//#testresult/1a9d81b529dbb6f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648613375952,
+          "stop" : 1648613383988,
+          "duration" : 8036
+        }
+      }, {
+        "uid" : "adaa58332452d90e",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/66//#testresult/adaa58332452d90e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648557677500,
+          "stop" : 1648557685253,
+          "duration" : 7753
+        }
+      }, {
+        "uid" : "7a3bf9a0f110c71c",
+        "reportUrl" : "https://maxi-booking.github.io/d8base-func-test/64//#testresult/7a3bf9a0f110c71c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1648525281383,
+          "stop" : 1648525288634,
+          "duration" : 7251
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "2c325066b522a732.json",
+  "parameterValues" : [ ]
+}
