@@ -370,7 +370,7 @@ public class DateTimeFormatter extends TestBase {
     /**
      * Timezone time offset for a host
      * <br>
-     * Input 1830 for 18:30
+     * Input int 1830 for a String 18:30
      */
 
     public static String timeZoneString(int time) {
@@ -379,15 +379,15 @@ public class DateTimeFormatter extends TestBase {
         TimeZone tz = TimeZone.getDefault();
         Calendar cal = GregorianCalendar.getInstance(tz);
         int offsetInMillis = tz.getOffset(cal.getTimeInMillis());
-        int offset = Math.abs(offsetInMillis / 3600000) + 3;
-        hours = hours + offset;
-        return hours + ":" + minutes;
+        int offset = Math.abs(offsetInMillis / 3600000);
+        hours = hours - offset;
+        return String.format("%02d:%02d", hours, minutes);
     }
 
     /**
      * Timezone time offset for a host
      * <br>
-     * Input 1830 for 18:30
+     * Input int 1830 for an int 1830
      */
 
     public static int timeZoneInt(int time) {
@@ -396,8 +396,8 @@ public class DateTimeFormatter extends TestBase {
         TimeZone tz = TimeZone.getDefault();
         Calendar cal = GregorianCalendar.getInstance(tz);
         int offsetInMillis = tz.getOffset(cal.getTimeInMillis());
-        int offset = Math.abs(offsetInMillis / 3600000) - 3;
-        hours = hours + offset;
+        int offset = Math.abs(offsetInMillis / 3600000);
+        hours = hours - offset;
         return hours*100 + minutes;
     }
 }

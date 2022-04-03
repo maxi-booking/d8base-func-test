@@ -3,6 +3,7 @@ package config;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
 
@@ -607,7 +608,9 @@ public class TestData {
             serviceDistance,
             bookingDateTime,
             userChatMessage,
-            clientChatMessage;
+            clientChatMessage,
+            defStartTime,
+            defEndTime;
 
     public int
             randomNumber,
@@ -675,6 +678,9 @@ public class TestData {
         } else {
             randomEndTime = randomEndTime + generate.number().numberBetween(0, 4) * 15;
         }
+
+        defStartTime = "9:00";
+        defEndTime = "17:00";
 
 
         serviceCategory = generate.number().numberBetween(0, 9);
@@ -915,9 +921,9 @@ public class TestData {
         public String[] phoneNumber = new String[]{userPhoneNumber, clientPhoneNumber};
         public String[] country = new String[]{userCountry, clientCountry};
         public String[] city = new String[]{userCity, clientCity};
-        public String[] birthDay = new String[] {userBirthDay};
-        public String[] birthMonth = new String[] {userBirthMonth};
-        public String[] birthYear = new String[] {userBirthYear};
+        public String[] birthDay = new String[]{userBirthDay};
+        public String[] birthMonth = new String[]{userBirthMonth};
+        public String[] birthYear = new String[]{userBirthYear};
         public String[] specialization = new String[]{userSpecialization, userSpecializationAlt};
         public String name = serviceName;
         public String[] description = new String[]{serviceDescription, serviceDescriptionAlt};
@@ -970,8 +976,8 @@ public class TestData {
         public String[] message = new String[]{userChatMessage, clientChatMessage};
 
         public int days = 7;
-        public String startTime = "09:00";
-        public String endTime = "17:00";
+        public String[] startTime = {defStartTime, defStartTime, defStartTime, defStartTime, defStartTime, defStartTime, defStartTime};
+        public String[] endTime = {defEndTime, defEndTime, defEndTime, defEndTime, defEndTime, defEndTime, defEndTime};
         public int sType = online; // service type - online / client / master
         public boolean iBooking = on; // instant booking on/off (true/false)
         public String[] payment = paymentCashOnline; // payment options: cash / online / cashOnline

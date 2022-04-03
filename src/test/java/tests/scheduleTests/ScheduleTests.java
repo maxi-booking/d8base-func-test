@@ -5,6 +5,8 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static helpers.RegressionTestsHelpers.serviceReadyAPI;
 
 @Feature("Schedule")
@@ -72,8 +74,8 @@ public class ScheduleTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     void scheduleFunctionalityVerification() {
         data.days = 3;
-        data.startTime = "09:00";
-        data.endTime = "17:00";
+        Arrays.fill(data.startTime, "09:00");
+        Arrays.fill(data.endTime, "17:00");
         int startTime = 900;
         int endTime = 1700;
 

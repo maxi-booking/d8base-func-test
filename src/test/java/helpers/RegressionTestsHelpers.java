@@ -1,5 +1,7 @@
 package helpers;
 
+import java.util.Arrays;
+
 import static api.Registration.locations;
 import static api.Registration.registration;
 import static api.ServiceBooking.bookingClient;
@@ -65,8 +67,8 @@ public class RegressionTestsHelpers extends config.TestBase {
         data.serviceId = servicePublish(data.accessToken[0], data.professionalId, data.name, data.description[0], data.duration, data.sType, data.iBooking);
         data.professionalLocationId = professionalLocations(data.accessToken[0], data.professionalId, data.country[0], data.city[0], data.address, data.units);
         if (Integer.parseInt(data.duration) >= 1440) {
-            data.startTime = "00:00";
-            data.endTime = "23:59";
+            Arrays.fill(data.startTime, "00:00");
+            Arrays.fill(data.endTime, "23:59");
         }
         setSchedule(data.accessToken[0], data.professionalId, data.days, data.startTime, data.endTime);
         if (data.sType == online) {

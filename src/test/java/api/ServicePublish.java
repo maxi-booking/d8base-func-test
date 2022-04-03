@@ -209,30 +209,31 @@ public class ServicePublish extends TestBase {
      * token, professional ID, days, start time, end time
      * </p>
      */
-    public static void setSchedule(String accessToken, int professionalId, int days, String startTime, String endTime) {
+    public static void setSchedule(String accessToken, int professionalId, int days, String[] startTime, String[] endTime) {
 
-        if (!startTime.contains(":")) {
-            String hours = String.valueOf(startTime).substring(0, 2);
-            String minutes = String.valueOf(startTime).substring(2);
-            startTime = hours + ":" + minutes;
-        }
-
-        if (!endTime.contains(":")) {
-            String hours = String.valueOf(endTime).substring(0, 2);
-            String minutes = String.valueOf(endTime).substring(2);
-            endTime = hours + ":" + minutes;
-        }
+        List<Map<String, Object>> list = new ArrayList<>();
 
         if (days <= 7 && days >= 0) {
-            List<Map<String, Object>> list = new ArrayList<>();
 
             int i = 0;
             while (i < days) {
+
+                if (!startTime[i].contains(":")) {
+                    String hours = String.valueOf(startTime[i]).substring(0, 2);
+                    String minutes = String.valueOf(startTime[i]).substring(2);
+                    startTime[i] = hours + ":" + minutes;
+                }
+
+                if (!endTime[i].contains(":")) {
+                    String hours = String.valueOf(endTime[i]).substring(0, 2);
+                    String minutes = String.valueOf(endTime[i]).substring(2);
+                    endTime[i] = hours + ":" + minutes;
+                }
                 Map<String, Object> schedule = new HashMap<>();
 
                 schedule.put("day_of_week", i);
-                schedule.put("start_time", startTime);
-                schedule.put("end_time", endTime);
+                schedule.put("start_time", startTime[i]);
+                schedule.put("end_time", endTime[i]);
                 schedule.put("is_enabled", true);
                 schedule.put("professional", professionalId);
 
@@ -249,6 +250,7 @@ public class ServicePublish extends TestBase {
                     .when()
                     .post(urlBackend + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
+                    .log().body()
                     .statusCode(201);
         } else {
             System.out.println("There are only 7 days in the week, can not accept " + days + " days.");
