@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import static helpers.DateTimeFormatter.monthConvertToNumber;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -416,7 +417,7 @@ public class UserProfile {
         $("app-profile main").shouldHave(text(nationality), text(language));
         if ($("app-profile main").has(text(dateYYYY + "-" + dateMM + "-" + dateDD))) {
             $("app-profile main").shouldHave(text(dateYYYY + "-" + dateMM + "-" + dateDD));
-        } else {
+        } else if ($("app-profile main").has(text(dateYYYY + "-" + dateDD + "-" + dateMM))) {
             $("app-profile main").shouldHave(text(dateYYYY + "-" + dateDD + "-" + dateMM));
         }
     }
@@ -438,7 +439,17 @@ public class UserProfile {
 
     @Step("Profile: About - select birth date")
     public void selectDateBirth(String dateDD, String dateMM, String dateYYYY) {
-        $("app-about-edit form input").setValue(dateDD + dateMM + dateYYYY);
+        $("app-about-edit input[type='date']").clear();
+        $("app-about-edit input[type='date']").sendKeys("22113333");
+        String value = $("app-about-edit input[type='date']").getValue();
+        value = value.substring(0, 1);
+        if (value.equals("1")) {
+            $("app-about-edit input[type='date']").setValue(dateMM + dateDD + dateYYYY);
+        } else if (value.equals("3")) {
+            $("app-about-edit input[type='date']").setValue(dateDD + dateMM + dateYYYY);
+        } else {
+            fail();
+        }
     }
 
     @Step("Profile: About - select nationality")

@@ -682,7 +682,6 @@ public class TestData {
         defStartTime = "9:00";
         defEndTime = "17:00";
 
-
         serviceCategory = generate.number().numberBetween(0, 9);
         serviceCategoryAlt = generate.number().numberBetween(0, 9);
         while (true) {

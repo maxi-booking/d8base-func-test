@@ -5,6 +5,7 @@ import pages.Schedule;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static helpers.DateTimeFormatter.scheduleMinutesConvertToId;
@@ -52,12 +53,16 @@ public class SchedulePicker extends TestBase {
     }
 
     public static void clickCancel() {
-        $("ion-picker div.picker-toolbar-cancel").click();
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").shouldBe(visible, Duration.ofSeconds(10));
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").click();
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").shouldHave(cssClass("ion-activated"));
         $("ion-picker").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 
     public static void clickConfirm() {
-        $("ion-picker div.picker-toolbar-cancel").sibling(0).click();
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).shouldBe(visible, Duration.ofSeconds(10));
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).click();
+        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).shouldHave(cssClass("ion-activated"));
         $("ion-picker").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 }

@@ -277,6 +277,7 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Main: verify")
     public void mainVerify(String description, String level, Integer categoryNumber, Integer subcategoryNumber) {
+        sleep(2000);
         //can't add yet specialization check
         $("app-master-edit-page").$("app-master-edit").$("textarea").shouldHave(text(description));
         //can't add yet company name check
@@ -476,12 +477,15 @@ public class ProfessionalProfile extends TestBase {
     @Step("Education: click remove")
     public void educationClickRemove() {
         sleep(500);
-        if ($("app-master-education-edit").$("form").$("ion-button", 1).exists()) {
-            $("app-master-education-edit").$("form").$("ion-button", 0).click();
+        if ($("app-master-education-edit form ion-button", 1).exists()) {
+            $("app-master-education-edit form ion-button", 0).click();
         } else {
+            System.out.println("Can't remove education, not found.");
             fail();
         }
-        sleep(500);
+        sleep(2000);
+        $("ion-spinner").shouldNotBe(visible, Duration.ofSeconds(20));
+        $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Step("Education: edit university - value: {value}")
