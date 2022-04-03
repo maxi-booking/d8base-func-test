@@ -529,8 +529,10 @@ public class ServicePublish extends config.TestBase {
         $("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
         $("ionic-selectable").click();
         $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(500);
         String value = $("ionic-selectable-modal ion-virtual-scroll ion-item ion-label").getText();
         if (!value.equals("Tutors")) {
+            System.out.println("Expected: Tutors\nActual value: " + value);
             fail();
         }
         $("ionic-selectable-modal ion-virtual-scroll ion-item").scrollIntoView(true).click();

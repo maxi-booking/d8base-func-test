@@ -413,7 +413,12 @@ public class UserProfile {
     public void verifyAbout(String nationality, String language, String dateDD, String dateMM, String dateYYYY) {
         sleep(500);
         $("app-profile ion-button[routerlink='about/']").scrollIntoView(true);
-        $("app-profile main").shouldHave(text(nationality), text(language), text(dateYYYY + "-" + dateMM + "-" + dateDD));
+        $("app-profile main").shouldHave(text(nationality), text(language));
+        if ($("app-profile main").has(text(dateYYYY + "-" + dateMM + "-" + dateDD))) {
+            $("app-profile main").shouldHave(text(dateYYYY + "-" + dateMM + "-" + dateDD));
+        } else {
+            $("app-profile main").shouldHave(text(dateYYYY + "-" + dateDD + "-" + dateMM));
+        }
     }
 
     @Step("Verify 'About' language")

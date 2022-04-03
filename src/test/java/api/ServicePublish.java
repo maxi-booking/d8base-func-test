@@ -250,7 +250,6 @@ public class ServicePublish extends TestBase {
                     .when()
                     .post(urlBackend + ":8000/en/api/accounts/professional-schedule/set/")
                     .then()
-                    .log().body()
                     .statusCode(201);
         } else {
             System.out.println("There are only 7 days in the week, can not accept " + days + " days.");

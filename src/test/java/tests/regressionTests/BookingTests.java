@@ -158,7 +158,7 @@ public class BookingTests extends config.TestBase {
         Arrays.fill(data.endTime, timeZoneString(1800));
         int startTimeHours = Integer.parseInt(timeZoneString(0).substring(0, 2));
         if (startTimeHours < 0) {
-            data.startTime[dayIdNext1Day] = (24 + Integer.parseInt(timeZoneString(0).substring(0, 2))) + timeZoneString(0).substring(2);
+            data.startTime[dayIdNext1Day] = (24 + startTimeHours) + timeZoneString(0).substring(2);
             data.endTime[dayIdNext1Day] = "23:59";
             data.startTime[dayIdNext2Days] = "00:00";
             data.endTime[dayIdNext2Days] = timeZoneString(600);
