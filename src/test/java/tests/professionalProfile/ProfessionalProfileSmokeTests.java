@@ -3,12 +3,7 @@ package tests.professionalProfile;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
-import static api.Registration.*;
-import static api.ServicePublish.*;
-import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.RegressionTestsHelpers.serviceReadyAPI;
 
 @Feature("Professional Profile")
@@ -263,6 +258,7 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.clickEditCertificate(0);
         pp.certificatesEditName(data.certificateName[1]);
         pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDateWaitToLoad();
         pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
         pp.certificatesEditID(data.certificateID[1]);
         pp.certificatesEditLink(data.certificateLink[1]);
@@ -273,6 +269,7 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.clickEditCertificate(0);
         pp.certificatesEditName(data.certificateName[1]);
         pp.certificatesEditOrganization(data.certificateOrganization[1]);
+        pp.certificatesEditDateWaitToLoad();
         pp.certificatesEditDate(data.certificateDateDay[1], data.certificateDateMonth[1], data.certificateDateYear[1]);
         pp.certificatesEditID(data.certificateID[1]);
         pp.certificatesEditLink(data.certificateLink[1]);

@@ -60,9 +60,9 @@ public class SchedulePicker extends TestBase {
     }
 
     public static void clickConfirm() {
-        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).shouldBe(visible, Duration.ofSeconds(10));
-        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).click();
-        $("ion-picker div.picker-toolbar-cancel button[type='button']").sibling(0).shouldHave(cssClass("ion-activated"));
+        $("ion-picker div.picker-toolbar button[type='button']", 1).shouldBe(visible, Duration.ofSeconds(10));
+        $("ion-picker div.picker-toolbar button[type='button']", 1).click();
+        $("ion-picker div.picker-toolbar button[type='button']", 1).shouldHave(cssClass("ion-activated"));
         $("ion-picker").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 }

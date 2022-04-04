@@ -62,7 +62,6 @@ public class LogIn extends config.TestBase {
     @Step("Log out by URL")
     public void forceLogOut() {
         openUrl(urlLogOut);
-        sleep(2000);
     }
 
     public void logoClick() {
@@ -78,7 +77,7 @@ public class LogIn extends config.TestBase {
             $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
             sleep(200);
             $("app-login-form ion-button[type='submit']").click();
-            $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
+            $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(20));
         });
     }
 

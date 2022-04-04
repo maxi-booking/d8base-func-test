@@ -476,14 +476,12 @@ public class ProfessionalProfile extends TestBase {
 
     @Step("Education: click remove")
     public void educationClickRemove() {
-        sleep(500);
-        if ($("app-master-education-edit form ion-button", 1).exists()) {
-            $("app-master-education-edit form ion-button", 0).click();
+        if ($("app-master-education-edit form ion-button", 1).shouldBe(visible, Duration.ofSeconds(20)).exists()) {
+            $("app-master-education-edit form ion-button", 0).shouldBe(visible, Duration.ofSeconds(20)).click();
         } else {
             System.out.println("Can't remove education, not found.");
             fail();
         }
-        sleep(2000);
         $("ion-spinner").shouldNotBe(visible, Duration.ofSeconds(20));
         $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
     }
@@ -611,6 +609,17 @@ public class ProfessionalProfile extends TestBase {
     @Step("Certificates: edit organization - value: {value}")
     public void certificatesEditOrganization(String value) {
         $("app-master-certificate-edit").$("app-certificate-edit").$("input[name='organization']").setValue(value);
+    }
+
+    public void certificatesEditDateWaitToLoad() {
+        step("Wait for certificate date to load", () -> {
+            long start = System.nanoTime();
+            $("app-certificate-edit ion-input[type='date']").shouldHave(cssClass("has-value"), Duration.ofSeconds(10));
+            long finish = System.nanoTime();
+            long timeElapsed = (finish - start) / 1000000;
+        step("Duration: " + timeElapsed + " seconds", () -> {
+        });
+        });
     }
 
     @Step("Certificates: edit date - value: {day} {month} {year}")
