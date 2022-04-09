@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
 import config.TestBase;
 
 import java.time.Duration;
@@ -17,7 +18,9 @@ public class Language extends TestBase {
         step("Select " + language.substring(0, 1).toUpperCase() + language.substring(1) + " language", () -> {
             sleep(1000);
             String desiredLanguage = getLanguageString(language);
+            step("Desired language: " + desiredLanguage);
             String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
+            step("Current language: " + currentLanguage);
             if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
                 String lang = languageByText(language);
                 $$("[menu='flag-menu']").filter(visible).get(0).click();
