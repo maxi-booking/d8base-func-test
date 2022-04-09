@@ -40,14 +40,14 @@ dependencies {
             'org.slf4j:slf4j-simple:1.7.32',
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
-
+/*
 test {
     retry {
         failOnPassedAfterRetry = true
         maxFailures = 20
         maxRetries = 1
     }
-}
+}*/
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     sourceCompatibility = 11
