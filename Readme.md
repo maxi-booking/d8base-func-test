@@ -14,7 +14,7 @@
 
 ### Запуск с параметрами, пример:
 
-`./gradlew clean test -frontendUrl=http://localhost:4200 -DbrowserName=chrome`
+`./gradlew clean test -Dlanguage=russian -DfrontendUrl=http://localhost:4200 -DbackendUrl=http://localhost -DbrowserName=chrome`
 
 
 ### Доступные параметры: 
@@ -30,6 +30,8 @@
 * `headless` - headless режим браузера, default: `false`
 
 * `timeout` - максимальная задержка до падения теста, default: `10000` ms
+
+* `language` - язык по умолчанию для тестов `english`
 
 * `frontendUrl` - основной url тестируемого сайта (клиентская часть), default: `https://app.maxibooking.ru`
 

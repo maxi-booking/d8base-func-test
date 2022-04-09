@@ -23,7 +23,7 @@ public class BookingTests extends config.TestBase {
     void bookingDateToday() {
         serviceReadyAPI(data);
         log.forceMainPage();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -47,7 +47,7 @@ public class BookingTests extends config.TestBase {
     void bookingOwnServiceForAnother() {
         serviceReadyAPI(data);
         log.forceMainPage();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -158,10 +158,10 @@ public class BookingTests extends config.TestBase {
         Arrays.fill(data.endTime, timeZoneString(1800));
         int startTimeHours = Integer.parseInt(timeZoneString(0).substring(0, 2));
         if (startTimeHours < 0) {
-            data.startTime[dayIdNext1Day] = (24 + startTimeHours) + timeZoneString(0).substring(2);
-            data.endTime[dayIdNext1Day] = "23:59";
-            data.startTime[dayIdNext2Days] = "00:00";
-            data.endTime[dayIdNext2Days] = timeZoneString(600);
+            data.startTime[dayIdNext2Days] = (24 + startTimeHours) + timeZoneString(0).substring(2);
+            data.endTime[dayIdNext2Days] = "23:59";
+            data.startTime[dayUdNext3Days] = "00:00";
+            data.endTime[dayUdNext3Days] = timeZoneString(600);
         } else {
             data.startTime[dayIdNext2Days] = timeZoneString(0);
             data.endTime[dayIdNext2Days] = timeZoneString(600);
@@ -173,11 +173,7 @@ public class BookingTests extends config.TestBase {
         bkn.findService(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
-        if (startTimeHours < 0) {
-            bkn.pickTheDate(today);
-        } else {
-            bkn.pickTheDate(tomorrow);
-        }
+        bkn.pickTheDate(tomorrow);
         step("Verify that no extra blocks exists and the correct block is displayed", () -> {
             $("app-time-step app-calendar-component app-section-heading").shouldNotHave(text("11:59"));
             $("app-time-step app-calendar-component app-section-heading").shouldHave(text("12:00"));

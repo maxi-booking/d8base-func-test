@@ -9,21 +9,18 @@ import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
-import java.time.LocalDate;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
-import static helpers.LanguageConverter.getLanguageId;
-import static helpers.LanguageConverter.getLanguageString;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class LogIn extends config.TestBase {
 
-    private void closeAlert() {
+    public void closeAlert() {
         $("ion-alert").pressEscape();
     }
 
@@ -73,11 +70,10 @@ public class LogIn extends config.TestBase {
             sideMenu.clickLogIn();
             $("app-login input[name='email']").setValue(login);
             $("app-login input[name='password']").setValue(password);
-            $("app-login ion-input[name='email']").shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
-            $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
-            sleep(200);
+            $("app-login ion-input[name='email']").shouldHave(cssClass("ion-valid"));
+            $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"));
             $("app-login-form ion-button[type='submit']").click();
-            $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(20));
+            $("app-login-form ion-button[type='submit']").shouldHave(cssClass("ion-activated"));
         });
     }
 
@@ -113,72 +109,10 @@ public class LogIn extends config.TestBase {
         });
     }
 
-    public void forceRU() {
-        step("Change language to Russian", () -> {
-            sleep(1000);
-            String desiredLanguage = Lang.RUSSIAN.getLangText();
-            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-                $$("[menu='flag-menu']").filter(visible).get(0).click();
-                $("app-flag-menu ion-select").click();
-                $("ion-alert button", 1).click();
-                $("div.alert-button-group button", 1).click();
-                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
-                sleep(1500);
-                if ($("ion-alert").exists()) {
-                    closeAlert();
-                }
-            }
-        });
-    }
-
-    public void forceEN() {
-        step("Change language to English", () -> {
-            sleep(1000);
-            String desiredLanguage = Lang.ENGLISH.getLangText();
-            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-                $$("[menu='flag-menu']").filter(visible).get(0).click();
-                $("app-flag-menu ion-select").click();
-                $("ion-alert button", 0).click();
-                $("div.alert-button-group button", 1).click();
-                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
-                sleep(1500);
-                if ($("ion-alert").exists()) {
-                    closeAlert();
-                }
-            }
-        });
-    }
-
-    public void changeLanguageTo(String language) {
-        step("Change language to " + language.substring(0, 1).toUpperCase() + language.substring(1).toLowerCase(), () -> {
-            sleep(1000);
-            String desiredLanguage = getLanguageString(language);
-            String currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-                $$("[menu='flag-menu']").filter(visible).get(0).click();
-                $("app-flag-menu ion-select").click();
-                $("ion-alert button", getLanguageId(language)).click();
-                $("div.alert-button-group button", 1).click();
-                $("div.alert-radio-group").shouldNotBe(visible, Duration.ofSeconds(10));
-                sleep(1500);
-                if ($("ion-alert").exists()) {
-                    closeAlert();
-                }
-            }
-            currentLanguage = $$("[menu='flag-menu']").filter(visible).get(0).getText();
-            if (!desiredLanguage.equalsIgnoreCase(currentLanguage)) {
-                System.out.println("Language ID is broken. Different order in the menu than expected, fix needed. \n Method: LanguageConverter.getLanguageId(~);");
-                fail();
-            }
-        });
-    }
-
     public void popupSelect(String country, String city) {
         step("Pop-up select country: " + country + "; city: " + city, () -> {
             popupSkip();
-            forceEN();
+            language.select(english);
             refreshPage();
 
             $("ion-alert button", 1).click();
@@ -190,27 +124,6 @@ public class LogIn extends config.TestBase {
             selectModal(city);
             $("app-on-map-popover ion-button").click();
         });
-    }
-
-    public void popupSelectOld(String country, String city) {
-        popupSkip();
-        forceEN();
-        refreshPage();
-
-        $("ion-alert").$("button", 1).click();
-
-        $("app-on-map-popover").$("app-country-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(country);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item").click();
-
-        $("app-on-map-popover").$("app-city-selector").$("ion-item").click();
-        sleep(1000);
-        $("ionic-selectable-modal").$("input").sendKeys(city);
-        sleep(500);
-        $("ionic-selectable-modal").$("ion-item").click();
-        $("app-on-map-popover").$("ion-button").click();
     }
 
     public void popupSkip() {
@@ -254,6 +167,7 @@ public class LogIn extends config.TestBase {
         sleep(1000);
         String currentUrl = WebDriverRunner.url();
         if (!currentUrl.equals(urlProfile)) {
+            System.out.println("Url:" + currentUrl + ". Should be: " + urlProfile);
             fail();
         }
     }

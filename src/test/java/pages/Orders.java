@@ -1,9 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.selector.ByShadow;
-import helpers.Attach;
+import config.TestBase;
 import helpers.ServiceDuration;
 import io.qameta.allure.Step;
 
@@ -11,14 +9,13 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.Currency.getCurrencySignById;
 import static helpers.ServiceDuration.getDuration;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class Orders extends config.TestBase {
+public class Orders extends TestBase {
 
     @Step("Open the page by url")
     public void openPageUrl(String urlOrders) {
@@ -321,6 +318,7 @@ public class Orders extends config.TestBase {
 
     public void showOrderDetails() {
         step("Click 'show order details'", () -> {
+            sleep(200);
             $$("div.order-full-info a").filter(visible).get(0).click();
         });
     }
@@ -554,9 +552,9 @@ public class Orders extends config.TestBase {
         });
     }
 
-    public void checkOrderCardDisplayedWithLanguage(String language) {
-        step("Check order card is displayed for " + language, () -> {
-            log.changeLanguageTo(language);
+    public void checkOrderCardDisplayedWithLanguage(String value) {
+        step("Check order card is displayed for " + value, () -> {
+            language.select(value);
             ord.tabCurrentOrdersInbox();
             ord.verifyOrderExists(0);
         });

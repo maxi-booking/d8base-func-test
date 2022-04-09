@@ -38,7 +38,7 @@ public class Registration extends TestBase {
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + ":8000/en/api/accounts/register/")
+                .post(urlBackend + "/en/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
@@ -71,7 +71,7 @@ public class Registration extends TestBase {
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + ":8000/en/api/accounts/register/")
+                .post(urlBackend + "/en/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
@@ -105,7 +105,7 @@ public class Registration extends TestBase {
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + ":8000/en/api/accounts/register/")
+                .post(urlBackend + "/en/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
@@ -122,7 +122,7 @@ public class Registration extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + ":8000/en/api/accounts/locations/")
+                .post(urlBackend + "/en/api/accounts/locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

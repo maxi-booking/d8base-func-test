@@ -34,6 +34,10 @@ public interface WebDriverConfig extends Config {
     @Config.DefaultValue("10000")
     long getTimeout();
 
+    @Config.Key("language")
+    @Config.DefaultValue("english")
+    String getLanguage();
+
     @Config.Key("frontendUrl")
     @Config.DefaultValue("https://app.maxibooking.ru")
     String getFrontendUrl();

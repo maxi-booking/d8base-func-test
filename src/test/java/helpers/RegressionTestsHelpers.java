@@ -10,14 +10,13 @@ import static api.ServicePublish.*;
 import static api.Orders.*;
 import static api.Accounts.*;
 import static helpers.DateTimeFormatter.getDateTime;
-import static helpers.RegressionTestsHelpers.clientBookService;
 
 public class RegressionTestsHelpers extends config.TestBase {
 
     public static void userRegisterUI(Data data) {
         log.forceMainPage();
         log.popupSelect(data.country[0], data.city[0]);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(data.firstName[0]);
         reg.fillEmail(data.email[0]);
@@ -29,7 +28,7 @@ public class RegressionTestsHelpers extends config.TestBase {
 
     public static void serviceRegisterUI(Data data) {
         log.forceMainPage();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(data.category[0]);
@@ -120,7 +119,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 
     public static void clientRegisterAPI(Data data) {
@@ -134,7 +133,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 
     public static void serviceReadyAPI(Data data) {
@@ -143,7 +142,16 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        log.forceEN();
+        language.select(defaultLanguage);
+    }
+
+    public static void serviceReadyAPIEnglish(Data data) {
+        userRegisterAPI(data);
+        serviceRegisterAPI(data);
+        log.openMainPage();
+        log.popupSkip();
+        log.logIn(data.email[0], data.password[0]);
+        language.select(english);
     }
 
     public static void masterBookingReadyAPI(Data data) {
@@ -151,7 +159,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 
     public static void clientBookingReadyAPI(Data data) {
@@ -160,7 +168,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 
     public static void masterOrderReadyAPI(Data data) {
@@ -171,7 +179,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 
     public static void clientOrderReadyAPI(Data data) {
@@ -182,6 +190,6 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        log.forceEN();
+        language.select(defaultLanguage);
     }
 }

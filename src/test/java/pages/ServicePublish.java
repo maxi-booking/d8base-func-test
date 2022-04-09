@@ -49,7 +49,9 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickFirstStep() {
+        step("Click first step confirmation", () -> {
         $("app-service-publish-step-one").$("ion-button[type='submit']").scrollIntoView(true).click();
+        });
     }
 
     @Step("Enter a service name")
@@ -104,7 +106,9 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickSecondStep() {
-        $("app-service-publish-step-two").$("ion-button[type='submit']").scrollIntoView(true).click();
+        step("Click second step confirmation", () -> {
+            $("app-service-publish-step-two").$("ion-button[type='submit']").scrollIntoView(true).click();
+        });
     }
 
     @Step("Add service photos")
@@ -124,8 +128,10 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickThirdStep() {
-        $("app-service-publish-step-three").$("ion-button[type='submit']").scrollIntoView(true).click();
-        sleep(500);
+        step("Click third step confirmation", () -> {
+            $("app-service-publish-step-three").$("ion-button[type='submit']").scrollIntoView(true).click();
+            sleep(500);
+        });
     }
 
     @Step("Fill email")
@@ -148,7 +154,7 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickFourthStep() {
-        step("Confirm fourth step", () -> {
+        step("Click fourth step confirmation", () -> {
             $("app-service-publish-step-four").$("ion-button[type='submit']").scrollIntoView(true).click();
             $("ion-loading ion-spinner[role='progressbar']").shouldNotBe(visible, Duration.ofSeconds(10));
         });
@@ -201,8 +207,10 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickFifthStep() {
-        $("app-service-publish-step-five").$("ion-button[type='submit']").scrollIntoView(true).click();
-        sleep(200);
+        step("Click fifth step confirmation", () -> {
+            $("app-service-publish-step-five").$("ion-button[type='submit']").scrollIntoView(true).click();
+            sleep(200);
+        });
     }
 
     @Step("Select private person or company: {value}")
@@ -251,8 +259,10 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickSixthStep() {
-        $("app-service-publish-step-six").$("ion-button[type='submit']").scrollIntoView(true).click();
-        sleep(500);
+        step("Click sixth step confirmation", () -> {
+            $("app-service-publish-step-six").$("ion-button[type='submit']").scrollIntoView(true).click();
+            sleep(500);
+        });
     }
 
     public void step7ClickEditSchedule() {
@@ -377,7 +387,7 @@ public class ServicePublish extends config.TestBase {
     }
 
     public void clickSeventhStep() {
-        step("Seventh step, click 'Continue'", () -> {
+        step("Click seventh step confirmation", () -> {
             $("app-service-publish-step-seven ion-button[type='submit']").scrollIntoView(false).click();
         });
     }
@@ -483,8 +493,9 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Publish a service")
     public void publishService() {
-        $("app-service-publish-final-step ion-content ion-button", 1).shouldBe(visible, Duration.ofSeconds(10));
-        $("app-service-publish-final-step ion-content ion-button", 1).click();
+        $("app-service-publish-final-step ion-content ion-button[color='primary']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-service-publish-final-step ion-content ion-button[color='primary']").shouldHave(cssClass("ion-activatable"));
+        $("app-service-publish-final-step ion-content ion-button[color='primary']").click();
         $("app-service-publish-final-step").shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(5000);

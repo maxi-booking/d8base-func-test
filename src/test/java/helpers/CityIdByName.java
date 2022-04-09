@@ -31,10 +31,10 @@ public class CityIdByName extends TestBase {
         return given()
 //                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBackend + ":8000/swagger/")
+                .header("Referer", urlBackend + "/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBackend + ":8000/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(country))
+                .get(urlBackend + "/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(country))
                 .then()
                 .statusCode(200)
                 .extract().response();

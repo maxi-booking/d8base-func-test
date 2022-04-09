@@ -323,12 +323,14 @@ public class Booking {
         $("app-client-details-step div.footer ion-button").shouldBe(visible, Duration.ofSeconds(10));
         $("app-client-details-step div.footer ion-button").click();
         $("app-sent-order-page div.order-full-info").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(500);
     }
 
     @Step("Click to see sent order details")
     public void showSentOrderDetails() {
+        sleep(500);
         $("app-sent-order-page app-sent-order div.order-full-info__more-info a").shouldBe(visible, Duration.ofSeconds(10));
-        $("div.order-full-info__more-info a").click();
+        $$("div.order-full-info__more-info a").filter(visible).get(0).click();
     }
 
     @Step("Verify the order details")

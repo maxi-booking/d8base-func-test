@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
-import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class TestBase extends TestData {
@@ -21,9 +20,10 @@ public class TestBase extends TestData {
     private static final WebDriverConfig config =
             ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
+    public static final String defaultLanguage = config.getLanguage();
     public static String
             urlFrontend = config.getFrontendUrl(),
-            urlBackend = config.getBackendUrl(),
+            urlBackend = config.getBackendUrl() + ":8000",
             urlLogin = urlFrontend + "/auth/login",
             urlLogOut = urlFrontend + "/auth/login?logout=",
             urlServicePublish = urlFrontend + "/service/publish",
@@ -35,6 +35,8 @@ public class TestBase extends TestData {
             urlMyProfessionalProfile = urlFrontend + "/professional/my-profile",
             urlForPerformers = urlFrontend + "/for-performers";
 
+
+    public static Language language = new Language();
     public static SideMenu sideMenu = new SideMenu();
     public static TopBar topBar = new TopBar();
     public static Registration reg = new Registration();
@@ -87,7 +89,7 @@ public class TestBase extends TestData {
     public static Specializations getSpecialization = new Specializations();
     public static String[] specializations = getSpecialization.specialization();
 
-    public static String [] dateTime = dateTimes();
+    public static String[] dateTime = dateTimes();
 
     @BeforeAll
     public static void init() {
@@ -103,8 +105,9 @@ public class TestBase extends TestData {
         Configuration.headless = config.getHeadless();
         Configuration.browserCapabilities.setCapability("enableVNC", config.getVNC());
         Configuration.browserCapabilities.setCapability("enableVideo", config.getVideo());
-        System.setProperty("chromeoptions.prefs","intl.accept_languages=en");
+        System.setProperty("chromeoptions.prefs", "intl.accept_languages=en");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         setTestData();
     }
 

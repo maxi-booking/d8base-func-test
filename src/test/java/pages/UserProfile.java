@@ -179,14 +179,18 @@ public class UserProfile {
 
     @Step("Profile: Contacts - contacts: select contact")
     public void selectContact(String value) {
-        $("app-user-contact-edit").$("app-contact-edit").$("ion-select").click();
+        $("app-user-contact-edit app-contact-edit ion-select").click();
         sleep(200);
-        $("ion-popover").$("ion-select-popover").$(withText(value)).closest("ion-item").click();
+        $("ion-popover ion-select-popover").$(withText(value)).closest("ion-item").click();
+        $("app-user-contact-edit app-contact-edit ion-select")
+                .shouldHave(cssClass("ion-touched"), Duration.ofSeconds(10))
+                .shouldHave(cssClass("ion-valid"), Duration.ofSeconds(10));
     }
 
     @Step("Profile: Contacts - contacts: enter value")
     public void enterContact(String value) {
-        $("app-user-contact-edit").$("app-contact-edit").$("input[name='contact-value']").setValue(value);
+        sleep(200);
+        $("app-user-contact-edit app-contact-edit input[name='contact-value']").setValue(value);
     }
 
     @Step("Profile: Contacts - click 'Add new contact'")
@@ -203,7 +207,7 @@ public class UserProfile {
 
     @Step("Profile: Contacts - save contact")
     public void saveContact() {
-        $("app-user-contact-edit").$("app-contact-edit").$("ion-button[type='submit']").click();
+        $("app-user-contact-edit app-contact-edit ion-button[type='submit']").click();
         sleep(500);
     }
 
@@ -294,7 +298,7 @@ public class UserProfile {
         });
     }
 
-    @Step("Profile address: select country")
+    @Step("Profile address: select country: {value}")
     public void addressSelectCountry(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-country-selector").$("ion-item").click();
         sleep(1000);
@@ -303,7 +307,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile address: select region")
+    @Step("Profile address: select region: {value}")
     public void addressSelectRegion(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-region-selector").$("ion-item").click();
         sleep(1000);
@@ -312,7 +316,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile address: select subregion")
+    @Step("Profile address: select subregion: {value}")
     public void addressSelectSubregion(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-subregion-selector").$("ion-item").click();
         sleep(1000);
@@ -321,7 +325,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile address: select city")
+    @Step("Profile address: select city: {value}")
     public void addressSelectCity(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-city-selector").$("ion-item").click();
         sleep(1000);
@@ -330,7 +334,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$(byText(value)).click();
     }
 
-    @Step("Profile address: select district")
+    @Step("Profile address: select district: {value}")
     public void addressSelectDistrict(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-district-selector").$("ion-item").click();
         sleep(1000);
@@ -339,7 +343,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile address: select zip code")
+    @Step("Profile address: select zip code: {value}")
     public void addressSelectZipCode(String value) {
         $("app-user-location-edit").$("app-location-editor").$("app-postal-code-selector").$("ion-item").click();
         sleep(1000);
@@ -348,7 +352,7 @@ public class UserProfile {
         $("ionic-selectable-modal").$("ion-label", 0).click();
     }
 
-    @Step("Profile address: select address")
+    @Step("Profile address: select address: {value}")
     public void addressSelectAddress(String value) {
         $("app-user-location-edit").$("app-location-editor").$("input").sendKeys(value);
     }

@@ -22,7 +22,7 @@ public class Orders extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .patch(urlBackend + ":8000/en/api/accounts/orders/received/" + orderId + "/")
+                .patch(urlBackend + "/en/api/accounts/orders/received/" + orderId + "/")
                 .then()
                 .statusCode(200);
     }
@@ -40,7 +40,7 @@ public class Orders extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + ":8000/ru/api/accounts/reviews/")
+                .post(urlBackend + "/ru/api/accounts/reviews/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

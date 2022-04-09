@@ -58,39 +58,39 @@ public class UserProfileTests extends config.TestBase {
         sideMenu.openProfile();
 
         up.openUserProfileAbout();
-        up.selectLanguages("English");
+        up.selectLanguages(english);
         up.clickBackAbout();
         up.verifyNoLanguages();
 
         up.openUserProfileAbout();
-        up.selectLanguages("English");
+        up.selectLanguages(english);
         up.clickSaveAbout();
-        up.verifyLanguages("English");
+        up.verifyLanguages(english);
 
         up.openUserProfileAbout();
-        up.selectLanguages("Russian");
+        up.selectLanguages(russian);
         up.clickBackAbout();
-        up.verifyLanguages("English");
-        up.verifyNoLanguages("Russian");
+        up.verifyLanguages(english);
+        up.verifyNoLanguages(russian);
 
         up.openUserProfileAbout();
-        up.selectLanguages("Russian");
+        up.selectLanguages(russian);
         up.clickSaveAbout();
-        up.verifyLanguages("English", "Russian");
+        up.verifyLanguages(english, russian);
 
         up.openUserProfileAbout();
-        up.removeLanguages("Russian");
+        up.removeLanguages(russian);
         up.clickBackAbout();
-        up.verifyLanguages("English", "Russian");
+        up.verifyLanguages(english, russian);
 
         up.openUserProfileAbout();
-        up.removeLanguages("Russian");
+        up.removeLanguages(russian);
         up.clickSaveAbout();
-        up.verifyLanguages("English");
-        up.verifyNoLanguages("Russian");
+        up.verifyLanguages(english);
+        up.verifyNoLanguages(russian);
 
         up.openUserProfileAbout();
-        up.removeLanguages("English");
+        up.removeLanguages(english);
         up.clickSaveAbout();
         up.verifyNoLanguages();
     }

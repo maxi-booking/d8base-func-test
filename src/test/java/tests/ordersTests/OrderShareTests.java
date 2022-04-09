@@ -34,7 +34,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -75,7 +75,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -116,7 +116,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -156,7 +156,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -170,7 +170,7 @@ public class OrderShareTests extends TestBase {
         clientRegisterAPI(data);
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
@@ -178,7 +178,7 @@ public class OrderShareTests extends TestBase {
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
         ord.verifyOrderId(orderId);
@@ -208,7 +208,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -223,7 +223,7 @@ public class OrderShareTests extends TestBase {
         log.openUrl(onlineServiceShareLink);
         log.checkForErrors();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
@@ -231,7 +231,7 @@ public class OrderShareTests extends TestBase {
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
@@ -261,7 +261,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -275,7 +275,7 @@ public class OrderShareTests extends TestBase {
         clientRegisterAPI(data);
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
@@ -283,7 +283,7 @@ public class OrderShareTests extends TestBase {
         ord.shareOrderHaveAccount();
         ord.shareOrderClickConfirm();
         log.logIn(clientEmail, clientPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
         ord.verifyOrderId(orderId);
@@ -312,7 +312,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -325,7 +325,7 @@ public class OrderShareTests extends TestBase {
 
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, online);
@@ -341,7 +341,7 @@ public class OrderShareTests extends TestBase {
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
         reg.confirmAndWait();
-        log.forceEN();
+        language.select(defaultLanguage);
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
@@ -372,7 +372,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -386,7 +386,7 @@ public class OrderShareTests extends TestBase {
         log.openUrl(onlineServiceShareLink);
         log.checkForErrors();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
@@ -402,7 +402,7 @@ public class OrderShareTests extends TestBase {
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
         reg.confirmAndWait();
-        log.forceEN();
+        language.select(defaultLanguage);
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
@@ -433,7 +433,7 @@ public class OrderShareTests extends TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        log.forceEN();
+        language.select(defaultLanguage);
 
         topBar.clickMyOrders();
 
@@ -446,7 +446,7 @@ public class OrderShareTests extends TestBase {
 
         log.openUrl(onlineServiceShareLink);
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();
         ord.verifyOrderDetailsOutbox(serviceName, serviceDuration, serviceAddress);
@@ -462,7 +462,7 @@ public class OrderShareTests extends TestBase {
         reg.selectCountry(clientCountry);
         reg.selectCity(clientCity);
         reg.confirmAndWait();
-        log.forceEN();
+        language.select(defaultLanguage);
 
         ord.verifyOrderId(orderId);
         ord.showOrderDetails();

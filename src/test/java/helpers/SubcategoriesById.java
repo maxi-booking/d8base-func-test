@@ -41,10 +41,10 @@ public class SubcategoriesById extends TestBase {
         return given()
 //                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBackend + ":8000/swagger/")
+                .header("Referer", urlBackend + "/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBackend + ":8000/en/api/professionals/subcategories/?page_size=900")
+                .get(urlBackend + "/en/api/professionals/subcategories/?page_size=900")
                 .then()
                 .statusCode(200)
                 .extract().response();

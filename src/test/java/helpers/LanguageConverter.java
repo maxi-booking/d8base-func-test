@@ -1,12 +1,10 @@
 package helpers;
 
 import config.Lang;
-import config.TestBase;
-import io.restassured.response.Response;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class LanguageConverter extends TestBase {
+public class LanguageConverter {
 
     public static String getLanguageString(String language) {
         String lang = null;
@@ -24,8 +22,14 @@ public class LanguageConverter extends TestBase {
             case "french":
                 lang = Lang.FRENCH.getLangText();
                 break;
-            case "hispanic":
-                lang = Lang.HISPANIC.getLangText();
+            case "spanish":
+                lang = Lang.SPANISH.getLangText();
+                break;
+            case "arabic":
+                lang = Lang.ARABIC.getLangText();
+                break;
+            case "greek":
+                lang = Lang.GREEK.getLangText();
                 break;
             default:
                 System.out.println("Unknown language: " + language);
@@ -51,8 +55,47 @@ public class LanguageConverter extends TestBase {
             case "french":
                 lang = 3;
                 break;
-            case "hispanic":
+            case "spanish":
                 lang = 4;
+                break;
+            case "arabic":
+                lang = 5;
+                break;
+            case "greek":
+                lang = 6;
+                break;
+            default:
+                System.out.println("Unknown language: " + language);
+                fail();
+                break;
+        }
+        return lang;
+    }
+
+    public static String languageByText(String language) {
+        String lang = "language not chosen";
+        language = language.toLowerCase();
+        switch (language) {
+            case "english":
+                lang = "English";
+                break;
+            case "russian":
+                lang = "Русский";
+                break;
+            case "german":
+                lang = "Deutsch";
+                break;
+            case "french":
+                lang = "Français";
+                break;
+            case "spanish":
+                lang = "Español";
+                break;
+            case "arabic":
+                lang = "عرب";
+                break;
+            case "greek":
+                lang = "Ελληνικά";
                 break;
             default:
                 System.out.println("Unknown language: " + language);

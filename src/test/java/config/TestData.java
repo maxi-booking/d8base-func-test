@@ -3,7 +3,6 @@ package config;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
 
@@ -388,7 +387,9 @@ public class TestData {
             russian = "Russian",
             german = "German",
             french = "French",
-            hispanic = "Hispanic";
+            spanish = "Spanish",
+            arabic = "Arabic",
+            greek = "Greek";
 
     public static Object
             emptyNull;

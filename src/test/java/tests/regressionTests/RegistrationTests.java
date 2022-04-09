@@ -17,7 +17,7 @@ public class RegistrationTests extends config.TestBase {
     void t00000() {
         log.openMainPage();
         log.popupSkip();
-        log.forceRU();
+        language.select(russian);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(firstNames[10]);
         reg.fillUserLastName(lastNames[10]);
@@ -39,7 +39,7 @@ public class RegistrationTests extends config.TestBase {
     void t00001() {
         log.openMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.verifyNoPhoneCountryCode();
     }
@@ -51,7 +51,7 @@ public class RegistrationTests extends config.TestBase {
     void t00002() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.verifyPhoneCountryCode(userCountry);
     }
@@ -63,7 +63,7 @@ public class RegistrationTests extends config.TestBase {
     void t00100() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
@@ -101,7 +101,7 @@ public class RegistrationTests extends config.TestBase {
     void t00101() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
@@ -139,7 +139,7 @@ public class RegistrationTests extends config.TestBase {
     void t00102() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
@@ -177,7 +177,7 @@ public class RegistrationTests extends config.TestBase {
     void t00103() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
@@ -189,7 +189,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
@@ -203,7 +203,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
@@ -217,7 +217,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
@@ -235,7 +235,7 @@ public class RegistrationTests extends config.TestBase {
     void t00104() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
@@ -247,7 +247,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
@@ -261,7 +261,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
@@ -275,7 +275,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
@@ -293,7 +293,7 @@ public class RegistrationTests extends config.TestBase {
     void t00105() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
@@ -305,7 +305,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailLowercase);
@@ -319,7 +319,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailMixedCase);
@@ -333,7 +333,7 @@ public class RegistrationTests extends config.TestBase {
         closeWindow();
         log.forceMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmailUppercase);
@@ -351,7 +351,7 @@ public class RegistrationTests extends config.TestBase {
     void t00200() {
         log.openMainPage();
         log.popupClickCancel();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillPhoneNumber(userPhoneNumber, userCountry);
         reg.verifyPhoneNumber(userPhoneNumber);
@@ -366,7 +366,7 @@ public class RegistrationTests extends config.TestBase {
         String emailWithSpaces = randomSpaces + userEmail + randomSpaces;
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(emailWithSpaces);

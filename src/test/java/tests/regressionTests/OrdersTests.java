@@ -58,11 +58,13 @@ public class OrdersTests extends config.TestBase {
     void ordersShouldBeVisibleOnAnyLanguage() {
         masterOrderReadyAPI(data);
         topBar.clickMyOrders();
+        ord.checkOrderCardDisplayedWithLanguage(defaultLanguage);
         ord.checkOrderCardDisplayedWithLanguage(english);
         ord.checkOrderCardDisplayedWithLanguage(russian);
         ord.checkOrderCardDisplayedWithLanguage(german);
         ord.checkOrderCardDisplayedWithLanguage(french);
-        ord.checkOrderCardDisplayedWithLanguage(hispanic);
-        ord.checkOrderCardDisplayedWithLanguage(english);
+        ord.checkOrderCardDisplayedWithLanguage(spanish);
+        ord.checkOrderCardDisplayedWithLanguage(arabic);
+        ord.checkOrderCardDisplayedWithLanguage(greek);
     }
 }

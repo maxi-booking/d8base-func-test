@@ -148,13 +148,13 @@ public class ServicePublicationTests extends config.TestBase {
     void t00200() {
         log.openMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(english);
         sideMenu.clickPublishNewService();
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         log.refreshPage();
         log.popupSkip();
         pbl.verifyCategorySubcategoryTitleLanguageEng();
-        log.forceRU();
+        language.select(russian);
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
         log.refreshPage();
         log.popupSkip();
@@ -168,13 +168,13 @@ public class ServicePublicationTests extends config.TestBase {
     void t00201() {
         log.openMainPage();
         log.popupSkip();
-        log.forceRU();
+        language.select(russian);
         sideMenu.clickPublishNewService();
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
         log.refreshPage();
         log.popupSkip();
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
-        log.forceEN();
+        language.select(english);
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         log.refreshPage();
         log.popupSkip();
@@ -188,7 +188,7 @@ public class ServicePublicationTests extends config.TestBase {
     void t00202() {
         log.openMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(english);
         sideMenu.clickPublishNewService();
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         pbl.verifyCategoryListLanguageEng();
@@ -198,7 +198,7 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         pbl.verifyCategoryListLanguageEng();
         pbl.verifySubcategoryListLanguageEng();
-        log.forceRU();
+        language.select(russian);
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
         pbl.verifyCategoryListLanguageNotEng();
         pbl.verifySubcategoryListLanguageNotEng();
@@ -216,7 +216,7 @@ public class ServicePublicationTests extends config.TestBase {
     void t00203() {
         log.openMainPage();
         log.popupSkip();
-        log.forceRU();
+        language.select(russian);
         sideMenu.clickPublishNewService();
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
         pbl.verifyCategoryListLanguageNotEng();
@@ -226,7 +226,7 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.verifyCategorySubcategoryTitleLanguageNotEng();
         pbl.verifyCategoryListLanguageNotEng();
         pbl.verifySubcategoryListLanguageNotEng();
-        log.forceEN();
+        language.select(english);
         pbl.verifyCategorySubcategoryTitleLanguageEng();
         pbl.verifyCategoryListLanguageEng();
         pbl.verifySubcategoryListLanguageEng();
@@ -349,7 +349,7 @@ public class ServicePublicationTests extends config.TestBase {
     void publish4StepSpinnerWorks() {
         log.openMainPage();
         log.popupSkip();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(serviceCategory);

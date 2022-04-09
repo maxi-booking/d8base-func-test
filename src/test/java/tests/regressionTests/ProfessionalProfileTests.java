@@ -17,13 +17,13 @@ import static io.qameta.allure.Allure.step;
 public class ProfessionalProfileTests extends config.TestBase {
 
     @Test
-    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4848")
+    @Link(name = "https://redmine.maxi-booking.ru/issues/4848", url = "https://redmine.maxi-booking.ru/issues/4848")
     @DisplayName("Professional Profile: delete education")
     @Severity(SeverityLevel.NORMAL)
     void t00000() {
         serviceReadyAPI(data);
         log.openMainPage();
-        log.forceEN();
+        language.select(defaultLanguage);
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
@@ -41,13 +41,13 @@ public class ProfessionalProfileTests extends config.TestBase {
     }
 
     @Test
-    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4909")
+    @Link(name = "https://redmine.maxi-booking.ru/issues/4909", url = "https://redmine.maxi-booking.ru/issues/4909")
     @DisplayName("Professional Profile: social share button should be clickable (another person)")
     @Severity(SeverityLevel.NORMAL)
     void masterProfileSocialShareClickableForAnotherPerson() {
         serviceReadyAPI(data);
         log.openMainPage();
-        log.forceEN();
+        language.select(defaultLanguage);
         sideMenu.clickLogOut();
 
         sideMenu.clickSearch();
@@ -59,11 +59,11 @@ public class ProfessionalProfileTests extends config.TestBase {
     }
 
     @Test
-    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/4598")
+    @Link(name = "https://redmine.maxi-booking.ru/issues/4598", url = "https://redmine.maxi-booking.ru/issues/4598")
     @DisplayName("Professional Profile: professional expertise level shouldn't be in English with Russian locale chosen")
     @Severity(SeverityLevel.NORMAL)
     void masterProfileLevelIsAlwaysInEnglish() {
-        serviceReadyAPI(data);
+        serviceReadyAPIEnglish(data);
         sideMenu.clickProfessionalProfile();
 
         pp.clickEditMain();
@@ -73,7 +73,7 @@ public class ProfessionalProfileTests extends config.TestBase {
             $("ion-backdrop").click();
             $("ion-backdrop").shouldNotBe(visible, Duration.ofSeconds(10));
         });
-        log.forceRU();
+        language.select(russian);
         pp.mainClickExpertiseLevel();
         step("Verify no English expertise levels", () -> {
             $("ion-popover ion-radio-group[role='radiogroup']").shouldNotHave(text("Junior"), text("Middle"), text("Senior"));

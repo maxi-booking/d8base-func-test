@@ -27,10 +27,10 @@ public class CountryIdByName extends TestBase {
         return given()
 //                .filter(new AllureRestAssured())
                 .accept("application/json")
-                .header("Referer", urlBackend + ":8000/swagger/")
+                .header("Referer", urlBackend + "/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBackend + ":8000/en/api/location/countries/?search=" + country)
+                .get(urlBackend + "/en/api/location/countries/?search=" + country)
                 .then()
                 .statusCode(200)
                 .extract().response();
