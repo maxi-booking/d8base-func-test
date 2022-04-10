@@ -74,6 +74,7 @@ public class LogIn extends config.TestBase {
             $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"));
             $("app-login-form ion-button[type='submit']").click();
             $("app-login-form ion-button[type='submit']").shouldHave(cssClass("ion-activated"));
+            $("app-profile main").shouldBe(visible, Duration.ofSeconds(10));
         });
     }
 
