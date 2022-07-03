@@ -5,8 +5,7 @@ import config.TestBase;
 import java.util.*;
 
 import static helpers.CityIdByName.getCityId;
-import static helpers.CountryConverter.getCountryCode;
-import static helpers.CountryIdByName.getCountryId;
+import static helpers.CountryConverter.*;
 import static io.restassured.RestAssured.given;
 import static specifications.Specifications.requestSpec;
 
@@ -26,7 +25,7 @@ public class Registration extends TestBase {
      * first name, last name, email, password, country, code
      * </p>
      */
-    public static String registration(String firstName, String email, String password) {
+    public static String registration(String locale, String firstName, String email, String password) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("first_name", firstName);
@@ -38,7 +37,7 @@ public class Registration extends TestBase {
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/register/")
+                .post(urlBackend + "/" + locale + "/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
@@ -58,7 +57,7 @@ public class Registration extends TestBase {
      * first name, last name, email, password, country, code
      * </p>
      */
-    public static String registration(String firstName, String lastName, String email, String password) {
+    public static String registration(String locale, String firstName, String lastName, String email, String password) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("first_name", firstName);
@@ -71,7 +70,7 @@ public class Registration extends TestBase {
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/register/")
+                .post(urlBackend + "/" + locale + "/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
@@ -91,7 +90,7 @@ public class Registration extends TestBase {
      * first name, last name, email, password, country, code
      * </p>
      */
-    public static String registration(String firstName, String lastName, String email, String password, String country, String phone) {
+    public static String registration(String locale, String firstName, String lastName, String email, String password, String country, String phone) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("first_name", firstName);
@@ -99,30 +98,30 @@ public class Registration extends TestBase {
         data.put("email", email);
         data.put("password", password);
         data.put("password_confirm", password);
-        data.put("phone", getCountryCode(country) + phone);
+        data.put("phone", "+" + getCountryCode(locale, country) + phone);
 
         return given()
                 .spec(requestSpec)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/register/")
+                .post(urlBackend + "/" + locale + "/api/accounts/register/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("token.access_token");
     }
 
-    public static int locations(String accessToken, String country, String city) {
+    public static int locations(String locale, String accessToken, String country, String city) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("country", getCountryId(country));
-        data.put("city", getCityId(city, country));
+        data.put("country", getCountryId(locale, country));
+        data.put("city", getCityId(locale, city, country));
 
         return given()
                 .spec(requestSpec)
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/locations/")
+                .post(urlBackend + "/" + locale + "/api/accounts/locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

@@ -20,8 +20,9 @@ public class TestBase extends TestData {
     private static final WebDriverConfig config =
             ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
-    public static final String defaultLanguage = config.getLanguage();
-    public static String
+    public static final String
+            defaultLanguage = config.getLanguage(),
+
             urlFrontend = config.getFrontendUrl(),
             urlBackend = config.getBackendUrl() + ":8000",
             urlLogin = urlFrontend + "/auth/login",
@@ -52,42 +53,6 @@ public class TestBase extends TestData {
     public static ProfessionalProfile pp = new ProfessionalProfile();
     public static Schedule sch = new Schedule();
     public static Footer ftr = new Footer();
-
-    public static UserEmails getEmail = new UserEmails();
-    public static String[] emails = getEmail.userEmail();
-
-    public static UserPasswords getPassword = new UserPasswords();
-    public static String[] passwords = getPassword.userPassword();
-
-    public static UserFirstNames getFirstName = new UserFirstNames();
-    public static String[] firstNames = getFirstName.userFirstName();
-
-    public static UserLastNames getLastName = new UserLastNames();
-    public static String[] lastNames = getLastName.userLastName();
-
-    public static UserPhoneNumbers getPhoneNumber = new UserPhoneNumbers();
-    public static String[] phoneNumbers = getPhoneNumber.userPhoneNumber();
-
-    public static UserCountries getCountry = new UserCountries();
-    public static String[] countries = getCountry.userCountry();
-
-    public static UserCities getCity = new UserCities();
-    public static String[] cities = getCity.userCity();
-
-    public static ServiceNames getServiceName = new ServiceNames();
-    public static String[] serviceNames = getServiceName.serviceName();
-
-    public static ServiceDescriptions getServiceDescription = new ServiceDescriptions();
-    public static String[] serviceDescriptions = getServiceDescription.serviceDescription();
-
-    public static ServiceDurations getServiceDuration = new ServiceDurations();
-    public static String[] serviceDurations = getServiceDuration.serviceDuration();
-
-    public static ServicePrices getServicePrice = new ServicePrices();
-    public static String[] servicePrices = getServicePrice.servicePrice();
-
-    public static Specializations getSpecialization = new Specializations();
-    public static String[] specializations = getSpecialization.specialization();
 
     public static String[] dateTime = dateTimes();
 

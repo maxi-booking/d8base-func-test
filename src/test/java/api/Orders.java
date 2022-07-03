@@ -10,7 +10,7 @@ import static specifications.Specifications.requestSpec;
 
 public class Orders extends TestBase {
 
-    public static void orderComplete(String accessToken, int orderId) {
+    public static void orderComplete(String locale, String accessToken, int orderId) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -22,12 +22,12 @@ public class Orders extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .patch(urlBackend + "/en/api/accounts/orders/received/" + orderId + "/")
+                .patch(urlBackend + "/" + locale + "/api/accounts/orders/received/" + orderId + "/")
                 .then()
                 .statusCode(200);
     }
 
-    public static int sendReview(String accessToken, int professionalId, String review, int rating) {
+    public static int sendReview(String locale, String accessToken, int professionalId, String review, int rating) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -40,7 +40,7 @@ public class Orders extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/ru/api/accounts/reviews/")
+                .post(urlBackend + "/" + locale + "/api/accounts/reviews/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

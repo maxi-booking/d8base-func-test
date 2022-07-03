@@ -2,13 +2,11 @@ package pages;
 
 import com.github.javafaker.Faker;
 import config.TestBase;
-import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.io.File;
 import java.time.Duration;
 import java.util.Locale;
-import java.util.Objects;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -92,10 +90,10 @@ public class ProfessionalProfile extends TestBase {
         $("app-professional-page app-location-viewer").shouldHave(text(masterCountry + ", " + masterCity + ", " + masterAddress));
         String descriptionValue = $("app-professional-page app-shorten div").getText();
         if ($("app-professional-page app-shorten div.ext").exists() && !descriptionValue.equals(masterAbout)) {
-            $("app-professional-page app-shorten div.ext").click();
+            $("app-professional-page app-shorten div.ext").scrollIntoView(true).click();
         }
-        $("app-professional-page app-shorten").shouldHave(text(masterAbout));
-        $("app-professional-page main").shouldHave(text(masterLevel));
+        $("app-professional-page app-shorten").scrollIntoView(true).shouldHave(text(masterAbout));
+        $("app-professional-page main").scrollIntoView(true).shouldHave(text(masterLevel));
     }
 
     @Step("Professional Profile: verify professional experience {value}")
@@ -128,17 +126,14 @@ public class ProfessionalProfile extends TestBase {
         }
         $("app-professional-page app-shorten div").shouldHave(text(masterAbout));
 
-        String masterExperienceX = String.valueOf(Integer.parseInt(masterExperience) + 1);
-        if ($("app-professional-page main").has(text(masterExperience))) {
-            $("app-professional-page main").shouldHave(text(masterExperience));
-        } else if ($("app-professional-page main").has(text(masterExperienceX))) {
-            $("app-professional-page main").shouldHave(text(masterExperienceX));
+        String experience = $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).getText();
+        if (experience.contains(masterExperience)) {
+            $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).shouldHave(text(masterExperience));
         } else {
-            System.out.println("Master exp: " + masterExperience);
-            fail();
+            $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).shouldHave(text(String.valueOf(Integer.parseInt(masterExperience) - 1)));
         }
 
-        $("app-professional-page").$("main").scrollIntoView(true).shouldHave(text(masterLevel));
+        $("app-professional-page main").scrollIntoView(true).shouldHave(text(masterLevel));
     }
 
     //address
@@ -209,7 +204,7 @@ public class ProfessionalProfile extends TestBase {
         switch (value) {
             case "random":
                 Faker generate = new Faker(new Locale("en-US"));
-                Integer level = generate.number().numberBetween(0, 2);
+                int level = generate.number().numberBetween(0, 2);
                 $("ion-popover ion-select-popover ion-item", level).click();
                 break;
             case "junior":
@@ -617,8 +612,8 @@ public class ProfessionalProfile extends TestBase {
             $("app-certificate-edit ion-input[type='date']").shouldHave(cssClass("has-value"), Duration.ofSeconds(10));
             long finish = System.nanoTime();
             long timeElapsed = (finish - start) / 1000000;
-        step("Duration: " + timeElapsed + " seconds", () -> {
-        });
+            step("Duration: " + timeElapsed + " seconds", () -> {
+            });
         });
     }
 

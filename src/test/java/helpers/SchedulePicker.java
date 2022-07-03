@@ -1,7 +1,6 @@
 package helpers;
 
 import config.TestBase;
-import pages.Schedule;
 
 import java.time.Duration;
 

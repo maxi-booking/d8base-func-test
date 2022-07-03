@@ -1,6 +1,5 @@
 package pages;
 
-import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -86,13 +85,6 @@ public class Reviews {
         $("app-reviews-list").$("app-professional-card").shouldHave(text(masterName));
         $("app-reviews-list").$("app-review-card").shouldHave(text(userName));
         $("app-reviews-list").$("app-review-card").shouldHave(text(reviewText));
-    }
-
-    @Step("Open side menu")
-    public void clickMenuMain() {
-        sleep(300);
-        $("app-reviews-list").$("ion-menu-toggle").$("ion-button").click();
-        sleep(300);
     }
 
     @Step("Open bookmarks from the menu")

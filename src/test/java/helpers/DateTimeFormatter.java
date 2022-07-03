@@ -1,13 +1,10 @@
 package helpers;
 
-import com.github.javafaker.Faker;
 import config.TestBase;
-import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -62,10 +59,10 @@ public class DateTimeFormatter extends TestBase {
         String hoursFormatted = String.format("%02d", hours);
         String minutesFormatted = String.format("%02d", minutes);
 
-        String formattedDateTime = year + "-" + monthFormatted + "-" + dayFormatted + "T" + hoursFormatted + ":" + minutesFormatted + ":00.000Z";
-        return formattedDateTime;
+        return year + "-" + monthFormatted + "-" + dayFormatted + "T" + hoursFormatted + ":" + minutesFormatted + ":00.000Z";
     }
 
+    //generate future date for booking
     public static String getDateTime() {
 
         LocalDate currentDate = LocalDate.now();
@@ -78,8 +75,9 @@ public class DateTimeFormatter extends TestBase {
         if (month < currentMonth) {
             year++;
         }
+        //in date picker month can not be ahead more than 3 month of the current date
         if (month > (currentMonth + 2)) {
-            month = (int) ((Math.random() * (currentMonth + 3)) + currentMonth);
+            month = (int) ((Math.random() * 3) + currentMonth);
         }
         int day = (int) ((Math.random() * 31) + 1);
 
@@ -130,7 +128,7 @@ public class DateTimeFormatter extends TestBase {
         int hours = (int) ((Math.random() * (16 - 9)) + 9);
         hours = hours - timeZone;
 
-        int minutesArray[] = {0, 15, 30, 45};
+        int[] minutesArray = {0, 15, 30, 45};
         int randomArrayElement = (int) (Math.random() * 4);
         int minutes = minutesArray[randomArrayElement];
 
@@ -139,8 +137,7 @@ public class DateTimeFormatter extends TestBase {
         String hoursFormatted = String.format("%02d", hours);
         String minutesFormatted = String.format("%02d", minutes);
 
-        String formattedDateTime = year + "-" + monthFormatted + "-" + dayFormatted + "T" + hoursFormatted + ":" + minutesFormatted + ":00.000Z";
-        return formattedDateTime;
+        return year + "-" + monthFormatted + "-" + dayFormatted + "T" + hoursFormatted + ":" + minutesFormatted + ":00.000Z";
     }
 
     public static String getDayXDaysForward(int value) {

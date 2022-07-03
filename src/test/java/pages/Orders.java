@@ -29,7 +29,12 @@ public class Orders extends TestBase {
 
     @Step("Select current orders: Inbox")
     public void tabCurrentOrdersInbox() {
-        $("app-inbox-page").$("ion-segment-button", 1).scrollIntoView(true).click();
+        //todo refactor
+        if ($("app-inbox-page app-inbox ion-segment-button[ng-reflect-value='current']").exists()) {
+            $("app-inbox-page app-inbox ion-segment-button[ng-reflect-value='current']").click();
+        } else {
+            $("app-inbox-page ion-segment-button", 1).scrollIntoView(true).click();
+        }
     }
 
     @Step("Select archived orders: Inbox")
@@ -194,6 +199,7 @@ public class Orders extends TestBase {
 
     @Step("Orders Inbox should be empty")
     public void verifyNoOrdersInOrderInbox() {
+        sleep(2000);
         $$("app-inbox-page ion-card").shouldBe(CollectionCondition.size(0));
     }
 
@@ -269,8 +275,7 @@ public class Orders extends TestBase {
 
     @Step("Get share order link")
     public String shareOrderGetId() {
-        String value = $("app-order-share-popover input").getValue();
-        return value;
+        return $("app-order-share-popover input").getValue();
     }
 
     public void shareOrderClickStop() {
@@ -527,11 +532,14 @@ public class Orders extends TestBase {
             }
 
             if (paymentOptions == paymentCashOnline) {
-                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCashOnline[0]), text(paymentCashOnline[1]));
+                $("app-payment-method-viewer ion-icon[name='cash-outline']").shouldBe(visible);
+                $("app-payment-method-viewer ion-icon[name='card-outline']").shouldBe(visible);
             } else if (paymentOptions == paymentCash) {
-                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentCash[0]));
+                $("app-payment-method-viewer ion-icon[name='cash-outline']").shouldBe(visible);
+                $("app-payment-method-viewer ion-icon[name='card-outline']").shouldNotBe(visible);
             } else if (paymentOptions == paymentOnline) {
-                $$("app-payment-method-viewer").filter(visible).get(0).shouldHave(text(paymentOnline[0]));
+                $("app-payment-method-viewer ion-icon[name='cash-outline']").shouldNotBe(visible);
+                $("app-payment-method-viewer ion-icon[name='card-outline']").shouldBe(visible);
             } else {
                 System.out.println("Unknown payment options.");
                 throw new IllegalArgumentException();
@@ -553,7 +561,7 @@ public class Orders extends TestBase {
     }
 
     public void checkOrderCardDisplayedWithLanguage(String value) {
-        step("Check order card is displayed for " + value, () -> {
+        step("Check order card is displayed for " + value + " language", () -> {
             language.select(value);
             ord.tabCurrentOrdersInbox();
             ord.verifyOrderExists(0);

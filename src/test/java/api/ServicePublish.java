@@ -5,14 +5,14 @@ import config.TestBase;
 import java.util.*;
 
 import static helpers.CityIdByName.getCityId;
-import static helpers.CountryIdByName.getCountryId;
+import static helpers.CountryConverter.*;
 import static helpers.SubcategoriesById.getSubcategory;
 import static io.restassured.RestAssured.given;
 import static specifications.Specifications.requestSpec;
 
 public class ServicePublish extends TestBase {
 
-    public static void changeAccountTypeToProfessional(String accessToken) {
+    public static void changeAccountTypeToProfessional(String locale, String accessToken) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("account_type", "professional");
@@ -22,15 +22,15 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .patch(urlBackend + "/en/api/accounts/profile/")
+                .patch(urlBackend + "/" + locale + "/api/accounts/profile/")
                 .then()
                 .statusCode(200);
     }
 
-    public static int createProfessional(String accessToken, int category, int subcategory, String specialization) {
+    public static int createProfessional(String locale, String accessToken, int category, int subcategory, String specialization) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("subcategory", getSubcategory(category, subcategory));
+        data.put("subcategory", getSubcategory(locale, category, subcategory));
         data.put("name", specialization);
 
         return given()
@@ -38,16 +38,16 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/professionals/")
+                .post(urlBackend + "/" + locale + "/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int createProfessional(String accessToken, int category, int subcategory, String specialization, String level, String about) {
+    public static int createProfessional(String locale, String accessToken, int category, int subcategory, String specialization, String level, String about) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("subcategory", getSubcategory(category, subcategory));
+        data.put("subcategory", getSubcategory(locale, category, subcategory));
         data.put("description", about);
         data.put("name", specialization);
         data.put("level", level);
@@ -57,13 +57,13 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/professionals/")
+                .post(urlBackend + "/" + locale + "/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int createProfessional(String accessToken, int subcategory, String specialization, String level, String about, String company) {
+    public static int createProfessional(String locale, String accessToken, int subcategory, String specialization, String level, String about, String company) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("subcategory", 1);
@@ -77,7 +77,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/professionals/")
+                .post(urlBackend + "/" + locale + "/api/accounts/professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -95,7 +95,7 @@ public class ServicePublish extends TestBase {
      * token, service ID, min price, max price, currency, payment methods
      * </p>
      */
-    public static int servicePrices(String accessToken, int serviceId, String servicePrice, String serviceCurrency, String[] paymentMethods) {
+    public static int servicePrices(String locale, String accessToken, int serviceId, String servicePrice, String serviceCurrency, String[] paymentMethods) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -110,7 +110,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/service-prices/")
+                .post(urlBackend + "/" + locale + "/api/accounts/service-prices/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -128,7 +128,7 @@ public class ServicePublish extends TestBase {
      * token, service ID, min price, max price, currency, payment methods
      * </p>
      */
-    public static int servicePrices(String accessToken, int serviceId, String servicePriceMin, String servicePriceMax, String serviceCurrency, String[] paymentMethods) {
+    public static int servicePrices(String locale, String accessToken, int serviceId, String servicePriceMin, String servicePriceMax, String serviceCurrency, String[] paymentMethods) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -145,7 +145,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/service-prices/")
+                .post(urlBackend + "/" + locale + "/api/accounts/service-prices/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
@@ -163,7 +163,7 @@ public class ServicePublish extends TestBase {
      * token, professional ID, days, start time, end time
      * </p>
      */
-    public static void setSchedule(String accessToken, int professionalId, int days) {
+    public static void setSchedule(String locale, String accessToken, int professionalId, int days) {
 
         if (days <= 7 && days >= 0) {
             List<Map<String, Object>> list = new ArrayList<>();
@@ -188,7 +188,7 @@ public class ServicePublish extends TestBase {
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
-                    .post(urlBackend + "/en/api/accounts/professional-schedule/set/")
+                    .post(urlBackend + "/" + locale + "/api/accounts/professional-schedule/set/")
                     .then()
                     .statusCode(201);
         } else {
@@ -209,7 +209,7 @@ public class ServicePublish extends TestBase {
      * token, professional ID, days, start time, end time
      * </p>
      */
-    public static void setSchedule(String accessToken, int professionalId, int days, String[] startTime, String[] endTime) {
+    public static void setSchedule(String locale, String accessToken, int professionalId, int days, String[] startTime, String[] endTime) {
 
         List<Map<String, Object>> list = new ArrayList<>();
 
@@ -248,7 +248,7 @@ public class ServicePublish extends TestBase {
                     .header("Authorization", "Bearer " + accessToken)
                     .body(Arrays.asList(schedules))
                     .when()
-                    .post(urlBackend + "/en/api/accounts/professional-schedule/set/")
+                    .post(urlBackend + "/" + locale + "/api/accounts/professional-schedule/set/")
                     .then()
                     .statusCode(201);
         } else {
@@ -257,11 +257,11 @@ public class ServicePublish extends TestBase {
         }
     }
 
-    public static int professionalLocations(String accessToken, int professionalId, String country, String city, String address, int units) {
+    public static int professionalLocations(String locale, String accessToken, int professionalId, String country, String city, String address, int units) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("country", getCountryId(country));
-        data.put("city", getCityId(city));
+        data.put("country", getCountryId(locale, country));
+        data.put("city", getCityId(locale, city, country));
         data.put("address", address);
         data.put("professional", professionalId);
         data.put("units", units);
@@ -271,17 +271,17 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/professional-locations/")
+                .post(urlBackend + "/" + locale + "/api/accounts/professional-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int professionalLocations(String accessToken, int professionalId, String country, String city, String address) {
+    public static int professionalLocations(String locale, String accessToken, int professionalId, String country, String city, String address) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("country", getCountryId(country));
-        data.put("city", getCityId(city));
+        data.put("country", getCountryId(locale, country));
+        data.put("city", getCityId(locale, city, country));
         data.put("address", address);
         data.put("professional", professionalId);
         data.put("units", 0);
@@ -291,13 +291,13 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/professional-locations/")
+                .post(urlBackend + "/" + locale + "/api/accounts/professional-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static void serviceLocations(String accessToken, int serviceId, int serviceLocationId, int serviceMaxDistance) {
+    public static void serviceLocations(String locale, String accessToken, int serviceId, int serviceLocationId, int serviceMaxDistance) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("service", serviceId);
@@ -309,12 +309,12 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/service-locations/")
+                .post(urlBackend + "/" + locale + "/api/accounts/service-locations/")
                 .then()
                 .statusCode(201);
     }
 
-    public static int serviceLocations(String accessToken, int serviceId, int serviceLocationId) {
+    public static int serviceLocations(String locale, String accessToken, int serviceId, int serviceLocationId) {
 
         Map<String, Object> data = new HashMap<>();
         data.put("service", serviceId);
@@ -326,13 +326,13 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/service-locations/")
+                .post(urlBackend + "/" + locale + "/api/accounts/service-locations/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int servicePublish(String accessToken, int professionalId, String serviceName, String serviceDescription, String serviceDuration, int serviceLocation, Boolean instantBooking) {
+    public static int servicePublish(String locale, String accessToken, int professionalId, String serviceName, String serviceDescription, String serviceDuration, int serviceLocation, Boolean instantBooking) {
 
         int duration = Integer.parseInt(serviceDuration);
 
@@ -364,7 +364,7 @@ public class ServicePublish extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/services/")
+                .post(urlBackend + "/" + locale + "/api/accounts/services/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

@@ -10,7 +10,7 @@ import static specifications.Specifications.requestSpec;
 
 public class Accounts extends TestBase {
 
-    public static int saveProfessional(String accessToken, int professionalId) {
+    public static int saveProfessional(String locale, String accessToken, int professionalId) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -21,7 +21,7 @@ public class Accounts extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/ru/api/accounts/saved-professionals/")
+                .post(urlBackend + "/" + locale + "/api/accounts/saved-professionals/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

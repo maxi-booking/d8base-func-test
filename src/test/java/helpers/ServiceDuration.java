@@ -2,7 +2,7 @@ package helpers;
 
 import static java.lang.String.valueOf;
 
-public final class ServiceDuration {
+public class ServiceDuration {
     public String days;
     public String hours;
     public String minutes;

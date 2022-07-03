@@ -338,6 +338,13 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.clickAddNewAddress();
         pp.addressClickBack();
 
+        pp.clickEditQualification(0);
+        pp.qualificationClickRemove();
+        pp.clickEditEducation(0);
+        pp.educationClickRemove();
+        pp.clickEditCertificate(0);
+        pp.certificatesClickRemove();
+
         pp.clickEditMain();
         pp.mainVerify(data.description[1], data.level[1], data.category[1], data.subcategory[1]);
         pp.mainClickBack();
@@ -405,6 +412,18 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.qualificationEditDescription(data.qualificationDescription[1]);
         pp.qualificationClickBack();
         pp.qualificationVerificationFull(0, data.qualificationDate[0], data.qualificationJobTitle[0], data.qualificationCompany[0], data.qualificationDescription[0]);
+
+        pp.clickEditMain();
+        pp.mainVerify(data.description[0], data.level[0], data.category[0], data.subcategory[0]);
+        pp.editSpecialization(data.specialization[1]);
+        pp.editDescription(data.description[1]);
+        pp.editCompany(data.company[1]);
+        pp.editExperience(data.experience[1]);
+        pp.editExpertiseLevel(data.level[1]);
+        pp.editCategory(data.category[1]);
+        pp.editSubcategory(data.subcategory[1]);
+        pp.mainClickSave();
+        pp.verifyProfessionalExp(data.experience[1]);
 
         pp.clickEditQualification(0);
         pp.qualificationEditJobTitle(data.qualificationJobTitle[1]);
@@ -520,6 +539,6 @@ public class ProfessionalProfileSmokeTests extends config.TestBase {
         pp.certificatesClickRemove();
         pp.certificatesVerificationEmpty();
 
-        pp.verifyProfessionalProfileMain(data.country[0], data.city[0], data.address, data.description[0], data.experience[0], data.level[0]);
+        pp.verifyProfessionalProfileMain(data.country[0], data.city[0], data.address, data.description[1], data.experience[1], data.level[1]);
     }
 }

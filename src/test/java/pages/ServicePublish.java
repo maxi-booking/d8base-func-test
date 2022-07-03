@@ -1,9 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.selector.ByShadow;
 import com.github.javafaker.Faker;
-import helpers.Attach;
 import helpers.PriceFormatter;
 import helpers.ServiceDuration;
 import io.qameta.allure.Step;
@@ -14,7 +12,6 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.SelectableModal.selectModal;
 import static helpers.ServiceDuration.getDuration;
@@ -50,7 +47,7 @@ public class ServicePublish extends config.TestBase {
 
     public void clickFirstStep() {
         step("Click first step confirmation", () -> {
-        $("app-service-publish-step-one").$("ion-button[type='submit']").scrollIntoView(true).click();
+            $("app-service-publish-step-one").$("ion-button[type='submit']").scrollIntoView(true).click();
         });
     }
 
@@ -115,7 +112,7 @@ public class ServicePublish extends config.TestBase {
     public void addServicePhotos(String picture) {
         if (picture.equals("random")) {
             Faker generate = new Faker(new Locale("en-US"));
-            picture = String.valueOf(generate.number().numberBetween(1, 12)) + ".png";
+            picture = generate.number().numberBetween(1, 12) + ".png";
         }
         $("app-service-publish-step-three app-image-carousel input[type='file']").shouldBe(visible, Duration.ofSeconds(10));
         $("app-service-publish-step-three app-image-carousel input[type='file']").uploadFile(new File("src/test/resources/img/" + picture));
@@ -199,7 +196,7 @@ public class ServicePublish extends config.TestBase {
     public void uploadAvatar(String avatar) {
         if (avatar.equals("random")) {
             Faker generate = new Faker(new Locale("en-US"));
-            avatar = String.valueOf(generate.number().numberBetween(1, 12)) + ".png";
+            avatar = generate.number().numberBetween(1, 12) + ".png";
         }
         $("app-service-publish-step-five app-picture-selector input[type='file']").shouldBe(visible, Duration.ofSeconds(10));
         $("app-service-publish-step-five app-picture-selector input[type='file']").uploadFile(new File("src/test/resources/img/" + avatar));
@@ -240,7 +237,7 @@ public class ServicePublish extends config.TestBase {
         switch (value) {
             case "random":
                 Faker generate = new Faker(new Locale("en-US"));
-                Integer level = generate.number().numberBetween(0, 2);
+                int level = generate.number().numberBetween(0, 2);
                 $("ion-modal ionic-selectable-modal ion-list ion-item", level).click();
                 break;
             case "junior":
@@ -386,9 +383,30 @@ public class ServicePublish extends config.TestBase {
         });
     }
 
+    public void addTag(String... tags) {
+        step("Add tags: " + Arrays.toString(tags), () -> {
+            for (String tag : tags) {
+                $("app-tags-step-component input[name='teg']").scrollIntoView(false).setValue(tag).pressEnter();
+
+            }
+        });
+    }
+
+    public void clickTagStep() {
+        step("Click tag step confirmation", () -> {
+            $("app-tags-step-component ion-button[type='submit']").scrollIntoView(false).click();
+        });
+    }
+
     public void clickSeventhStep() {
         step("Click seventh step confirmation", () -> {
             $("app-service-publish-step-seven ion-button[type='submit']").scrollIntoView(false).click();
+        });
+    }
+
+    public void verifySeventhStepVisible() {
+        step("Step seven (with schedule) should be visible", () -> {
+            $("app-service-publish-step-seven").shouldBe(visible);
         });
     }
 
@@ -429,7 +447,7 @@ public class ServicePublish extends config.TestBase {
             $("app-duration-viewer").shouldHave(text(serviceDurationMinutes));
         }
 
-        $("app-service-publish-final-step ion-content ion-item", 2).$("div").shouldHave(Condition.textCaseSensitive(serviceDescription));
+        $("app-service-preview ion-content app-service-widget ion-item", 1).$("div").shouldHave(Condition.textCaseSensitive(serviceDescription));
     }
 
     public void checkPublishFormWithAddress(String serviceName, String serviceTotalDuration, String serviceDescription, String serviceCountry, String serviceCity, String serviceAddress) {
@@ -461,8 +479,8 @@ public class ServicePublish extends config.TestBase {
             $("app-duration-viewer").shouldHave(text(serviceDurationMinutes));
         }
 
-        $("app-service-publish-final-step ion-content ion-item", 2).shouldHave(Condition.textCaseSensitive(serviceDescription));
-        $("app-service-location").shouldHave(Condition.text(serviceCountry + ", " + serviceCity + ", " + serviceAddress));
+        $("app-service-preview ion-content app-service-widget ion-item", 1).shouldHave(Condition.textCaseSensitive(serviceDescription));
+        $("app-service-preview app-service-location app-location-viewer").shouldHave(Condition.text(serviceCountry + ", " + serviceCity + ", " + serviceAddress));
     }
 
     @Step("Check that actual service price equals to expected ({servicePrice})")
@@ -485,25 +503,201 @@ public class ServicePublish extends config.TestBase {
         }
     }
 
+    public void checkPreviewSearch(String firstName, String lastName, String specialization, String serviceName) {
+        step("Verify service parameters", () -> {
+            $("app-service-search-preview app-professional-card div.title").shouldHave(text(firstName + " " + lastName));
+            $("app-service-search-preview app-professional-card div.subtitle").shouldHave(text(specialization));
+            /*
+            String descriptionValue = $("app-professional-page app-shorten div").getText();
+            if ($("app-service-search-preview app-shorten div.ext").exists() && !descriptionValue.equals(description)) {
+                $("app-service-search-preview app-shorten div.ext").click();
+            }
+            $("app-service-search-preview-page app-shorten").shouldHave(text(description));
+            if ($("app-service-search-preview app-shorten div.ext").exists() && descriptionValue.equals(description)) {
+                $("app-service-search-preview app-shorten div.ext").click();
+            }
+            */
+            $("app-service-search-preview app-service-link-search-card div.title").shouldHave(text(serviceName));
+        });
+    }
+
+    public void checkPreviewSearchFavorite(boolean favorite) {
+        step("A user in favorites? " + favorite, () -> {
+            if (favorite) {
+                $("app-service-search-preview app-professional-card ion-icon[name='heart']").shouldHave(cssClass("ion-color-danger"));
+            } else {
+                $("app-service-search-preview app-professional-card ion-icon[name='heart-outline']").shouldHave(cssClass("ion-color-medium"));
+            }
+        });
+    }
+
+    public void checkRating(int rating) {
+        step("Verify that service rating is " + rating, () -> {
+            $$("app-rating").filter(visible).get(0).shouldHave(text(String.valueOf(rating)));
+        });
+    }
+
+    public void checkRating(int rating, int index) {
+        step("Verify that service rating is " + rating, () -> {
+            $$("app-rating").filter(visible).get(index).shouldHave(text(String.valueOf(rating)));
+        });
+    }
+
+    public void checkPreviewServiceNameCard(String serviceName) {
+        step("Verify that service name is " + serviceName, () -> {
+            $("app-service-preview ion-card-subtitle").shouldHave(text(serviceName));
+        });
+    }
+
+    public void checkDurationOnThePage(String serviceDuration, int index) {
+        step("Service duration should be: " + serviceDuration + ", index-" + index, () -> {
+
+            long serviceTotalDurationLong = Long.parseLong(serviceDuration),
+                    serviceDurationDaysLong = serviceTotalDurationLong / 24 / 60,
+                    serviceDurationHoursLong = serviceTotalDurationLong / 60 % 24,
+                    serviceDurationMinutesLong = serviceTotalDurationLong % 60;
+
+            String serviceDurationDays = Long.toString(serviceDurationDaysLong),
+                    serviceDurationHours = Long.toString(serviceDurationHoursLong),
+                    serviceDurationMinutes = Long.toString(serviceDurationMinutesLong);
+
+            if (serviceTotalDurationLong >= 1440) {
+                $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationDays));
+                if (serviceDurationHoursLong > 0) {
+                    $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationHours));
+                }
+                if (serviceDurationMinutesLong > 0) {
+                    $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationMinutes));
+                }
+            } else if (serviceTotalDurationLong >= 60) {
+                $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationHours));
+                if (serviceDurationMinutesLong > 0) {
+                    $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationMinutes));
+                }
+            } else {
+                $$("app-duration-viewer").filter(visible).get(index).shouldHave(text(serviceDurationMinutes));
+            }
+        });
+    }
+
+    public void checkFavorite(boolean favorite, int index) {
+        step("A user in favorites? " + favorite, () -> {
+            if (favorite) {
+                $$("app-saved-professional-toggle ion-icon[ng-reflect-name='heart']").filter(visible).get(index).shouldHave(cssClass("ion-color-danger"));
+            } else {
+                $$("app-saved-professional-toggle ion-icon[ng-reflect-name='heart-outline']").filter(visible).get(index).shouldHave(cssClass("ion-color-medium"));
+            }
+        });
+    }
+
+    public void checkPreviewServiceProfessionalParameters(String serviceName, String firstName, String lastName, String specialization) {
+        step("Verify professional parameters", () -> {
+            $("app-service-widget app-service-title h2").shouldHave(text(serviceName));
+            $("app-service-widget div.info").shouldHave(text(firstName + " " + lastName));
+            $("app-service-widget div.subtitle").shouldHave(text(specialization));
+        });
+    }
+
+    public void checkServiceLocation(int location) {
+        step("Verify correct service location", () -> {
+            switch (location) {
+                case 0:
+                    $("app-service-location ion-item#online-service").shouldBe(visible);
+                    break;
+                case 1:
+                    $("app-service-location ion-item#client-service").shouldBe(visible);
+                    break;
+                case 2:
+                    $("app-service-location ion-item#professional-service").shouldBe(visible);
+                    break;
+                default:
+                    System.out.println("Unknown location ID: " + location);
+                    throw  new IllegalArgumentException();
+            }
+        });
+    }
+
+    public void verifyTags(String... tags) {
+        step("Verify tag(s) are correct", () -> {
+            for (String tag : tags) {
+                $$("app-service-tags-viewer").filter(visible).get(0).shouldHave(text(tag));
+            }
+        });
+    }
+
+    public void verifyNoTags() {
+        step("Verify no visible tags for preview", () -> {
+                $("app-service-preview app-service-tags-viewer ion-chip").shouldNotBe(visible, Duration.ofSeconds(2));
+        });
+    }
+
+    public void verifyAddress(String serviceAddress) {
+        step("Verify service address: " + serviceAddress, () -> {
+            $$("app-location-viewer").filter(visible).get(0).shouldHave(text(serviceAddress));
+        });
+    }
+
+    public void verifyServicePaymentCash(boolean value) {
+        step("Check if payment by cash", () -> {
+            if (value) {
+                $("app-service-widget app-payment-method-viewer ion-icon[name='cash-outline']").scrollIntoView(true).shouldBe(visible);
+            } else {
+                $("app-service-widget app-payment-method-viewer ion-icon[name='cash-outline']").scrollIntoView(true).shouldNotBe(visible);
+            }
+        });
+    }
+
+    public void verifyServicePaymentOnline(boolean value) {
+        step("Check if payment online", () -> {
+            if (value) {
+                $("app-service-widget app-payment-method-viewer ion-icon[name='card-outline']").scrollIntoView(true).shouldBe(visible);
+            } else {
+                $("app-service-widget app-payment-method-viewer ion-icon[name='card-outline']").scrollIntoView(true).shouldNotBe(visible);
+            }
+        });
+    }
+
+    public void verifyServiceInstantBooking(boolean value) {
+        step("Check if instant booking active", () -> {
+            if (value) {
+                $("ion-icon[name='checkbox-outline']").scrollIntoView(true).shouldBe(visible);
+            } else {
+                $("ion-icon[name='checkbox-outline']").scrollIntoView(true).shouldNotBe(visible);
+            }
+        });
+    }
+
     public void stepFinalClickBack() {
         step("Final step: click back", () -> {
-            $("app-service-publish-final-step ion-grid ion-button[color='light']").click();
+            $("app-service-publish-final-step ion-button[color='light']").click();
         });
     }
 
     @Step("Publish a service")
     public void publishService() {
-        $("app-service-publish-final-step ion-content ion-button[color='primary']").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-service-publish-final-step ion-content ion-button[color='primary']").shouldHave(cssClass("ion-activatable"));
-        $("app-service-publish-final-step ion-content ion-button[color='primary']").click();
+        $("app-service-publish-final-step ion-col.pub-btn ion-button[color='primary']").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-service-publish-final-step ion-col.pub-btn ion-button[color='primary']").shouldHave(cssClass("ion-activatable"));
+        sleep(400);
+        $("app-service-publish-final-step ion-col.pub-btn ion-button[color='primary']").click();
         $("app-service-publish-final-step").shouldNotBe(visible, Duration.ofSeconds(10));
+        $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
+        sleep(5000);
+    }
+
+    @Step("Publish a service")
+    public void publishServiceFromPreview() {
+        $("app-service-preview app-bottom-btn ion-button.footer__btn").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-service-preview app-bottom-btn ion-button.footer__btn").shouldHave(cssClass("ion-activatable"));
+        sleep(400);
+        $("app-service-preview app-bottom-btn ion-button.footer__btn").click();
+        $("app-service-preview").shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-service-created-page").shouldBe(visible, Duration.ofSeconds(10));
         sleep(5000);
     }
 
     @Step("Verify that 'Field is required.' error appeared")
     public void fieldIsRequiredPresent() {
-        $(byText("Field is required.")).shouldBe(visible);
+        $("app-service-publish-step-two app-price-editor app-form-control-error div.error-desc").shouldBe(visible);
     }
 
     @Step("Verify publishing step: step two")
@@ -592,23 +786,72 @@ public class ServicePublish extends config.TestBase {
 
     @Step("Verify price currency is {currency}")
     public void verifyPriceCurrency(String minPrice, String maxPrice, int currency) {
-        String value = $("app-service-publish-final-step app-price").getText();
+//        String value = $("app-service-preview app-service-widget app-price").getText();
+        String value = $$("app-price").filter(visible).get(0).getText();
         minPrice = PriceFormatter.addSpaces(minPrice);
         maxPrice = PriceFormatter.addSpaces(maxPrice);
         if (currency == cad && value.contains("$")) {
-            $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " — " + maxPrice + " $"));
+            $$("app-price").filter(visible).get(0).shouldHave(text(minPrice + " — " + maxPrice + " $"));
             return;
         }
         if (currency == eur && value.contains("€")) {
-            $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " — " + maxPrice + " €"));
+            $$("app-price").filter(visible).get(0).shouldHave(text(minPrice + " — " + maxPrice + " €"));
             return;
         }
         if (currency == rub && value.contains("₽")) {
-            $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " — " + maxPrice + " ₽"));
+            $$("app-price").filter(visible).get(0).shouldHave(text(minPrice + " — " + maxPrice + " ₽"));
             return;
         }
         if (currency == usd && value.contains("$")) {
-            $("app-service-publish-final-step app-price").shouldHave(text(minPrice + " — " + maxPrice + " $"));
+            $$("app-price").filter(visible).get(0).shouldHave(text(minPrice + " — " + maxPrice + " $"));
+            return;
+        }
+        System.out.println("Unknown currency.");
+        throw new IllegalArgumentException();
+    }
+
+    @Step("Verify price currency is {currency}")
+    public void verifyPriceCurrency(String price, int currency) {
+        String value = $$("app-price").filter(visible).get(0).getText();
+        price = PriceFormatter.addSpaces(price);
+        if (currency == cad && value.contains("$")) {
+            $$("app-price").filter(visible).get(0).shouldHave(text(price + " $"));
+            return;
+        }
+        if (currency == eur && value.contains("€")) {
+            $$("app-price").filter(visible).get(0).shouldHave(text(price + " €"));
+            return;
+        }
+        if (currency == rub && value.contains("₽")) {
+            $$("app-price").filter(visible).get(0).shouldHave(text(price + " ₽"));
+            return;
+        }
+        if (currency == usd && value.contains("$")) {
+            $$("app-price").filter(visible).get(0).shouldHave(text(price + " $"));
+            return;
+        }
+        System.out.println("Unknown currency.");
+        throw new IllegalArgumentException();
+    }
+
+    @Step("Verify price currency is {currency}")
+    public void verifyPriceCurrency(String price, int currency, int index) {
+        String value = $$("app-price").filter(visible).get(index).getText();
+        price = PriceFormatter.addSpaces(price);
+        if (currency == cad && value.contains("$")) {
+            $$("app-price").filter(visible).get(index).shouldHave(text(price + " $"));
+            return;
+        }
+        if (currency == eur && value.contains("€")) {
+            $$("app-price").filter(visible).get(index).shouldHave(text(price + " €"));
+            return;
+        }
+        if (currency == rub && value.contains("₽")) {
+            $$("app-price").filter(visible).get(index).shouldHave(text(price + " ₽"));
+            return;
+        }
+        if (currency == usd && value.contains("$")) {
+            $$("app-price").filter(visible).get(index).shouldHave(text(price + " $"));
             return;
         }
         System.out.println("Unknown currency.");
@@ -618,5 +861,26 @@ public class ServicePublish extends config.TestBase {
     public void verifySpinnerWorks() {
         $("ion-loading ion-spinner[role='progressbar']").shouldBe(visible);
         $("ion-loading ion-spinner[role='progressbar']").shouldNotBe(visible, Duration.ofSeconds(10));
+    }
+
+    public void clickPreview() {
+        step("Click Preview button", () -> {
+            $("app-service-publish-final-step ion-content ion-button[fill='outline']").click();
+            $("app-service-publish-final-step ion-content ion-button[fill='outline']").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
+    }
+
+    public void previewClickSearch() {
+        step("Click Preview tab: Search", () -> {
+            $("app-service-preview ion-content ion-segment-button[value='search']").click();
+            $("app-service-preview ion-content ion-segment-button[value='search']").shouldHave(cssClass("segment-button-checked"));
+        });
+    }
+
+    public void previewClickService() {
+        step("Click Preview tab: Service", () -> {
+            $("app-service-preview ion-content ion-segment-button[value='service']").click();
+            $("app-service-preview ion-content ion-segment-button[value='service']").shouldHave(cssClass("segment-button-checked"));
+        });
     }
 }

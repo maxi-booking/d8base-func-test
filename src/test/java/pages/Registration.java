@@ -74,7 +74,6 @@ public class Registration extends TestBase {
     }
 
     @Step("Verify basic registration data")
-
     public void verifyRegistrationDataBasic(
             String userFirstName,
             String userEmail,
@@ -101,6 +100,19 @@ public class Registration extends TestBase {
         $("app-profile").$(withText(userLastName)).should(visible);
         $("app-profile").$(withText(userEmail)).should(visible);
         $("app-profile").$(withText(userPhoneNumber)).should(visible);
+        $("app-profile").$(withText(userCountry)).should(visible);
+        $("app-profile").$(withText(userCity)).should(visible);
+    }
+
+    @Step("Verify full registration data")
+    public void verifyRegistrationDataFull(
+            String userFirstName,
+            String userEmail,
+            String userCountry,
+            String userCity
+    ) {
+        $("app-profile").$(withText(userFirstName)).should(visible);
+        $("app-profile").$(withText(userEmail)).should(visible);
         $("app-profile").$(withText(userCountry)).should(visible);
         $("app-profile").$(withText(userCity)).should(visible);
     }
@@ -146,5 +158,13 @@ public class Registration extends TestBase {
         $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
         $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
         $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(1).scrollIntoView(true).click();
+    }
+
+    @Step("Complete tutor slides to profile")
+    public void completeTutorSlidesToProfile() {
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-button.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-registration-tutor").$$("ion-router-link.registration-tutor-button").filter(visible).get(0).scrollIntoView(true).click();
+        $("app-profile app-avatar").shouldBe(visible, Duration.ofSeconds(10));
     }
 }

@@ -6,6 +6,39 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class LanguageConverter {
 
+    public static String getLocale(String language) {
+        String lang = null;
+        language = language.toLowerCase();
+        switch (language) {
+            case "english":
+                lang = "en";
+                break;
+            case "russian":
+                lang = "ru";
+                break;
+            case "german":
+                lang = "de";
+                break;
+            case "french":
+                lang = "fr";
+                break;
+            case "spanish":
+                lang = "es";
+                break;
+            case "arabic":
+                lang = "ar";
+                break;
+            case "greek":
+                lang = "el";
+                break;
+            default:
+                System.out.println("Unknown language: " + language);
+                fail();
+                break;
+        }
+        return lang;
+    }
+
     public static String getLanguageString(String language) {
         String lang = null;
         language = language.toLowerCase();

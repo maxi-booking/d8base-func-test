@@ -2,7 +2,6 @@ package helpers;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;

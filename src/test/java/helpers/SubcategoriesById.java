@@ -1,15 +1,14 @@
 package helpers;
 
 import config.TestBase;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
 public class SubcategoriesById extends TestBase {
 
-    public static int getSubcategory(int category, int subcategory) {
-        Response response = subcategories();
+    public static int getSubcategory(String locale, int category, int subcategory) {
+        Response response = subcategories(locale);
         category++;
         subcategory++;
         if (category > 3) {
@@ -36,7 +35,7 @@ public class SubcategoriesById extends TestBase {
         return subcategoryCounter;
     }
 
-    public static Response subcategories() {
+    public static Response subcategories(String locale) {
 
         return given()
 //                .filter(new AllureRestAssured())
@@ -44,7 +43,7 @@ public class SubcategoriesById extends TestBase {
                 .header("Referer", urlBackend + "/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBackend + "/en/api/professionals/subcategories/?page_size=900")
+                .get(urlBackend + "/" + locale + "/api/professionals/subcategories/?page_size=900")
                 .then()
                 .statusCode(200)
                 .extract().response();

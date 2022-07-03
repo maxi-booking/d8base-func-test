@@ -1,286 +1,25 @@
 package config;
 
 import com.github.javafaker.Faker;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
+import java.util.regex.Pattern;
 
+import static api.Localization.*;
+import static helpers.CountryConverter.getCountryCode;
 import static helpers.Currency.getCurrencyById;
 import static helpers.DateTimeFormatter.*;
+import static helpers.LanguageConverter.getLocale;
 import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
+import static java.lang.String.valueOf;
 
 public class TestData {
 
     public static final String xTimeZone = "Europe/Moscow";
     public static final int timeZone = 3;
-
-    public static class UserEmails {
-        Faker generate = new Faker(new Locale("en-US"));
-        Random r = new Random();
-        char c = (char) (r.nextInt(26) + 'a');
-        String[] userEmail = {
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().word() + "." + generate.lorem().word() + c,
-                generate.name().username() + "@" + generate.lorem().characters(2, 5) + "." + c + c
-        };
-
-        public String[] userEmail() {
-            return userEmail;
-        }
-    }
-
-    public static class UserPasswords {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] userPassword = {
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.internet().password(),
-                generate.lorem().characters(8, 50)
-        };
-
-        public String[] userPassword() {
-            return userPassword;
-        }
-    }
-
-    public static class UserFirstNames {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] userFirstName = {
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().firstName(),
-                generate.name().firstName() + generate.name().suffix(),
-                generate.funnyName().name()
-        };
-
-        public String[] userFirstName() {
-            return userFirstName;
-        }
-    }
-
-    public static class UserLastNames {
-        Faker generate = new Faker(new Locale("en-US"));
-        String animalName = generate.animal().name();
-        String[] userLastName = {
-                generate.name().lastName() + generate.name().lastName(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix() + generate.name().suffix(),
-                generate.name().lastName() + generate.name().suffix(),
-                animalName.substring(0, 1).toUpperCase() + animalName.substring(1)
-        };
-
-        public String[] userLastName() {
-            return userLastName;
-        }
-    }
-
-    public static class UserPhoneNumbers {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] userPhoneNumber = {
-                "911" + generate.number().digits(7),
-                "911" + generate.number().digits(7),
-                "911" + generate.number().digits(7),
-                "911" + generate.number().digits(7),
-                "911" + generate.number().digits(7),
-                "6135" + generate.number().digits(6),
-                "4575" + generate.number().digits(6),
-                "5905" + generate.number().digits(6),
-                "1595" + generate.number().digits(6),
-                "911" + generate.number().digits(7),
-                "923" + generate.number().digits(7),
-                "903" + generate.number().digits(7)
-        };
-
-        public String[] userPhoneNumber() {
-            return userPhoneNumber;
-        }
-    }
-
-    public static class UserCountries {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] userCountry = {
-                "Russia",
-                "Russia",
-                "Russia",
-                "Russia",
-                "Russia",
-                "Canada",
-                "Finland",
-                "France",
-                "Germany",
-                "Russia",
-                "Россия",
-                "Russia"
-        };
-
-        public String[] userCountry() {
-            return userCountry;
-        }
-    }
-
-    public static class UserCities {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] userCity = {
-                "Moscow",
-                "Moscow",
-                "Moscow",
-                "Moscow",
-                "Moscow",
-                "Toronto",
-                "Helsinki",
-                "Paris",
-                "Berlin",
-                "Moscow",
-                "Москва",
-                "Moscow"
-        };
-
-        public String[] userCity() {
-            return userCity;
-        }
-    }
-
-    public static class ServiceNames {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] serviceName = {
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
-                "",
-                "",
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")",
-                "",
-                "",
-                "",
-                "",
-                generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")"
-        };
-
-        public String[] serviceName() {
-            return serviceName;
-        }
-    }
-
-    public static class ServiceDescriptions {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] serviceDescription = {
-                generate.lorem().characters(20, 2000),
-                generate.lorem().characters(20, 2000),
-                generate.lorem().characters(20, 2000),
-                generate.lorem().characters(20, 2000),
-                "",
-                "",
-                generate.rickAndMorty().quote() + " " + generate.dune().quote(),
-                "",
-                "",
-                "",
-                "",
-                generate.backToTheFuture().quote() + " " + generate.hitchhikersGuideToTheGalaxy().quote()
-        };
-
-        public String[] serviceDescription() {
-            return serviceDescription;
-        }
-    }
-
-    public static class ServiceDurations {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] serviceDuration = {
-                String.valueOf(15 * (generate.number().numberBetween(1, 5))),
-                String.valueOf(15 * (generate.number().numberBetween(1, 5))),
-                String.valueOf(15 * (generate.number().numberBetween(1, 5))),
-                String.valueOf(15 * (generate.number().numberBetween(1, 5))),
-                "",
-                "",
-                String.valueOf(15 * (generate.number().numberBetween(1, 5))),
-                "",
-                "",
-                "",
-                "",
-                String.valueOf(15 * (generate.number().numberBetween(1, 7))),
-        };
-
-        public String[] serviceDuration() {
-            return serviceDuration;
-        }
-    }
-
-    public static class ServicePrices {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] servicePrice = {
-                String.valueOf(generate.number().numberBetween(1, 9999999)),
-                String.valueOf(generate.number().numberBetween(1, 2000)),
-                String.valueOf(generate.number().numberBetween(1, 70000)),
-                String.valueOf(generate.number().numberBetween(1, 999)),
-                "",
-                "",
-                String.valueOf(generate.number().numberBetween(1, 99)),
-                "",
-                "",
-                "",
-                "",
-                String.valueOf(generate.number().numberBetween(1500, 90000))
-        };
-
-        public String[] servicePrice() {
-            return servicePrice;
-        }
-    }
-
-    public static class Specializations {
-        Faker generate = new Faker(new Locale("en-US"));
-        String[] specialization = {
-                generate.job().title() + " " + generate.ancient().god(),
-                generate.job().title() + " " + generate.ancient().hero(),
-                generate.job().title() + " " + generate.ancient().titan(),
-                generate.job().title() + " " + generate.ancient().primordial(),
-                "",
-                "",
-                generate.job().title() + " " + generate.name().suffix(),
-                "",
-                "",
-                "",
-                "",
-                generate.job().title() + " " + generate.business().creditCardType()
-        };
-
-        public String[] specialization() {
-            return specialization;
-        }
-    }
 
     public static String[] dateTimes() { //get 3 unique DateTimes for booking
 
@@ -372,6 +111,15 @@ public class TestData {
             saturday,
             sunday;
 
+    public static final String
+            englishLanguage = "English",
+            russianLanguage = "Russian",
+            germanLanguage = "German",
+            frenchLanguage = "French",
+            spanishLanguage = "Spanish",
+            arabicLanguage = "Arabic",
+            greekLanguage = "Greek";
+
     public static final Integer
 
             // days of the week ID's
@@ -380,29 +128,22 @@ public class TestData {
             dayIdNext2Days = getNextDayId(dayIdNext1Day),
             dayUdNext3Days = getNextDayId(dayIdNext2Days);
 
-    public static final String
-
-            // languages
-            english = "English",
-            russian = "Russian",
-            german = "German",
-            french = "French",
-            spanish = "Spanish",
-            arabic = "Arabic",
-            greek = "Greek";
-
     public static Object
             emptyNull;
 
     public static Boolean
+            yes,
+            no,
             on,
             off,
             instantBooking,
             noInstantBooking,
             forAnotherPerson,
-            forMyself;
+            forMyself,
+            active,
+            inactive;
 
-    public static String[]
+    public static final String[]
             paymentCashOnline = {"cash", "online"},
             paymentCash = {"cash"},
             paymentOnline = {"online"};
@@ -424,7 +165,7 @@ public class TestData {
         clientLocation = "Client's place";
         professionalLocation = "Professional's place";
 
-        //gender helpers
+        //gender vars
         man = "man";
         male = "man";
         woman = "woman";
@@ -455,10 +196,14 @@ public class TestData {
         saturday = 5;
         sunday = 6;
 
+        yes = true;
+        no = false;
         on = true;
         off = false;
         instantBooking = true;
         noInstantBooking = false;
+        active = true;
+        inactive = false;
         forAnotherPerson = true;
         forMyself = false;
 
@@ -511,6 +256,14 @@ public class TestData {
     }
 
     public String
+            localeAPI,
+            english,
+            russian,
+            german,
+            french,
+            spanish,
+            arabic,
+            greek,
             randomSpaces,
             randomFile,
             reviewText,
@@ -624,7 +377,10 @@ public class TestData {
             randomRating,
             serviceCurrencyId,
             randomStartTime,
-            randomEndTime;
+            randomEndTime,
+            seed;
+
+    public String[] tags;
 
     public Data data;
 
@@ -634,8 +390,20 @@ public class TestData {
         LocalDate currentDate = LocalDate.now();
         int day = currentDate.getDayOfMonth();
         int year = currentDate.getYear();
+        seed = (int) System.currentTimeMillis();
 
-        Faker generate = new Faker(new Locale("en-US"));
+        localeAPI = getLocale(defaultLanguage);
+
+        Faker generate = new Faker(new Locale(localeAPI));
+
+        // languages
+        english = getLanguageNameByLocale(localeAPI, getLocale("english"));
+        russian = getLanguageNameByLocale(localeAPI, getLocale("russian"));
+        german = getLanguageNameByLocale(localeAPI, getLocale("german"));
+        french = getLanguageNameByLocale(localeAPI, getLocale("french"));
+        spanish = getLanguageNameByLocale(localeAPI, getLocale("spanish"));
+        arabic = getLanguageNameByLocale(localeAPI, getLocale("arabic"));
+        greek = getLanguageNameByLocale(localeAPI, getLocale("greek"));
 
         randomNumber = generate.number().numberBetween(1, 7);
         for (int i = 0; i < randomNumber; i++) {
@@ -675,7 +443,7 @@ public class TestData {
             }
         }
         if (randomEndTime / 100 == randomStartTime / 100) {
-            randomEndTime = randomEndTime + (((randomStartTime % 100) / 15) + generate.number().numberBetween(0, 4 - ((randomStartTime % 100) / 15)) * 15);
+            randomEndTime = randomEndTime + ((((randomStartTime % 100) / 15) + generate.number().numberBetween(0, 4 - ((randomStartTime % 100) / 15))) * 15);
         } else {
             randomEndTime = randomEndTime + generate.number().numberBetween(0, 4) * 15;
         }
@@ -698,8 +466,15 @@ public class TestData {
         randomRating = generate.number().numberBetween(1, 6);
         reviewText = generate.rickAndMorty().quote() + " " + generate.chuckNorris().fact();
 
-        userCountry = "Russia";
-        userCity = "Moscow";
+        String[] userCountryList = countryList(localeAPI);
+        int userCountryRandomIndex = generate.number().numberBetween(0, userCountryList.length);
+        String userCountrySlug = userCountryList[userCountryRandomIndex];
+        userCountry = "Russia";// countrySlugToName(localeAPI, userCountrySlug);
+
+        String[] userCityList = cityList(localeAPI, userCountry);
+        int userCityRandomIndex = generate.number().numberBetween(0, userCityList.length);
+        userCity = "Moscow";// userCityList[userCityRandomIndex];
+
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
         userPatronymic = generate.name().nameWithMiddle();
@@ -708,14 +483,29 @@ public class TestData {
         }
         userEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".us" + c;
         userPassword = generate.internet().password();
-        userPhoneNumber = "911" + generate.number().digits(7);
+
+        getCountryCode(localeAPI, userCountry);
+        new Locale(english, userCountry);
+        userPhoneNumber = Long.toString(PhoneNumberUtil.getInstance().getExampleNumber(
+                PhoneNumberUtil.getInstance().getRegionCodeForCountryCode(
+                        Integer.parseInt(
+                                getCountryCode(localeAPI, userCountry).split("-")[0].replaceAll("[-]", "")
+                        )
+                )
+        ).getNationalNumber());
         userBirthDay = Integer.toString(generate.number().numberBetween(10, 28));
         userBirthMonth = Integer.toString(generate.number().numberBetween(10, 12));
         userBirthYear = Integer.toString(generate.number().numberBetween(1950, 2005));
 
+        String[] clientCountryList = countryList(localeAPI);
+        int clientCountryRandomIndex = generate.number().numberBetween(0, clientCountryList.length);
+        String clientCountrySlug = clientCountryList[clientCountryRandomIndex];
+        clientCountry = "Russia";//countrySlugToName(localeAPI, clientCountrySlug);
 
-        clientCountry = "Russia";
-        clientCity = "Moscow";
+        String[] clientCityList = cityList(localeAPI, clientCountry);
+        int clientCityRandomIndex = generate.number().numberBetween(0, clientCityList.length);
+        clientCity = "Moscow";// clientCityList[clientCityRandomIndex];
+
         clientFirstName = generate.name().firstName();
         clientLastName = generate.name().lastName();
         clientPatronymic = generate.name().nameWithMiddle();
@@ -724,7 +514,14 @@ public class TestData {
         }
         clientEmail = generate.lorem().characters(13, 16) + c + "@" + generate.lorem().word() + ".cl" + c;
         clientPassword = generate.internet().password();
-        clientPhoneNumber = "911" + generate.number().digits(7);
+
+        clientPhoneNumber = Long.toString(PhoneNumberUtil.getInstance().getExampleNumber(
+                PhoneNumberUtil.getInstance().getRegionCodeForCountryCode(
+                        Integer.parseInt(
+                                getCountryCode(localeAPI, clientCountry).split("-")[0].replaceAll("[-]", "")
+                        )
+                )
+        ).getNationalNumber());
 
         serviceName = generate.name().title() + " (" + generate.lorem().characters(6, 12) + ")";
         serviceDescription = generate.rickAndMorty().quote() + " " + generate.hobbit().quote();
@@ -737,7 +534,7 @@ public class TestData {
             }
         }
         serviceDuration = new String[]{"15", "30", "45"}[(int) (Math.random() * 3)];
-        serviceDurationLong = String.valueOf(generate.number().numberBetween(96, 250) * 15); // 1440 minutes (day) / 3750 minutes (2,6 days)
+        serviceDurationLong = valueOf(generate.number().numberBetween(96, 250) * 15); // 1440 minutes (day) / 3750 minutes (2,6 days)
         masterLevel = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
         masterLevelAlt = new String[]{"junior", "middle", "senior"}[(int) (Math.random() * 3)];
         while (true) {
@@ -757,9 +554,9 @@ public class TestData {
                 masterCompanyAlt = generate.app().author() + " " + generate.ancient().titan();
             }
         }
-        servicePrice = String.valueOf(generate.number().numberBetween(1, 500));
-        servicePriceMin = String.valueOf(generate.number().numberBetween(1, 40000));
-        servicePriceMax = String.valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
+        servicePrice = valueOf(generate.number().numberBetween(1, 500));
+        servicePriceMin = valueOf(generate.number().numberBetween(1, 40000));
+        servicePriceMax = valueOf(generate.number().numberBetween(1, 40000) + Integer.parseInt(servicePriceMin));
         serviceCurrencyId = generate.number().numberBetween(0, 4);
         serviceCurrency = getCurrencyById(serviceCurrencyId);
         userSpecialization = generate.job().title() + " " + generate.ancient().god();
@@ -772,7 +569,7 @@ public class TestData {
             }
         }
         serviceAddress = generate.address().fullAddress();
-        serviceDistance = String.valueOf(generate.number().numberBetween(0, 9999));
+        serviceDistance = valueOf(generate.number().numberBetween(0, 9999));
         serviceLocationDistance = generate.number().numberBetween(1, 9999);
         distanceUnits = generate.number().numberBetween(0, 2);
 
@@ -804,13 +601,13 @@ public class TestData {
         }
         masterQualificationFromMonth = generateMonth();
         masterQualificationFromMonthAlt = generateMonth();
-        masterQualificationFromYear = String.valueOf(generate.number().numberBetween(1950, 2016));
-        masterQualificationFromYearAlt = String.valueOf(generate.number().numberBetween(1950, 2016));
+        masterQualificationFromYear = valueOf(generate.number().numberBetween(1950, 2016));
+        masterQualificationFromYearAlt = valueOf(generate.number().numberBetween(1950, 2016));
         while (true) {
             if (!masterQualificationFromYearAlt.equals(masterQualificationFromYear)) {
                 break;
             } else {
-                masterQualificationFromYearAlt = String.valueOf(generate.number().numberBetween(1950, 2016));
+                masterQualificationFromYearAlt = valueOf(generate.number().numberBetween(1950, 2016));
             }
         }
         masterQualificationToMonth = generateMonth();
@@ -822,13 +619,13 @@ public class TestData {
                 masterQualificationToMonthAlt = generateMonth();
             }
         }
-        masterQualificationToYear = String.valueOf(generate.number().numberBetween(2017, 2020));
-        masterQualificationToYearAlt = String.valueOf(generate.number().numberBetween(2017, 2020));
+        masterQualificationToYear = valueOf(generate.number().numberBetween(2017, 2020));
+        masterQualificationToYearAlt = valueOf(generate.number().numberBetween(2017, 2020));
         while (true) {
             if (!masterQualificationToYearAlt.equals(masterQualificationToYear)) {
                 break;
             } else {
-                masterQualificationToYearAlt = String.valueOf(generate.number().numberBetween(2017, 2020));
+                masterQualificationToYearAlt = valueOf(generate.number().numberBetween(2017, 2020));
             }
         }
         masterQualificationDescription = generate.shakespeare().asYouLikeItQuote();
@@ -863,12 +660,12 @@ public class TestData {
         masterEducationAcademicFieldAlt = generate.job().field();
         masterEducationFromMonth = generateMonth();
         masterEducationFromMonthAlt = generateMonth();
-        masterEducationFromYear = String.valueOf(generate.number().numberBetween(1995, 2000));
-        masterEducationFromYearAlt = String.valueOf(generate.number().numberBetween(2006, 2012));
+        masterEducationFromYear = valueOf(generate.number().numberBetween(1995, 2000));
+        masterEducationFromYearAlt = valueOf(generate.number().numberBetween(2006, 2012));
         masterEducationToMonth = generateMonth();
         masterEducationToMonthAlt = generateMonth();
-        masterEducationToYear = String.valueOf(generate.number().numberBetween(2001, 2005));
-        masterEducationToYearAlt = String.valueOf(generate.number().numberBetween(2013, 2018));
+        masterEducationToYear = valueOf(generate.number().numberBetween(2001, 2005));
+        masterEducationToYearAlt = valueOf(generate.number().numberBetween(2013, 2018));
         masterEducationDate = masterEducationFromYear + "-" + monthConvertToNumber(masterEducationFromMonth) + "-01 - " + masterEducationToYear + "-" + monthConvertToNumber(masterEducationToMonth) + "-01";
         masterEducationDateAlt = masterEducationFromYearAlt + "-" + monthConvertToNumber(masterEducationFromMonthAlt) + "-01 - ";
         masterEducationDescription = generate.job().keySkills();
@@ -880,16 +677,16 @@ public class TestData {
         masterCertificateNameAlt = generate.app().name();
         masterCertificateOrganization = generate.address().state();
         masterCertificateOrganizationAlt = generate.company().name();
-        masterCertificateDateDay = String.valueOf(generate.number().numberBetween(10, 28));
-        masterCertificateDateDayAlt = String.valueOf(generate.number().numberBetween(10, 28));
+        masterCertificateDateDay = valueOf(generate.number().numberBetween(10, 28));
+        masterCertificateDateDayAlt = valueOf(generate.number().numberBetween(10, 28));
         masterCertificateDateMonth = generateMonth();
         masterCertificateDateMonthAlt = generateMonth();
-        masterCertificateDateYear = String.valueOf(generate.number().numberBetween(1980, 2020));
-        masterCertificateDateYearAlt = String.valueOf(generate.number().numberBetween(1980, 2020));
+        masterCertificateDateYear = valueOf(generate.number().numberBetween(1980, 2020));
+        masterCertificateDateYearAlt = valueOf(generate.number().numberBetween(1980, 2020));
         masterCertificateDate = masterCertificateDateYear + "-" + monthConvertToNumber(masterCertificateDateMonth) + "-" + masterCertificateDateDay;
         masterCertificateDateAlt = masterCertificateDateYearAlt + "-" + monthConvertToNumber(masterCertificateDateMonthAlt) + "-" + masterCertificateDateDayAlt;
-        masterCertificateID = String.valueOf(generate.number().numberBetween(100000000, 600000000));
-        masterCertificateIDAlt = String.valueOf(generate.number().numberBetween(500000001, 999999999));
+        masterCertificateID = valueOf(generate.number().numberBetween(100000000, 600000000));
+        masterCertificateIDAlt = valueOf(generate.number().numberBetween(500000001, 999999999));
         masterCertificateLink = "https://" + "www." + generate.color().name() + "." + c + c + "/".replaceAll("\\s+", "").toLowerCase();
         masterCertificateLink = masterCertificateLink.replaceAll("\\s+", "").toLowerCase();
         masterCertificateLinkAlt = "https://" + "www." + generate.app().name() + "." + c + c + "/";
@@ -899,6 +696,20 @@ public class TestData {
 
         userChatMessage = generate.dragonBall().character() + " > " + generate.dragonBall().character();
         clientChatMessage = generate.friends().quote() + " (c) " + generate.dragonBall().character();
+
+        tags = new String[]{
+                seed + "-" + generate.color().name() + "-0",
+                seed + "-" + generate.color().name() + "-1",
+                seed + "-" + generate.color().name() + "-2",
+                seed + "-" + generate.color().name() + "-3",
+                seed + "-" + generate.color().name() + "-4",
+                seed + "-" + generate.color().name() + "-5",
+                seed + "-" + generate.color().name() + "-6",
+                seed + "-" + generate.color().name() + "-7",
+                seed + "-" + generate.color().name() + "-8",
+                seed + "-" + generate.color().name() + "-9",
+                seed + "-" + generate.color().name() + "-10"
+        };
 
         data = new Data();
     }
@@ -913,6 +724,14 @@ public class TestData {
      * [1] - client
      */
     public class Data {
+        public String locale = localeAPI;
+        public String english = TestData.this.english;
+        public String russian = TestData.this.russian;
+        public String german = TestData.this.german;
+        public String french = TestData.this.french;
+        public String spanish = TestData.this.spanish;
+        public String arabic = TestData.this.arabic;
+        public String greek = TestData.this.greek;
         public String[] firstName = new String[]{userFirstName, clientFirstName};
         public String[] lastName = new String[]{userLastName, clientLastName};
         public String[] patronymic = new String[]{userPatronymic, clientPatronymic};
@@ -974,6 +793,7 @@ public class TestData {
         public int units = distanceUnits; // random units km/mil
         public String file = randomFile;
         public String[] message = new String[]{userChatMessage, clientChatMessage};
+        public String[] tag = new String[]{tags[0], tags[1], tags[2], tags[3], tags[4], tags[5], tags[6], tags[7], tags[8], tags[9], tags[10]};
 
         public int days = 7;
         public String[] startTime = {defStartTime, defStartTime, defStartTime, defStartTime, defStartTime, defStartTime, defStartTime};

@@ -23,7 +23,7 @@ public class BookingTests extends config.TestBase {
     void bookingDateToday() {
         serviceReadyAPI(data);
         log.forceMainPage();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -47,7 +47,7 @@ public class BookingTests extends config.TestBase {
     void bookingOwnServiceForAnother() {
         serviceReadyAPI(data);
         log.forceMainPage();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         search.closeAllChips();
@@ -126,8 +126,8 @@ public class BookingTests extends config.TestBase {
     @DisplayName("Booking: 12 PM schedule shouldn't produce an extra time block")
     @Severity(SeverityLevel.TRIVIAL)
     void bookingSchedule12PMNoExtraBlock() {
-        data.country[0] = "Morocco";
-        data.city[0] = "Casablanca";
+        data.country[0] = "Iceland";
+        data.city[0] = "Reykjavík";
         Arrays.fill(data.startTime, timeZoneString(1200));
         Arrays.fill(data.endTime, timeZoneString(1800));
         serviceReadyAPI(data);
@@ -152,8 +152,8 @@ public class BookingTests extends config.TestBase {
     @DisplayName("Booking: next day with 00:00 schedule shouldn't produce an extra time block for a previous day")
     @Severity(SeverityLevel.TRIVIAL)
     void bookingScheduleWithMidnightTomorrowNoExtraBlock() {
-        data.country[0] = "Morocco";
-        data.city[0] = "Casablanca";
+        data.country[0] = "Iceland";
+        data.city[0] = "Reykjavík";
         Arrays.fill(data.startTime, timeZoneString(1200));
         Arrays.fill(data.endTime, timeZoneString(1800));
         int startTimeHours = Integer.parseInt(timeZoneString(0).substring(0, 2));

@@ -23,7 +23,7 @@ public class SearchTests extends TestBase {
         sideMenu.clickSearch();
         search.closeAllChips();
         search.search(serviceName);
-        search.verifyBestWorksNotExists();
+        search.verifyBestWorksNotExists(serviceName);
     }
 
     @Test

@@ -1,20 +1,57 @@
 package helpers;
 
-import java.util.HashMap;
-import java.util.Map;
+import config.TestBase;
+import io.restassured.response.Response;
 
-public class CountryConverter {
-    public static String getCountryCode(String value) {
-        return localeData.get(value);
+import static api.Localization.countryNameToSlug;
+import static io.restassured.RestAssured.given;
+
+public class CountryConverter extends TestBase {
+
+    private static int i(Response response, String country) {
+        int i = 0;
+        String countryNames = response.path("results.slug[" + i + "]");
+        while (countryNames != null) {
+            countryNames = response.path("results.slug[" + i + "]");
+            if (countryNames.equals(country)) {
+                break;
+            }
+            i++;
+        }
+        return i;
     }
-    
-    private static final Map<String, String> localeData = new HashMap<>();
-    static {
-        localeData.put("Afghanistan", "+93");
-        localeData.put("Canada", "+1");
-        localeData.put("Finland", "+358");
-        localeData.put("France", "+7");
-        localeData.put("Germany", "+49");
-        localeData.put("Russia", "+7");
+
+    public static int getCountryId(String locale, String country) {
+        Response response = countryIdByName(locale, country);
+        country = countryNameToSlug(locale, country);
+        return response.path("results.id[" + i(response, country) + "]");
+    }
+
+    public static Response countryIdByName(String locale, String country) {
+        country = countryNameToSlug(locale, country);
+
+        return given()
+                .accept("application/json")
+                .header("Referer", urlBackend + "/swagger/")
+                .header("x-timezone", xTimeZone)
+                .when()
+                .get(urlBackend + "/" + locale + "/api/location/countries/?search=" + country)
+                .then()
+                .statusCode(200)
+                .extract().response();
+    }
+
+    public static String getCountryCode(String locale, String country) {
+        country = countryNameToSlug(locale, country);
+        Response response = given()
+                .accept("application/json")
+                .header("Referer", urlBackend + "/swagger/")
+                .header("x-timezone", xTimeZone)
+                .when()
+                .get(urlBackend + "/" + locale + "/api/location/countries/?search=" + country)
+                .then()
+                .statusCode(200)
+                .extract().response();
+        return response.path("results.phone[" + i(response, country) + "]");
     }
 }

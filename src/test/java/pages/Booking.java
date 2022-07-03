@@ -1,6 +1,5 @@
 package pages;
 
-import helpers.Attach;
 import helpers.ServiceDuration;
 import io.qameta.allure.Step;
 
@@ -10,20 +9,21 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static config.TestData.*;
 import static helpers.SelectableModal.selectModal;
 import static helpers.ServiceDuration.getDuration;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
 
-    @Step("Input search text and press Enter")
     public void findService(String searchQuery) {
+        step("Search for '" + searchQuery + "' and press Enter", () -> {
         sleep(1000);
         $("app-search form input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("app-search form input").pressEnter();
         sleep(500);
+        });
     }
 
     @Step("Main page, input search text and press Enter")
@@ -44,7 +44,7 @@ public class Booking {
             String servicePrice) {
         $("app-search-result ion-card-content app-professional-card")
                 .shouldHave(text(firstName), text(lastName));
-        $("app-search-result ion-card-content app-service-link").shouldHave(text(serviceName));
+        $("app-search-result ion-card-content app-service-link-search-card").shouldHave(text(serviceName));
         String servicePriceActual = $("app-search-result ion-card-content app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(servicePrice)) {
@@ -54,7 +54,7 @@ public class Booking {
 
     @Step("Select a service")
     public void chooseService() {
-        $("app-search-result ion-card-content app-service-link a").click();
+        $("app-search-result ion-card-content app-service-link-search-card a").click();
     }
 
     @Step("Verify that the service data is correct")
@@ -95,8 +95,7 @@ public class Booking {
 
     @Step("Verify service location")
     public void verifyServiceLocation(String ServiceLocation) {
-
-        $("app-service-widget").$("app-service-location").shouldHave(text(ServiceLocation));
+        $("app-service-widget app-service-location").shouldHave(text(ServiceLocation));
     }
 
     @Step("Verify service location")
@@ -129,22 +128,20 @@ public class Booking {
 
     @Step("Check if payment by cash")
     public void verifyServicePaymentCash() {
-        $("app-service-widget").$("app-payment-method-viewer").shouldHave(text("Cash"));
+        $("app-service-widget app-payment-method-viewer ion-icon[name='cash-outline']").shouldBe(visible);
     }
 
     @Step("Check if payment online")
     public void verifyServicePaymentOnline() {
-        sleep(400);
-        $("app-service-widget").$("app-payment-method-viewer").shouldHave(text("Online payment"));
+        $("app-service-widget app-payment-method-viewer ion-icon[name='card-outline']").shouldBe(visible);
     }
 
     @Step("Check instant booking")
     public void verifyInstantBooking(Boolean value) {
         if (value.equals(true)) {
-            $("app-service-widget").shouldHave(text("Ordering of this service will be approved automatically"));
+            $("app-service-widget ion-icon[name='checkbox-outline']").shouldBe(visible);
         } else {
-
-            $("app-service-widget").shouldNotHave(text("Ordering of this service will be approved automatically"));
+            $("app-service-widget ion-icon[name='checkbox-outline']").shouldNotBe(visible);
         }
     }
 
@@ -169,8 +166,8 @@ public class Booking {
             $("app-book div.calendar", 2).$(withText(date)).scrollIntoView(true).click();
             $("app-book div.calendar", 2).$(withText(date)).shouldHave(cssClass("selected"), Duration.ofSeconds(10));
         }
-        $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
-        $$("app-booking-bottom-btn ion-button.footer__btn").filter(visible).get(0).click();
+        $$("app-bottom-btn ion-button.footer__btn").filter(visible).get(0).shouldNotHave(cssClass("button-disabled"), Duration.ofSeconds(10));
+        $$("app-bottom-btn ion-button.footer__btn").filter(visible).get(0).click();
         sleep(200);
     }
 

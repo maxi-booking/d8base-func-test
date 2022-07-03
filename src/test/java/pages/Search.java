@@ -1,19 +1,21 @@
 package pages;
 
-import helpers.Attach;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class Search {
-    @Step("Search page: Search {searchQuery}")
     public void search(String searchQuery) {
+        step("Search page: Search " + searchQuery, () -> {
         $("app-search form input").setValue("\"" + searchQuery + "\"");
         sleep(1000);
         $("app-search form input").pressEnter();
+        $("app-search app-applied-filters ion-chip").shouldHave(text(searchQuery), Duration.ofSeconds(10));
+        });
     }
 
     @Step("Search page: Search without quotes {searchQuery}")
@@ -49,7 +51,7 @@ public class Search {
 
     @Step("Click on the first name in search results")
     public void clickProfessionalsName() {
-        $("app-search-result ion-thumbnail.avatar",1).shouldNotBe(visible, Duration.ofSeconds(10));
+//        $("app-search-result ion-thumbnail.avatar",1).shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-search-result ion-thumbnail.avatar",0).shouldBe(visible, Duration.ofSeconds(10));
         $$("app-search-result ion-thumbnail.avatar").filter(visible).get(0).click();
         $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
@@ -57,11 +59,15 @@ public class Search {
 
     @Step("Verify that 'Best works' field exists")
     public void verifyBestWorksExists() {
-        $("app-search-result section ion-label").shouldHave(text("Best works"));
+        $("app-search-result ion-card section ion-label.photos-title b").shouldBe(visible);
+        $("app-search-result ion-card section app-image-carousel div.photo-slider-container ion-slides").shouldBe(visible);
     }
 
     @Step("Verify that 'Best works' field doesn't exists")
-    public void verifyBestWorksNotExists() {
-        $("app-search-result section ion-label").shouldNot(exist);
+    public void verifyBestWorksNotExists(String serviceName) {
+        $("app-search-result ion-card").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-search-result ion-card app-service-link-search-card a").shouldHave(text(serviceName));
+        $("app-search-result ion-card section ion-label").shouldNot(exist);
+        $("app-search-result ion-card section app-image-carousel").shouldNot(exist);
     }
 }

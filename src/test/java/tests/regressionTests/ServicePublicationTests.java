@@ -36,6 +36,8 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
@@ -68,6 +70,8 @@ public class ServicePublicationTests extends config.TestBase {
 
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
+
+        pbl.clickTagStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
@@ -265,12 +269,16 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.verifyPriceCurrency(servicePriceMin, servicePriceMax, currency);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -285,17 +293,19 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.chooseSubcategory(serviceSubcategory);
         pbl.clickFirstStep();
 
-        pbl.enterServiceName(serviceNames[0]);
-        pbl.enterServiceDescription(serviceDescriptions[0]);
-        pbl.setDuration(serviceDurations[0]);
-        pbl.setPriceFixed(servicePrices[0], serviceCurrencyId);
+        pbl.enterServiceName(data.name);
+        pbl.enterServiceDescription(data.description[0]);
+        pbl.setDuration(data.duration);
+        pbl.setPriceFixed(data.price, serviceCurrencyId);
         pbl.selectServiceLocation(online);
         pbl.clickSecondStep();
 
         pbl.clickThirdStep();
 
-        pbl.fillSpecialization(specializations[0]);
+        pbl.fillSpecialization(data.specialization[0]);
         pbl.clickSixthStep();
+
+        pbl.clickTagStep();
 
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
@@ -327,17 +337,18 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
-        pbl.checkPrice(servicePrice);
         pbl.stepFinalClickBack();
         sleep(3000);
         pbl.step7ClickEditSchedule();
         sch.clickBack();
+        pbl.verifySeventhStepVisible();
         pbl.clickSeventhStep();
         pbl.publishService();
     }
@@ -349,7 +360,7 @@ public class ServicePublicationTests extends config.TestBase {
     void publish4StepSpinnerWorks() {
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(serviceCategory);
@@ -369,5 +380,279 @@ public class ServicePublicationTests extends config.TestBase {
         pbl.fillUserInfo(userFirstName, userLastName, userPassword, userCountry, userCity);
         pbl.clickFourthStepNoDelay();
         pbl.verifySpinnerWorks();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5256")
+    @DisplayName("Service publish: basic test with no tags")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithNoTagsDefault() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.publishService();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5256")
+    @DisplayName("Service publish: basic test with 1 tag")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithTag() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.addTag(data.tag[0]);
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.publishService();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5256")
+    @DisplayName("Service publish: basic test with 10 tags")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithTags() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.addTag(data.tag);
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.publishService();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "")
+    @DisplayName("Service publish: basic test with no tags, preview search")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithNoTagsPreviewSearch() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.clickPreview();
+        pbl.previewClickSearch();
+        pbl.checkPreviewSearch(userFirstName, userLastName, userSpecialization, serviceName);
+        pbl.checkPreviewSearchFavorite(false);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId);
+        pbl.publishServiceFromPreview();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "")
+    @DisplayName("Service publish: basic test with tags, preview search")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithTagsPreviewSearch() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(online);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.addTag(data.tag);
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.clickPreview();
+        pbl.previewClickSearch();
+        pbl.checkPreviewSearch(userFirstName, userLastName, userSpecialization, serviceName);
+        pbl.checkPreviewSearchFavorite(false);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId);
+        pbl.publishServiceFromPreview();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5259")
+    @DisplayName("Service publish: basic test with no tags, preview service")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithNoTagsPreviewService() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(professional);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.clickPreview();
+        pbl.previewClickService();
+        pbl.checkPreviewServiceNameCard(serviceName);
+        pbl.checkDurationOnThePage(serviceDuration, 0);
+        pbl.checkDurationOnThePage(serviceDuration, 1);
+        pbl.checkPreviewServiceProfessionalParameters(serviceName, userFirstName, userLastName, userSpecialization);
+        pbl.checkServiceLocation(professional);
+        pbl.verifyAddress(serviceAddress);
+        pbl.verifyNoTags();
+        pbl.verifyServicePaymentCash(true);
+        pbl.verifyServicePaymentOnline(true);
+        pbl.verifyServiceInstantBooking(true);
+        pbl.checkFavorite(false,0);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId, 0);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId, 1);
+        pbl.publishServiceFromPreview();
+    }
+
+    @Test
+    @Link(name = "Issue link", url = "https://redmine.maxi-booking.ru/issues/5259")
+    @DisplayName("Service publish: basic test with tags, preview service")
+    @Severity(SeverityLevel.CRITICAL)
+    void publishWithTagsPreviewService() {
+        userReadyAPI(data);
+        sideMenu.clickPublishNewService();
+
+        pbl.chooseCategory(serviceCategory);
+        pbl.chooseSubcategory(serviceSubcategory);
+        pbl.clickFirstStep();
+
+        pbl.enterServiceName(serviceName);
+        pbl.enterServiceDescription(serviceDescription);
+        pbl.setDuration(serviceDuration);
+        pbl.setPriceFixed(servicePrice, serviceCurrencyId);
+        pbl.selectServiceLocation(professional);
+        pbl.clickSecondStep();
+
+        pbl.clickThirdStep();
+
+        pbl.fillSpecialization(userSpecialization);
+        pbl.clickSixthStep();
+
+        pbl.addTag(data.tag);
+        pbl.clickTagStep();
+
+        pbl.instantBooking(on);
+        pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
+        pbl.PaymentOptions(true, true, data);
+        pbl.clickSeventhStep();
+
+        pbl.clickPreview();
+        pbl.previewClickService();
+        pbl.checkPreviewServiceNameCard(serviceName);
+        pbl.checkDurationOnThePage(serviceDuration, 0);
+        pbl.checkDurationOnThePage(serviceDuration, 1);
+        pbl.checkPreviewServiceProfessionalParameters(serviceName, userFirstName, userLastName, userSpecialization);
+        pbl.checkServiceLocation(professional);
+        pbl.verifyAddress(serviceAddress);
+        pbl.verifyTags(data.tag);
+        pbl.verifyServicePaymentCash(true);
+        pbl.verifyServicePaymentOnline(true);
+        pbl.verifyServiceInstantBooking(true);
+        pbl.checkFavorite(false,0);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId, 0);
+        pbl.verifyPriceCurrency(servicePrice, data.currencyId, 1);
+        pbl.publishServiceFromPreview();
     }
 }

@@ -6,7 +6,6 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -50,6 +49,7 @@ public class Favorites {
         $("app-professional-card", index).$("app-saved-professional-toggle").$("ion-button").click();
     }
 
+    //todo remove duplicate
     @Step("Verify that the search result is correct")
     public void verifyServiceSearch(
             String firstName,
@@ -58,7 +58,7 @@ public class Favorites {
             String servicePrice) {
         $("app-search-result").$("ion-card-content").$("app-professional-card")
                 .shouldHave(text(firstName), text(lastName));
-        $("app-search-result").$("ion-card-content").$("app-service-link").shouldHave(text(serviceName));
+        $("app-search-result ion-card-content app-service-link-search-card").shouldHave(text(serviceName));
         String servicePriceActual = $("app-search-result").$("ion-card-content").$("app-price").getText();
         servicePriceActual = servicePriceActual.replaceAll("\\s+", "");
         if (!servicePriceActual.contains(servicePrice)) {
@@ -73,7 +73,6 @@ public class Favorites {
 
     @Step("Click on master's name in the search results")
     public void selectMasterSearch() {
-        $("app-search-result ion-thumbnail.avatar",1).shouldNotBe(visible, Duration.ofSeconds(10));
         $("app-search-result ion-thumbnail.avatar",0).shouldBe(visible, Duration.ofSeconds(10));
         $$("app-search-result ion-thumbnail.avatar").filter(visible).get(0).click();
         $("app-professional-page").shouldBe(visible, Duration.ofSeconds(10));
@@ -82,7 +81,7 @@ public class Favorites {
     @Step("Click on service name in the search results")
     public void selectServiceSearch() {
         sleep(200);
-        $("app-search app-search-result app-service-link a").click();
+        $("app-search app-search-result app-service-link-search-card a").click();
     }
 
     @Step("Add master to favorites from master's profile page")

@@ -1,22 +1,18 @@
 package helpers;
 
 import config.TestBase;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static helpers.CountryIdByName.getCountryId;
+import static helpers.CountryConverter.*;
 import static io.restassured.RestAssured.given;
 
 public class CityIdByName extends TestBase {
 
-    public static int getCityId(String city, String country) {
-        Response response = cityIdByName(city, country);
+    public static int getCityId(String locale, String city, String country) {
+        Response response = cityIdByName(locale, city, country);
         int i = 0;
         String cityNames = response.path("results.name[" + i + "]");
-        while (!cityNames.equals(null)) {
+        while (cityNames != null) {
             cityNames = response.path("results.name[" + i + "]");
             if (cityNames.equals(city)) {
                 break;
@@ -26,7 +22,7 @@ public class CityIdByName extends TestBase {
         return response.path("results.id[" + i + "]");
     }
 
-    public static Response cityIdByName(String city, String country) {
+    public static Response cityIdByName(String locale, String city, String country) {
 
         return given()
 //                .filter(new AllureRestAssured())
@@ -34,12 +30,13 @@ public class CityIdByName extends TestBase {
                 .header("Referer", urlBackend + "/swagger/")
                 .header("x-timezone", xTimeZone)
                 .when()
-                .get(urlBackend + "/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(country))
+                .get(urlBackend + "/en/api/location/cities/?by_name=" + city + "&country=" + getCountryId(locale, country))
                 .then()
                 .statusCode(200)
                 .extract().response();
     }
 
+/*
     public static String getCityId(String city) {
         return cityData.get(city);
     }
@@ -52,5 +49,5 @@ public class CityIdByName extends TestBase {
         cityData.put("Paris", "2988507");
         cityData.put("Berlin", "2950159");
         cityData.put("Moscow", "524901");
-    }
+    }*/
 }

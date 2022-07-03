@@ -23,7 +23,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     void t00000() {
         serviceReadyAPI(data);
         log.openMainPage();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         sideMenu.clickProfessionalProfile();
         pp.expandItems();
@@ -47,7 +47,7 @@ public class ProfessionalProfileTests extends config.TestBase {
     void masterProfileSocialShareClickableForAnotherPerson() {
         serviceReadyAPI(data);
         log.openMainPage();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickLogOut();
 
         sideMenu.clickSearch();

@@ -1,6 +1,5 @@
 package drivers;
 
-import com.codeborne.selenide.Browser;
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.FIRST)
@@ -35,7 +34,7 @@ public interface WebDriverConfig extends Config {
     long getTimeout();
 
     @Config.Key("language")
-    @Config.DefaultValue("english")
+    @Config.DefaultValue("English")
     String getLanguage();
 
     @Config.Key("frontendUrl")

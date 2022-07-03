@@ -1,5 +1,7 @@
 package helpers;
 
+import config.TestBase;
+
 import java.util.Arrays;
 
 import static api.Registration.locations;
@@ -9,14 +11,13 @@ import static api.ServiceBooking.bookingProfessional;
 import static api.ServicePublish.*;
 import static api.Orders.*;
 import static api.Accounts.*;
-import static helpers.DateTimeFormatter.getDateTime;
 
-public class RegressionTestsHelpers extends config.TestBase {
+public class RegressionTestsHelpers extends TestBase {
 
     public static void userRegisterUI(Data data) {
         log.forceMainPage();
         log.popupSelect(data.country[0], data.city[0]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(data.firstName[0]);
         reg.fillEmail(data.email[0]);
@@ -28,7 +29,7 @@ public class RegressionTestsHelpers extends config.TestBase {
 
     public static void serviceRegisterUI(Data data) {
         log.forceMainPage();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(data.category[0]);
@@ -52,43 +53,43 @@ public class RegressionTestsHelpers extends config.TestBase {
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     public static void userRegisterAPI(Data data) {
-        data.accessToken[0] = registration(data.firstName[0], data.lastName[0], data.email[0], data.password[0]);
-        data.locationsId[0] = locations(data.accessToken[0], data.country[0], data.city[0]);
+        data.accessToken[0] = registration(data.locale, data.firstName[0], data.lastName[0], data.email[0], data.password[0]);
+        data.locationsId[0] = locations(data.locale, data.accessToken[0], data.country[0], data.city[0]);
     }
 
     public static void serviceRegisterAPI(Data data) {
-        changeAccountTypeToProfessional(data.accessToken[0]);
-        data.professionalId = createProfessional(data.accessToken[0], data.category[0], data.subcategory[0], data.specialization[0], data.level[0], data.description[0]);
-        data.serviceId = servicePublish(data.accessToken[0], data.professionalId, data.name, data.description[0], data.duration, data.sType, data.iBooking);
-        data.professionalLocationId = professionalLocations(data.accessToken[0], data.professionalId, data.country[0], data.city[0], data.address, data.units);
+        changeAccountTypeToProfessional(data.locale, data.accessToken[0]);
+        data.professionalId = createProfessional(data.locale, data.accessToken[0], data.category[0], data.subcategory[0], data.specialization[0], data.level[0], data.description[0]);
+        data.serviceId = servicePublish(data.locale, data.accessToken[0], data.professionalId, data.name, data.description[0], data.duration, data.sType, data.iBooking);
+        data.professionalLocationId = professionalLocations(data.locale, data.accessToken[0], data.professionalId, data.country[0], data.city[0], data.address, data.units);
         if (Integer.parseInt(data.duration) >= 1440) {
             Arrays.fill(data.startTime, "00:00");
             Arrays.fill(data.endTime, "23:59");
         }
-        setSchedule(data.accessToken[0], data.professionalId, data.days, data.startTime, data.endTime);
+        setSchedule(data.locale, data.accessToken[0], data.professionalId, data.days, data.startTime, data.endTime);
         if (data.sType == online) {
             data.serviceLocationId = data.locationsId[0];
         } else if (data.sType == client) {
             data.serviceLocationId = data.locationsId[0];
-            serviceLocations(data.accessToken[0], data.serviceId, data.professionalLocationId, data.locationDistance);
+            serviceLocations(data.locale, data.accessToken[0], data.serviceId, data.professionalLocationId, data.locationDistance);
         } else if (data.sType == professional) {
-            data.serviceLocationId = serviceLocations(data.accessToken[0], data.serviceId, data.professionalLocationId);
+            data.serviceLocationId = serviceLocations(data.locale, data.accessToken[0], data.serviceId, data.professionalLocationId);
         }
-        servicePrices(data.accessToken[0], data.serviceId, data.price, data.currency, data.payment);
+        servicePrices(data.locale, data.accessToken[0], data.serviceId, data.price, data.currency, data.payment);
     }
 
     public static void bookingCreateAPI(Data data) {
         userRegisterAPI(data);
         serviceRegisterAPI(data);
-        data.orderId = bookingProfessional(data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
+        data.orderId = bookingProfessional(data.locale, data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
     }
 
     public static void userBookService(Data data) {
-        data.orderId = bookingClient(data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
+        data.orderId = bookingClient(data.locale, data.accessToken[0], data.serviceId, data.locationsId[0], data.sType, data.dateTime);
     }
 
     public static void clientBookService(Data data) {
@@ -98,42 +99,42 @@ public class RegressionTestsHelpers extends config.TestBase {
         } else {
             locationsId = data.locationsId[1];
         }
-        data.orderId = bookingClient(data.accessToken[1], data.serviceId, locationsId, data.sType, data.dateTime);
+        data.orderId = bookingClient(data.locale, data.accessToken[1], data.serviceId, locationsId, data.sType, data.dateTime);
     }
 
     public static void completeOrder(Data data) {
-        orderComplete(data.accessToken[0], data.orderId);
+        orderComplete(data.locale, data.accessToken[0], data.orderId);
     }
 
     public static void addReview(Data data) {
-        sendReview(data.accessToken[1], data.professionalId, data.review, data.rating);
+        sendReview(data.locale, data.accessToken[1], data.professionalId, data.review, data.rating);
     }
 
     public static void addToFavorite(Data data) {
-        saveProfessional(data.accessToken[1], data.professionalId);
+        saveProfessional(data.locale, data.accessToken[1], data.professionalId);
     }
 
     public static void userReadyAPI(Data data) {
-        data.accessToken[0] = registration(data.firstName[0], data.lastName[0], data.email[0], data.password[0], data.country[0], data.phoneNumber[0]);
-        data.locationsId[0] = locations(data.accessToken[0], data.country[0], data.city[0]);
+        data.accessToken[0] = registration(data.locale, data.firstName[0], data.lastName[0], data.email[0], data.password[0], data.country[0], data.phoneNumber[0]);
+        data.locationsId[0] = locations(data.locale, data.accessToken[0], data.country[0], data.city[0]);
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void clientRegisterAPI(Data data) {
-        data.accessToken[1] = registration(data.firstName[1], data.email[1], data.password[1]);
-        data.locationsId[1] = locations(data.accessToken[1], data.country[1], data.city[1]);
+        data.accessToken[1] = registration(data.locale, data.firstName[1], data.email[1], data.password[1]);
+        data.locationsId[1] = locations(data.locale, data.accessToken[1], data.country[1], data.city[1]);
     }
 
     public static void clientReadyAPI(Data data) {
-        data.accessToken[1] = registration(data.firstName[1], data.lastName[1], data.email[1], data.password[1]);
-        data.locationsId[1] = locations(data.accessToken[1], data.country[1], data.city[1]);
+        data.accessToken[1] = registration(data.locale, data.firstName[1], data.lastName[1], data.email[1], data.password[1]);
+        data.locationsId[1] = locations(data.locale, data.accessToken[1], data.country[1], data.city[1]);
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void serviceReadyAPI(Data data) {
@@ -142,7 +143,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void serviceReadyAPIEnglish(Data data) {
@@ -151,7 +152,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        language.select(english);
+        language.select(data.english);
     }
 
     public static void masterBookingReadyAPI(Data data) {
@@ -159,7 +160,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void clientBookingReadyAPI(Data data) {
@@ -168,7 +169,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void masterOrderReadyAPI(Data data) {
@@ -179,7 +180,7 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[0], data.password[0]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 
     public static void clientOrderReadyAPI(Data data) {
@@ -190,6 +191,6 @@ public class RegressionTestsHelpers extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(data.email[1], data.password[1]);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
     }
 }

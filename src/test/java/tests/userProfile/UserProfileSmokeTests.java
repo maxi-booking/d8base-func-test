@@ -4,7 +4,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static api.Registration.registration;
 import static helpers.RegressionTestsHelpers.userReadyAPI;
 
 @Feature("User Profile")
@@ -15,6 +14,7 @@ public class UserProfileSmokeTests extends config.TestBase {
     @DisplayName("User Registration via API and verify the data")
     @Severity(SeverityLevel.BLOCKER)
     void userProfileInfoVerification() {
+        System.out.println(data.country[0]);
         userReadyAPI(data);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(data.firstName[0], data.lastName[0], data.email[0], data.phoneNumber[0], data.country[0], data.city[0]);
@@ -124,9 +124,10 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.addressSelectSubregion(user10SubregionNew);
         up.addressSelectCity(userCity9);
         up.addressSelectDistrict(user10DistrictNew);
-        up.addressSelectZipCode(user10ZipCodeNew);
+//        up.addressSelectZipCode(user10ZipCodeNew);
         up.addressSelectAddress(user10AddressNew);
-        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
+//        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
+        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10AddressNew);
         up.addressClickBack();
         up.verifyProfileAddressExists(data.country[0], data.city[0]);
 
@@ -137,9 +138,10 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.addressSelectSubregion(user10SubregionNew);
         up.addressSelectCity(userCity9);
         up.addressSelectDistrict(user10DistrictNew);
-        up.addressSelectZipCode(user10ZipCodeNew);
+//        up.addressSelectZipCode(user10ZipCodeNew);
         up.addressSelectAddress(user10AddressNew);
-        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
+//        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10ZipCodeNew, user10AddressNew);
+        up.verifyAddressFull(data.country[1], user10RegionNew, user10SubregionNew, userCity9, user10DistrictNew, user10AddressNew);
         up.addressClickSave();
         up.verifyProfileAddressExists(data.country[1], userCity9);
 
@@ -150,9 +152,10 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.addressSelectSubregion(user10Subregion2);
         up.addressSelectCity(userCity9_2);
         up.addressSelectDistrict(user10District2);
-        up.addressSelectZipCode(user10ZipCode2);
+//        up.addressSelectZipCode(user10ZipCode2);
         up.addressSelectAddress(user10Address2);
-        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+//        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10Address2);
         up.addressClickBack();
         up.verifyProfileAddressExists(data.country[0], data.city[0]);
 
@@ -163,14 +166,16 @@ public class UserProfileSmokeTests extends config.TestBase {
         up.addressSelectSubregion(user10Subregion2);
         up.addressSelectCity(userCity9_2);
         up.addressSelectDistrict(user10District2);
-        up.addressSelectZipCode(user10ZipCode2);
+//        up.addressSelectZipCode(user10ZipCode2);
         up.addressSelectAddress(user10Address2);
-        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+//        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10Address2);
         up.addressClickSave();
         up.verifyProfileAddressExists(data.country[0], userCity9_2);
 
         up.openUserProfileLocationEdit(1);
-        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+//        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10ZipCode2, user10Address2);
+        up.verifyAddressFull(data.country[0], user10Region2, user10Subregion2, userCity9_2, user10District2, user10Address2);
         up.removeAddress();
         up.verifyAddressRemoved(data.country[0], userCity9_2);
     }

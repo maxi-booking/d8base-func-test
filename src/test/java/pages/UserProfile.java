@@ -1,8 +1,6 @@
 package pages;
 
 import config.Lang;
-import helpers.Attach;
-import helpers.SelectableModal;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
@@ -12,9 +10,9 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.DateTimeFormatter.monthConvertToNumber;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class UserProfile {
@@ -189,7 +187,7 @@ public class UserProfile {
 
     @Step("Profile: Contacts - contacts: enter value")
     public void enterContact(String value) {
-        sleep(200);
+        sleep(500);
         $("app-user-contact-edit app-contact-edit input[name='contact-value']").setValue(value);
     }
 
@@ -390,6 +388,24 @@ public class UserProfile {
         $("app-user-location-edit").$("app-location-editor").$("app-district-selector").shouldHave(text(district));
         $("app-user-location-edit").$("app-location-editor").$("app-postal-code-selector").shouldHave(text(zipCode));
         $("app-user-location-edit").$("app-location-editor").$("ion-input").shouldHave(text(address));
+    }
+
+    @Step("Verify profile address: Address full")
+    public void verifyAddressFull(
+            String country,
+            String region,
+            String subregion,
+            String city,
+            String district,
+            String address) {
+        sleep(300);
+        $("app-user-location-edit").$("app-location-editor").$("app-country-selector").shouldHave(text(country));
+        $("app-user-location-edit").$("app-location-editor").$("app-region-selector").shouldHave(text(region));
+        $("app-user-location-edit").$("app-location-editor").$("app-subregion-selector").shouldHave(text(subregion));
+        $("app-user-location-edit").$("app-location-editor").$("app-city-selector").shouldHave(text(city));
+        $("app-user-location-edit").$("app-location-editor").$("app-district-selector").shouldHave(text(district));
+        String addressActualText = $("app-user-location-edit").$("app-location-editor").$("input").getValue();
+        assertEquals(address, addressActualText);
     }
 
     @Step("Verify address removed")

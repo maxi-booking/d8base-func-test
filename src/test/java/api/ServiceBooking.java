@@ -10,7 +10,7 @@ import static specifications.Specifications.requestSpec;
 
 public class ServiceBooking extends TestBase {
 
-    public static int bookingProfessional(String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime) {
+    public static int bookingProfessional(String locale, String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -39,13 +39,13 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/orders/sent/")
+                .post(urlBackend + "/" + locale + "/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int bookingClient(String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime) {
+    public static int bookingClient(String locale, String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -74,13 +74,13 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/orders/sent/")
+                .post(urlBackend + "/" + locale + "/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int bookingProfessional(String accessToken, int serviceId, int locationsId, int serviceLocation) {
+    public static int bookingProfessional(String locale, String accessToken, int serviceId, int locationsId, int serviceLocation) {
 
         Map<String, Object> data = new HashMap<>();
 
@@ -109,13 +109,13 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/orders/sent/")
+                .post(urlBackend + "/" + locale + "/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int bookingProfessional(String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime,
+    public static int bookingProfessional(String locale, String accessToken, int serviceId, int locationsId, int serviceLocation, String dateTime,
                                           String firstName, String lastName, String email, String phone, String note) {
 
         Map<String, Object> data = new HashMap<>();
@@ -145,13 +145,13 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/orders/sent/")
+                .post(urlBackend + "/" + locale + "/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");
     }
 
-    public static int bookingProfessional(String accessToken, int serviceId, int locationsId, int serviceLocation,
+    public static int bookingProfessional(String locale, String accessToken, int serviceId, int locationsId, int serviceLocation,
                                           String firstName, String lastName, String email, String phone, String note) {
 
         Map<String, Object> data = new HashMap<>();
@@ -181,7 +181,7 @@ public class ServiceBooking extends TestBase {
                 .header("Authorization", "Bearer " + accessToken)
                 .body(data)
                 .when()
-                .post(urlBackend + "/en/api/accounts/orders/sent/")
+                .post(urlBackend + "/" + locale + "/api/accounts/orders/sent/")
                 .then()
                 .statusCode(201)
                 .extract().response().path("id");

@@ -5,16 +5,14 @@ import io.qameta.allure.Step;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class SideMenu {
     public void openMenu() {
         sleep(500);
         $$("[menu='main-menu']").filter(visible).get(0).click();
-        sleep(300);
+        sleep(500);
     }
 
     @Step("Click Menu > Log in")

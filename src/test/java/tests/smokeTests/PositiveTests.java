@@ -3,6 +3,8 @@ package tests.smokeTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static helpers.RegressionTestsHelpers.*;
 import static java.lang.String.valueOf;
@@ -18,7 +20,7 @@ public class PositiveTests extends config.TestBase {
     void t00000() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillEmail(userEmail);
@@ -27,7 +29,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataBasic(userFirstName, userEmail, userCountry, userCity);
     }
@@ -41,7 +43,7 @@ public class PositiveTests extends config.TestBase {
     void t00001() {
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserFirstName(userFirstName);
         reg.fillUserLastName(userLastName);
@@ -52,7 +54,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userEmail, userCountry, userCity);
     }
@@ -66,7 +68,7 @@ public class PositiveTests extends config.TestBase {
     void t00002() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.selectCountry(userCountry);
         reg.selectCity(userCity);
@@ -77,7 +79,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillUserFirstName(userFirstName);
         reg.confirmAndWait();
         reg.completeTutorSlidesToPublish();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
@@ -91,7 +93,7 @@ public class PositiveTests extends config.TestBase {
     void t00003() {
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillPhoneNumber(userPhoneNumber, userCountry);
         reg.choosePassword(userPassword);
@@ -102,7 +104,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.confirmAndWait();
         reg.completeTutorSlidesToSearch();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
@@ -116,7 +118,7 @@ public class PositiveTests extends config.TestBase {
     void t00004() {
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillEmail(userEmail);
         reg.choosePassword(userPassword);
@@ -126,7 +128,7 @@ public class PositiveTests extends config.TestBase {
         reg.fillUserFirstName(userFirstName);
         reg.fillUserLastName(userLastName);
         reg.confirmAndWait();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
@@ -140,7 +142,7 @@ public class PositiveTests extends config.TestBase {
     void t00005() {
         log.openMainPage();
         log.popupSelect(userCountry, userCity);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSignUp();
         reg.fillUserLastName(userLastName);
         reg.fillUserFirstName(userFirstName);
@@ -150,7 +152,7 @@ public class PositiveTests extends config.TestBase {
         reg.selectCity(userCity);
         reg.fillPhoneNumber(userPhoneNumber, userCountry);
         reg.confirmAndWait();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.openProfile();
         reg.verifyRegistrationDataFull(userFirstName, userLastName, userEmail, userPhoneNumber, userCountry, userCity);
     }
@@ -181,14 +183,18 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -217,6 +223,8 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
@@ -224,9 +232,11 @@ public class PositiveTests extends config.TestBase {
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormWithAddress(serviceName, serviceDuration, serviceDescription, userCountry, userCity, serviceAddress);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -255,15 +265,19 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.fillServiceGeo(userCountry, userCity, serviceAddress);
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormWithAddress(serviceName, serviceDuration, serviceDescription, userCountry, userCity, serviceAddress);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -275,7 +289,7 @@ public class PositiveTests extends config.TestBase {
     void t00103() {
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickPublishNewService();
 
         pbl.chooseCategory(serviceCategory);
@@ -300,14 +314,18 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.fillScheduleLite();
         pbl.instantBooking(on);
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormOnline(serviceName, serviceDuration, serviceDescription);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -336,15 +354,19 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.verifyNoScheduleEditButton();
         pbl.verifyScheduleInfiniteTime();
         pbl.instantBooking(on);
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormOnline(serviceName, serviceDurationLong, serviceDescription);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -373,6 +395,8 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.verifyNoScheduleEditButton();
         pbl.verifyScheduleInfiniteTime();
         pbl.instantBooking(on);
@@ -381,9 +405,11 @@ public class PositiveTests extends config.TestBase {
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormWithAddress(serviceName, serviceDurationLong, serviceDescription, userCountry, userCity, serviceAddress);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -412,6 +438,8 @@ public class PositiveTests extends config.TestBase {
         pbl.fillSpecialization(userSpecialization);
         pbl.clickSixthStep();
 
+        pbl.clickTagStep();
+
         pbl.verifyNoScheduleEditButton();
         pbl.verifyScheduleInfiniteTime();
         pbl.instantBooking(on);
@@ -419,9 +447,11 @@ public class PositiveTests extends config.TestBase {
         pbl.PaymentOptions(true, true, data);
         pbl.clickSeventhStep();
 
+        pbl.clickPreview();
+        pbl.previewClickService();
         pbl.checkPublishFormWithAddress(serviceName, serviceDurationLong, serviceDescription, userCountry, userCity, serviceAddress);
         pbl.checkPrice(servicePrice);
-        pbl.publishService();
+        pbl.publishServiceFromPreview();
     }
 
     @Test
@@ -718,7 +748,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
@@ -740,7 +770,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
@@ -762,7 +792,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
@@ -784,7 +814,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickMyOrders();
         ord.checkOrderOutbox(userFirstName, serviceName, servicePrice, serviceDuration);
         ord.discardOrderClient("I don't like the service");
@@ -806,7 +836,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickMyOrders();
         ord.tabCurrentOrdersInbox();
         ord.checkOrderInbox(clientFirstName, servicePrice, serviceDuration);
@@ -830,7 +860,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(1);
@@ -858,7 +888,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(1);
@@ -886,7 +916,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSentOrders();
         rev.tabArchivedOrdersOutbox();
         rev.choseMaster(1);
@@ -899,8 +929,7 @@ public class PositiveTests extends config.TestBase {
         rev.pressSend();
         rev.verifyReview(userFirstName + " " + userLastName, clientFirstName, reviewText3 + " " + reviewText4);
 
-        rev.clickMenuMain();
-        rev.openBookmarksMenu();
+        sideMenu.clickBookmarks();
         rev.verifyBookmark(userFirstName + " " + userLastName, rating);
     }
 
@@ -920,7 +949,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickProfessionalProfile();
         rev.clickMasterReviews();
         rev.postMasterComment(masterComment);
@@ -942,7 +971,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSentOrders();
         ord.tabArchivedOrdersOutbox();
         ord.clickProfessionalsName();
@@ -951,8 +980,10 @@ public class PositiveTests extends config.TestBase {
         msg.checkMessage(data.message[0]);
         log.forceLogOut();
 
+        log.openMainPage();
+        log.popupSkip();
         log.logIn(userEmail, userPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickChat();
         msg.findUserChat(clientFirstName + " " + clientLastName);
         msg.selectUser();
@@ -961,8 +992,10 @@ public class PositiveTests extends config.TestBase {
         msg.checkMessage(data.message[1]);
         log.forceLogOut();
 
+        log.openMainPage();
+        log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         topBar.clickChat();
         msg.findUserChat(userFirstName + " " + userLastName);
         msg.selectUser();
@@ -985,7 +1018,7 @@ public class PositiveTests extends config.TestBase {
         log.openMainPage();
         log.popupSkip();
         log.logIn(clientEmail, clientPassword);
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         sideMenu.clickBookmarks();
         fav.verifyBookmarkOnline(userFirstName + " " + userLastName);
@@ -1067,7 +1100,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         bkn.findServiceMainPage(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
@@ -1096,7 +1129,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
 
         bkn.placeOrder();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
@@ -1116,7 +1149,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         bkn.findService(serviceName);
@@ -1146,7 +1179,7 @@ public class PositiveTests extends config.TestBase {
         reg.confirmAndWait();
 
         bkn.placeOrder();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         bkn.showSentOrderDetails();
         bkn.verifyOrderDetails(serviceName);
@@ -1165,7 +1198,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         search.searchMainNoQuotes(userFirstName + " " + userLastName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
@@ -1184,7 +1217,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         bkn.findServiceMainPage(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
@@ -1203,7 +1236,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
 
         bkn.findServiceMainPage(userSpecialization);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
@@ -1222,7 +1255,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         search.searchNoQuotes(userFirstName + " " + userLastName);
@@ -1242,7 +1275,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         bkn.findService(serviceName);
@@ -1262,7 +1295,7 @@ public class PositiveTests extends config.TestBase {
         serviceRegisterAPI(data);
         log.openMainPage();
         log.popupSkip();
-        language.select(defaultLanguage);
+        data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
         bkn.findService(userSpecialization);

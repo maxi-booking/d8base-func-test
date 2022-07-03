@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.selector.ByShadow;
-import config.Lang;
 import helpers.Attach;
 import io.qameta.allure.Step;
 
@@ -13,7 +12,6 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.open;
 import static helpers.SelectableModal.selectModal;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -72,9 +70,16 @@ public class LogIn extends config.TestBase {
             $("app-login input[name='password']").setValue(password);
             $("app-login ion-input[name='email']").shouldHave(cssClass("ion-valid"));
             $("app-login ion-input[name='password']").shouldHave(cssClass("ion-valid"));
-            $("app-login-form ion-button[type='submit']").click();
-            $("app-login-form ion-button[type='submit']").shouldHave(cssClass("ion-activated"));
+            sleep(200);
+            $$("app-login-form ion-button[type='submit']").filter(visible).get(0).click();
+            $$("app-login-form ion-button[type='submit']").filter(visible).get(0).shouldHave(cssClass("ion-activated"));
             $("app-login-form ion-button[type='submit']").shouldNotBe(visible, Duration.ofSeconds(10));
+        });
+    }
+
+    public void noLoginError() {
+        step("Login and password should be correct", () -> {
+            $$("app-error-flashbag").filter(visible).get(0).shouldNot(exist);
         });
     }
 
@@ -98,26 +103,17 @@ public class LogIn extends config.TestBase {
         sleep(1000);
     }
 
-    public void account(int value) {
-        step("Log In with " + emails[value] + " : " + passwords[value], () -> {
-            String login = emails[value];
-            String password = passwords[value];
-            sideMenu.clickLogIn();
-            $$("input[name='email']").filter(visible).get(0).scrollIntoView(true).setValue(login);
-            $$("input[name='password']").filter(visible).get(0).scrollIntoView(true).setValue(password);
-            $$("ion-button[type='submit']").filter(visible).get(0).scrollIntoView(true).click();
-            $("app-login").shouldNotBe(visible, Duration.ofSeconds(10));
-        });
-    }
-
     public void popupSelect(String country, String city) {
         step("Pop-up select country: " + country + "; city: " + city, () -> {
             popupSkip();
-            language.select(english);
+            language.select(defaultLanguage);
             refreshPage();
 
             $("ion-alert button", 1).click();
+            $("ion-alert button").shouldNotBe(visible, Duration.ofSeconds(10));
 
+            $("app-on-map-popover app-country-selector ion-item ionic-selectable.ionic-selectable-is-enabled").shouldBe(visible);
+            sleep(200);
             $("app-on-map-popover app-country-selector ion-item").click();
             selectModal(country);
 
@@ -196,6 +192,26 @@ public class LogIn extends config.TestBase {
     public void shouldNotHaveTitle(String value) {
         step("Page title should be: " + value, () -> {
             $("title").shouldNotHave(attribute("text", value));
+        });
+    }
+
+    public void openLanguageMenu() {
+        step("Open language menu", () -> {
+            $$("ion-menu-toggle[menu='flag-menu']").filter(visible).get(0).click();
+            $$("app-flag-menu ionic-selectable").filter(visible).get(0).click();
+        });
+    }
+
+    public void verifyLanguageMenuOrder() {
+        step("Menu should have the right order of items", () -> {
+            $("ion-modal").shouldBe(visible, Duration.ofSeconds(10));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(0).shouldHave(exactText("English"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(1).shouldHave(exactText("Deutsch"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(2).shouldHave(exactText("Français"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(3).shouldHave(exactText("Ελληνικά"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(4).shouldHave(exactText("Español"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(5).shouldHave(exactText("Русский"));
+            $$("ionic-selectable-modal ion-label").filter(visible).get(6).shouldHave(exactText("عرب"));
         });
     }
 }
