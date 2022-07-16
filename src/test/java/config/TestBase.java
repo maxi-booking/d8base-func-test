@@ -7,12 +7,16 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.response.Response;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.*;
 
+import static helpers.LanguageConverter.getLocale;
+import static helpers.SubcategoryGenerator.*;
+import static helpers.SubcategoryGenerator.getCategoryCount;
 import static io.qameta.allure.Allure.step;
 
 public class TestBase extends TestData {
@@ -22,6 +26,7 @@ public class TestBase extends TestData {
 
     public static final String
             defaultLanguage = config.getLanguage(),
+            localeAPI = getLocale(defaultLanguage),
 
             urlFrontend = config.getFrontendUrl(),
             urlBackend = config.getBackendUrl() + ":8000",
@@ -36,6 +41,12 @@ public class TestBase extends TestData {
             urlMyProfessionalProfile = urlFrontend + "/professional/my-profile",
             urlForPerformers = urlFrontend + "/for-performers";
 
+    public static final Response
+            subcategories = getSubcategories(localeAPI),
+            categories = getCategories(localeAPI);
+    public static final int
+            subcategoryCount = getSubcategoryCount(subcategories),
+            categoryCount = getCategoryCount(categories);
 
     public static Language language = new Language();
     public static SideMenu sideMenu = new SideMenu();

@@ -2,24 +2,28 @@ package config;
 
 import com.github.javafaker.Faker;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import io.restassured.response.Response;
 
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 import static api.Localization.*;
+import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.CountryConverter.getCountryCode;
+import static helpers.CountryConverter.getCountryId;
 import static helpers.Currency.getCurrencyById;
 import static helpers.DateTimeFormatter.*;
 import static helpers.LanguageConverter.getLocale;
-import static helpers.SubcategoryGenerator.getRandomSubcategoryFromCategoryValue;
+import static helpers.SubcategoryGenerator.*;
 import static java.lang.String.valueOf;
 
 public class TestData {
 
-    public static final String xTimeZone = "Europe/Moscow";
-    public static final int timeZone = 3;
+    public static final String
+            xTimeZone = "Europe/Moscow";
+    public static final int
+            timeZone = 3;
 
     public static String[] dateTimes() { //get 3 unique DateTimes for booking
 
@@ -44,6 +48,13 @@ public class TestData {
     }
 
     public static String
+            english,
+            russian,
+            german,
+            french,
+            spanish,
+            arabic,
+            greek,
             testUser10New,
             testPassword10New,
             userFirstName9,
@@ -111,6 +122,7 @@ public class TestData {
             saturday,
             sunday;
 
+
     public static final String
             englishLanguage = "English",
             russianLanguage = "Russian",
@@ -149,6 +161,16 @@ public class TestData {
             paymentOnline = {"online"};
 
     public static void setTestData() {
+
+        //languages
+        english = getLanguageNameByLocale(localeAPI, getLocale("english"));
+        russian = getLanguageNameByLocale(localeAPI, getLocale("russian"));
+        german = getLanguageNameByLocale(localeAPI, getLocale("german"));
+        french = getLanguageNameByLocale(localeAPI, getLocale("french"));
+        spanish = getLanguageNameByLocale(localeAPI, getLocale("spanish"));
+        arabic = getLanguageNameByLocale(localeAPI, getLocale("arabic"));
+        greek = getLanguageNameByLocale(localeAPI, getLocale("greek"));
+
         //currency
         cad = 0;
         eur = 1;
@@ -256,14 +278,6 @@ public class TestData {
     }
 
     public String
-            localeAPI,
-            english,
-            russian,
-            german,
-            french,
-            spanish,
-            arabic,
-            greek,
             randomSpaces,
             randomFile,
             reviewText,
@@ -372,6 +386,10 @@ public class TestData {
             distanceUnits,
             serviceCategory,
             serviceCategoryAlt,
+            serviceSubcategoryId,
+            serviceSubcategoryIdAlt,
+            serviceSubcategoryList,
+            serviceSubcategoryListAlt,
             serviceSubcategory,
             serviceSubcategoryAlt,
             randomRating,
@@ -392,18 +410,7 @@ public class TestData {
         int year = currentDate.getYear();
         seed = (int) System.currentTimeMillis();
 
-        localeAPI = getLocale(defaultLanguage);
-
         Faker generate = new Faker(new Locale(localeAPI));
-
-        // languages
-        english = getLanguageNameByLocale(localeAPI, getLocale("english"));
-        russian = getLanguageNameByLocale(localeAPI, getLocale("russian"));
-        german = getLanguageNameByLocale(localeAPI, getLocale("german"));
-        french = getLanguageNameByLocale(localeAPI, getLocale("french"));
-        spanish = getLanguageNameByLocale(localeAPI, getLocale("spanish"));
-        arabic = getLanguageNameByLocale(localeAPI, getLocale("arabic"));
-        greek = getLanguageNameByLocale(localeAPI, getLocale("greek"));
 
         randomNumber = generate.number().numberBetween(1, 7);
         for (int i = 0; i < randomNumber; i++) {
@@ -451,17 +458,18 @@ public class TestData {
         defStartTime = "9:00";
         defEndTime = "17:00";
 
-        serviceCategory = generate.number().numberBetween(0, 9);
-        serviceCategoryAlt = generate.number().numberBetween(0, 9);
-        while (true) {
-            if (serviceCategoryAlt != serviceCategory) {
-                break;
-            } else {
-                serviceCategoryAlt = generate.number().numberBetween(0, 9);
-            }
-        }
-        serviceSubcategory = getRandomSubcategoryFromCategoryValue(serviceCategory);
-        serviceSubcategoryAlt = getRandomSubcategoryFromCategoryValue(serviceCategoryAlt);
+        serviceSubcategoryList = generate.number().numberBetween(0, (subcategoryCount));
+        serviceSubcategoryListAlt = generate.number().numberBetween(0, (subcategoryCount));
+
+        serviceSubcategory = getSubcategoryOrderWithinCategory(subcategories, serviceSubcategoryList);
+        serviceSubcategoryAlt = getSubcategoryOrderWithinCategory(subcategories, serviceSubcategoryListAlt);
+
+        serviceSubcategoryId = getSubcategoryId(subcategories, serviceSubcategoryList);
+        serviceSubcategoryIdAlt = getSubcategoryId(subcategories, serviceSubcategoryListAlt);
+
+        serviceCategory = getCategoryOrderById(categories, getCategoryIdBySubcategoryId(subcategories, serviceSubcategoryId));
+        serviceCategoryAlt = getCategoryOrderById(categories, getCategoryIdBySubcategoryId(subcategories, serviceSubcategoryIdAlt));
+
         randomFile = "src/test/resources/img/" + generate.number().numberBetween(1, 12) + ".png";
         randomRating = generate.number().numberBetween(1, 6);
         reviewText = generate.rickAndMorty().quote() + " " + generate.chuckNorris().fact();
@@ -469,11 +477,11 @@ public class TestData {
         String[] userCountryList = countryList(localeAPI);
         int userCountryRandomIndex = generate.number().numberBetween(0, userCountryList.length);
         String userCountrySlug = userCountryList[userCountryRandomIndex];
-        userCountry = "Russia";// countrySlugToName(localeAPI, userCountrySlug);
+        userCountry = "Russia"; //countrySlugToName(localeAPI, userCountrySlug);
 
-        String[] userCityList = cityList(localeAPI, userCountry);
+        String[] userCityList = cityList(localeAPI, getCountryId(localeAPI, userCountry));
         int userCityRandomIndex = generate.number().numberBetween(0, userCityList.length);
-        userCity = "Moscow";// userCityList[userCityRandomIndex];
+        userCity = "Moscow"; //userCityList[userCityRandomIndex];
 
         userFirstName = generate.name().firstName();
         userLastName = generate.name().lastName();
@@ -502,7 +510,7 @@ public class TestData {
         String clientCountrySlug = clientCountryList[clientCountryRandomIndex];
         clientCountry = "Russia";//countrySlugToName(localeAPI, clientCountrySlug);
 
-        String[] clientCityList = cityList(localeAPI, clientCountry);
+        String[] clientCityList = cityList(localeAPI, getCountryId(localeAPI, clientCountry));
         int clientCityRandomIndex = generate.number().numberBetween(0, clientCityList.length);
         clientCity = "Moscow";// clientCityList[clientCityRandomIndex];
 
@@ -787,6 +795,7 @@ public class TestData {
         public String dateTime = bookingDateTime;
         public int[] category = new int[]{serviceCategory, serviceCategoryAlt};
         public int[] subcategory = new int[]{serviceSubcategory, serviceSubcategoryAlt};
+        public int[] subcategoryId = new int[]{serviceSubcategoryId, serviceSubcategoryIdAlt};
         public String review = reviewText;
         public int rating = randomRating;
         public int currencyId = serviceCurrencyId;

@@ -23,7 +23,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -63,7 +63,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -104,7 +104,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -145,7 +145,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -196,7 +196,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -249,7 +249,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -301,7 +301,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, online, instantBooking);
         professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -360,7 +360,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, client, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);
@@ -421,7 +421,7 @@ public class OrderShareTests extends TestBase {
         String accessToken = registration(data.locale, userFirstName, userLastName, userEmail, userPassword);
         int locationsId = locations(data.locale, accessToken, userCountry, userCity);
         changeAccountTypeToProfessional(data.locale, accessToken);
-        int professionalId = createProfessional(data.locale, accessToken, serviceCategory, serviceSubcategory, userSpecialization);
+        int professionalId = createProfessional(data.locale, accessToken, serviceSubcategoryId, userSpecialization);
         int serviceId = servicePublish(data.locale, accessToken, professionalId, serviceName, serviceDescription, serviceDuration, professional, instantBooking);
         int professionalLocationId = professionalLocations(data.locale, accessToken, professionalId, userCountry, userCity, serviceAddress, unitsKilometers);
         setSchedule(data.locale, accessToken, professionalId, 7);

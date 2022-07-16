@@ -61,9 +61,14 @@ public class RegressionTestsHelpers extends TestBase {
         data.locationsId[0] = locations(data.locale, data.accessToken[0], data.country[0], data.city[0]);
     }
 
+    public static void userRegisterWithAPhoneAPI(Data data) {
+        data.accessToken[0] = registration(data.locale, data.firstName[0], data.lastName[0], data.email[0], data.password[0], data.country[0], data.phoneNumber[0]);
+        data.locationsId[0] = locations(data.locale, data.accessToken[0], data.country[0], data.city[0]);
+    }
+
     public static void serviceRegisterAPI(Data data) {
         changeAccountTypeToProfessional(data.locale, data.accessToken[0]);
-        data.professionalId = createProfessional(data.locale, data.accessToken[0], data.category[0], data.subcategory[0], data.specialization[0], data.level[0], data.description[0]);
+        data.professionalId = createProfessional(data.locale, data.accessToken[0], data.subcategoryId[0], data.specialization[0], data.level[0], data.description[0]);
         data.serviceId = servicePublish(data.locale, data.accessToken[0], data.professionalId, data.name, data.description[0], data.duration, data.sType, data.iBooking);
         data.professionalLocationId = professionalLocations(data.locale, data.accessToken[0], data.professionalId, data.country[0], data.city[0], data.address, data.units);
         if (Integer.parseInt(data.duration) >= 1440) {

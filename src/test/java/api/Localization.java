@@ -64,9 +64,7 @@ public class Localization extends TestBase {
     }
 
 
-    public static String[] cityList(String locale, String country) {
-
-        int countryId = getCountryId(locale, country);
+    public static String[] cityList(String locale, int countryId) {
 
         ArrayList cities = given()
                 .accept("application/json")

@@ -129,8 +129,10 @@ public class ProfessionalProfile extends TestBase {
         String experience = $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).getText();
         if (experience.contains(masterExperience)) {
             $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).shouldHave(text(masterExperience));
-        } else {
+        } else if (experience.contains(String.valueOf(Integer.parseInt(masterExperience) - 1))) {
             $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).shouldHave(text(String.valueOf(Integer.parseInt(masterExperience) - 1)));
+        } else {
+            $$("app-professional-page main ion-item.item-label-stacked ion-text").filter(visible).get(1).shouldHave(text(String.valueOf(Integer.parseInt(masterExperience) + 1)));
         }
 
         $("app-professional-page main").scrollIntoView(true).shouldHave(text(masterLevel));

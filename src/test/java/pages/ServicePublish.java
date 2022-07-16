@@ -26,7 +26,6 @@ public class ServicePublish extends config.TestBase {
     }
 
     @Step("Choose a category: {value}")
-    //value 0-8
     public void chooseCategory(Integer value) {
         $("app-category-selector").$("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
         $("app-category-selector").$("ionic-selectable").scrollIntoView(true).click();
@@ -36,12 +35,11 @@ public class ServicePublish extends config.TestBase {
     }
 
     @Step("Choose a subcategory: {value}")
-    //value 0-8
     public void chooseSubcategory(Integer value) {
-        $("app-subcategory-selector").$("ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
-        $("app-subcategory-selector").$("ionic-selectable").scrollIntoView(true).click();
-        $("ionic-selectable-modal").$("ion-content").$("ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
-        $("ionic-selectable-modal").$("ion-content").$("ion-item", value).scrollIntoView(true).click();
+        $("app-subcategory-selector ionic-selectable").shouldBe(visible, Duration.ofSeconds(10));
+        $("app-subcategory-selector ionic-selectable").scrollIntoView(true).click();
+        $("ionic-selectable-modal ion-content ion-item", value).shouldBe(visible, Duration.ofSeconds(10));
+        $("ionic-selectable-modal ion-content ion-item", value).scrollIntoView(true).click();
         $("ionic-selectable-modal").shouldNotBe(visible, Duration.ofSeconds(10));
     }
 

@@ -16,26 +16,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class Booking {
 
-    public void findService(String searchQuery) {
-        step("Search for '" + searchQuery + "' and press Enter", () -> {
-        sleep(1000);
-        $("app-search form input").setValue("\"" + searchQuery + "\"");
-        sleep(1000);
-        $("app-search form input").pressEnter();
-        sleep(500);
-        });
-    }
-
-    @Step("Main page, input search text and press Enter")
-    public void findServiceMainPage(String searchQuery) {
-        sleep(1000);
-        $("ion-searchbar input").setValue("\"" + searchQuery + "\"");
-        sleep(1000);
-        $("ion-searchbar input").pressEnter();
-        sleep(500);
-    }
-
-
     @Step("Verify that the search result is correct")
     public void verifyServiceSearch(
             String firstName,

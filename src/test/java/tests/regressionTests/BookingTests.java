@@ -27,7 +27,7 @@ public class BookingTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -51,7 +51,7 @@ public class BookingTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -83,7 +83,7 @@ public class BookingTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(service);
+        search.search(service);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -110,7 +110,7 @@ public class BookingTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(today);
@@ -134,7 +134,7 @@ public class BookingTests extends config.TestBase {
 
         sideMenu.clickSearch();
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);
@@ -170,7 +170,7 @@ public class BookingTests extends config.TestBase {
 
         sideMenu.clickSearch();
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.chooseService();
         bkn.clickOrder();
         bkn.pickTheDate(tomorrow);

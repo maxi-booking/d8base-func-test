@@ -6,7 +6,6 @@ import java.util.*;
 
 import static helpers.CityIdByName.getCityId;
 import static helpers.CountryConverter.*;
-import static helpers.SubcategoriesById.getSubcategory;
 import static io.restassured.RestAssured.given;
 import static specifications.Specifications.requestSpec;
 
@@ -27,10 +26,10 @@ public class ServicePublish extends TestBase {
                 .statusCode(200);
     }
 
-    public static int createProfessional(String locale, String accessToken, int category, int subcategory, String specialization) {
+    public static int createProfessional(String locale, String accessToken, int subcategoryId, String specialization) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("subcategory", getSubcategory(locale, category, subcategory));
+        data.put("subcategory", subcategoryId);
         data.put("name", specialization);
 
         return given()
@@ -44,10 +43,10 @@ public class ServicePublish extends TestBase {
                 .extract().response().path("id");
     }
 
-    public static int createProfessional(String locale, String accessToken, int category, int subcategory, String specialization, String level, String about) {
+    public static int createProfessional(String locale, String accessToken, int subcategoryId, String specialization, String level, String about) {
 
         Map<String, Object> data = new HashMap<>();
-        data.put("subcategory", getSubcategory(locale, category, subcategory));
+        data.put("subcategory", subcategoryId);
         data.put("description", about);
         data.put("name", specialization);
         data.put("level", level);

@@ -470,7 +470,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -507,7 +507,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -545,7 +545,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -585,7 +585,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
@@ -620,7 +620,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
@@ -657,7 +657,7 @@ public class PositiveTests extends config.TestBase {
         sideMenu.clickSearch();
 
         search.closeAllChips();
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDurationLong, userFirstName, userLastName, serviceDescription);
@@ -1102,7 +1102,7 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         data.locale = language.select(defaultLanguage);
 
-        bkn.findServiceMainPage(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1152,7 +1152,7 @@ public class PositiveTests extends config.TestBase {
         data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1200,7 +1200,7 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         data.locale = language.select(defaultLanguage);
 
-        search.searchMainNoQuotes(userFirstName + " " + userLastName);
+        search.searchNoQuotes(userFirstName + " " + userLastName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1219,7 +1219,7 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         data.locale = language.select(defaultLanguage);
 
-        bkn.findServiceMainPage(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1238,7 +1238,7 @@ public class PositiveTests extends config.TestBase {
         log.popupSkip();
         data.locale = language.select(defaultLanguage);
 
-        bkn.findServiceMainPage(userSpecialization);
+        search.search(userSpecialization);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1278,7 +1278,7 @@ public class PositiveTests extends config.TestBase {
         data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
-        bkn.findService(serviceName);
+        search.search(serviceName);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
@@ -1298,7 +1298,7 @@ public class PositiveTests extends config.TestBase {
         data.locale = language.select(defaultLanguage);
         sideMenu.clickSearch();
 
-        bkn.findService(userSpecialization);
+        search.search(userSpecialization);
         bkn.verifyServiceSearch(userFirstName, userLastName, serviceName, servicePrice);
         bkn.chooseService();
         bkn.verifyServiceBase(serviceName, servicePrice, serviceDuration, userFirstName, userLastName, serviceDescription);
